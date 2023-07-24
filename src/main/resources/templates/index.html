@@ -2,11 +2,25 @@
 <html xmlns:th="//www.thymeleaf.org" 
 	th:replace="layout/common-layout :: commonLayout( ~{::head}, ~{::main} )" >
     <head>
+    	<link rel="stylesheet" href="/css/commons/index.css">
     </head>
     <main>
         <h1>메인영역</h1>
+       <div class="visual-size">
+       		<p>비주얼 영역</p>
+       	</div>
         <div class="wrap view-size">
-        	<p class="tit">인덱스 입니다.</p>
+        	<div class="product-view">
+        		<p>상품 보이기</p>
+        	</div>
+        	<div class="notice-view flex around">
+        		<div class="notice">
+        			<p>공지사항</p>
+        		</div>
+        		<div class="event">
+        			<p>이벤트</p>
+        		</div>
+        	</div>
         </div>
     </main>
 </html>
