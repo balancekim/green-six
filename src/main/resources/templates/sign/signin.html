@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="//www.thymeleaf.org" 
+	th:replace="layout/common-layout :: commonLayout( ~{::head}, ~{::main} )" >
+    <head>
+    </head>
+    <main>
+        <h1>메인영역</h1>
+        <div class="wrap view-size-m">
+        	<p class="tit">로그인</p>
+        	<form action="/signin" method="POST">
+        		<ul>
+        			<li>
+        				<input type="text" name="email" placeholder="이메일 또는 아이디">
+        			</li>
+        			<li>
+        				<input type="password" name="pass" placeholder="비밀번호">
+        			</li>
+        			<li>
+        				<input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        				<button type="submit">로그인</button>
+        			</li>
+        		</ul>
+        	</form>
+        	<div>
+	        	<a href="/signup">회원가입</a>
+        	</div>
+        </div>
+    </main>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="//www.thymeleaf.org" th:fragment="commonLayout(addHead, main)">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Insert title here</title>
+        <!-- head에구성되는 공통css,js를 포함 -->
+        <link rel="shortcut icon" href="/images/icon/myicon.svg">
+        <script src="/webjars/jquery/jquery.min.js"></script>
+        <link rel="stylesheet" href="/css/commons/common.css">
+        <link rel="stylesheet" href="/css/commons/header.css">
+        <link rel="stylesheet" href="/css/commons/footer.css">
+        <!-- ///////////////////////// -->
+        <th:block th:replace="${addHead}" />
+    </head>
+    <body>
+        <th:block th:insert="~{layout/common-header :: header}" />
+        <th:block th:replace="${main}" />
+        <th:block th:insert="~{layout/common-footer :: footer}" />
+    </body>
+</html>
