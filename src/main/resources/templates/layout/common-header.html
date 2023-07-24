@@ -1,56 +1,136 @@
 <!DOCTYPE html>
-<html xmlns:th="//www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <header id="header">
-    	<h1>헤더섹션</h1>
-    	<div class="wrap">
-			<section id="user-area">
-				<h1>유저영역</h1>
-				<div class="wrap view-size">
-					<ul class="flex right">
-						<li sec:authorize="isAnonymous()"><a href="/signin">로그인</a></li>
-						<li sec:authorize="isAuthenticated()" class="flex col-center">
-							<span sec:authentication="name">회원정보-아이디</span>
-							<form action="/signout" method="post">
-								<input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-								<button type="submit" class="btn-style">로그아웃</button>
-							</form>
-						</li>
-						<li><a href="/signup">회원가입</a></li>
-						<li><a href="/common/cscenter">고객센터</a></li>
-					</ul>
-				</div>
-			</section>
-			<section id="menu-area">
-				<h1>메뉴</h1>
-				<div class="wrap view-size flex between col-center">
-					<section id="logo-top">
-						<h1>로고영역</h1>
-						<div class="wrap">
-							<a href="/">
-								<span class="logo-style">
-									<i>C</i>
-									<i>o</i>
-									<i>d</i>
-									<i>i</i>
-									<i>n</i>
-									<i>g</i>
-								</span>
-							</a>
+<html xmlns:th="//www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<header id="header">
+	<h1>헤더섹션</h1>
+	<div class="wrap">
+		<section id="user-area">
+			<h1>유저영역</h1>
+			<div class="wrap view-size">
+				<ul class="flex right">
+					<li sec:authorize="isAnonymous()"><a href="/signin">로그인</a></li>
+					<li sec:authorize="isAuthenticated()" class="flex col-center">
+						<span sec:authentication="name">회원정보-아이디</span>
+						<form action="/signout" method="post">
+							<input type="hidden" th:if="${_csrf}"
+								th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+							<button type="submit" class="btn-style">로그아웃</button>
+						</form>
+					</li>
+					<li><a href="/signup">회원가입</a></li>
+					<li><a href="/common/cscenter">고객센터</a></li>
+				</ul>
+			</div>
+		</section>
+		<section id="logo-top" class="view-size">
+			<h1>로고영역</h1>
+			<div class="wrap">
+				<a href="/"> <span class="logo-style"> GREEN <img alt=""
+						src="/images/icon/hexagon.svg">
+				</span>
+				</a>
+			</div>
+		</section>
+		<section id="menu-area">
+			<h1>메뉴</h1>
+			<div class="wrap">
+				<nav id="gnb">
+					<h1>메뉴영역</h1>
+					<div class="wrap">
+						<ul class="flex view-size">
+							<li>
+								<a href="#">MENU</a>
+							</li>
+							<li>
+								<a href="#">NEWS</a>
+							</li>
+							<li>
+								<a href="#">STORE</a>
+							</li>
+							<li>
+								<a href="#">CUSTOMER</a>
+							</li>
+							<li>
+								<a href="#">TEAM</a>
+							</li>
+							<li>
+								<a href="#">INFO</a>
+							</li>
+						</ul>
+						<div class="sub-area">
+							<ol class="sub-menu view-size flex">
+								<li>
+									<div>
+										<a href="#">메뉴1</a>
+									</div>
+									<div>
+										<a href="#">메뉴2</a>
+									</div>
+									<div>
+										<a href="#">메뉴3</a>
+									</div>
+								</li>
+								<li>
+									<div>
+										<a href="#">메뉴1</a>
+									</div>
+									<div>
+										<a href="#">메뉴2</a>
+									</div>
+									<div>
+										<a href="#">메뉴3</a>
+									</div>
+								</li>
+								<li>
+									<div>
+										<a href="#">메뉴1</a>
+									</div>
+									<div>
+										<a href="#">메뉴2</a>
+									</div>
+									<div>
+										<a href="#">메뉴3</a>
+									</div>
+								</li>
+								<li>
+									<div>
+										<a href="#">메뉴1</a>
+									</div>
+									<div>
+										<a href="#">메뉴2</a>
+									</div>
+									<div>
+										<a href="#">메뉴3</a>
+									</div>
+								</li>
+								<li>
+									<div>
+										<a href="#">메뉴1</a>
+									</div>
+									<div>
+										<a href="#">메뉴2</a>
+									</div>
+									<div>
+										<a href="#">메뉴3</a>
+									</div>
+								</li>
+								<li>
+									<div>
+										<a href="#">메뉴1</a>
+									</div>
+									<div>
+										<a href="#">메뉴2</a>
+									</div>
+									<div>
+										<a href="#">메뉴3</a>
+									</div>
+								</li>
+								
+							</ol>
 						</div>
-					</section>
-					<nav id="gnb">
-						<h1>메뉴영역</h1>
-						<div class="wrap">
-							<ul class="flex">
-								<li><a href="#">메뉴1</a></li>
-								<li><a href="#">메뉴2</a></li>
-								<li><a href="#">메뉴3</a></li>
-								<li><a href="#">메뉴4</a></li>
-								<li><a href="#">메뉴5</a></li>
-							</ul>
-						</div>
-					</nav>
-					<section id="search-top">
+					</div>
+				</nav>
+				<!-- <section id="search-top">
 						<h1>검색</h1>
 						<div class="wrap">
 							<form>
@@ -58,9 +138,10 @@
 								<button type="submit"></button>
 							</form>
 						</div>
-					</section>
-				</div>
-			</section>
-    	</div>
-    </header>
+					</section> -->
+			</div>
+		</section>
+
+	</div>
+</header>
 </html>

@@ -37,11 +37,17 @@ body{
 	cursor: pointer;
 }
 .logo-style{
-	font-size: 24px;
+	font-size: 48px;
 	font-weight: 700;
 	font-family: 'Roboto';
+	display: flex;
+	color: #88af62;
 }
-.logo-style i{
+.logo-style > svg{
+	width: 48px;
+	height: 48px;
+}
+/* .logo-style i{
 	position:relative;
 	display: inline-flex;
 	justify-content:center;
@@ -66,7 +72,7 @@ body{
 	height: 48px;
 	transform: rotate(45deg);
 	border-radius : 50%; 
-}
+} */
 
 main > .wrap{
 	padding-top: 40px; 
