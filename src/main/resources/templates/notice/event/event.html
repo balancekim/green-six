@@ -1,10 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="//www.thymeleaf.org" xmlns:sec="//www.thymeleaf.org/extras/spring-security"
+	 th:replace="layout/common-layout :: commonLayout( ~{::head}, ~{::main} )">
     <head>
-        <meta charset="UTF-8">
-        <title>Insert title here</title>
+        <link rel="stylesheet" href="/css/event/event.css">
     </head>
-    <body>
-        
-    </body>
+    <main>
+        <section class="view-size flex">
+	        <div class="content">
+	        	<div class="lnb_wr">
+	        		<h1>notices메뉴</h1>
+	        		<ul class="lnb">
+	        			<li class="leftMainLi">
+	        				<a href="#">Notice</a>
+	        			</li>
+	        			<li class="leftMainLi">
+	        				<a href="#">Event</a>
+	        			</li>
+	        		</ul>
+	        	</div>
+	        </div>
+	        <div class="content-right">
+		        <div>
+		        	<h2>EVENT</h2>
+		        </div>
+		        <form >
+		        	<div class="event-select flex">
+		        		<select>
+	        				<option value selected="selected">전체</option>
+	        				<option value="01">온라인 이벤트</option>
+	        				<option value="02">매장 이벤트</option>
+	        				<option value="03">판촉물 이벤트</option>
+		        		</select>
+		        	</div>
+		        	<div class="event_list_wr">
+		        		<div class="event_listBox">
+		        			<a>
+		        				<img width="700" height="141" src="/images/event/1.jpg">
+		        			</a>
+		        			<dl class="event_list flex ">
+		        				<dt>
+		        					<a>온라인 이벤트 어쩌구저쩌구 샬라샬라</a>
+		        				</dt>
+		        				<dd>
+		        					<span>공지 기간</span>
+		        					<span class="day">2023-07-19 ~ 2023-08-18</span>
+		        				</dd>
+		        			</dl>
+		        		</div>
+		        		<div class="event_listBox">
+		        			<a>
+		        				<img width="700" height="141" src="/images/event/2.jpg">
+		        			</a>
+		        			<dl class="event_list flex ">
+		        				<dt>
+		        					<a>온라인 이벤트 어쩌구저쩌구 샬라샬라</a>
+		        				</dt>
+		        				<dd>
+		        					<span>공지 기간</span>
+		        					<span class="day">2023-07-19 ~ 2023-08-18</span>
+		        				</dd>
+		        			</dl>
+		        		</div>
+		        		<div class="event_listBox">
+		        			<a>
+		        				<img width="700" height="141" src="/images/event/3.jpg">
+		        			</a>
+		        			<dl class="event_list flex ">
+		        				<dt>
+		        					<a>온라인 이벤트 어쩌구저쩌구 샬라샬라</a>
+		        				</dt>
+		        				<dd class="flex">
+		        					<span>공지 기간</span>
+		        					<span class="day">2023-07-19 ~ 2023-08-18</span>
+		        				</dd>
+		        			</dl>
+		        		</div>
+		        	</div>
+		        </form>
+	        </div>
+        </section>
+    </main>
 </html>
