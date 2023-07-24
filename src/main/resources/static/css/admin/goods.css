@@ -3,6 +3,21 @@
 /* ///////////////////////////////////////// */
 /* ////////goods-wrte start///////////////////////// */
 /* ///////////////////////////////////////// */
+.admin-header{
+	width:100%;
+	margin: 0;
+	padding: 0;
+}
+.admin-header{
+	background-color: #2ec3530f;
+}
+.admin-header .admin-header-wrap{
+	background-color: #88af62;
+	height: 50px;
+}
+#goods-wrte .wrap{
+	padding: 50px;
+}
 
 #goods-wrte > div > form > ul > li{
 	border-top: 1px solid #a9a9a9;
