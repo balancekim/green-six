@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+.visual-size{
+	height: 480px; 
+	margin-bottom: 20px;
+}
+
+.wrap .product-view{
+	height: 270px;
+	margin-bottom: 20px;
+}
+
+.wrap .notice-view{
+	height: 300px;
+	margin-bottom: 20px;
+}
+
+.wrap .notice-view .notice{
+	width: 400px;
+	margin-bottom: 20px;
+}
+
+.wrap .notice-view .event{
+	width: 400px;
+	margin-bottom: 20px;
+}
