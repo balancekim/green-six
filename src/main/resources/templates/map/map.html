@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="//www.thymeleaf.org" 
+	th:replace="layout/common-layout :: commonLayout( ~{::head}, ~{::main} )" >
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="/webjars/jquery/jquery.min.js"></script>
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=92df0645f503562ca16d1ec752e9a1f3&libraries=services,clusterer,drawing"></script>
+		<script src="/js/map/map.js"></script>
+		<link rel="stylesheet" href="/css/map/map.css">
+	</head>
+	<body>
+		<main>
+			<div class="wrap"  style="width: 1080px; margin: 0 auto;display: flex;padding-top:46px;">
+				<div style="width:190px; margin-right: 50px;">
+					<p>매장검색</p>
+					<p>멤버쉽이 어쩌구</p>
+				</div>
+				<div style="width:840px;">
+					<div><p>매장검색</p></div>
+					<div style="display: flex">
+						<div id="map" style="width:400px;height:400px;"></div>
+						<div>
+							<p>길찾기 api 사용 예정</p>
+							
+						</div>
+					</div>
+					<div>
+						<p>매장 상세정보 페이징 리스트 뿌릴거임</p>
+						<table>
+						<thead>
+							<tr>
+								<td>글번호</td>
+								<td>지역</td>
+								<td>매장이름</td>
+								<td>상세주소</td>
+								<td>전화번호</td>
+							</tr>
+						</thead>
+						<tbody id="show">
+							<tr th:if="${#lists.isEmpty(list)}">
+								<th colspan="4">게시글이 존재하지 않습니다.</th>
+							</tr>
+							<!-- getter 필요함 -->
+							<tr th:each="board:${list}">
+								<td th:text="${board.no}">글번호</td>
+								<td th:text="${board.local}">지역</td>
+								<td >
+									<a th:text="${board.name}" th:href="@{/store/{no} (no=${board.no})}">매장이름</a>
+								</td>
+								<td th:text="${board.address}">상세주소</td>
+								<td th:text="${board.callNumber}">전화번호</td>
+								
+							</tr>
+						</tbody>
+					</table>
+					<form th:action="@{/store/list}" method="get">
+								<input type="text" name="searchKeyword">
+								<button type="submit">검색</button>
+							</form>
+					<div id="main-footer">
+						<div id="page">
+							<th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
+								<a href="#">상세정보</a>
+								<!-- <a th:if="${page != nowPage}" th:href="@{/map/list(page=${page - 1}, searchKeyword=${param.searchKeyword})}" th:text="${page}"></a> -->
+								<strong th:if="${page == nowPage}" th:text="${page}" style="color : green"></strong>
+							</th:block>
+						</div>
+						
+					</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</body>
+</html>

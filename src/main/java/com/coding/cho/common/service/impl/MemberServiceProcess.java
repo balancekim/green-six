@@ -1,5 +1,6 @@
 package com.coding.cho.common.service.impl;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.coding.cho.common.domain.dto.member.MemberSaveDTO;
@@ -14,11 +15,12 @@ import lombok.RequiredArgsConstructor;
 public class MemberServiceProcess implements MemberService{
 	//DAO
 	private final MemberEntityRepository repository;
+	private final PasswordEncoder pe;
 	
 	@Override
 	public void saveProcess(MemberSaveDTO encodedDto) {
 		//일반회원가입 처리 
-		repository.save(encodedDto//pass 암호화된 DTO
+		repository.save( encodedDto.encodePassword(pe)//pass 암호화된 DTO
 				.toEntity() //dto->entity 객체로
 				.addRole(MyRole.USER) //USER ROLE부여
 				);
