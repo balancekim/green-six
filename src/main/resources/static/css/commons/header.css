@@ -13,18 +13,33 @@
 /* /////////////////////////////////// */
 /* ////////menu-area/////////////////////////// */
 /* /////////////////////////////////// */
+#logo-top{
+	display: flex;
+	justify-content: center;
+	margin: 20px auto;
+}
+
 #menu-area{
 	border-bottom:1px solid rgba(0,0,0, 0.1); 
 }
-#menu-area > .wrap{
-	height: 80px;
+#menu-area:hover .sub-area{
+	display: block;
+}
+#gnb > .wrap{
+	position: relative;
+	height: 50px;
 }
 
 
-#gnb > .wrap ul li a{
+
+#gnb > .wrap > ul > li {
+	width: 180px;
+	height: 50px;
+	text-align: center;
 	display: block;
 	padding: 10px;
-	margin: 0 5px;
+	font-size: 20px;
+    font-weight: 800;
 }
 
 #search-top > .wrap form input {
@@ -53,4 +68,28 @@
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size:contain;
+}
+.sub-area{
+	width:100%;
+	position: absolute;
+	background-color: #e9e9e9;
+	top: 49px;
+	left: 0;
+	z-index: 100;
+	opacity: 0.9;
+	display: none;
+}
+.sub-area > .sub-menu > li {
+	width: 180px;
+	text-align: center;
+	display: block;
+	padding: 10px;
+	font-size: 20px;
+    font-weight: 800;
+}
+.sub-area > .sub-menu > li > div{
+	margin:  10px 0;	
+}
+.sub-area > .sub-menu > li > div:hover > a{
+	color: #88af62 !important;
 }
