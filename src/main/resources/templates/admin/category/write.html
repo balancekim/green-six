@@ -2,6 +2,7 @@
 <html xmlns:th="//www.thymeleaf.org" xmlns:sec="//www.thymeleaf.org/extras/spring-security"
 	 th:replace="layout/admin-layout :: layout(~{::head}, ~{::main})">
 	<head>
+		<link rel="stylesheet" href="/css/admin/category.css">
 		<script type="text/javascript">
 			function nextCategory(targetTag){
 				var cateName=$(targetTag).val().trim();
@@ -15,8 +16,10 @@
 			}
 		</style>
 	</head>
-    <main>
+    <main class="admin-header">
+    	<div class="admin-header-wrap"></div>
     	<h1>카테고리 등록</h1>
+    	<p>카테고리 등록</p>
     	<div class="wrap">
     		<form action="/admin/category" method="post">
     			<ol class="flex">

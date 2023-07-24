@@ -1,0 +1,31 @@
+@charset "UTF-8";
+.admin-header{
+	width:100%;
+	margin: 0;
+	padding: 0;
+}
+.admin-header{
+	background-color: #2ec3530f;
+}
+.admin-header .admin-header-wrap{
+	background-color: #88af62;
+	height: 50px;
+}
+.admin-header > p{
+	padding-left: 50px;
+	margin-top: 50px;
+	font-size: 20px;
+}
+.admin-header .wrap{
+	padding-left: 50px;
+}
+
+.admin-header .wrap button{
+	display: inline-block;
+    height: 23px;
+    padding: 4px 19px 0;
+    font-size: 13px;
+    color: #303030;
+    border: 1px solid #aeaeae;
+    background-color: #80808040;
+}
