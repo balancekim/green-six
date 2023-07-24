@@ -2,17 +2,14 @@ package com.coding.cho;
 
 import java.util.stream.IntStream;
 
-import javax.persistence.Column;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.coding.cho.domain.entity.FaqDivision;
-import com.coding.cho.domain.entity.FaqEntity;
-import com.coding.cho.domain.entity.FaqEntityRepository;
-import com.coding.cho.utils.HtmlEscapeUtils;
+import com.coding.cho.common.domain.entity.FaqDivision;
+import com.coding.cho.common.domain.entity.FaqEntity;
+import com.coding.cho.common.domain.entity.FaqEntityRepository;
+import com.coding.cho.common.utils.HtmlEscapeUtils;
 
 @SpringBootTest
 class GreenSixApplicationTests {

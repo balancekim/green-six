@@ -101,7 +101,7 @@
         		<h1></h1>
         		<div class="wrap">
         			<ul class="flex around faq-div"  >
-						<th:block th:each="divi, iStat : ${T(com.coding.cho.domain.entity.FaqDivision).values()}" >
+						<th:block th:each="divi, iStat : ${T(com.coding.cho.common.domain.entity.FaqDivision).values()}" >
 						<li class="faq-menu" th:onclick="|faqList(${divi.no}); changeTarget(this)|"  th:classappend="${iStat.count==1}?'target'">
 							<div class="icon flex center"><img th:src="|/images/icon/${divi.icon}|" height="30px;"></div>
 							<div th:text="${divi.koDiv}"></div>
