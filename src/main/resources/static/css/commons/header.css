@@ -72,7 +72,7 @@
 .sub-area{
 	width:100%;
 	position: absolute;
-	background-color: #e9e9e9;
+	background-color: #88af62;
 	top: 49px;
 	left: 0;
 	z-index: 100;
@@ -91,5 +91,5 @@
 	margin:  10px 0;	
 }
 .sub-area > .sub-menu > li > div:hover > a{
-	color: #88af62 !important;
+	color: #fff !important;
 }
