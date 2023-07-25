@@ -7,7 +7,20 @@
     <main>
         <h1>메인영역</h1>
        <div class="visual-size">
-       		<p>비주얼 영역</p>
+       		<div class="in">
+       			<div class="in-image-list">
+	       			<ol class="image-list flex">
+	       				<th:block th:each="i:${#numbers.sequence(1,4)}">
+		       				<li class="image">
+		       					<a href="#" th:style="|background-image: url('/images/index/visual0${i}.jpg');|"></a>
+		       				</li>
+	       				</th:block>
+	       			</ol>
+       			</div>
+       			<ol class="flex bullet-list between">
+       				<li class="bullet" th:each="i : ${#numbers.sequence(1,4)}" th:text="${i}" ></li>
+       			</ol>
+       		</div>
        	</div>
         <div class="wrap view-size">
 
@@ -19,10 +32,24 @@
         	</div>
         	<div class="notice-view flex around">
         		<div class="notice">
-        			<p>공지사항</p>
+        			<ol class="notice-list">
+        				<li class="tit">
+        					<a href="/notice">공지사항</a>
+        				</li>
+        				<li >
+        				
+        				</li>
+        			</ol>
         		</div>
         		<div class="event">
-        			<p>이벤트</p>
+        			<ol class="event-list">
+        				<li class="tit">
+        					<a href="/event">이벤트</a>
+        				</li>
+        				<li >
+        				
+        				</li>
+        			</ol>
         		</div>
         	</div>
 

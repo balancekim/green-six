@@ -1,9 +1,63 @@
 @charset "UTF-8";
 
+/*///// 비주얼 영역 //////*/
 .visual-size{
-	height: 480px; 
-	margin-bottom: 20px;
+	width: 1920px;
+	height: 530px; 
+	margin: 10px auto 20px auto;
 }
+
+.visual-size .in{
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	
+}
+.visual-size .in .in-image-list{
+	width: 100%;
+	height: 480px;
+	overflow: hidden;	
+}
+
+.visual-size .in .image-list{
+	width: 9600px;;
+	height: 100%;
+}
+
+.visual-size .in .image-list .image{
+	width: 1920px;
+	height: 100%;
+}
+
+.visual-size .in .image-list a{
+	display: block;
+	width: 100%;
+	height: 100%;
+	background:  no-repeat center;
+}
+
+.visual-size .in .bullet-list{
+	width: 200px;
+	height: 40px;
+	margin: 0 auto;
+}
+
+.visual-size .in .bullet{
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	background-color: rgba(0,0,0,0.15);
+	border-radius: 50%;
+	margin: auto;
+	font-size: 15px;
+	
+	
+}
+
+
+/*///// 비주얼 영역 끝 //////*/
+
+
 
 .wrap .product-view{
 	height: 270px;
