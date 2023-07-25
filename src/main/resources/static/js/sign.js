@@ -108,6 +108,21 @@ function existEmailCheck(email){
 	return isExist;
 }
 
+function changeForm1(btn){
+	$(btn).parents().siblings("li").removeClass("target");
+	$(btn).parents().addClass("target");
+	$("#signin-form").hide()
+	$("#signup-form").show()
+}
+function changeForm2(btn){
+	$(btn).parents().siblings("li").removeClass("target");
+	$(btn).parents().addClass("target");
+	$("#signup-form").hide()
+	$("#signin-form").show()
+}
+
+
+
 ///*****문제구간*****
 
 /*
