@@ -2,6 +2,7 @@
 
 /*///// 비주얼 영역 //////*/
 .visual-size{
+	position: relative;
 	width: 1920px;
 	height: 530px; 
 	margin: 10px auto 20px auto;
@@ -15,18 +16,31 @@
 }
 .visual-size .in .in-image-list{
 	width: 100%;
-	height: 480px;
+	height: 100%;
 	overflow: hidden;	
 }
 
-.visual-size .in .image-list{
-	width: 9600px;;
-	height: 100%;
-}
 
 .visual-size .in .image-list .image{
-	width: 1920px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
 	height: 100%;
+	opacity: 0;
+}
+
+.visual-size .in .image-list .image.target{
+	opacity: 1;
+	transform: translateX(0%);
+}
+
+.visual-size .in .image-list .image.next{
+	transform: translateX(100%);
+}
+
+.visual-size .in .image-list .image.prev{
+	transform: translateX(-100%);
 }
 
 .visual-size .in .image-list a{
@@ -42,7 +56,9 @@
 	margin: 0 auto;
 }
 
-.visual-size .in .bullet{
+.visual-size .in .bullet,
+.visual-size .in .bullet button{
+	
 	width: 30px;
 	height: 30px;
 	text-align: center;

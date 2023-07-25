@@ -3,22 +3,23 @@
 	th:replace="layout/common-layout :: commonLayout( ~{::head}, ~{::main} )" >
     <head>
     	<link rel="stylesheet" href="/css/commons/index.css">
+    	<script src="/js/index/index.js"></script>
     </head>
     <main>
-        <h1>메인영역</h1>
+       <h1>메인영역</h1>
        <div class="visual-size">
        		<div class="in">
        			<div class="in-image-list">
 	       			<ol class="image-list flex">
 	       				<th:block th:each="i:${#numbers.sequence(1,4)}">
 		       				<li class="image">
-		       					<a href="#" th:style="|background-image: url('/images/index/visual0${i}.jpg');|"></a>
+		       					<a href="#" th:style="|background-image: url('/images/index/visual${i}.jpg');|">[[${i}]]</a>
 		       				</li>
 	       				</th:block>
 	       			</ol>
        			</div>
        			<ol class="flex bullet-list between">
-       				<li class="bullet" th:each="i : ${#numbers.sequence(1,4)}" th:text="${i}" ></li>
+       				<li class="bullet" th:each="i : ${#numbers.sequence(1,4)}" ><button th:text="${i}"></button></li>
        			</ol>
        		</div>
        	</div>
