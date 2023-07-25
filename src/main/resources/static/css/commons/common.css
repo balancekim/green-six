@@ -9,6 +9,7 @@ i{font-style: normal;}
 h1{position: absolute; left: -999999px; font-size: 0}
 button{border: none; background: none;}
 body{
+	height: 100%;
 	font-family: 'Noto Sans KR', 'Roboto';
 	color: #222;
 	font-size: 14px;
@@ -73,7 +74,10 @@ body{
 	transform: rotate(45deg);
 	border-radius : 50%; 
 } */
+main {
+	min-height: 70vh;
 
+}
 main > .wrap{
 	padding-top: 40px; 
 }

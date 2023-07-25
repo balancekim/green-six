@@ -39,6 +39,15 @@
 	padding: 1em;
 	font-size: 14px;
 }
+#form-signin li{
+	margin: 20px 0;
+	/* padding: 0 20px; */
+}
+#form-signin li input{
+	width:400px;
+	padding: 1em;
+	font-size: 14px;
+}
 
 #signup .login a{
 	display: inline;
@@ -81,6 +90,10 @@ h2 {
 	padding: 40px 0; 
 	background-color: var(--color-b);
 	border-radius: 0 5px 5px 5px;
+	display: none;
+}
+.content-detail.target{
+	display: block;
 }
 .lnb > li{
 	border: 1px solid #e9e9e9;
