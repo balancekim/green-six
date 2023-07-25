@@ -17,6 +17,7 @@ $(function(){
 	$(".visual-size .in .bullet").click(bulletClicked);
 });
 
+
 function bulletClicked(){
 	var bi=$(this).index();
 	target_idx=bi;
