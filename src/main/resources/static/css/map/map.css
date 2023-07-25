@@ -1,1 +1,69 @@
 @charset "UTF-8";
+
+h2{
+	font-size: 40px;
+    margin: 16px 0 60px 0;
+}
+#map{
+	margin-top: 20px;
+}
+ 
+.map-wrap{
+	border-top: 1px solid;
+}
+/* 테이블 스타일 */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+th.ad {
+    width: 10%;
+}
+
+/* 검색 폼 스타일 */
+form {
+    margin-top: 10px;
+}
+
+input[type="text"] {
+    padding: 5px;
+}
+
+button {
+    padding: 5px 10px;
+}
+
+/* 페이지 번호 스타일 */
+#page {
+    margin-top: 10px;
+}
+
+#page a {
+    display: inline-block;
+    margin-right: 5px;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#page strong {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    border: 1px solid #4CAF50;
+    border-radius: 5px;
+}
+
+/* 숨겨진 input 요소 스타일 */
+.address, .name {
+    display: none;
+}
