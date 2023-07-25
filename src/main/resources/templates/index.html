@@ -10,17 +10,17 @@
        <div class="visual-size">
        		<div class="in">
        			<div class="in-image-list">
-	       			<ol class="image-list flex">
+	       			<ul class="image-list flex">
 	       				<th:block th:each="i:${#numbers.sequence(1,4)}">
 		       				<li class="image">
 		       					<a href="#" th:style="|background-image: url('/images/index/visual${i}.jpg');|">[[${i}]]</a>
 		       				</li>
 	       				</th:block>
-	       			</ol>
+	       			</ul>
        			</div>
-       			<ol class="flex bullet-list between">
+       			<ul class="flex bullet-list between">
        				<li class="bullet" th:each="i : ${#numbers.sequence(1,4)}" ><button th:text="${i}"></button></li>
-       			</ol>
+       			</ul>
        		</div>
        	</div>
         <div class="wrap view-size">
