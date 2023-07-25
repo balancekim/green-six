@@ -7,56 +7,77 @@
     </head>
     <main id="signup">
         <h1>메인영역</h1>
-        <div class="wrap view-size-m">
-        	<p class="tit flex center">회원가입</p>
-        	<form action="/signup" method="POST" id="form-signup" onsubmit="return validateForm()">
-        		<ul>
-        			<li>
-        				<div class="flex col-center">
-	        				<input onblur="validateInput(this, 0)"  type="text" id="email" name="email" placeholder="이메일 또는 아이디">
-	        				<input type="checkbox" class="required" disabled="disabled">
-	        				<span class="checkbox-state"></span>
-        				</div>
-        				<div class="msg">
-        				</div>
-        			</li>
-        			<li>
-        				<div class="flex col-center">
-	        				<input onblur="validateInput(this, 1)" type="password" id="pass" name="pass" placeholder="비밀번호">
-	        				<input type="checkbox" class="required" disabled="disabled">
-	        				<span class="checkbox-state"></span>
-        				</div>
-        				<div class="msg">
-        				</div>
-        			</li>
-        			<li>
-        				<div class="flex col-center">
-	        				<input onblur="validateRePass(this)" type="password" id="re-pass" placeholder="비밀번호 확인">
-	        				<input type="checkbox" class="required" disabled="disabled">
-	        				<span class="checkbox-state"></span>
-        				</div>
-        				<div class="msg">
-        				</div>
-        			</li>
-        			<li>
-        				<div class="flex col-center">
-	        				<input onblur="validateInput(this, 2)" type="text" id="name" name="name" placeholder="이름">
-	        				<input type="checkbox" class="required" disabled="disabled">
-	        				<span class="checkbox-state"></span>
-        				</div>
-        				<div class="msg">
-        				</div>
-        			</li>
-        			<li>
-        				<input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-						<button class="btn-style" type="submit">회원가입</button>
-        			</li>
-        		</ul>
-        	</form>
-        	<div class="flex center login">
-	        	<a  href="/signin">
-	        		<button class="btn-style">로그인</button>
-	        	</a>
+        <div class="wrap view-size ">
+        	<div class="content view-size-m">
+	        	<div class="lnb_wr">
+	        		<h1>notices메뉴</h1>
+	        		<ul class="lnb flex ">
+	        			<li class="leftMainLi target">
+	        				<a href="#">회원가입</a>
+	        			</li>
+	        			<li class="leftMainLi">
+	        				<a href="#">로그인</a>
+	        			</li>
+	        		</ul>
+	        	</div>
+	        </div>
+	        <div class="content-detail view-size-m">
+		        
+		        <div class="flex center">
+		        	<h2>JOIN GREEN</h2>
+		        </div>
+	        	<p class="flex center">GREENSIX 회원 가입에 필요한 정보를 입력해주세요.</p>
+	        	<div class="flex center">
+		        	<form action="/signup" method="POST" id="form-signup" onsubmit="return validateForm()">
+		        		<ul>
+		        			<li>
+		        				<div class="flex col-center">
+			        				<input onblur="validateInput(this, 0)"  type="text" id="email" name="email" placeholder="이메일 또는 아이디">
+			        				<input type="checkbox" class="required" disabled="disabled">
+			        				<span class="checkbox-state"></span>
+		        				</div>
+		        				<div class="msg">
+		        				</div>
+		        			</li>
+		        			<li>
+		        				<div class="flex col-center">
+			        				<input onblur="validateInput(this, 1)" type="password" id="pass" name="pass" placeholder="비밀번호">
+			        				<input type="checkbox" class="required" disabled="disabled">
+			        				<span class="checkbox-state"></span>
+		        				</div>
+		        				<div class="msg">
+		        				</div>
+		        			</li>
+		        			<li>
+		        				<div class="flex col-center">
+			        				<input onblur="validateRePass(this)" type="password" id="re-pass" placeholder="비밀번호 확인">
+			        				<input type="checkbox" class="required" disabled="disabled">
+			        				<span class="checkbox-state"></span>
+		        				</div>
+		        				<div class="msg">
+		        				</div>
+		        			</li>
+		        			<li>
+		        				<div class="flex col-center">
+			        				<input onblur="validateInput(this, 2)" type="text" id="name" name="name" placeholder="이름">
+			        				<input type="checkbox" class="required" disabled="disabled">
+			        				<span class="checkbox-state"></span>
+		        				</div>
+		        				<div class="msg">
+		        				</div>
+		        			</li>
+		        			<li>
+		        				<input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+								<button class="btn-style" type="submit">회원가입</button>
+		        			</li>
+		        		</ul>
+		        	</form>
+	        	</div>
+	        	<!-- <div class="flex login">
+		        	<a  href="/signin">
+		        		<button class="btn-style">로그인</button>
+		        	</a>
+	        	</div> -->
         	</div>
         </div>
     </main>
