@@ -2,10 +2,14 @@ package com.coding.cho.map;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+
 
 
 
@@ -32,5 +36,13 @@ public class StoreServiceProcess implements StoreService {
 		
 		return repo.findAll();
 	}
+	//특정 업체 상세보기
+	@Override
+	public StoreEntity storeDetail(Long no) {
+		
+		return repo.findById(no).get();
+				
+	}
+	
 	
 }
