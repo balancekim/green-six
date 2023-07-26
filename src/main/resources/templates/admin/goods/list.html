@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html xmlns:th="//www.thymeleaf.org" >
-	<section>
-		<h1>상품등록</h1>
-		<div class="wrap">
+<html xmlns:th="//www.thymeleaf.org" xmlns:sec="//www.thymeleaf.org/extras/spring-security"
+	 th:replace="layout/admin-layout :: layout(~{::head}, ~{::main})">
+	 <head>
+	 
+	 </head>
+	 <main>
+		<section>
+			<h1>상품등록</h1>
 			<p>상품조회 및 수정</p>
-			<hr>
-		</div>
-	</section>
+				<hr>
+			<div class="wrap grid-container">
+				<ul class="wrap" th:each="dto:${list}">
+					<li >
+						<p th:text="${dto.name}"></p>
+						<a th:href="|/admin/goods/${dto.no}|"><img alt="#" th:src="${dto.url}" height="100px"></a>
+						<p>
+							<span  th:text="${dto.price}"></span>
+							<span>원</span>
+						</p>
+					</li>
+				</ul>
+			</div>
+		</section>
+	</main>
 </html>

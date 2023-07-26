@@ -7,17 +7,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.coding.cho.common.domain.entity.CategoryEntity;
-
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
 @Table(name = "goods")
 @Entity
 public class GoodsEntity {
@@ -29,7 +30,8 @@ public class GoodsEntity {
 	private String name;
 	
 	@Column(nullable = false)
-	private long price;
+	private int price;
+	
 	
 	@OneToMany(mappedBy = "goods")
 	private List<GoodsImageEntity> gie;
