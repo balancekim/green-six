@@ -39,10 +39,11 @@ function goodsSummited(){
 		 processData: false,
 		 data: formData,
 		 success: function(resultMap){
-			 $(fileEl).parent().css("background-image",`url(${resultMap.imgUrl})`);
+			 $(fileEl).parent().css("background-image",`url(${resultMap.url})`).addClass("enabled");
+			 $(fileEl).parents(".img-wrap").find(".url").val(resultMap.url);
 			 $(fileEl).parents(".img-wrap").find(".orgName").val(resultMap.orgName);
 			 $(fileEl).parents(".img-wrap").find(".newName").val(resultMap.newName);
-			 $(fileEl).parents(".img-wrap").find(".tempKey").val(resultMap.tempKey);
+			 $(fileEl).parents(".img-wrap").find(".bucketKey").val(resultMap.bucketKey);
 			 
 			 var def=$(fileEl).parents(".img-wrap").find(".def").val();
 			 if(def=="true")return;//대표이미지이면 함수종료
@@ -60,14 +61,16 @@ function goodsSummited(){
 			 var appendTag=`
 			 <div class="img-wrap">
 				<label class="pre-img"><input type="file" onchange="tempUpload(this)"></label>
-				<input type="hidden" class="tempKey" name="tempKey">
+				<input type="hidden" class="bucketKey" name="bucketKey">
 				<input type="hidden" class="orgName" name="orgName">
 				<input type="hidden" class="newName" name="newName">
+				<input type="hidden" class="url" name="url">
 				<input type="hidden" class="def" name="def" value="false">
 			 </div>
 			 `;
 			 $(".add-img").append(appendTag);
 			 console.log("태그추가됨~");
+			 
 			
 		 }
 	  });

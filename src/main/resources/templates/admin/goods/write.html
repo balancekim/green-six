@@ -31,7 +31,7 @@
 					</li>
 					<li>
 						<label>상품명</label>
-						<input type="text" name="title" >
+						<input type="text" name="name" >
 						<div>
 							<pre><!-- 
 							 -->판매 상품과 직접 관련이 없는 다른 상품명, 스팸성 키워드 입력 시 관리자에 의해 판매 금지될 수 있습니다.
@@ -72,10 +72,13 @@
 						<div class="def-img">
 							<span>대표이미지</span>
 							<div class="img-wrap">
-								<label class="pre-img"><input type="file" onchange="tempUpload(this)"></label>
-								<input type="hidden" class="tempKey" name="tempKey">
+								<label class="pre-img">
+									<input type="file" onchange="tempUpload(this)">
+								</label>
+								<input type="hidden" class="bucketKey" name="bucketKey">
 								<input type="hidden" class="orgName" name="orgName">
 								<input type="hidden" class="newName" name="newName">
+								<input type="hidden" class="url" name="url">
 								<input type="hidden" class="def" name="def" value="true">
 							</div>
 							<pre><!-- 
@@ -90,9 +93,10 @@
 							<div class="add-img flex">
 								<div class="img-wrap">
 									<label class="pre-img"><input type="file" onchange="tempUpload(this)"></label>
-									<input type="hidden" class="tempKey" name="tempKey">
+									<input type="hidden" class="bucketKey" name="bucketKey">
 									<input type="hidden" class="orgName" name="orgName">
 									<input type="hidden" class="newName" name="newName">
+									<input type="hidden" class="url" name="url">
 									<input type="hidden" class="def" name="def" value="false">
 								</div>
 							</div>
