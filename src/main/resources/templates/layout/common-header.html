@@ -8,7 +8,15 @@
 			<h1>유저영역</h1>
 			<div class="wrap view-size">
 				<ul class="flex right">
-					<li sec:authorize="isAnonymous()"><a href="/signin">로그인</a></li>
+					<li sec:authorize="hasRole('ROLE_ADMIN')">
+						<a href="/admin">관리자페이지</a>
+					</li>
+					<li sec:authorize="isAnonymous()">
+						<a href="/signin">로그인</a>
+					</li>
+					<li sec:authorize="isAnonymous()">
+						<a href="/signup">회원가입</a>
+					</li>
 					<li sec:authorize="isAuthenticated()" class="flex col-center">
 						<span sec:authentication="name">회원정보-아이디</span>
 						<form action="/signout" method="post">
@@ -17,7 +25,6 @@
 							<button type="submit" class="btn-style">로그아웃</button>
 						</form>
 					</li>
-					<li><a href="/signup">회원가입</a></li>
 					<li><a href="/common/cscenter">고객센터</a></li>
 				</ul>
 			</div>
