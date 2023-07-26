@@ -9,11 +9,19 @@ public interface NoticeService {
 
 
 
-	ModelAndView noticeList();
+	
 
 
 
 	void findAll(Model model);
+
+
+
+	void detail(long no, Model model);
+
+
+
+	void delete(long no);
 
 	
 

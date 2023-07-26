@@ -9,15 +9,13 @@ public class GoodsSaveDTO {
 
 	private long gno;
 	private String name;
-	private long price;
-	
+	private int price;
 
-	private long ino;
-	private String url; //s3경로
-	private String orgName; //s3경로
-	private String newName; //s3경로
-	private String bucketKey; //파일명
-	private boolean isDef ; //true:def-img
+	private String[] url; //s3경로
+	private String[] orgName; //s3경로
+	private String[] newName; //s3경로
+	private String[] bucketKey; //파일명
+	private boolean[] def ; //true:def-img
 	
 	
 	

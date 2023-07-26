@@ -1,4 +1,7 @@
 @charset "UTF-8";
+button:hover{
+	cursor: pointer;
+}
 
 .notice{
 	width:1080px;
@@ -78,4 +81,90 @@ body > main > div > div:nth-child(2) > div.table > table > thead > tr > th:nth-c
 .ne-left  a:hover,
 .ne-left a:active {
 	color: #88af62;
+}
+.detailcontent{
+	width:900px;
+	margin: 0 auto;
+}
+.noticeDetail-table thead{
+	width:900px;
+}
+.detailcontent > div.table > table > thead > tr{
+	border-bottom: 1px solid #d9d9d9;
+}
+
+.detailcontent > div.table > table > thead > tr > td:nth-child(1) {
+	width:700px;
+	text-align: left;
+	line-height: 39px;
+	align-items: center;
+	padding: 5px 0;
+	padding-left: 10px;
+}
+.detailcontent > div.table > table > tbody > tr > td{
+	text-align:left;
+	padding-left: 10px;
+}
+.noticeDetail-table tr:first-of-type td:nth-of-type(2) {
+	width:200px;
+}
+.btn-area{
+	margin: 10px auto;
+}
+
+.btn-area a{
+	display: inline-block;
+	width:70px;
+	height: 30px;
+	padding: 4px 19px 0;
+	border: 1px solid #aeaeae;
+	line-height: 20px;
+	text-align: center;
+	align-items: center;
+	margin-right: 10px;
+	border-radius: 5px;
+}
+
+.noticeDetail-update{
+	width: 900px;
+}
+.update-title input{
+	width: 700px;
+	height: 50px;
+	margin-bottom: 40px;
+	margin-top: 50px;
+}
+.update-content textarea{
+	width: 700px;
+	height: 500px;	
+}
+
+#btn-update{
+	border: 1px solid #aeaeae;
+	width: 70px;
+	height: 30px;
+	border-radius: 5px;
+	margin-right: 10px;
+}
+#btn-updateend{
+	border: 1px solid #aeaeae;
+	width: 70px;
+	height: 30px;
+	border-radius: 5px;
+	margin-right: 10px;
+}
+#btn-delete{
+	border: 1px solid #aeaeae;
+	width: 70px;
+	height: 30px;
+	border-radius: 5px;
+	margin-right: 10px;
+}
+
+#btn-cancel{
+	border: 1px solid #aeaeae;
+	width: 70px;
+	height: 30px;
+	border-radius: 5px;
+	margin-right: 10px;
 }
