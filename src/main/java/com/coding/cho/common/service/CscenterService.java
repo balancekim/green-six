@@ -7,4 +7,6 @@ public interface CscenterService {
 
 	void faqListProcess(int divNo, int page, Model model);
 
+	void faqBoardListProcess(int page, Model model);
+
 }

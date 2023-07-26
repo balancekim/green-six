@@ -10,18 +10,19 @@
 <div class="flex title">
 	<span class="division flex center" >번호</span>
 	<span class="quest flex center" >질문</span>
+	<span class="writer flex center" >작성자</span>
 </div>
 <ul>
 	<li th:each="dto:${list}">
-		<div class="flex">
-			<span class="division  flex center" th:text="${dto.division.koDiv}"></span>
-			<span class="question text-icon flex" th:text="${dto.question}"></span>
+		<div class="flex between">
+			<span class="bno  flex center" th:text="${dto.no}"></span>
+			<a href="#" class="b-title flex" th:text="${dto.title}"></a>
+			<span class="writer flex" th:text="${dto.creator.email}"></span>
 		</div>
-		<div class="answer text-icon" th:text="${dto.answer}"></div>
 	</li>
 </ul>
 <div class="flex center pagging" th:unless="${#lists.isEmpty(list)}"
-	th:with="diviNo=${list.get(0).division.no}">
+	th:with="diviNo=${list.get(0).no}">
 	<div th:if="${pd.from gt 1}">
 		<a th:onclick="|faqList(${diviNo}, ${pd.from-1})|">&lt;</a>
 	</div>
@@ -51,6 +52,7 @@ function clickEvent(){
 function faqBoardWrite(){
 	$.ajax({
 		url: `/faq/board/write`,
+		data:{page: page},
 		success:function(result){
 			$("#faq-list >.wrap .list-area").html(result);
 		}

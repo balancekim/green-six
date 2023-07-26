@@ -1,5 +1,6 @@
 package com.coding.cho.common.controller;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,7 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.coding.cho.common.domain.dto.FaqBoardSaveDTO;
 import com.coding.cho.common.service.CscenterService;
+import com.coding.cho.common.service.FaqBoardService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -17,6 +20,8 @@ import lombok.RequiredArgsConstructor;
 public class CscenterController {
 	
 	private final CscenterService service;
+	
+	private final FaqBoardService fBService;
 	
 	@GetMapping("/common/cscenter")
 	public String cscenter() {
@@ -30,10 +35,13 @@ public class CscenterController {
 			@PathVariable int divNo,
 			@RequestParam(defaultValue = "1") int page,
 			Model model) {
-		service.faqListProcess(divNo, page, model);
 		
-		if(divNo==8) {return "user/cscenter/faq/list-board-data";}
-		else {return "user/cscenter/faq/list-data";}
+		if(divNo==8) {
+			service.faqBoardListProcess(page, model);
+			return "user/cscenter/faq/list-board-data";}
+		else {
+			service.faqListProcess(divNo, page, model);
+			return "user/cscenter/faq/list-data";}
 	}
 
 	@GetMapping("/faq/board/write")
@@ -41,4 +49,10 @@ public class CscenterController {
 		return "user/cscenter/faq/write";
 	}
 	
+	@PostMapping("/faq/board/write")
+	public String saveProcess(Authentication authentication, FaqBoardSaveDTO dto) {
+		
+		fBService.save(authentication.getName(), dto);
+		return "redirect:/common/cscenter";
+	}
 }

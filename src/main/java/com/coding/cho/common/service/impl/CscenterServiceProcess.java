@@ -9,7 +9,10 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.coding.cho.common.domain.dto.cscenter.FaqBoardListDTO;
 import com.coding.cho.common.domain.dto.cscenter.FaqListDTO;
+import com.coding.cho.common.domain.entity.FaqBoardEntity;
+import com.coding.cho.common.domain.entity.FaqBoardEntityRepository;
 import com.coding.cho.common.domain.entity.FaqDivision;
 import com.coding.cho.common.domain.entity.FaqEntity;
 import com.coding.cho.common.domain.entity.FaqEntityRepository;
@@ -23,6 +26,8 @@ import lombok.RequiredArgsConstructor;
 public class CscenterServiceProcess implements CscenterService {
 
 	private final FaqEntityRepository faq;
+	
+	private final FaqBoardEntityRepository fBRepo;
 	
 
 	@Override
@@ -40,5 +45,20 @@ public class CscenterServiceProcess implements CscenterService {
 		model.addAttribute("pd", PageData.create(page, size, (int)result.getTotalElements(), 3));
 		
 	}
+
+
+
+
+	@Override
+	public void faqBoardListProcess(int page, Model model) {
+		int size=3;
+		Pageable pageable=PageRequest.of(page-1, size, Direction.DESC, "no");
+		Page<FaqBoardEntity> result= fBRepo.findAll(pageable);
+		model.addAttribute("list", result.getContent());
+		
+		model.addAttribute("pd", PageData.create(page, size, (int)result.getTotalElements(), 3));
+	}
+
+
 
 }
