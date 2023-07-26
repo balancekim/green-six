@@ -24,15 +24,23 @@
 }
 
 
-#gnb {
-	justify-content: center;
+#gnb > .wrap > ul > li  {
+	height: 50px;
+	width:180px;
+	text-align: center;
+	font-size: 24px;
+	line-height: 50px;
+	font-weight: 700;	
+}
+
+#gnb > .wrap:nth-of-type(2):hover .sub-area{
+	display: block;
 }
 
 
-/*
 .sub-area{
+	display: none;
 	width:100%;
-	position: absolute;
 	background-color: #88af62;
 	top: 49px;
 	left: 0;
@@ -54,7 +62,7 @@
 .sub-area > .sub-menu > li > div:hover > a{
 	color: #fff !important;
 }
-*/
+
 
 #search-top > .wrap form input {
 	display:block;
