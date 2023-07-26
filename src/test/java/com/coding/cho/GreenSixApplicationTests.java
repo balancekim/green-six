@@ -12,6 +12,7 @@ import com.coding.cho.common.domain.entity.FaqEntity;
 import com.coding.cho.common.domain.entity.FaqEntityRepository;
 import com.coding.cho.common.domain.entity.MemberEntity;
 import com.coding.cho.common.domain.entity.MemberEntityRepository;
+import com.coding.cho.common.domain.entity.MyRole;
 import com.coding.cho.common.utils.HtmlEscapeUtils;
 import com.coding.cho.franchisee.FranchiseeEntity;
 import com.coding.cho.franchisee.FranchiseeRepository;
@@ -70,9 +71,9 @@ class GreenSixApplicationTests {
 	@Autowired
 	PasswordEncoder encoder;
 	
-	@Test
+	//@Test
 	void 어드민계정() {
-		mrp.save(MemberEntity.builder().email("admin").pass(encoder.encode("1234")).name("관리자").build());
+		mrp.save(MemberEntity.builder().email("admin").pass(encoder.encode("1234")).name("관리자").build().addRole(MyRole.ADMIN));
 	}
 
 }

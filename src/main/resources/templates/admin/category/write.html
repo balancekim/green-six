@@ -27,15 +27,9 @@
     					<input type="text" placeholder="1차 카테고리" name="name" onblur="nextCategory(this)">
     				</li>
     				<li class="flex cate cate-2">
-    					<input type="text" placeholder="2차 카테고리" name="name" onblur="nextCategory(this)">
+    					<input type="text" placeholder="2차 카테고리" name="name">
     				</li>
-    				<li class="flex cate cate-3">
-    					<input type="text" placeholder="3차 카테고리" name="name" onblur="nextCategory(this)">
-    				</li>
-    				<li class="flex cate cate-4">
-    					<input type="text" placeholder="4차 카테고리" name="name" >
-    				</li>
-    			</ol>
+     			</ol>
     			<div >
     				<input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
     				<button >등록</button>
