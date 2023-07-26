@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="//www.thymeleaf.org" 
+	th:replace="layout/common-layout :: commonLayout( ~{::head}, ~{::main} )" >
+    <head>
+    	<script src="/js/faq/write.js"></script>
+    	<link rel="stylesheet" href="/css/faq/write.css">
+    </head>
+    <main id="board-write">
+        <h1>메인영역</h1>
+        <div class="wrap view-size ">
+        	<div class="write">
+				<section id="write-form">
+					<h1>글쓰기 폼</h1>
+					<div class="wrap">
+						<form action="/faq/board/write" method="post" onsubmit="return submitCheck()">
+							<p>
+								<input id="title" type="text" name="title" placeholder="제목">
+							</p>
+							<p>
+								<textarea id="content" name="content" placeholder="내용입력"></textarea>
+							</p>
+							<!-- 
+							<p id="img-area">
+				        		이미지 태그가 js로 자동 삽입
+				        	</p>
+				        	 -->
+							<p>
+								<input id="writer" type="hidden" name="writer" value=sec:authentication>
+								<button type="submit" onclick="clickedSave()">등록</button>
+								<button type="button" onclick="clickedCancel()">취소</button>
+							</p>
+						</form>
+					</div>
+				</section>
+			</div>
+        </div>
+    </main>
+</html>
