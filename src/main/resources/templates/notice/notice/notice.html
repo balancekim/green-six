@@ -30,14 +30,16 @@
 				    			<th>작성일</th>    			
 				    		</tr>
 			    		</thead>
-			    		<tr>
-				    		<td>1</td>
-				    		<td>[제휴 안내] 7월 KT <달.달. 혜택> 프로모션 이용 안내</td>			    			
-				    		<td>2023-07-10</td>    			
+			    		<tr th:each="dto:${list}">
+				    		<td th:text="${dto.no}">글번호</td>
+				    		<td th:text="${dto.title}">제목</td>			    			
+				    		<td th:text="${dto.createdDate}">내용</td>    			
 				    	</tr>
         			</table>
         		</div>
-        		<div class=""></div>
+        		<div class="">
+        			<button type="button" onclick="location.href='/notice-write' ">글쓰기</button>
+        		</div>
         		
         		<div class="paging center">
         			1 2 3 4 5 6 7 8 9 10

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="//www.thymeleaf.org" 
+	th:replace="layout/common-layout :: commonLayout( ~{::head}, ~{::main} )">
+    <head>
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+    </head>
+    <main>
+    	<h1>공지사항 작성페이지</h1>
+        <div>
+        	<form action="/notice-write" method="post">
+	        	<div>
+	        		<input type="text" name="title" placeholder="제목을 입력하세요">
+	        	</div>
+	        
+	        	<div>
+	        		<input type="text" name="content" placeholder="내용을 입력하세요">
+	        	</div>
+	        	<div>
+	        	<p>
+	        		<input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+	        		<button type="submit">작성완료</button>
+	        	</p>
+	        	<button>취소</button>
+	        	</div>
+        	</form>
+        </div>
+    </main>
+</html>
