@@ -45,7 +45,7 @@
 								</tr>
 								<!-- getter 필요함 -->
 								<tr th:each="board:${list}">
-									<td th:text="${board.name}">가맹점
+									<td >
 										<a th:text="${board.name}" th:href="@{/store/{no} (no=${board.no})}">매장이름</a>
 									</td>
 									<td th:text="${board.callNumber}">전화번호</td>

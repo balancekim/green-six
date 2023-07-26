@@ -13,6 +13,8 @@ public interface StoreService {
 
 	List<StoreEntity> storeAllList();
 
+	StoreEntity storeDetail(Long no);
+
 	
 
 }
