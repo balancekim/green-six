@@ -15,7 +15,9 @@ function goodsSummited(){
 		type:"post",
 		data: data,
 		success: function(result){
-			$("a[href='/admin/goods/new']").trigger("click");
+			/*$("a[href='/admin/goods/new']").trigger("click");*/
+			location.href="new"
+			alert("등록완료");
 		}
 	});
 	
