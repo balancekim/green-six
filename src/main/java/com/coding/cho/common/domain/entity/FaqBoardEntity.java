@@ -1,8 +1,5 @@
 package com.coding.cho.common.domain.entity;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,8 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,7 +25,7 @@ public class FaqBoardEntity extends BaseDateEntity{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer no;
+	private long no;
 	
 	@Column(nullable = false)
 	private String title;
