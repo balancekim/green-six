@@ -9,8 +9,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Builder;
 
 
+@Builder
 @Table(name = "goods_image")
 @Entity
 public class GoodsImageEntity {
@@ -21,11 +23,10 @@ public class GoodsImageEntity {
 	@Column(nullable = false)
 	private String url; //s3경로
 	@Column(nullable = false)
-	private String orgName; //s3경로
+	private String orgName; 
 	@Column(nullable = false)
-	private String newName; //s3경로
+	private String newName; 
 	private String bucketKey; //파일명
-	private boolean isList ; //false:content-img
 	private boolean isDef ; //true:def-img
 	
 	@JoinColumn(name = "goods_no")
