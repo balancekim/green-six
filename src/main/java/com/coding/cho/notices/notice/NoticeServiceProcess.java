@@ -24,11 +24,7 @@ public class NoticeServiceProcess implements NoticeService{
 		
 	}
 
-	@Override
-	public ModelAndView noticeList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public void findAll(Model model) {
@@ -42,6 +38,12 @@ public class NoticeServiceProcess implements NoticeService{
 	public void detail(long no, Model model) {
 		
 		model.addAttribute("detail", nr.findById(no).orElseThrow());
+		
+	}
+
+	@Override
+	public void delete(long no) {
+		nr.deleteById(no);
 		
 	}
 

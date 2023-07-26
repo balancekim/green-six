@@ -1,5 +1,6 @@
 package com.coding.cho.notices.notice;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import lombok.Getter;
@@ -12,7 +13,7 @@ public class NoticeListDTO {
 	private long no;
 	private String title;
 	private String content;
-	private LocalDateTime createdDate;
+	private LocalDate createdDate;
 	
 	public NoticeListDTO(NoticeEntity noticeEntity) {
 		no=noticeEntity.getNo();
