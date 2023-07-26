@@ -16,6 +16,8 @@ import com.coding.cho.common.domain.entity.MyRole;
 import com.coding.cho.common.utils.HtmlEscapeUtils;
 import com.coding.cho.franchisee.FranchiseeEntity;
 import com.coding.cho.franchisee.FranchiseeRepository;
+import com.coding.cho.map.StoreEntity;
+import com.coding.cho.map.storeRepository;
 
 @SpringBootTest
 class GreenSixApplicationTests {
@@ -28,6 +30,20 @@ class GreenSixApplicationTests {
 	
 	@Autowired
 	FranchiseeRepository frp;
+	
+	@Autowired
+	storeRepository sr;
+	
+	@Test
+	void 가맹점넣기() {
+		sr.save(StoreEntity.builder()
+				.name("강남")
+				.engName("gangnam")
+				.callNumber("02-3481-1005")
+				.faxNumber("02-3481-9122")
+				.address("서울 강남구 테헤란로5길 24, 장연빌딩/ 3~7층")
+				.build());
+	}
 	
 	//@Test
 	void 테스트() {

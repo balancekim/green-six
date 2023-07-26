@@ -22,25 +22,21 @@
 					
 					<div style="display: flex" class="map-wrap">
 						<div id="map" style="width:100%;height:400px;"></div>
-						<div>
-							
-							
-						</div>
+						
 					</div>
 					<div>
 						
-						<form th:action="@{/store/list}" method="get">
+						<form th:action="@{/map}" method="get">
 							<input type="text" name="searchKeyword">
 							<button type="submit">검색</button>
 						</form>
 						<table>
 						<thead>
 							<tr>
-								<td class="ad">글번호</td>
-								<td>지역</td>
-								<td>매장이름</td>
-								<td>상세주소</td>
+								<td>가맹점</td>
 								<td>전화번호</td>
+								<td>팩스번호</td>
+								<td>주소</td>
 							</tr>
 						</thead>
 							<tbody id="show">
@@ -49,13 +45,12 @@
 								</tr>
 								<!-- getter 필요함 -->
 								<tr th:each="board:${list}">
-									<td th:text="${board.no}">글번호</td>
-									<td th:text="${board.local}">지역</td>
-									<td >
+									<td th:text="${board.name}">가맹점
 										<a th:text="${board.name}" th:href="@{/store/{no} (no=${board.no})}">매장이름</a>
 									</td>
-									<td  th:text="${board.address}">상세주소</td>
 									<td th:text="${board.callNumber}">전화번호</td>
+									<td th:text="${board.faxNumber}">팩스번호</td>
+									<td  th:text="${board.address}">상세주소</td>
 								</tr>
 							</tbody>
 						</table>
@@ -64,7 +59,7 @@
 							<div id="page">
 								<th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
 									
-									<!-- <a th:if="${page != nowPage}" th:href="@{/map/list(page=${page - 1}, searchKeyword=${param.searchKeyword})}" th:text="${page}"></a> -->
+									<a th:if="${page != nowPage}" th:href="@{/map(page=${page - 1}, searchKeyword=${param.searchKeyword})}" th:text="${page}"></a>
 									<strong th:if="${page == nowPage}" th:text="${page}" style="color : green"></strong>
 								</th:block>
 							</div>

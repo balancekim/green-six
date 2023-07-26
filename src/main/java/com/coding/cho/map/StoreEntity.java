@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "store")
+@Table(name = "stores")
 @Getter
 @Entity
 public class StoreEntity {
@@ -28,16 +28,20 @@ public class StoreEntity {
 	private long no;
 	
 	@Column(nullable = false)
-	private String local;
+	private String name;
 	
 	@Column(nullable = false)
-	private String name;
+	private String engName;
+	
+	@Column(nullable = false)
+	private String callNumber;
+	
+	@Column(nullable = false)
+	private String faxNumber;
 	
 	@Column(nullable = false)
 	private String address;
 	
-	@Column(nullable = false)
-	private String callNumber;
 }
 
 
