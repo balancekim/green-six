@@ -1,5 +1,6 @@
 package com.coding.cho.notices.notice;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -37,6 +38,6 @@ public class NoticeEntity {
 	private String content;
 	
 	@UpdateTimestamp
-	private LocalDateTime createdDate;
+	private LocalDate createdDate;
 	
 }

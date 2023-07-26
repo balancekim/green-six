@@ -21,7 +21,7 @@
 	        		<input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 	        		<button type="submit">작성완료</button>
 	        	</p>
-	        	<button>취소</button>
+	        	<button type="button" onclick="location.href='/notice' ">취소</button>
 	        	</div>
         	</form>
         </div>

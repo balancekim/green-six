@@ -1,5 +1,6 @@
 package com.coding.cho.notices.notice;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
@@ -13,5 +14,5 @@ public class NoticeDetailDTO {
 	private long no;
 	private String title;
 	private String content;
-	private LocalDateTime createdDate;
+	private LocalDate createdDate;
 }
