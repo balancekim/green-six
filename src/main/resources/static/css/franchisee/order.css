@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+.order .wrap{
+	width: 1150px; 
+	padding: 50px;
+}
+
+.order .wrap .order-menu{
+	height: 50px;
+	align-items: center;
+	background-color: black;
+	color: white;
+}
+.order .wrap .order-menu a{
+	color: white;
+}
+.order .wrap .order-menu div p{
+	justify-content: space-between;
+	
+}
