@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.coding.cho.common.service.GoodsService;
+import com.coding.cho.goods.GoodsService;
 
 import lombok.RequiredArgsConstructor;
 

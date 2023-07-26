@@ -9,16 +9,21 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-
+@Getter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "goods_image")
 @Entity
 public class GoodsImageEntity {
 	
 	@Id
-	@GeneratedValue(generator = "gen_item_img", strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long no;
 	@Column(nullable = false)
 	private String url; //s3경로
