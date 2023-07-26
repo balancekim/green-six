@@ -5,6 +5,7 @@ import java.util.stream.IntStream;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.coding.cho.common.domain.entity.FaqDivision;
 import com.coding.cho.common.domain.entity.FaqEntity;
@@ -65,6 +66,13 @@ class GreenSixApplicationTests {
 				.build());
 		
 		
+	}
+	@Autowired
+	PasswordEncoder encoder;
+	
+	@Test
+	void 어드민계정() {
+		mrp.save(MemberEntity.builder().email("admin").pass(encoder.encode("1234")).name("관리자").build());
 	}
 
 }
