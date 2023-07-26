@@ -15,6 +15,10 @@ public interface NoticeService {
 
 	void findAll(Model model);
 
+
+
+	void detail(long no, Model model);
+
 	
 
 }

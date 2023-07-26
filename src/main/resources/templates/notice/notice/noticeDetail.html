@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="//www.thymeleaf.org" 
+	th:replace="layout/common-layout :: commonLayout( ~{::head}, ~{::main} )">
+    <head>
+        
+    </head>
+    <main>
+		<div class="table">
+			<table class="notice-table">
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>제목</th>
+						<th>작성일</th>
+					</tr>
+				</thead>
+				<tr>
+					<td th:text="${detail.no}">글번호</td>
+					<td><a th:text="${detail.title}">제목</a>
+					</td>
+					<td th:text="${detail.createdDate}">내용</td>
+				</tr>
+			</table>
+		</div>
+	</main>
+</html>

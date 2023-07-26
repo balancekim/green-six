@@ -34,6 +34,14 @@ public class NoticeServiceProcess implements NoticeService{
 	public void findAll(Model model) {
 		List<NoticeListDTO> result = nr.findAll().stream()
 									.map(noticeEntity -> new NoticeListDTO(noticeEntity)).collect(Collectors.toList());
+		model.addAttribute("list", result);
+		
+	}
+
+	@Override
+	public void detail(long no, Model model) {
+		
+		model.addAttribute("detail", nr.findById(no).orElseThrow());
 		
 	}
 
