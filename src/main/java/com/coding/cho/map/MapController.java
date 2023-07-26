@@ -1,5 +1,7 @@
 package com.coding.cho.map;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,7 +29,7 @@ public class MapController {
 								String searchKeyword) {
 			
 			Page<StoreEntity> list= null;
-			
+			List<StoreEntity> allList=storeService.storeAllList();
 			if(searchKeyword == null) {
 				list = storeService.storeList(pageable);
 			}else {
@@ -39,6 +41,7 @@ public class MapController {
 			int endPage = Math.min(nowPage +5, Math.max(1, list.getTotalPages()));
 			System.out.println(list.getContent().size());
 			
+			model.addAttribute("allList",allList);
 			model.addAttribute("list", list.getContent());
 			model.addAttribute("nowPage", nowPage);
 			model.addAttribute("startPage", startPage);
@@ -46,5 +49,18 @@ public class MapController {
 			
 			return "map/map";
 		}
+		/*
+		 * //특정 게시물 상세보기
+		 * 
+		 * @GetMapping("/store/{no}") public String boardDetail(Model model,
+		 * 
+		 * @PageableDefault(page=0, size=10, sort="no", direction = Sort.Direction.DESC)
+		 * Pageable pageable,
+		 * 
+		 * @PathVariable("no") Integer no) {
+		 * 
+		 * model.addAttribute("store", storeService.storeDetail(no)); return
+		 * "map/detail"; }
+		 */
 	
 }

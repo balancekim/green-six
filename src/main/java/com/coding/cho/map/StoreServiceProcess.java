@@ -1,5 +1,7 @@
 package com.coding.cho.map;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,7 +15,7 @@ public class StoreServiceProcess implements StoreService {
 	@Autowired
 	private storeRepository repo;
 	
-	//업체 리스트
+	//업체 페이지별 리스트(10개씩)
 	@Override
 	public Page<StoreEntity> storeList(Pageable pageable) {
 		return repo.findAll(pageable);
@@ -21,7 +23,14 @@ public class StoreServiceProcess implements StoreService {
 	//키워드 검색
 	@Override
 	public Page<StoreEntity> storeSearchList(String searchKeyword, Pageable pageable) {
-		return null;
+		return repo.findByNameContaining(searchKeyword, pageable);
+	}
+	
+	//업체 전체 리스트
+	@Override
+	public List<StoreEntity> storeAllList() {
+		
+		return repo.findAll();
 	}
 	
 }
