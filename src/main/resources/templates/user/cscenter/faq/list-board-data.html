@@ -8,15 +8,15 @@
 	<a onclick=clickEvent();>글쓰기</a>
 </div>
 <div class="flex title">
-	<span class="division flex center" >번호</span>
-	<span class="quest flex center" >질문</span>
-	<span class="writer flex center" >작성자</span>
+	<span class="b-division flex center" >번호</span>
+	<span class="b-quest flex center" >질문</span>
+	<span class="b-writer flex center" >작성자</span>
 </div>
 <ul>
 	<li th:each="dto:${list}">
 		<div class="flex between">
 			<span class="bno  flex center" th:text="${dto.no}"></span>
-			<a href="#" class="b-title flex" th:text="${dto.title}"></a>
+			<a th:href="|/faq/board/detail/${dto.no}|" class="b-title flex" th:text="${dto.title}"></a>
 			<span class="writer flex" th:text="${dto.creator.email}"></span>
 		</div>
 	</li>
@@ -48,15 +48,6 @@ function clickEvent(){
 	    // 사용자가 "취소"를 클릭한 경우, 화면 이동하지 않음
 	    // 다른 동작 수행 가능
 	  }
-}
-function faqBoardWrite(){
-	$.ajax({
-		url: `/faq/board/write`,
-		data:{page: page},
-		success:function(result){
-			$("#faq-list >.wrap .list-area").html(result);
-		}
-	});
 }
 
 

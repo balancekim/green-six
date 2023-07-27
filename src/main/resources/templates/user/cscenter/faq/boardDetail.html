@@ -1,12 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="//www.thymeleaf.org" xmlns:sec="//www.thymeleaf.org/extras/spring-security"
+	th:replace="layout/common-layout :: commonLayout( ~{::head}, ~{::main} )">
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+	
 </head>
-<body>
-	<div>
-		
+<main>
+	<div class="wrap">
+		<div id="main">
+			<section id="detail">
+				<h1>상세정보</h1>
+				
+				<div>
+					<table id="basic">
+						<tr>
+							<th>글번호</th>
+							<td th:text="${board.no}">번호</td>
+						</tr>
+						<tr>
+							<th>작성일</th>
+							<td>
+								<span th:if="${board.updatedDate.toLocalDate() eq #temporals.createToday()}" th:text="${#temporals.format(board.updatedDate,'HH:mm')}">오늘인경우 시간만</span>
+								<span th:unless="${board.updatedDate.toLocalDate() eq #temporals.createToday()}" th:text="${board.updatedDate.toLocalDate()}">오늘이 아니면 날짜만</span>
+							</td>	
+						</tr>
+						<tr>
+							<th>제목</th>
+							<td th:text="${board.title}">제목</td>
+						</tr>
+						<tr>
+							<th>작성자</th>
+							<td th:text="${board.creator.email}">작성자</td>
+						</tr>
+						<tr>
+							<td colspan= "2" th:utext="${board.content}">내용</td>
+						</tr>
+					</table>
+					<!--목록 /수정 /삭제  -->
+					<div class="flex between changeState">
+						<div class="list">
+							<a href="/board/list">목록</a>
+						</div>
+						<div sec:authorize="isAuthenticated()">
+							<th:block th:if="${#authentication.getPrincipal().getUsername() == board.creator.email}">
+								<div id="update">
+									<a th:href="@{/faq/board/modify/{no}(no=${board.no})}">수정</a>
+									<a th:href="@{/faq/board/delete/{no}(no=${board.no})}">글삭제</a>
+								</div>
+							</th:block>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
 	</div>
-</body>
+</main>
 </html>

@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.coding.cho.common.domain.dto.cscenter.FaqBoardUpdateDTO;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -38,6 +40,10 @@ public class FaqBoardEntity extends BaseDateEntity{
 	@ManyToOne
 	private MemberEntity creator;
 	
-	
+	public FaqBoardEntity updateTitleOrContent(FaqBoardUpdateDTO dto) {
+		if(dto.getTitle()!=null)title=dto.getTitle();
+		if(dto.getContent()!=null)content=dto.getContent();
+		return this;
+	}
 
 }

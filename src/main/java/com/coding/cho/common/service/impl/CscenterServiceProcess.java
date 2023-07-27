@@ -9,7 +9,6 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import com.coding.cho.common.domain.dto.cscenter.FaqBoardListDTO;
 import com.coding.cho.common.domain.dto.cscenter.FaqListDTO;
 import com.coding.cho.common.domain.entity.FaqBoardEntity;
 import com.coding.cho.common.domain.entity.FaqBoardEntityRepository;
