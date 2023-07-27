@@ -1,5 +1,12 @@
 package com.coding.cho.goods.dto;
 
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import com.coding.cho.goods.GoodsEntity;
+import com.coding.cho.goods.GoodsImageEntity;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,7 +24,16 @@ public class GoodsSaveDTO {
 	private String[] bucketKey; //파일명
 	private boolean[] def ; //true:def-img
 	
+	private List<GoodsImageEntity> gie ;
 	
+	
+	public GoodsSaveDTO(GoodsEntity entity){
+		this.gno=entity.getNo(); 
+		this.name=entity.getName();
+		this.price=entity.getPrice();
+		this.gie=entity.getGie();
+		
+	}
 	
 }
 
