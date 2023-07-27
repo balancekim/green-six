@@ -45,7 +45,8 @@ var bounds = new kakao.maps.LatLngBounds();
         // 결과값으로 받은 위치를 마커로 표시합니다
         var marker = new kakao.maps.Marker({
             map: map,
-            position: coords
+            position: coords,
+            title: datas.name
         });
          marker.setMap(map);
           bounds.extend(coords); 
