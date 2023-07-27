@@ -27,13 +27,7 @@ public class GoodsSaveDTO {
 	private List<GoodsImageEntity> gie ;
 	
 	
-	public GoodsSaveDTO(GoodsEntity entity){
-		this.gno=entity.getNo(); 
-		this.name=entity.getName();
-		this.price=entity.getPrice();
-		this.gie=entity.getGie();
-		
-	}
+
 	
 }
 

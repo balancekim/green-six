@@ -19,7 +19,7 @@ public interface GoodsService {
 
 	List<GoodsListDTO> list();
 
-	void detailProcess(long no, Model model, GoodsSaveDTO dto);
+	void detailProcess(long no, Model model);
 
 	
 

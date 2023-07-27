@@ -73,7 +73,7 @@
 							<span>대표이미지</span>
 							<th:block th:each="list:${detail.gie}">
 								<div class="img-wrap" >
-									<label class="pre-img" >
+									<label class="pre-img" th:if="${list.isDef==true}" th:style="|background-image: url('${list.url}');|">
 										<input type="file" onchange="tempUpload(this)">
 									</label>
 									<input type="hidden" class="bucketKey" name="bucketKey" >
@@ -94,14 +94,16 @@
 						<div>
 							<span>추가이미지(최대5장)</span>
 							<div class="add-img flex">
+							<th:block th:each="list:${detail.gie}">
 								<div class="img-wrap">
-									<label class="pre-img"><input type="file" onchange="tempUpload(this)"></label>
+									<label class="pre-img" th:if="${list.isDef==false}" th:style="|background-image: url('${list.url}');|"><input type="file" onchange="tempUpload(this)"></label>
 									<input type="hidden" class="bucketKey" name="bucketKey">
 									<input type="hidden" class="orgName" name="orgName">
 									<input type="hidden" class="newName" name="newName">
 									<input type="hidden" class="def" name="def" value="false">
 									<input type="hidden" class="url" name="url">
 								</div>
+							</th:block>
 							</div>
 							<pre><!-- 
 							 -->권장 크기 : 1000 x 1000 (윈도대상 750 x 1000)
