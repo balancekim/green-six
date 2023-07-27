@@ -14,12 +14,13 @@ $(function() {
 function categoryMenu(tag){
 	var parentNo=$(tag).attr("value");
 	var no=$(tag).index()
-
+	var len= $(".menu-list > div").length
+	console.log(len)
 	$.ajax({
 			url: `/category/${parentNo}`,
 			success: function(result) {
 				$(".sub-list").html(result)
-				var menuH= -150 +(50*no) + 'px';
+				var menuH= -(50*len) +(50*no) + 'px';
 				$(".sub-list").css("left","179px")
 				$(".sub-list").css("top",menuH)
 			}
