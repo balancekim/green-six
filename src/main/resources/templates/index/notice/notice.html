@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="//www.thymeleaf.org">
+    <head>
+   	 	<meta charset="UTF-8">
+    	
+    </head>
+	<body>
+		<div class="table">
+        			<table class="notice-table">
+			    		<tr th:each="dto:${notice}">
+				    		<td>
+				    			<a th:text="${dto.title}" th:href="${'/notice/'+dto.no}">제목</a>
+				    		</td>			    			
+				    		    			
+				    	</tr>
+        			</table>
+        		</div>
+	</body>
+</html>
