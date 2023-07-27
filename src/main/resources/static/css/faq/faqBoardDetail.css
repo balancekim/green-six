@@ -44,3 +44,29 @@
 	color: #777;
 	text-align: left;
 }
+/* //////댓글 리스트//////// */
+.form-update{display: none;}
+
+#comment-list td:first-child {
+	width:738px
+}
+
+#comment-list thead td{
+	padding:12px 22px;
+	text-align: center;
+}
+
+#comment-list tbody td {
+	padding: 15px;
+}
+
+#detail > div > div.changeState > div:nth-child(1) > a{
+	font-size:17px;
+	padding:5px;
+}
+
+#comment-list .update .space,
+#comment-list .update-edit .space{
+	margin-right: 10px;
+	
+}

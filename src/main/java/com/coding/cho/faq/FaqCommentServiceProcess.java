@@ -1,6 +1,9 @@
 package com.coding.cho.faq;
 
+import java.time.LocalDateTime;
 import java.util.List;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +36,27 @@ public class FaqCommentServiceProcess implements FaqCommentService{
 	@Override
 	public List<FaqCommentEntity> findAllByBoardNo(long bno) {
 		return repo.findAllByBoard_noOrderByNoDesc(bno);
+	}
+	//댓글 수정
+	@Override
+	@Transactional
+	public void updateProcess(long no, FaqCommentUpdateDTO dto) {
+		dto.updatedDate=LocalDateTime.now();
+		repo.findById(no).map(e->e.updateContent(dto));
+	}
+	//작성자, 로그인 계정 일치 여부 확인
+	@Override
+	public boolean isOwner(String name, long no) {
+		FaqCommentEntity faqCommentEntity = repo.findById(no).get();
+		if (faqCommentEntity != null && faqCommentEntity.getCreator().getEmail().equals(name)) {
+			return true;
+		}return false;
+	}
+
+	@Override
+	public void commentDelete(long no) {
+		repo.deleteById(no);
+		
 	}
 	
 	

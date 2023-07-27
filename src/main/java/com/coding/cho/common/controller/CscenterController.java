@@ -32,6 +32,7 @@ public class CscenterController {
 	
 	//faq list
 	//faq divNo==8 자유게시판일 경우는 다른 다른 페이지로 이동
+	//faq 카테고리별 이동
 	@GetMapping("/common/faq/{divNo}") ///common/faq/{divNo}?page=1
 	public String faqList(
 			@PathVariable int divNo,
@@ -45,12 +46,12 @@ public class CscenterController {
 			service.faqListProcess(divNo, page, model);
 			return "user/cscenter/faq/list-data";}
 	}
-
+	//faq 자유게시판으로 이동
 	@GetMapping("/faq/board/write")
 	public String write() {
 		return "user/cscenter/faq/write";
 	}
-	
+	//faq 자유게시판 작성
 	@PostMapping("/faq/board/write")
 	public String saveProcess(Authentication authentication, FaqBoardSaveDTO dto) {
 		
