@@ -67,7 +67,14 @@ button:hover{
 	border: none;
 	padding: 15px 0 4px;
 }
-
+.notice-write-btn button{	
+	border: 1px solid #aeaeae;
+	width: 70px;
+	height: 30px;
+	border-radius: 5px;
+	margin-top: 20px;
+	float: right;
+}
 
 .paging{
 	text-align: center;	
@@ -186,6 +193,14 @@ button:hover{
 	width: 70px;
 	height: 30px;
 	border-radius: 5px;
+	margin-right: 10px;
+}
+.notice-delete{
+	border: 1px solid #aeaeae;
+	width: 70px;
+	height: 30px;
+	border-radius: 5px;
+	margin-bottom: 10px;
 	margin-right: 10px;
 }
 

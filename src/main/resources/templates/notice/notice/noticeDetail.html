@@ -9,11 +9,7 @@
     	<div class="basic">    	
 	    	<div class="detailcontent">
 	        	<div class="notice-up"><h2>NOTICE</h2></div>
-	        		<form th:action="@{|/notice/${detail.no}|}" method="post">
-	        			<input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}"	th:value="${_csrf.token}"/>
-						  <input type="hidden" name="_method" value="delete"/>
-	        			<button >삭제</button>
-	        		</form>
+	        		
 					<div class="table">
 						
 						<table class="noticeDetail-table">
@@ -33,8 +29,12 @@
 					
 			</div>
 			<div class="btn-area flex center">
-				<button type="button" id="btn-update">수정</button>
-				
+				<button sec:authorize="hasRole('ROLE_ADMIN')" type="button" id="btn-update">수정</button>
+				<form th:action="@{|/notice/${detail.no}|}" method="post">
+	        			<input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}"	th:value="${_csrf.token}"/>
+						  <input type="hidden" name="_method" value="delete"/>
+	        			<button class="notice-delete" sec:authorize="hasRole('ROLE_ADMIN')">삭제</button>
+	        		</form>
 				<a href="/notice">목록</a>
 			</div>
 		</div>
