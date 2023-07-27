@@ -33,4 +33,26 @@ public class CommentController {
 		mv.addObject("list", result);
 		return mv;
 	}
+	//댓글 수정
+	@PostMapping("/faq/board/{bno}/comment/{no}")
+	public String editComment(@PathVariable("no") long no,
+								@PathVariable("bno") long bno,FaqCommentUpdateDTO dto) {
+		faqCommentService.updateProcess(no,dto);
+		
+		return "redirect:/faq/board/detail/{bno}";
+	}	
+	//댓글 삭제
+	@GetMapping("/faq/board/{bno}/comment/{no}")
+	public String commentDelete(Authentication authentication, 
+					@PathVariable("no") long no,@PathVariable("bno") long bno) {
+		boolean isOwner = faqCommentService.isOwner(authentication.getName(), no);
+		if(isOwner) { 
+			faqCommentService.commentDelete(no);
+			  return "redirect:/faq/board/detail/{bno}";
+		  } else {
+			  return "redirect:/faq/board/detail/{bno}";
+		  }
+	}
+	
+	
 }

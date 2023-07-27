@@ -11,6 +11,7 @@ import com.coding.cho.common.domain.entity.FaqBoardEntity;
 import com.coding.cho.common.domain.entity.FaqBoardEntityRepository;
 import com.coding.cho.common.domain.entity.MemberEntityRepository;
 import com.coding.cho.common.service.FaqBoardService;
+import com.coding.cho.faq.FaqCommentEntityRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -22,6 +23,7 @@ public class FaqBoardServiceProcess implements FaqBoardService{
 	
 	private final MemberEntityRepository mRepo;
 	
+	private final FaqCommentEntityRepository fCrepo;
 
 	@Override
 	public void save(String userId, FaqBoardSaveDTO dto) {
@@ -39,7 +41,9 @@ public class FaqBoardServiceProcess implements FaqBoardService{
 	}
 
 	@Override
+	@Transactional
 	public void faqBoardDelete(long no) {
+		fCrepo.deleteAllByBoard_no(no);
 		repo.deleteById(no);
 	}
 
