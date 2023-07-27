@@ -16,7 +16,11 @@ public class GoodsSaveDTO {
 
 	private long gno;
 	private String name;
+	private String content;
 	private int price;
+	private boolean hotItem ;
+	
+	private long category;
 
 	private String[] url; //s3경로
 	private String[] orgName; //s3경로

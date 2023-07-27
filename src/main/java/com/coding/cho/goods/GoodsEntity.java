@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import com.coding.cho.category.CategoryEntity;
 
 import lombok.AllArgsConstructor;
@@ -35,8 +37,11 @@ public class GoodsEntity {
 	@Column(nullable = false)
 	private int price;
 	
-	@Column(nullable = false)
+	@Column
 	private String content;	
+	
+	@Column(nullable = false)
+	private boolean hotItem;
 	
 	@OneToMany(mappedBy = "goods")
 	private List<GoodsImageEntity> gie;

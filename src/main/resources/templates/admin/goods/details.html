@@ -19,14 +19,19 @@
 		<div class="admin-header-wrap"></div>
 		<h1>상품등록</h1>
 		<div class="wrap">
-			<p>상품수정 페이지</p>
+			<p>상품등록 페이지</p>
 			<hr>
 			<form id="form-goods">
 				<ul>
 					<li>
 						<label>카테고리</label>
-						<div class="category">
-							카테고리
+						<div class="category" value="0">
+							
+						</div>
+						<div class="category2">
+							<select name="category">
+								<option th:value="${detail.cNo}" th:text="${detail.cName}"></option>
+							</select>
 						</div>
 					</li>
 					<li>
@@ -43,7 +48,7 @@
 					</li>
 					<li>
 						<label>판매가</label>
-						<input type="text" name="price" placeholder="숫자만 입력" th:value="${detail.price}"><span>원</span>
+							<input type="text" name="price" placeholder="숫자만 입력" th:value="${detail.price}"><span>원</span>
 					</li>
 					<li>
 						<label>할인</label>
@@ -56,17 +61,14 @@
 						</dl>
 					</li>
 					<li>
-						<label>부가세</label>
-						<select name="vat">
-							<option value="10">과세상품</option>
-							<option value="0">면세상품</option>
-							<option value="0">영세상품</option>
-						</select>
+						<label>핫한상품</label>
+						<input type="radio" name="hotItem" value="true" th:checked="${detail.hotItem eq true}">설정
+						<input type="radio" name="hotItem" value="false" th:checked="${detail.hotItem eq false}">설정없음
 					</li>
-					<li>
+					<!-- <li>
 						<label>재고수량</label>
-						<input type="text" name="stock" placeholder="숫자만 입력" ><span>개</span>
-					</li>
+						<input type="text" name="stock" placeholder="숫자만 입력"><span>개</span>
+					</li> -->
 					<li>
 						<label>상품이미지</label>
 						<div class="def-img">
@@ -114,7 +116,7 @@
 					</li>
 					<li>
 						<label>상세설명</label>
-						<textarea id="summernote" name="content"></textarea>
+						<textarea id="summernote" name="content" th:field="${detail.content}"></textarea>
 					</li>
 					<li>
 						<label>상품주요정보</label>
