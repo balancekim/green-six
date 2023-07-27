@@ -39,5 +39,11 @@ public class NoticeEntity {
 	
 	@UpdateTimestamp
 	private LocalDate createdDate;
+
+	public NoticeEntity update(NoticeUpdateDTO dto) {
+		title=dto.getTitle();
+		content=dto.getContent();
+		return this;
+	}
 	
 }

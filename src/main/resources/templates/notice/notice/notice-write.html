@@ -2,26 +2,26 @@
 <html xmlns:th="//www.thymeleaf.org" 
 	th:replace="layout/common-layout :: commonLayout( ~{::head}, ~{::main} )">
     <head>
-        <meta charset="UTF-8">
-        <title>Insert title here</title>
+        <link rel="stylesheet" href="/css/notice/notice.css">
     </head>
     <main>
     	<h1>공지사항 작성페이지</h1>
-        <div>
+        <div class="notice-write flex center">
         	<form action="/notice-write" method="post">
-	        	<div>
+	        	<div class="write-title">
 	        		<input type="text" name="title" placeholder="제목을 입력하세요">
 	        	</div>
 	        
-	        	<div>
-	        		<input type="text" name="content" placeholder="내용을 입력하세요">
+	        	<div class="write-content">
+	        		
+	        		<textarea name="content" placeholder="내용을 입력하세요"></textarea>
 	        	</div>
-	        	<div>
+	        	<div class="flex center">
 	        	<p>
 	        		<input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-	        		<button type="submit">작성완료</button>
+	        		<button class="write-end" type="submit">작성완료</button>
 	        	</p>
-	        	<button type="button" onclick="location.href='/notice' ">취소</button>
+	        	<button class="write-end" type="button" onclick="location.href='/notice' ">취소</button>
 	        	</div>
         	</form>
         </div>

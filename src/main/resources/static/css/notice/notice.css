@@ -20,6 +20,9 @@ button:hover{
 .notice-up h2{
 	font-size: 40px;
 }
+.content {
+	width:900px;
+}
 .content select{
 	width:120px;
 	height: 30px;
@@ -43,12 +46,22 @@ button:hover{
 	line-height: 16px;
 	
 }
-body > main > div > div:nth-child(2) > div.table > table > thead > tr > th:nth-child(2){
-	width: 600px;
+.notice-table>thead>tr>th:first-of-type{
+	width:80px;
 }
-body > main > div > div:nth-child(2) > div.table > table > thead > tr > th:nth-child(3){
-	width: 84px;
+.notice-table>thead>tr>th:nth-of-type(2){
+	width: 700px;
+	
 }
+.notice-table>thead>tr>th:nth-of-type(3){
+	width: 120px;
+}
+.notice-table>tbody>tr>td:nth-of-type(2){
+	text-align: left;
+	padding-left: 30px;
+}
+
+
 .table td{
 	text-align: center;
 	border: none;
@@ -74,14 +87,29 @@ body > main > div > div:nth-child(2) > div.table > table > thead > tr > th:nth-c
 	border: 1px solid ;
 	border-radius: 4px;
 }
-.ne-left a{
-	font-size: 22px;
-	font-weight: bold;
+
+.write-title input{
+	width: 600px;
+	height: 40px;
+	margin: 15px 0;
+	margin-top: 30px;
 }
-.ne-left  a:hover,
-.ne-left a:active {
-	color: #88af62;
+
+.write-content textarea{
+	width: 600px;
+	height: 500px;
 }
+.write-end{
+	border: 1px solid #aeaeae;
+	width: 70px;
+	height: 30px;
+	border-radius: 5px;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+
+
 .detailcontent{
 	width:900px;
 	margin: 0 auto;
