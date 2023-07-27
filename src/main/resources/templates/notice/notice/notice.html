@@ -32,8 +32,8 @@
 				    	</tr>
         			</table>
         		</div>
-        		<div class="">
-        			<button type="button" onclick="location.href='/notice-write' ">글쓰기</button>
+        		<div class="notice-write-btn">
+        			<button sec:authorize="hasRole('ROLE_ADMIN')" type="button" onclick="location.href='/notice-write' ">글쓰기</button>
         		</div>
         		
         		<div class="paging center">

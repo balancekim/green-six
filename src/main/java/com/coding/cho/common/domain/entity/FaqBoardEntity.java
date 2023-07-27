@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="FaqBoard")
+@Table(name="faq_board")
 @Entity
 public class FaqBoardEntity extends BaseDateEntity{
 	

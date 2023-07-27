@@ -88,7 +88,9 @@ public class AdminController {
 	@ResponseBody
 	@GetMapping("/index/goods1")
 	public ModelAndView goods() {
-		return new ModelAndView("index/goods/goods");
+		ModelAndView mv=new ModelAndView("index/goods/goods");
+		mv.addObject("list", service.list());
+		return mv;
 	}
 	//관리자 페이지에서  이벤트 등록 메뉴 누르면 등록 페이지로 이동 
 	@GetMapping("/admin/event/new")

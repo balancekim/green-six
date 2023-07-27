@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
 
 import lombok.RequiredArgsConstructor;
 
@@ -72,6 +73,26 @@ public class NoticeServiceProcess implements NoticeService{
 		
 		return nr.findAll();
 	}
+
+
+
+	@Override
+	public Object findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public ModelAndView noticeList() {
+		ModelAndView mv = new ModelAndView("index/notice/notice");
+		mv.addObject("notice",nr.findAll());
+		return mv;
+	}
+
+
+
 
 
 

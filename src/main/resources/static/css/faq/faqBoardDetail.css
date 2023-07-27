@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+.detail-size{
+	width: 1080px;
+}
+
+#detail-main{
+	width: 1000px;
+	margin: 0 auto;
+}
+#detail-main #update{
+	text-align: end;
+	font-size: 16px;
+	font-weight: bold;
+	margin : 6px 0;
+}
+#detail-main #update>a{
+	padding: 2px 2px;
+	margin : 6px 0;
+}
+
+#detail-main #update>a:first-child{
+	border-right: 2px solid #000;
+	padding-right: 10px;
+}
+#detail table{
+	width: 100%;
+	border: 3px solid #000;
+}
+
+#detail table tr{
+	border-bottom: 1px solid #a9a9a9;
+	display: block;
+	padding: 1em 0;
+	width: 100%;
+}
+
+#detail table tr>* {
+	padding: 0 1em;
+}
+
+#detail table tr th{
+	width: 120px;
+	color: #777;
+	text-align: left;
+}

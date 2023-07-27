@@ -7,8 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.ColumnDefault;
+
+import com.coding.cho.category.CategoryEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,10 +37,16 @@ public class GoodsEntity {
 	@Column(nullable = false)
 	private int price;
 	
+	@Column
+	private String content;	
+	
+	@Column(nullable = false)
+	private boolean hotItem;
 	
 	@OneToMany(mappedBy = "goods")
 	private List<GoodsImageEntity> gie;
 	
-	
+	@ManyToOne
+	private CategoryEntity category;
 }
 
