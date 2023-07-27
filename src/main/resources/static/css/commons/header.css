@@ -23,23 +23,33 @@
 	border-bottom:1px solid rgba(0,0,0, 0.1);
 	position: relative; 
 }
+.sub-list{
+/* 	position: relative;
+	left: 180px;
+	top:-150px; */
+}
 
 
 #gnb > .wrap > ul > li  {
 	height: 50px;
 	width:180px;
 	text-align: center;
-	font-size: 24px;
+	font-size: 16px;
 	line-height: 50px;
 	font-weight: 700;	
 }
-
 #gnb > .wrap > ul > li > div {
 	display:none;
 	background-color: #fff;
 	position: relative;
 	z-index: 100;
 }
+#gnb > .wrap > ul > li:not(:first-of-type):hover > div  {
+	display:block;
+}
+
+
+
 #search-top > .wrap form input {
 	display:block;
 	height: 32px;

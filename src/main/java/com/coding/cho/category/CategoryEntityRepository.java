@@ -1,4 +1,4 @@
-package com.coding.cho.common.domain.entity;
+package com.coding.cho.category;
 
 import java.util.List;
 import java.util.Optional;
