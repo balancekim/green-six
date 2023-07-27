@@ -1,12 +1,9 @@
-package com.coding.cho.common.service.impl;
+package com.coding.cho.category;
 
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
-
-import com.coding.cho.common.domain.entity.CategoryEntity;
-import com.coding.cho.common.domain.entity.CategoryEntityRepository;
-import com.coding.cho.common.service.CategoryService;
+import org.springframework.ui.Model;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -46,6 +43,14 @@ public class CategoryServiceProcess implements CategoryService {
 			parent=categoryRepository.save(entity);
 			log.debug(">>>카테고리 신규저장 : "+parent.getName());
 		}
+		
+	}
+
+
+	@Override
+	public void listProcess(long no, Model model) {
+		if(no==0)model.addAttribute("list", categoryRepository.findByParentIsNull());
+		else model.addAttribute("list", categoryRepository.findByParent(categoryRepository.findById(no).orElseThrow()));
 		
 	}
 	

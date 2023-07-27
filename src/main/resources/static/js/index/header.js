@@ -4,40 +4,44 @@
 $(function() {
 	var li = $("#gnb > .wrap > ul > li");
 	li.mouseenter(function() {
-		var index = li.index(this) + 1;
-		showSubMenu(index);
 	});
 
 	li.mouseleave(function() {
-		var index = li.index(this) + 1;
-		hideSubMenu(index);
 	});
-	menuShow();
+
 });
 
-function menuShow(){
+function categoryMenu(tag){
+	var parentNo=$(tag).attr("value");
 	$.ajax({
-		url:"",
-		success:function(){
-			
-		}
-	})
+			url: `/category/${parentNo}`,
+			success: function(result) {
+				$(".sub-list").html(result)
+			}
+		})
 }
 
-function showSubMenu(index) {
-	$.ajax({
-		url:"/category/{parentno}",
-		method:"POST",
-		success:function(){
-			
-		}
-	})
+function showSubMenu() {
+
+	var parentNo = $("#gnb > .wrap > ul > li:first-child").val();
+
+	if (parentNo == 0) {
+		$.ajax({
+			url: `/category/${parentNo}`,
+			success: function(result) {
+				$(".menu-list").html(result)
+			}
+		})
+
+	}
+
+	$(".menu-list").show()
+	$(".sub-list").show()
+		
 	
-	
-	
-	$("#gnb > .wrap > ul > li:nth-of-type(" + index + ") > div").show()
 }
 
-function hideSubMenu(index) {
-	$("#gnb > .wrap > ul > li:nth-of-type(" + index + ") > div").hide()
+function hideSubMenu() {
+	$("#gnb > .wrap > ul > li:nth-of-type(1) > div").hide()
+	//$("#gnb > .wrap > ul > li:nth-of-type(" + index + ") > div.sub-list > *").remove()
 }
