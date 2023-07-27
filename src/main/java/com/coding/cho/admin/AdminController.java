@@ -58,8 +58,8 @@ public class AdminController {
 	
 	//상품 상세 수정
 	@GetMapping("/admin/goods/{no}")
-	public String goodsUpdate(@PathVariable long no, Model model,GoodsSaveDTO dto) {
-		service.detailProcess(no, model ,dto); 
+	public String goodsUpdate(@PathVariable long no, Model model) {
+		service.detailProcess(no, model); 
 		return "admin/goods/details";
 	}
 	
