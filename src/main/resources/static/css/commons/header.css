@@ -47,7 +47,10 @@
 #gnb > .wrap > ul > li:not(:first-of-type):hover > div  {
 	display:block;
 }
-
+.sub-list{
+	/* top:-150px;
+	left:179px; */
+}
 
 
 #search-top > .wrap form input {
