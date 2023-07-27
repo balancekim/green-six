@@ -15,6 +15,15 @@ $(function() {
 	menuShow();
 });
 
+function menuShow(){
+	$.ajax({
+		url:"",
+		success:function(){
+			
+		}
+	})
+}
+
 function showSubMenu(index) {
 	$.ajax({
 		url:"/category/{parentno}",
