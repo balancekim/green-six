@@ -3,6 +3,7 @@ package com.coding.cho.goods;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.coding.cho.goods.dto.GoodsListDTO;
@@ -16,6 +17,10 @@ public interface GoodsService {
 
 	Map<String, String> tempUpload(MultipartFile temp);
 
-	List<GoodsListDTO> list(GoodsSaveDTO dto);
+	List<GoodsListDTO> list();
+
+	void detailProcess(long no, Model model, GoodsSaveDTO dto);
+
+	
 
 }

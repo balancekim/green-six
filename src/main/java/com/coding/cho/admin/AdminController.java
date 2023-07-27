@@ -33,11 +33,12 @@ public class AdminController {
 		return"admin/index";
 	}
 	
+	//상품조회
 	@ResponseBody
 	@GetMapping("/admin/goods")
-	public ModelAndView list(GoodsSaveDTO dto) {
+	public ModelAndView list() {
 		ModelAndView mv=new ModelAndView("admin/goods/list");
-		mv.addObject("list", service.list(dto));
+		mv.addObject("list", service.list());
 		return mv;
 	}
 	
@@ -55,12 +56,11 @@ public class AdminController {
 		return service.tempUpload(temp);
 	}
 	
-	//상품리스트 수정
+	//상품 상세 수정
 	@GetMapping("/admin/goods/{no}")
-	public String goodsUpdate(@PathVariable long no, Model model) {
-		System.out.println(no);
-		/* service.updateProcess(no, model); */
-		return "admin/goods/detail";
+	public String goodsUpdate(@PathVariable long no, Model model,GoodsSaveDTO dto) {
+		service.detailProcess(no, model ,dto); 
+		return "admin/goods/details";
 	}
 	
 }
