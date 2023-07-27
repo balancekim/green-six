@@ -4,7 +4,7 @@
 		<div th:value="${dto.no}" th:if="${dto.parent}">	
 			<a href="#" th:text="${dto.name}"></a>
 		</div>
-		<div th:value="${dto.no}" th:unless="${dto.parent}" onmouseover="categoryMenu(this)">	
+		<div th:value="${dto.no}" th:unless="${dto.parent}" onmouseenter="categoryMenu(this)">	
 			<a href="#" th:text="${dto.name}"></a>
 		</div>
 	</th:block>

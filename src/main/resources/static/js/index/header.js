@@ -13,10 +13,15 @@ $(function() {
 
 function categoryMenu(tag){
 	var parentNo=$(tag).attr("value");
+	var no=$(tag).index()
+
 	$.ajax({
 			url: `/category/${parentNo}`,
 			success: function(result) {
 				$(".sub-list").html(result)
+				var menuH= -150 +(50*no) + 'px';
+				$(".sub-list").css("left","179px")
+				$(".sub-list").css("top",menuH)
 			}
 		})
 }
