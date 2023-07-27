@@ -85,6 +85,8 @@ public class AdminController {
 	@ResponseBody
 	@GetMapping("/index/goods1")
 	public ModelAndView goods() {
-		return new ModelAndView("index/goods/goods");
+		ModelAndView mv=new ModelAndView("index/goods/goods");
+		mv.addObject("list", service.list());
+		return mv;
 	}
 }
