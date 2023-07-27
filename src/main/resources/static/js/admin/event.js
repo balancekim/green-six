@@ -35,7 +35,7 @@ function eventSummited(){
 		xhr.setRequestHeader(header, token);
 	});
 	 $.ajax({
-		 url:"/admin/goods/temp-img",
+		 url:"/admin/event/temp-img",
 		 type:"POST",
 		 contentType: false,
 		 processData: false,
