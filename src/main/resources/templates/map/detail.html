@@ -13,26 +13,42 @@
 	<body>
 	
 		<main>
-			<div class="wrap"  style="width: 1080px; margin: 0 auto;display: flex;padding-top:46px;">
-				<div style="width:190px; margin-right: 50px;">
-					<p>매장검색</p>
-					<p>멤버쉽이 어쩌구</p>
-				</div>
-				<div style="width:700px;">
-					<div><h2>매장검색</h2></div>
+			<div class="wrap"  style="width: 1080px; margin: 0 auto;padding-top:46px;">
+				
+				<div style="width:1080px; position: relative;">
+					<div >
+						<h2>매장검색</h2>
+						<span th:text="|store > 매장검색 > ${stores.name} 지점|" style="color: #88af62;" > </span>
+					</div>
 					<div style="display: flex" class="map-wrap">
-						<div id="map" style="width:100%;height:200px;"></div>
+						<div id="map" style="width:100%;height:400px;"></div>
 					</div>
-					<div>
+					<div class="store-info"  >
 						<ul class="detail">
-							<li th:text="|${stores.name} 지점|">지점이름</li>
-							<li th:text="${stores.address}">주소</li>
-							<li th:text="${stores.callNumber}">전화번호</li>
-							<li th:text="${stores.faxNumber}">팩스번호</li>
+							<li >
+								<span style="font-size: 24px;" th:text="|${stores.name} 지점|"></span>
+							</li>
+							<li >
+								<strong>주소</strong>
+								<span th:text="${stores.address}">주소</span>
+							</li>
+							<li >
+								<strong>전화번호</strong>
+								<span th:text="${stores.callNumber}">전화번호</span>
+							</li>
+							<li >
+								<strong>팩스번호</strong>
+								<span th:text="${stores.faxNumber}">팩스번호</span>
+							</li>
+							<li >
+								<strong>영업시간</strong>
+								<span >am 7 ~ pm 9</span>
+							</li>
+							
 						</ul>
-					</div>
-					<div>
-						<button class="map-btn" id="map-btn" onclick="loadSearch()" type="button">길찾기(구현 할까말까 일단 링크에 목적지 넘김 출발지도 본인위치로 넣을까 말가) </button>
+					
+						<button class="map-btn" id="map-btn" onclick="loadSearch()" type="button">빠른길찾기 바로가기</button>
+						
 					</div>
 				</div>
 			</div>

@@ -12,23 +12,22 @@
 	</head>
 	<body>
 		<main>
-			<div class="wrap"  style="width: 1080px; margin: 0 auto;display: flex;padding-top:46px;">
-				<div style="width:190px; margin-right: 50px;">
-					<p>매장검색</p>
-					<p>멤버쉽이 어쩌구</p>
-				</div>
-				<div style="width:700px;">
-					<div><h2>매장검색</h2></div>
-					
+			<div class="wrap"  style="width: 1080px; margin: 0 auto;padding-top:46px;">
+				
+				<div style="width:1080px;">
+					<div>
+						<h2>매장검색</h2>
+						<span style="color: #88af62;">store > 매장검색</span>					
+					</div>
 					<div style="display: flex" class="map-wrap">
 						<div id="map" style="width:100%;height:400px;"></div>
 						
 					</div>
 					<div>
 						
-						<form th:action="@{/map}" method="get">
-							<input type="text" name="searchKeyword">
-							<button type="submit">검색</button>
+						<form th:action="@{/map}" method="get" id="search">
+							<input type="text" name="searchKeyword" placeholder="지점을 입력해주세요">
+							<button type="submit" style="background-image: url('/images/map/magnifying-glass-solid (1).svg')"></button>
 						</form>
 						<table>
 						<thead>
@@ -56,7 +55,7 @@
 						</table>
 						
 						<div id="main-footer" style="text-align: center;">
-							<div id="page">
+							<div id="page" style="margin: 15px 0 50px 0;">
 								<th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
 									
 									<a th:if="${page != nowPage}" th:href="@{/map(page=${page - 1}, searchKeyword=${param.searchKeyword})}" th:text="${page}"></a>

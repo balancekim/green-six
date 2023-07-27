@@ -32,8 +32,9 @@ $(function(){
 });
 
 function kakaomapProcess(){
-	 name = $(".detail > li:nth-child(1)").text();
-	 add = $(".detail > li:nth-child(2)").text();
+	 name = $(".detail > li:nth-child(1) > span").text();
+	 add = $(".detail >li:nth-child(2) > span").text();
+	 
 	
 	
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -108,9 +109,17 @@ function loadSearch(){
     	console.log("주소값:", address);
     	fromAdd=address;
     	console.log("바뀐 주소값:", fromAdd);
-	window.location = "https://map.kakao.com/?sName="+fromAdd+"&eName="+toAdd;
+    	
+window.open('https://map.kakao.com/?sName='+fromAdd+'&eName='+toAdd)
+
+	/*window.location = "https://map.kakao.com/?sName="+fromAdd+"&eName="+toAdd;*/
 	});
 	
 	/*window.location = "https://map.kakao.com/link/to/"+result+","+lat+","+lng;*/
 	
+}
+
+function haha(){
+	var hoho=$(".store-info")
+	hoho.animate({width:0},'slow')
 }
