@@ -62,5 +62,29 @@ public class AdminController {
 		service.detailProcess(no, model); 
 		return "admin/goods/details";
 	}
-	
+	@ResponseBody
+	@GetMapping("/franchisee/orderwait")
+	public ModelAndView orderWait() {
+		return new ModelAndView("franchisee/wait");
+	}
+	@ResponseBody
+	@GetMapping("/franchisee/processing")
+	public ModelAndView processing() {
+		return new ModelAndView("franchisee/processing");
+	}
+	@ResponseBody
+	@GetMapping("/franchisee/cancel")
+	public ModelAndView cancel() {
+		return new ModelAndView("franchisee/cancel");
+	}
+	@ResponseBody
+	@GetMapping("/franchisee/end")
+	public ModelAndView end() {
+		return new ModelAndView("franchisee/end");
+	}
+	@ResponseBody
+	@GetMapping("/index/goods1")
+	public ModelAndView goods() {
+		return new ModelAndView("index/goods/goods");
+	}
 }

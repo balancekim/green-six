@@ -15,7 +15,19 @@ $(function(){
 	
 	
 	$(".visual-size .in .bullet").click(bulletClicked);
+	
+	
 });
+$(function(){
+	
+	$.ajax({
+		url:"/index/goods1",
+		success:function(result){
+			$("#product-view").html(result);
+		}
+	})
+})
+
 
 
 function bulletClicked(){
