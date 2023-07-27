@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.amazonaws.services.s3.AmazonS3Client;
+import com.coding.cho.category.CategoryEntityRepository;
 import com.coding.cho.common.utils.FileUploadUtil;
 import com.coding.cho.goods.dto.GoodsListDTO;
 import com.coding.cho.goods.dto.GoodsSaveDTO;
@@ -25,6 +26,7 @@ public class GoodsServicePorcess implements GoodsService {
 
 	private final AmazonS3Client client;
 	private final GoodsEntityRepository gr;
+	private final CategoryEntityRepository cr;
 	private final GoodsImageEntityRepository ir;
 
 	@Value("${cloud.aws.s3.bucket}")
@@ -41,7 +43,13 @@ public class GoodsServicePorcess implements GoodsService {
 	public void save(GoodsSaveDTO dto) {
 
 		// 1. 상품정보 저장
-		GoodsEntity ge = gr.save(GoodsEntity.builder().name(dto.getName()).price(dto.getPrice()).build());
+		GoodsEntity ge = gr.save(GoodsEntity.builder()
+				.name(dto.getName())
+				.price(dto.getPrice())
+				.content(dto.getContent())
+				.hotItem(dto.isHotItem())
+				.category(cr.findById(dto.getCategory()).orElseThrow())
+				.build());
 		int leg = dto.getBucketKey().length;
 		for (int i = 0; i < leg; i++) {
 			if (dto.getBucketKey()[i] == "")
@@ -60,7 +68,6 @@ public class GoodsServicePorcess implements GoodsService {
 	@Transactional
 	public List<GoodsListDTO> list() {
 		return gr.findAll().stream().map(GoodsListDTO::new)// 조회된 엔티티를 GoodsListDTO로 mapping //파일 용량이 큰경우 썸네일 기능을 사용하여
-															// 용량을 줄일 수 있다.
 				.collect(Collectors.toList());
 	}
 
