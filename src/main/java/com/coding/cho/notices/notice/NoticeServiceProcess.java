@@ -3,9 +3,13 @@ package com.coding.cho.notices.notice;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import org.springframework.web.servlet.ModelAndView;
 
 import lombok.RequiredArgsConstructor;
 
@@ -28,6 +32,7 @@ public class NoticeServiceProcess implements NoticeService{
 
 	@Override
 	public void findAll(Model model) {
+				
 		List<NoticeListDTO> result = nr.findAll().stream()
 									.map(noticeEntity -> new NoticeListDTO(noticeEntity)).collect(Collectors.toList());
 		model.addAttribute("list", result);
@@ -46,6 +51,34 @@ public class NoticeServiceProcess implements NoticeService{
 		nr.deleteById(no);
 		
 	}
+
+
+	@Transactional
+	@Override
+	public void updateProcess(long no, NoticeUpdateDTO dto) {
+		nr.findById(no).map(e->e.update(dto));
+		
+	}
+
+	@Override
+	public Page<NoticeEntity> noticeList(Pageable pageable) {
+		
+		return nr.findAll(pageable);
+	}
+
+
+	@Override
+	public List<NoticeEntity> noticeAllList() {
+		
+		return nr.findAll();
+	}
+
+
+
+	
+
+
+	
 
 
 

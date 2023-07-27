@@ -53,13 +53,16 @@
 					</li>
 				</ul>	
 				</div>
-			</form>
+			
 				<div class="btn-area flex center">
+					<input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}"	th:value="${_csrf.token}"/>
+					<input type="hidden" name="_method" value="PUT"> 
+					<input type="hidden" name="no" th:value="${detail.no}">
 					<button type="submit" id="btn-updateend">수정완료</button>			
 					
-				<button type="button" id="btn-cancel" onclick="clickedBtnCancle()">취소</button>
+					<button type="button" id="btn-cancel" onclick="clickedBtnCancle()">취소</button>
 				</div>					
-			
+			</form>
 		</div>
 		
 		
