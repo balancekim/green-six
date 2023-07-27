@@ -34,7 +34,7 @@ class GreenSixApplicationTests {
 	@Autowired
 	storeRepository sr;
 	
-	@Test
+	//@Test
 	void 가맹점넣기() {
 		sr.save(StoreEntity.builder()
 				.name("강남")
@@ -89,7 +89,7 @@ class GreenSixApplicationTests {
 	
 	//@Test
 	void 어드민계정() {
-		mrp.save(MemberEntity.builder().email("admin").pass(encoder.encode("1234")).name("관리자").build().addRole(MyRole.ADMIN));
+		mrp.save(MemberEntity.builder().email("user").pass(encoder.encode("1234")).name("유저").build().addRole(MyRole.USER));
 	}
 
 }

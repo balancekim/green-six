@@ -47,4 +47,5 @@ public class CategoryEntity {
 	private List<CategoryEntity> children;//하위카테고리목록
 	
 	
+	
 }

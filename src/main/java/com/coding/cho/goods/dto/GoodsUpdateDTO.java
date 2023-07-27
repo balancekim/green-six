@@ -12,7 +12,12 @@ public class GoodsUpdateDTO {
 
 	private long gno;
 	private String name;
+	private String content;
 	private int price;
+	private boolean hotItem ;
+	
+	private long cNo;
+	private String cName;
 
 	private String[] url; //s3경로
 	private String[] orgName; //s3경로
@@ -25,6 +30,10 @@ public class GoodsUpdateDTO {
 	public GoodsUpdateDTO(GoodsEntity entity){
 		this.gno=entity.getNo(); 
 		this.name=entity.getName();
+		this.content=entity.getContent();
+		this.hotItem=entity.isHotItem();
+		this.cNo=entity.getCategory().getNo();
+		this.cName=entity.getCategory().getName();
 		this.price=entity.getPrice();
 		this.gie=entity.getGie()
 				.stream().map(en->new GoodsImageDTO(en))

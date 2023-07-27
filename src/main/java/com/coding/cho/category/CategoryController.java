@@ -26,8 +26,13 @@ public class CategoryController {
 	}
 
 	@GetMapping("/category/{no}")
-	public String caetegoryList(@PathVariable long no,Model model) {
+	public String categoryList(@PathVariable long no,Model model) {
 		service.listProcess(no,model);
 		return "admin/category/list";
+	}
+	@GetMapping("/product/category/{no}")
+	public String pdCategory(@PathVariable long no,Model model) {
+		service.listProcess(no,model);
+		return "admin/category/product-category";
 	}
 }
