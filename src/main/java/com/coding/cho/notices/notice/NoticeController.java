@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import lombok.RequiredArgsConstructor;
 
@@ -81,6 +83,12 @@ public class NoticeController {
 		service.updateProcess(no,dto);
 		return "redirect:/notice/"+no;
 	}
-	
+	@ResponseBody
+	@GetMapping("/index/notice")
+	public ModelAndView notice() {
+		
+		return service.noticeList();
+		
+	}
 	
 }
