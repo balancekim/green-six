@@ -15,12 +15,12 @@
 	        	<div class="goods-area flex grid-container view-size">
 	        		<h1>상품</h1>
 	        		
-	        		<ul  th:each = "dto:${list}">
-	        			<li><img alt="#" th:src="${dto.url}"></li>
-	        			<li th:text="${dto.name}">이름</li>
-	        			<li th:utext="${dto.content}">내용</li>
+	        		<ul  class="goods-list" th:each = "dto:${list}">
+	        			<li><img alt="#" th:src="${dto.url}" height="190px;"></li>
+	        			<li class="tit" th:text="${dto.name}">이름</li>
+	        			<li class="goods-li" th:utext="${dto.content}">내용</li>
 	        			<li th:text="${dto.price}">가격</li>
-	        			<li><a>담기</a></li>
+	        			<li><button>담기</button></li>
 	        		</ul>	        		
 	        	</div>
         	</div>
