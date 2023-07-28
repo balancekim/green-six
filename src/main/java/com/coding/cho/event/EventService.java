@@ -3,6 +3,8 @@ package com.coding.cho.event;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,5 +22,9 @@ public interface EventService {
 	ModelAndView eventList();
 
 	void detail(long no, Model model);
+
+	List<EventEntity> eventAllList();
+
+	Page<EventEntity> eventList(Pageable pageable);
 
 }
