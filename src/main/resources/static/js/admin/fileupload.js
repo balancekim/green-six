@@ -4,6 +4,28 @@
 $(function() {
 	categoryShow($(".category"));
 })
+function submitCheck(){
+	var cate=$(".category2 > select").val()
+	var name=$("#name").val()
+	var price=$("#price").val()
+	var content=$("#summernote").val()
+	if(cate==null||cate==""){
+		alert("카테고리를 지정해주세요")
+		return false;
+	}else if(name==null||name==""){
+		alert("상품명을 작성해주세요")
+		return false;
+	}else if(price==null||price==""){
+		alert("상품가격을 지정해주세요")
+		return false;
+	}else if(content==null||content==""){
+		alert("상품설명을 작성해주세요")
+		return false;
+	}else{
+		return true;
+	}
+}
+
 
 function categoryShow(tag) {
 	var parentNo = $(tag).attr("value");
@@ -30,6 +52,9 @@ function categoryShow(tag) {
 }
 
 function goodsSummited() {
+	var bool=submitCheck()
+	if(bool==false) return;
+	
 	var data = $("#form-goods").serialize();
 
 	var token = $("meta[name='_csrf']").attr("content");
