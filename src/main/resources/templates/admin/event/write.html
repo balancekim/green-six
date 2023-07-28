@@ -26,7 +26,7 @@
 					
 					<li>
 						<label>제목</label>
-						<input type="text" name="name" >
+						<input type="text" name="name" class="name">
 					</li>
 					
 					
@@ -73,7 +73,6 @@
 					<li>
 						<label>상세설명</label>
 						<textarea id="summernote" name="content"></textarea>
-						<c:out value='${content.replaceAll("\\\<.*?\\\>","")}' escapeXml="false"/> </textarea>
 					</li>
 					
 					<li>
