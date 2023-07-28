@@ -9,15 +9,17 @@ function eventSummited(){
 	$(document).ajaxSend(function(e, xhr, options) {
 		xhr.setRequestHeader(header, token);
 	});
-	//console.log(data);
+	console.log(data);
 	$.ajax({
 		url:"/admin/event",
 		type:"post",
 		data: data,
 		success: function(result){
 			/*$("a[href='/admin/goods/new']").trigger("click");*/
+			
 			location.href="#"
 			alert("등록완료");
+			
 		}
 	});
 	
