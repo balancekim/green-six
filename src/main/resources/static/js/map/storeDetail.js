@@ -13,21 +13,21 @@ $(function(){
 	
 	kakaomapProcess();//카카오맵
 	
-        function success({ coords, timestamp }) {
-            latitude = coords.latitude;   // 위도
-            longitude = coords.longitude; // 경도
-            /*alert(latitude)*/
-            
+        
+
+   
+        if (navigator.geolocation) {
+            //위치 정보를 얻기
+            navigator.geolocation.getCurrentPosition (function(pos) {
+                latitude = pos.coords.latitude;     // 위도
+                longitude = pos.coords.longitude; // 경도
+                
+            });
+        } else {
+            alert("이 브라우저에서는 Geolocation이 지원되지 않습니다.")
         }
 
-        function getUserLocation() {
-            if (!navigator.geolocation) {
-                throw "위치 정보가 지원되지 않습니다.";
-            }
-            navigator.geolocation.watchPosition(success);
-        }
-
-        getUserLocation();
+       
     
 });
 
@@ -89,7 +89,7 @@ function getAddr(lat, lng) {
 
         let callback = function(result, status) {
             if (status === kakao.maps.services.Status.OK) {
-                let address = result[0].road_address.address_name;
+                let address = result[0].address.address_name;
                 resolve(address); // 주소 값을 반환합니다.
             } else {
                 reject(new Error("주소 변환 실패"));
@@ -106,11 +106,8 @@ function loadSearch(){
 	
 	getAddr(latitude, longitude).then((address) => {
     // 변환된 주소 값을 받아와서 원하는 대로 사용합니다.
-    	console.log("주소값:", address);
-    	fromAdd=address;
-    	console.log("바뀐 주소값:", fromAdd);
     	
-window.open('https://map.kakao.com/?sName='+fromAdd+'&eName='+toAdd)
+	window.open('https://map.kakao.com/?sName='+address+'&eName='+toAdd)
 
 	/*window.location = "https://map.kakao.com/?sName="+fromAdd+"&eName="+toAdd;*/
 	});
