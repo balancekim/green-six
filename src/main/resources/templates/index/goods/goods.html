@@ -8,7 +8,7 @@
 		<p>MENU</p>
 		<div class="wrap flex">
 			<ul class="wrap" th:each="dto:${list}">
-				<li >
+				<li>
 					<a><img alt="#" th:src="${dto.url}" height="100px"></a>
 					<p th:text="${dto.name}"></p>
 				</li>
