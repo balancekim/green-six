@@ -1,5 +1,6 @@
 package com.coding.cho.event;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -9,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.UpdateTimestamp;
 
 import com.coding.cho.goods.GoodsEntity;
 import com.coding.cho.goods.GoodsImageEntity;
@@ -33,6 +36,9 @@ public class EventEntity {
 	
 	@Column(nullable = false)
 	private String content;
+	
+	@UpdateTimestamp
+	private LocalDate createdDate;
 	
 	
 	@OneToMany(mappedBy = "event")

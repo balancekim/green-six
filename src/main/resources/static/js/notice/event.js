@@ -1,0 +1,11 @@
+/**
+ * 
+ */
+$(function(){
+	$.ajax({
+		url:"/index/event",
+		success:function(result){
+			$(".index-event").html(result);
+		}
+	})
+})
