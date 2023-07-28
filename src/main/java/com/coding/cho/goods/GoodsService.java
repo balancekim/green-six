@@ -8,6 +8,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.coding.cho.goods.dto.GoodsListDTO;
 import com.coding.cho.goods.dto.GoodsSaveDTO;
+import com.coding.cho.goods.dto.GoodsUpdateDTO;
+import com.coding.cho.goods.dto.GoodsDetailDTO;
 
 public interface GoodsService {
 
@@ -20,6 +22,8 @@ public interface GoodsService {
 	List<GoodsListDTO> list();
 
 	void detailProcess(long no, Model model);
+
+	void updateProcess(long no, GoodsUpdateDTO dto);
 
 	
 

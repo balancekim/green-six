@@ -12,11 +12,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.amazonaws.services.s3.AmazonS3Client;
+import com.coding.cho.category.CategoryEntity;
 import com.coding.cho.category.CategoryEntityRepository;
 import com.coding.cho.common.utils.FileUploadUtil;
 import com.coding.cho.goods.dto.GoodsListDTO;
 import com.coding.cho.goods.dto.GoodsSaveDTO;
 import com.coding.cho.goods.dto.GoodsUpdateDTO;
+import com.coding.cho.goods.dto.GoodsDetailDTO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -31,8 +33,10 @@ public class GoodsServicePorcess implements GoodsService {
 
 	@Value("${cloud.aws.s3.bucket}")
 	private String bucketName;
-	@Value("${cloud.aws.s3.upload-path}")
+	@Value("${cloud.aws.s3.temp-path}")
 	private String path;
+	@Value("${cloud.aws.s3.upload-path}")
+	private String path2;
 
 	@Override
 	public Map<String, String> uploadSummernoteImgProcess(MultipartFile file) {
@@ -43,20 +47,18 @@ public class GoodsServicePorcess implements GoodsService {
 	public void save(GoodsSaveDTO dto) {
 
 		// 1. 상품정보 저장
-		GoodsEntity ge = gr.save(GoodsEntity.builder()
-				.name(dto.getName())
-				.price(dto.getPrice())
-				.content(dto.getContent())
-				.hotItem(dto.isHotItem())
-				.category(cr.findById(dto.getCategory()).orElseThrow())
-				.build());
+		GoodsEntity ge = gr
+				.save(GoodsEntity.builder().name(dto.getName()).price(dto.getPrice()).content(dto.getContent())
+						.hotItem(dto.isHotItem()).category(cr.findById(dto.getCategory()).orElseThrow()).build());
 		int leg = dto.getBucketKey().length;
 		for (int i = 0; i < leg; i++) {
 			if (dto.getBucketKey()[i] == "")
 				continue;
+			String newUrl=FileUploadUtil.s3TempToSrc(client, bucketName, path+dto.getNewName()[i], path2+dto.getNewName()[i]);
 			ir.save(GoodsImageEntity.builder().orgName(dto.getOrgName()[i]).newName(dto.getNewName()[i])
-					.url(dto.getUrl()[i]).bucketKey(dto.getBucketKey()[i]).isDef(dto.getDef()[i]).goods(ge).build());
+					.url(newUrl).bucketKey(path2+dto.getNewName()[i]).isDef(dto.getDef()[i]).goods(ge).build());
 		}
+		FileUploadUtil.clearTemp(client, bucketName, path);
 	}
 
 	@Override
@@ -74,8 +76,28 @@ public class GoodsServicePorcess implements GoodsService {
 	@Override
 	@Transactional
 	public void detailProcess(long no, Model model) {
-		GoodsUpdateDTO dto =gr.findById(no).stream().map(ee -> new GoodsUpdateDTO(ee)).findFirst().orElseThrow();
-		model.addAttribute("detail",dto);
+		GoodsDetailDTO dto = gr.findById(no).stream().map(ee -> new GoodsDetailDTO(ee)).findFirst().orElseThrow();
+		model.addAttribute("detail", dto);
 	}
+
+	@Transactional
+	@Override
+	public void updateProcess(long no, GoodsUpdateDTO dto) {
+
+		GoodsEntity entity = gr.findById(no).orElseThrow();
+		CategoryEntity category = cr.findById(dto.getCategory()).orElseThrow();
+		List<GoodsImageEntity> list=entity.getGie();
+		for(int i=0; i<list.size();i++) {
+			System.out.println("dddddddddd"+list.get(i).getBucketKey());
+			System.out.println("ffffffffff"+dto.getBucketKey()[i]);
+			if (dto.getBucketKey()[i] == "")continue;
+			String newUrl=FileUploadUtil.s3TempToSrc(client, bucketName, path+dto.getNewName()[i], path2+dto.getNewName()[i]);
+			ir.save(list.get(i).update(dto, i ,newUrl,path2));
+		}
+		entity.update(dto, category);
+		FileUploadUtil.clearTemp(client, bucketName, path);
+		
+	}
+	
 
 }

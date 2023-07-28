@@ -1,14 +1,17 @@
-package com.coding.cho.common.controller;
+package com.coding.cho.goods;
 
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.coding.cho.goods.GoodsService;
+import com.coding.cho.goods.dto.GoodsDetailDTO;
+import com.coding.cho.goods.dto.GoodsUpdateDTO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -30,4 +33,9 @@ public class GoodsController {
 		return service.uploadSummernoteImgProcess(file);
 	}
 
+	@PutMapping("/admin/goods/{no}")
+	public String update(@PathVariable long no,GoodsUpdateDTO dto) {
+		service.updateProcess(no,dto);
+		return "redirect:/admin/goods";
+	}
 }

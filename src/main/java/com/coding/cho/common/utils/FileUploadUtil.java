@@ -14,8 +14,10 @@ import com.amazonaws.annotation.Beta;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.CopyObjectRequest;
+import com.amazonaws.services.s3.model.ObjectListing;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.amazonaws.services.s3.model.S3ObjectSummary;
 
 @Component
 public class FileUploadUtil {
@@ -59,6 +61,30 @@ public class FileUploadUtil {
 		return s3Client.getUrl(bucket, uploadKey).toString().substring(6);//src 폴더의 url
 	}
 	
+	public static void clearTemp(AmazonS3Client s3Client, String bucketName, String tempPath) {
+		// 템프 경로의 목록을 갖고와서 제거
+		// 폴더 내의 모든 객체를 삭제
+		ObjectListing objectListing = s3Client.listObjects(bucketName, tempPath);
+		while (true) {
+			for (S3ObjectSummary objectSummary : objectListing.getObjectSummaries()) {
+				s3Client.deleteObject(bucketName, objectSummary.getKey());
+			}
+
+			if (objectListing.isTruncated()) {
+				objectListing = s3Client.listNextBatchOfObjects(objectListing);
+			} else {
+				break;
+			}
+		}
+
+		// 폴더를 삭제
+		s3Client.deleteObject(bucketName, tempPath);
+
+	}
+	
+	public static void delete(AmazonS3Client s3Client, String bucketName, String bucketKey) {
+		s3Client.deleteObject(bucketName, bucketKey);
+	}
 	
 	/**
 	 * 
