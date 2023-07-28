@@ -12,16 +12,18 @@
 	        		
 					<div class="table">
 						
-						<table class="noticeDetail-table">
+						<table class="noticeDetail-table" style="margin:0 auto">
 							<thead>
 								<tr class="flex between">						
 									<td th:text="${detail.name}">제목</td>
-									
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td th:text="${detail.content}">내용</td>
+									<td >	
+		        					<img width="700" height="1000"  alt="#" th:src="${detail.url}" >
+									<span th:utext="${detail.content}">내용</span>
+									</td>
 								</tr>
 							</tbody>
 						</table>

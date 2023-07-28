@@ -8,9 +8,9 @@
     <main>
         <section class="view-size flex" >
 	        
-	        <div style="margin:0 auto;">
+	        <div style="margin:0 auto 100px;">
 	        <div class="content-right" >
-		        
+		        <h2>Event</h2>
 		        <form >
 		        	<!-- <div class="event-select flex">
 		        		<select>
@@ -22,7 +22,7 @@
 		        	</div> -->
 		        	<div class="event_list_wr"  th:each="dto:${list}">
 		        		<div class="event_listBox">
-		        			<a>
+		        			<a th:href="${'/event/'+dto.no}">
 		        				<img width="700" height="141"  alt="#" th:src="${dto.url}">
 		        			</a>
 		        			<dl class="event_list flex ">
@@ -37,6 +37,16 @@
 		        		</div>
 		        	</div>
 		        </form>
+		        <!-- <div id="main-footer" style="text-align: center;">
+					<div id="page" style="margin: 15px 0 50px 0;">
+						<th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
+							
+							<a th:if="${page != nowPage}" th:href="@{/map(page=${page - 1}, searchKeyword=${param.searchKeyword})}" th:text="${page}"></a>
+							<strong th:if="${page == nowPage}" th:text="${page}" style="color : green"></strong>
+						</th:block>
+					</div>
+					
+				</div> -->
 		        </div>
 	        </div>
         </section>

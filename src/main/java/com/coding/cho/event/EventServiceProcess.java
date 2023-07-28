@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
@@ -86,8 +88,28 @@ public class EventServiceProcess implements EventService{
 
 
 	@Override
+	@Transactional
 	public void detail(long no, Model model) {
-		model.addAttribute("detail", er.findById(no).orElseThrow());
 		
+		
+		model.addAttribute("detail", new EventListDTO2(er.findById(no).orElseThrow()));
+		
+	}
+
+
+	@Override
+	public List<EventEntity> eventAllList() {
+		
+		return er.findAll();
+	}
+
+
+	@Override
+	@Transactional
+	public Page<EventEntity> eventList(Pageable pageable) {
+		
+		
+		
+		return er.findAll(pageable);
 	}
 }
