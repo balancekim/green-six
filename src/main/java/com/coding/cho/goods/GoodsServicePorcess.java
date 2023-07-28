@@ -99,6 +99,16 @@ public class GoodsServicePorcess implements GoodsService {
 		FileUploadUtil.clearTemp(client, bucketName, path);
 		
 	}
+
+	@Transactional
+	@Override
+	public void deleteProcess(long no) {
+		GoodsEntity entity=gr.findById(no).orElseThrow();
+		String bucketKey=entity.getGie().get(0).getBucketKey();
+		FileUploadUtil.delete(client, bucketName, bucketKey);
+		entity.getGie().forEach(en->ir.delete(en));
+		gr.deleteById(no);
+	}
 	
 
 }

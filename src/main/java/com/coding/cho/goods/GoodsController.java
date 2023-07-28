@@ -3,6 +3,7 @@ package com.coding.cho.goods;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,6 +37,11 @@ public class GoodsController {
 	@PutMapping("/admin/goods/{no}")
 	public String update(@PathVariable long no,GoodsUpdateDTO dto) {
 		service.updateProcess(no,dto);
+		return "redirect:/admin/goods";
+	}
+	@DeleteMapping("/admin/goods/{no}")
+	public String delete(@PathVariable long no) {
+		service.deleteProcess(no);
 		return "redirect:/admin/goods";
 	}
 }

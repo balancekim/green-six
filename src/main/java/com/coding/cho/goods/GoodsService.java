@@ -25,6 +25,8 @@ public interface GoodsService {
 
 	void updateProcess(long no, GoodsUpdateDTO dto);
 
+	void deleteProcess(long no);
+
 	
 
 }
