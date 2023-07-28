@@ -1,0 +1,16 @@
+.menu-area{
+	padding-top: 40px;
+}
+
+.category-area{
+	width:1080px;
+}
+.goods-area{
+	width:1080px;
+}
+
+.grid-container{
+ display: grid;
+  grid-template-columns: auto auto auto auto;
+	
+}

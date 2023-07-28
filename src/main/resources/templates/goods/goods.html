@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="//www.thymeleaf.org" 
+	th:replace="layout/common-layout :: commonLayout( ~{::head}, ~{::main} )">
+    <head>
+         <link rel="stylesheet" href="/css/menu/menu.css">
+    </head>
+    <main>
+        <h2>상품 페이지</h2>
+        <div class="menu-area flex center">
+        	<div>
+	        	<div class="category-area">
+	        		<h1>카테고리</h1>	        		
+	        	</div>
+	        	
+	        	<div class="goods-area flex grid-container view-size">
+	        		<h1>상품</h1>
+	        		
+	        		<ul  th:each = "dto:${list}">
+	        			<li><img alt="#" th:src="${dto.url}"></li>
+	        			<li th:text="${dto.name}">이름</li>
+	        			<li th:utext="${dto.content}">내용</li>
+	        			<li th:text="${dto.price}">가격</li>
+	        			<li><a>담기</a></li>
+	        		</ul>	        		
+	        	</div>
+        	</div>
+        	<div>
+        		장바구니
+        	</div>
+        </div>
+    </main>
+</html>
