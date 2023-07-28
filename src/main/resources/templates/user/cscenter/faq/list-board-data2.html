@@ -124,16 +124,6 @@
         	<section id="faq-list">
         		<div class="faqBoard"><h2>문의하기</h2></div>
         		<div class="wrap">
-        		<!-- 
-        			<ul class="flex around faq-div"  >
-						<th:block th:each="divi, iStat : ${T(com.coding.cho.common.domain.entity.FaqDivision).values()}" >
-						<li class="faq-menu" th:if="${divi.lower==7}?'target'">
-							<div class="icon flex center"><img th:src="|/images/icon/${divi.icon}|" height="30px;"></div>
-							<div th:text="${divi.koDiv}"></div>
-						</li>
-						</th:block>
-					</ul>
-					 -->
 					<div class="list-area">
 						<div sec:authorize="isAuthenticated()" class="flex right">
 							<a href="/faq/board/write">글쓰기</a>
@@ -155,20 +145,18 @@
 								</div>
 							</li>
 						</ul>
-						<div class="flex center pagging" th:unless="${#lists.isEmpty(list)}"
-							th:with="diviNo=${list.get(0).no}">
-							<div th:if="${pd.from gt 1}">
-								<a th:onclick="|faqList(${diviNo}, ${pd.from-1})|">&lt;</a>
-							</div>
-							<div>
-								<span th:each="page : ${#numbers.sequence(pd.from,pd.to)}"> <a
-									th:text="${page}" th:onclick="|faqList(${diviNo}, ${page})|">페이지번호</a>
-								</span>
-							</div>
-							<div th:if="${pd.to lt pd.tot}">
-								<a th:onclick="|faqList(${diviNo}, ${pd.to+1})|">&gt;</a>
-							</div>
+						<div id="main-footer">
+						<div id="page">
+							<th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
+								<a th:if="${page != nowPage}" th:href="@{/common/faq/faqBoard(page=${page - 1}, searchKeyword=${param.searchKeyword})}" th:text="${page}"></a>
+								<strong th:if="${page == nowPage}" th:text="${page}" style="color : red"></strong>
+							</th:block>
 						</div>
+						<form th:action="@{/common/faq/faqBoard}" method="get">
+							<input type="text" name="searchKeyword">
+							<button type="submit">검색</button>
+						</form>
+					</div>
 					</div>
         		</div>
         	</section>

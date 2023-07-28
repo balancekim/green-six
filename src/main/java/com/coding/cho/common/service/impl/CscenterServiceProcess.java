@@ -45,9 +45,6 @@ public class CscenterServiceProcess implements CscenterService {
 		
 	}
 
-
-
-
 	@Override
 	public void faqBoardListProcess(int page, Model model) {
 		int size=3;
@@ -56,6 +53,16 @@ public class CscenterServiceProcess implements CscenterService {
 		model.addAttribute("list", result.getContent());
 		
 		model.addAttribute("pd", PageData.create(page, size, (int)result.getTotalElements(), 3));
+	}
+
+	@Override
+	public Page<FaqBoardEntity> boardList(Pageable pageable) {
+		return fBRepo.findAll(pageable);
+	}
+
+	@Override
+	public Page<FaqBoardEntity> boardSearchList(String searchKeyword, Pageable pageable) {
+		return fBRepo.findByTitleContaining(searchKeyword, pageable);
 	}
 
 
