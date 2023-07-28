@@ -6,7 +6,7 @@ var check =[
 	{
 		item: "이메일",
 		regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-		comment: "예) test@test.co.kr, test@test.com"
+		comment: " 예) test@test.co.kr, test@test.com"
 	},
 	{
 		item: "비밀번호",
@@ -36,10 +36,11 @@ function validateInput(target, idx) {
 		msg+="입력해주세요.";
 		$(target).val("");
 	}else if ( !(check[idx].regex.test(inputText)) ){//유효성검사 실패시
-		msg= "유효한 "+check[idx].item+" 형식이 아닙니다.";
+		msg= "유효한 "+check[idx].item+" 형식이 아닙니다. "+check[idx].comment;
+		
 		
 		if(idx==1){
-			msg+="</br>대문자,소문자,숫자 조합 8자리이상으로"
+			msg+=""
 		}
 	}else if(idx==0 && existEmailCheck(inputText)){
 		msg="이미 존재하거나 탈퇴한 회원입니다.";

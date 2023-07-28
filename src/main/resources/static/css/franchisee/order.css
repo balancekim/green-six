@@ -23,7 +23,7 @@
 
 .order .wrap .order-waiting>li{
 	width:120px;
-	height: 180px;
+	height: 160px;
 	text-align: center;
 	line-height: 160px;
 	background-color: #80808069;
@@ -31,6 +31,7 @@
 .order .wrap .order-waiting li a{
 	display:block;
 	width: 100%;
+	height:100%;
 	font-weight: 700;
 	font-size: 17px;
 }

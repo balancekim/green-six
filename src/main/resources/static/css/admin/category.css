@@ -1,6 +1,6 @@
 @charset "UTF-8";
 .admin-header{
-	width:100%;
+	width: calc(100% - 250px);
 	margin: 0;
 	padding: 0;
 }
