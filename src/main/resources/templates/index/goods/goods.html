@@ -5,10 +5,10 @@
     	<title>Insert title here</title>
     </head>
 	<body>
-		<p>MENU</p>
+		<p>인기상품</p>
 		<div class="wrap flex">
-			<ul class="wrap" th:each="dto:${list}">
-				<li>
+			<ul class="wrap" th:if="|${dto.hotItem eq true}|" th:each="dto:${list}">
+				<li >
 					<a><img alt="#" th:src="${dto.url}" height="100px"></a>
 					<p th:text="${dto.name}"></p>
 				</li>
