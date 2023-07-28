@@ -39,7 +39,7 @@ public class GoodsEntity {
 	@Column(nullable = false)
 	private int price;
 	
-	@Column
+	@Column(nullable = false)
 	private String content;	
 	
 	@Column(nullable = false)
