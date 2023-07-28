@@ -36,13 +36,23 @@
 	text-align: center;
 	font-size: 16px;
 	line-height: 50px;
-	font-weight: 700;	
+	font-weight: 700;
+}
+#gnb > .wrap > ul > li:hover  {
+	background-color: #a9a9a9;
+}
+#gnb > .wrap > ul > li:hover > a {
+	color: #fff;
 }
 #gnb > .wrap > ul > li > div {
 	display:none;
-	background-color: #fff;
+	background-color: #a9a9a9;
+	opacity: 0.9;
 	position: relative;
 	z-index: 100;
+}
+#gnb > .wrap > ul > li > div > div:hover > a {
+	color: #fff;
 }
 #gnb > .wrap > ul > li:not(:first-of-type):hover > div  {
 	display:block;
