@@ -39,13 +39,20 @@ public class CscenterController {
 			@RequestParam(defaultValue = "1") int page,
 			Model model) {
 		
-		if(divNo==8) {
-			service.faqBoardListProcess(page, model);
-			return "user/cscenter/faq/list-board-data";}
-		else {
 			service.faqListProcess(divNo, page, model);
-			return "user/cscenter/faq/list-data";}
+			return "user/cscenter/faq/list-data";
 	}
+	
+	//문의하기 페이지로 이동
+		@GetMapping("/common/faq/faqBoard") ///common/faq/{divNo}?page=1
+		public String faqBoard(
+				@RequestParam(defaultValue = "1") int page,
+				Model model) {
+				service.faqBoardListProcess(page, model);
+				return "user/cscenter/faq/list-board-data2";
+		}
+	
+	
 	//faq 자유게시판으로 이동
 	@GetMapping("/faq/board/write")
 	public String write() {
@@ -56,9 +63,10 @@ public class CscenterController {
 	public String saveProcess(Authentication authentication, FaqBoardSaveDTO dto) {
 		
 		fBService.save(authentication.getName(), dto);
-		return "redirect:/common/cscenter";
+		return "redirect:/common/faq/faqBoard";
 	}
 	
+	//faq 자유게시판 상세 페이지이동
 	@GetMapping("/faq/board/detail/{no}")
 	public String boardDetail(Model model, @PathVariable("no") long no) {
 		fBService.faqBoardDetail(no, model);
@@ -66,6 +74,7 @@ public class CscenterController {
 		return "user/cscenter/faq/boardDetail";
 	}
 	
+	//faq 자유게시판 게시글 수정페이지로 이동
 	@GetMapping("/faq/board/modify/{no}")
 	public String boardModify(Model model, @PathVariable("no") long no) {
 		fBService.faqBoardModify(no, model);
@@ -73,14 +82,15 @@ public class CscenterController {
 		return "user/cscenter/faq/boardModify";
 	}
 	
+	//faq 자유게시판 게시글 삭제
 	@GetMapping("/faq/board/delete/{no}")
 	public String boardDelete(Authentication authentication,@PathVariable("no") long no) {
 		boolean isOwner = fBService.isOwner(authentication.getName(), no);
 		if(isOwner) {
 			fBService.faqBoardDelete(no);
-			return "user/cscenter/faq/list";
+			return "redirect:/common/faq/faqBoard";
 		} else {
-			return "user/cscenter/faq/list";
+			return "redirect:/common/faq/faqBoard";
 		}
 	}
 	

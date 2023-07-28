@@ -3,8 +3,6 @@ package com.coding.cho.common.domain.dto.cscenter;
 import java.time.LocalDateTime;
 
 import com.coding.cho.common.domain.entity.FaqBoardEntity;
-import com.coding.cho.common.domain.entity.FaqDivision;
-import com.coding.cho.common.domain.entity.FaqEntity;
 
 import lombok.Builder;
 import lombok.Getter;

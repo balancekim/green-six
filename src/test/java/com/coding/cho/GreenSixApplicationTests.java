@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.coding.cho.common.domain.dto.FaqBoardSaveDTO;
+import com.coding.cho.common.domain.entity.FaqBoardEntity;
+import com.coding.cho.common.domain.entity.FaqBoardEntityRepository;
 import com.coding.cho.common.domain.entity.FaqDivision;
 import com.coding.cho.common.domain.entity.FaqEntity;
 import com.coding.cho.common.domain.entity.FaqEntityRepository;
@@ -34,6 +37,9 @@ class GreenSixApplicationTests {
 	@Autowired
 	storeRepository sr;
 	
+	@Autowired
+	FaqBoardEntityRepository faqBoard;
+	
 	//@Test
 	void 가맹점넣기() {
 		sr.save(StoreEntity.builder()
@@ -59,7 +65,7 @@ class GreenSixApplicationTests {
 		//*
 		for(FaqDivision div :FaqDivision.values()) {
 			
-			IntStream.rangeClosed(1, 10).forEach(i->{
+			IntStream.rangeClosed(1, 20).forEach(i->{
 				faq.save(FaqEntity.builder()
 						.division(div)
 						.question(div.getKoDiv()+" 질문 "+i)
@@ -70,6 +76,8 @@ class GreenSixApplicationTests {
 		}
 		//*/
 	}
+	
+	
 	
 	//@Test
 	void 가맹점() {
