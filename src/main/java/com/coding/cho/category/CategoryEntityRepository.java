@@ -15,4 +15,8 @@ public interface CategoryEntityRepository extends JpaRepository<CategoryEntity, 
 
 	Optional<CategoryEntity> findByNameAndParent(String categornName, CategoryEntity parent);
 
+	
+
+	
+
 }
