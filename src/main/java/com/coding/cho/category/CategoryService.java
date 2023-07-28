@@ -8,4 +8,6 @@ public interface CategoryService {
 
 	void listProcess(long no, Model model);
 
+	void listCategory(Model model);
+
 }

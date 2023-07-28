@@ -4,14 +4,30 @@
 	 <head>
 	 </head>
 	<main>
-		<p>카테고리리스트</p>
-		<!-- <th:block th:each="dto:${list}">
-			<div th:value="${dto.no}" th:if="${dto.parent}">	
-				<a href="#" th:text="${dto.name}"></a>
-			</div>
-			<div th:value="${dto.no}" th:unless="${dto.parent}" onmouseenter="categoryMenu(this)">	
-				<a href="#" th:text="${dto.name}"></a>
-			</div>
-		</th:block> -->
+		<div  th:each="allList:${list}">
+			<form  action="/admin/category-list" method="post">
+			    <div class="flex" th:if="!${allList.parent}">
+			        <p class="vno" th:text="${allList.name}"></p>
+			        <input type="hidden" th:value="${allList.no}"> 
+			        <input class="hideInput" type="text" th:value="${allList.name}">
+			        <button>수정</button>
+			        <button class="hideBtn">완료</button>
+			        <input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}"	th:value="${_csrf.token}"/>
+					<input type="hidden" name="_method" value="DELETE">
+			        <button>삭제</button>
+			    </div>
+		    </form>
+		    <div class="sublist flex" th:each="sublist:${list}"
+		        th:if=${sublist.parent==allList}>
+		        <p class="vno" th:text="${sublist.name}"></p>
+		        <input type="hidden" th:value="${sublist.no}"> 
+		        <input class="hideInput" type="text" th:value="${sublist.name}">
+		        <button>수정</button>
+		        <button class="hideBtn">완료</button>
+		        <input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}"	th:value="${_csrf.token}"/>
+				<input type="hidden" name="_method" value="DELETE">
+		        <button>삭제</button>
+		    </div>
+		</div>
 	</main>
 </html>

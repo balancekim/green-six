@@ -2,6 +2,7 @@ package com.coding.cho.category;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,9 +43,15 @@ public class CategoryController {
 	
 	//카테고리 조회
 	@GetMapping("/admin/category/admin-categorylist")
-	public String categorylist2() {
-		
+	public String categorylist2(Model model) {
+		service.listCategory(model);
 		return "admin/category/admin-categorylist" ;
 	}
-	
+	/*
+	@DeleteMapping("/admin/category-list")
+	public String delete() {
+		service.deleteCategory();
+		return "redirect:/admin/category/admin-categorylist";
+	}
+	*/
 }

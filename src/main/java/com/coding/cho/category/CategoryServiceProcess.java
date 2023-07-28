@@ -1,5 +1,6 @@
 package com.coding.cho.category;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -51,6 +52,14 @@ public class CategoryServiceProcess implements CategoryService {
 	public void listProcess(long no, Model model) {
 		if(no==0)model.addAttribute("list", categoryRepository.findByParentIsNull());
 		else model.addAttribute("list", categoryRepository.findByParent(categoryRepository.findById(no).orElseThrow()));
+		
+	}
+
+
+	@Override
+	public void listCategory(Model model) {
+		List<CategoryEntity> result= categoryRepository.findAll();
+		model.addAttribute("list",result);
 		
 	}
 
