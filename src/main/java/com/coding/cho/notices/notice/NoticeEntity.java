@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import lombok.AllArgsConstructor;
@@ -37,7 +38,7 @@ public class NoticeEntity {
 	@Column(nullable = false)
 	private String content;
 	
-	@UpdateTimestamp
+	@CreationTimestamp
 	private LocalDate createdDate;
 
 	public NoticeEntity update(NoticeUpdateDTO dto) {
