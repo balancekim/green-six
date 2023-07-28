@@ -13,8 +13,7 @@ public enum FaqDivision {
 	MEMBERSHIP(4,"membership","멤버쉽","membership.svg"), //3
 	BENEFIT(5,"benefit","할인혜택","benefit.svg"),      //4
 	COUPON(6,"coupon","쿠폰","coupon.svg"),           //5
-	STORE(7,"store","가맹점","store.svg"),            //6
-	ONLINE(8,"online","자유게시판","online.svg");         //7
+	STORE(7,"store","가맹점","store.svg");            //6
 	
 	final int no;
 	final String lower;
