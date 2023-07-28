@@ -53,6 +53,12 @@ public class CategoryServiceProcess implements CategoryService {
 		else model.addAttribute("list", categoryRepository.findByParent(categoryRepository.findById(no).orElseThrow()));
 		
 	}
+
+
+	
+
+
+	
 	
 
 }

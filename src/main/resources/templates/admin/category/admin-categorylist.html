@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="//www.thymeleaf.org" xmlns:sec="//www.thymeleaf.org/extras/spring-security"
+	 th:replace="layout/admin-layout :: layout(~{::head}, ~{::main})">
+	 <head>
+	 </head>
+	<main>
+		<p>카테고리리스트</p>
+		<!-- <th:block th:each="dto:${list}">
+			<div th:value="${dto.no}" th:if="${dto.parent}">	
+				<a href="#" th:text="${dto.name}"></a>
+			</div>
+			<div th:value="${dto.no}" th:unless="${dto.parent}" onmouseenter="categoryMenu(this)">	
+				<a href="#" th:text="${dto.name}"></a>
+			</div>
+		</th:block> -->
+	</main>
+</html>
