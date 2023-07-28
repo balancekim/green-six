@@ -92,6 +92,7 @@ public class GoodsServicePorcess implements GoodsService {
 			System.out.println("ffffffffff"+dto.getBucketKey()[i]);
 			if (dto.getBucketKey()[i] == "")continue;
 			String newUrl=FileUploadUtil.s3TempToSrc(client, bucketName, path+dto.getNewName()[i], path2+dto.getNewName()[i]);
+			FileUploadUtil.delete(client, bucketName, list.get(i).getBucketKey());
 			ir.save(list.get(i).update(dto, i ,newUrl,path2));
 		}
 		entity.update(dto, category);
