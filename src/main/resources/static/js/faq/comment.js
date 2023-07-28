@@ -15,6 +15,7 @@ function editClick(){
 
 function cancelClick(){
 	var udwrap=$(this).parents(".udwrap");
+	$(".content").show();
 	udwrap.find(".update").show();
 	udwrap.find('.form-update').hide();
 }

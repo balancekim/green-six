@@ -97,6 +97,12 @@ public class AdminController {
 	public String write() {
 		return "admin/event/write";
 	}
+	//이벤트 등록 페이지에서 파일업로드 추가 하면 s3 temp경로에 파일 넣을 거임
+	@ResponseBody
+	@PostMapping("/admin/event/temp-img")
+	public Map<String,String> tempUploadEvent(MultipartFile temp){
+		return es.tempUpload(temp);
+	}
 	//이벤트 등록 페이지에서 내용 작성하고 등록 버튼 눌렀을 시 저장 과정(비동기) 
 	@ResponseBody
 	@PostMapping("/admin/event")

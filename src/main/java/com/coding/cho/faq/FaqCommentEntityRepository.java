@@ -9,4 +9,6 @@ public interface FaqCommentEntityRepository extends JpaRepository<FaqCommentEnti
 
 	List<FaqCommentEntity> findAllByBoard_noOrderByNoDesc(long bno);
 
+	void deleteAllByBoard_no(long no);
+
 }
