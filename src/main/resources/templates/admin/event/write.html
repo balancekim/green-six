@@ -30,7 +30,6 @@
 					</li>
 					
 					
-					
 					<li>
 						<label>이벤트 이미지</label>
 						<div class="def-img">
@@ -74,6 +73,7 @@
 					<li>
 						<label>상세설명</label>
 						<textarea id="summernote" name="content"></textarea>
+						<c:out value='${content.replaceAll("\\\<.*?\\\>","")}' escapeXml="false"/> </textarea>
 					</li>
 					
 					<li>
