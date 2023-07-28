@@ -1,7 +1,24 @@
 /**
  * 
  */
+
+function submitCheck(){
+	var name=$(".name").val()
+	var content=$("#summernote").val()
+	if(name==null||name==""){
+		alert("상품명을 작성해주세요")
+		return false;
+
+	}else if(content==null||content==""){
+		alert("상품설명을 작성해주세요")
+		return false;
+	}else{
+		return true;
+	}
+}
 function eventSummited(){
+	var bool=submitCheck()
+	if(bool==false) return;
 	var data=$("#form-goods").serialize();
 	
 	var token = $("meta[name='_csrf']").attr("content");
