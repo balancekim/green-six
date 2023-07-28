@@ -94,6 +94,13 @@ button:hover{
 	border: 1px solid ;
 	border-radius: 4px;
 }
+.write-title label{
+	margin-top : 60px;
+    margin-right: 10px;
+    font-size: 20px;
+    font-weight: 800;
+}
+
 
 .write-title input{
 	width: 600px;
@@ -101,7 +108,11 @@ button:hover{
 	margin: 15px 0;
 	margin-top: 30px;
 }
-
+.write-content label{
+    margin-right: 14px;
+    font-size: 20px;
+    font-weight: 800;
+}
 .write-content textarea{
 	width: 600px;
 	height: 500px;
@@ -163,16 +174,30 @@ button:hover{
 .noticeDetail-update{
 	width: 900px;
 }
+.update-title label{
+	margin-top : 60px;
+    margin-right: 10px;
+    font-size: 20px;
+    font-weight: 800;
+}
+
 .update-title input{
 	width: 700px;
 	height: 50px;
 	margin-bottom: 40px;
 	margin-top: 50px;
 }
+.update-content label{
+	margin-right: 10px;
+    font-size: 20px;
+    font-weight: 800;
+}
+
 .update-content textarea{
 	width: 700px;
 	height: 500px;	
 }
+
 
 #btn-update{
 	border: 1px solid #aeaeae;

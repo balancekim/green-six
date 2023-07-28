@@ -103,3 +103,63 @@
 	width: 400px;
 	margin-bottom: 20px;
 }
+
+/* 인덱스 페이지 공지사항/ 이벤트 */
+/* 공지사항 */
+.notice .tit{
+	font-size: 24px;
+}
+
+.notice .index-notice {
+	border-top: 1px solid #e9e9e9;
+	margin-top: 10px;
+}
+.notice-table{
+	margin-top: 10px;
+}
+
+.notice-table .notice-li .wrap  a{
+	color: #a9a9a9;
+}
+.notice-table .notice-li{
+	justify-content: space-between;
+	color: #a9a9a9;
+}
+
+.notice-li{
+	margin: 10px;
+}
+
+/* 이벤트 */
+.event .tit{
+	font-size: 24px;
+}
+
+.event .index-event {
+	border-top: 1px solid #e9e9e9;
+	margin-top: 10px;
+}
+.event-table{
+	margin-top: 10px;
+}
+
+.event-table .event-li .wrap  a{
+	color: #a9a9a9;
+}
+.event-table .event-li{
+	justify-content: space-between;
+	color: #a9a9a9;
+}
+
+.event-li{
+	margin: 10px;
+}
+
+.event .tit{
+	font-size: 24px;
+}
+
+.event .index-event {
+	border-top: 1px solid #e9e9e9;
+	margin-top: 10px;
+}
