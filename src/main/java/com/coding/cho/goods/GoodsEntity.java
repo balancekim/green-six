@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.ColumnDefault;
 
 import com.coding.cho.category.CategoryEntity;
+import com.coding.cho.goods.dto.GoodsDetailDTO;
+import com.coding.cho.goods.dto.GoodsUpdateDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -48,5 +50,15 @@ public class GoodsEntity {
 	
 	@ManyToOne
 	private CategoryEntity category;
+	
+	public GoodsEntity update(GoodsUpdateDTO dto, CategoryEntity category2) {
+		this.name=dto.getName();
+		this.price=dto.getPrice();
+		this.content=dto.getContent();
+		this.hotItem=dto.isHotItem();
+		this.category=category2;
+		
+		return this;
+	}
 }
 

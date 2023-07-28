@@ -21,7 +21,7 @@
 		<div class="wrap">
 			<p>상품등록 페이지</p>
 			<hr>
-			<form id="form-goods">
+			<form id="form-goods" th:action="|/admin/goods/${detail.gno}|" method="post">
 				<ul>
 					<li>
 						<label>카테고리</label>
@@ -134,7 +134,9 @@
 						<label>A/S,특이사항</label>
 					</li>
 					<li>
-						<button type="button" onclick="goodsSummited()">상품등록</button>
+						<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+						<input type="hidden" name = "_method" value = "put"/>
+						<button type="submit">상품수정</button>
 					</li>
 				</ul>
 			</form>
