@@ -14,25 +14,37 @@ public class CategoryController {
 	
 	private  final CategoryService service;//Constructor DI
 	
+	//카테고리 등록페이지 이동
 	@GetMapping("/admin/category/new")
 	public String write() {
 		return "admin/category/write";
 	}
 	
+	//카테고리 새로등록
 	@PostMapping("/admin/category")
 	public String save(String[] name) {
 		service.saveProcess(name);
 		return "redirect:/admin/category/new";
 	}
-
+	
+	//메뉴에서 카테고리 비동기요청 
 	@GetMapping("/category/{no}")
 	public String categoryList(@PathVariable long no,Model model) {
 		service.listProcess(no,model);
 		return "admin/category/list";
 	}
+	//상품등록페이지에서 카테고리 비동기요청
 	@GetMapping("/product/category/{no}")
 	public String pdCategory(@PathVariable long no,Model model) {
 		service.listProcess(no,model);
 		return "admin/category/product-category";
 	}
+	
+	//카테고리 조회
+	@GetMapping("/admin/category/admin-categorylist")
+	public String categorylist2() {
+		
+		return "admin/category/admin-categorylist" ;
+	}
+	
 }

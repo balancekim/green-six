@@ -42,15 +42,7 @@ function categorySubmitted(){
 	});
 }
 
-function categoryList(){
-	$.ajax({
-		url: "/admin/category",
-		type: "PATCH",
-		success: function(result){
-			$("#category").html(result);
-		}
-	});
-}
+
 function category2List(selectTag){
 	var parentNo=$(selectTag).val();
 	if(parentNo=="")return;
