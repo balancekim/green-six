@@ -12,6 +12,7 @@ public class GoodsListDTO {
 	private int price;
 	private String url;
 	private long no;
+	private boolean hotItem;
 	
 	public GoodsListDTO(GoodsEntity entity){
 		this.name=entity.getName();
@@ -22,6 +23,7 @@ public class GoodsListDTO {
                 .map(GoodsImageEntity::getUrl) // 객체에서 url필드만 리턴
                 .orElseThrow();//예외처리
 		this.no=entity.getNo();
+		this.hotItem=entity.isHotItem();
 		
 	}
 }

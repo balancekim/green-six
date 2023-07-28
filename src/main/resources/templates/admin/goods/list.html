@@ -7,11 +7,11 @@
 	 <main>
 		<section>
 			<h1>상품등록</h1>
-			<p>상품조회 및 수정</p>
+			<p class="tit">상품조회 및 수정</p>
 				<hr>
 			<div class="wrap grid-container">
 				<ul class="wrap" th:each="dto:${list}">
-					<li >
+					<li class="list">
 						<p th:text="${dto.name}"></p>
 						<a th:href="|/admin/goods/${dto.no}|"><img alt="#" th:src="${dto.url}" height="100px"></a>
 						<p>

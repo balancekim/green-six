@@ -82,8 +82,20 @@
 
 /*///// 비주얼 영역 끝 //////*/
 
+#product-view > .wrap{
+	justify-content: space-around;
+}
+#product-view > p {
+	font-size: 24px;
+	text-align: center;
+	font-weight: 700;
+	margin-bottom: 20px;
+}
 
-
+#product-view > .wrap  ul p {
+	text-align: center;
+	font-weight: 500;
+}
 .wrap .product-view{
 	height: 300px;
 	margin-bottom: 20px;
