@@ -19,6 +19,7 @@ public class GoodsSaveDTO {
 	private String content;
 	private int price;
 	private boolean hotItem ;
+	private boolean onSale;
 	
 	private long category;
 
