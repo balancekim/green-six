@@ -13,14 +13,18 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.coding.cho.category.CategoryEntity;
 import com.coding.cho.goods.GoodsEntity;
 import com.coding.cho.goods.GoodsImageEntity;
+import com.coding.cho.goods.dto.GoodsUpdateDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
+@ToString
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -43,4 +47,12 @@ public class EventEntity {
 	
 	@OneToMany(mappedBy = "event")
 	private List<EventImageEntity> gie;
+
+
+	public EventEntity update(EventUpdateDTO dto) {
+		this.name=dto.getName();
+		this.content=dto.getContent();
+		
+		return this;
+	}
 }

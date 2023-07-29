@@ -27,4 +27,12 @@ public interface EventService {
 
 	Page<EventEntity> eventList(Pageable pageable);
 
+	void deleteProcess(long no);
+
+	void detailProcess(long no, Model model);
+
+	void updateProcess(long no, EventUpdateDTO dto);
+
+	
+
 }
