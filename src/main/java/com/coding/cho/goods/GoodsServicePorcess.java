@@ -49,7 +49,7 @@ public class GoodsServicePorcess implements GoodsService {
 		// 1. 상품정보 저장
 		GoodsEntity ge = gr
 				.save(GoodsEntity.builder().name(dto.getName()).price(dto.getPrice()).content(dto.getContent())
-						.hotItem(dto.isHotItem()).category(cr.findById(dto.getCategory()).orElseThrow()).build());
+						.hotItem(dto.isHotItem()).onSale(dto.isOnSale()).category(cr.findById(dto.getCategory()).orElseThrow()).build());
 		int leg = dto.getBucketKey().length;
 		for (int i = 0; i < leg; i++) {
 			if (dto.getBucketKey()[i] == "")
