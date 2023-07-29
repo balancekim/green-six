@@ -66,29 +66,29 @@
 				<h1>상세정보</h1>
 				
 				<div>
-					<table id="basic">
-						<tr>
-							<th>글번호</th>
-							<td th:text="${board.no}">번호</td>
-						</tr>
-						<tr>
-							<th>작성일</th>
-							<td>
+					<ul id="basic" >
+						<li class="flex">
+							<p>글번호</p>
+							<div th:text="${board.no}">번호</div>
+						</li>
+						<li class="flex">
+							<p>작성일</p>
+							<div>
 								<span th:text="${board.updatedDate.toLocalDate()}">날짜</span>
-							</td>	
-						</tr>
-						<tr>
-							<th>제목</th>
-							<td th:text="${board.title}">제목</td>
-						</tr>
-						<tr>
-							<th>작성자</th>
-							<td th:text="${board.creator.email}">작성자</td>
-						</tr>
-						<tr>
-							<td colspan= "2" th:utext="${board.content}">내용</td>
-						</tr>
-					</table>
+							</div>	
+						</li >
+						<li class="flex">
+							<p>제목</p>
+							<div th:text="${board.title}">제목</div>
+						</li>
+						<li class="flex">
+							<p>작성자</p>
+							<div th:text="${board.creator.email}">작성자</div>
+						</li>
+						<li class="flex basic-content">
+							<div colspan= "2" th:utext="${board.content}">내용</div>
+						</li>
+					</ul>
 					<!--목록 /수정 /삭제  -->
 					<div class="flex between changeState">
 						<div class="list">
@@ -97,8 +97,12 @@
 						<div sec:authorize="isAuthenticated()">
 							<th:block th:if="${#authentication.getPrincipal().getUsername() == board.creator.email}">
 								<div id="update">
+								<button>
 									<a th:href="@{/faq/board/modify/{no}(no=${board.no})}">수정</a>
+								</button>
+								<button>
 									<a th:href="@{/faq/board/delete/{no}(no=${board.no})}">글삭제</a>
+								</button>
 								</div>
 							</th:block>
 						</div>

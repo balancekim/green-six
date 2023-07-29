@@ -3,46 +3,46 @@
 <head>
 	<script src="/js/faq/comment.js"></script>
 </head>
-<table>
-	<thead>
-		<tr>
-			<td colspan="3">댓글 목록</td>
-		</tr>
+<section>
+	<div>
+		<!-- <ul>
+			<li colspan="3">댓글 목록</li>
+		</ul> -->
 		<!-- <tr>
 			<td>내용</td>
 			<td>작성자</td>
 			<td>작성일</td>
 		</tr> -->
-	</thead>
-	<tbody>
-		<tr th:if="${#lists.isEmpty(list)}">
-			<th colspan="3">게시글이 존재하지 않습니다.</th>
-		</tr>
-		<tr th:each="comment:${list}">
-			<td >
+	</div>
+	<div class="reply-cont">
+		<ul th:if="${#lists.isEmpty(list)}">
+			<div colspan="3">게시글이 존재하지 않습니다.</div>
+		</ul>
+		<ul th:each="comment:${list}" class="flex">
+			<li class="reply-list flex">
 				<span class="content" th:text="${comment.commentContent}"></span>
 				<div class="flex left udwrap" sec:authorize="isAuthenticated()">
 					<th:block  th:if="${#authentication.name == comment.creator.email} ">
 						<div class="flex left update" >
 							<button type="button" class="edit-btn space">수정</button>
-							<a th:href="@{/faq/board/{bno}/comment/{no} (bno=${comment.board.no}, no=${comment.no})}">글삭제</a>
+							<button> <a th:href="@{/faq/board/{bno}/comment/{no} (bno=${comment.board.no}, no=${comment.no})}">글삭제</a> </button>
 						</div>
-						<form class="form-update" th:action="@{/faq/board/{bno}/comment/{no} (bno=${comment.board.no}, no=${comment.no})}" method="post">
+						<form class="form-update flex" th:action="@{/faq/board/{bno}/comment/{no} (bno=${comment.board.no}, no=${comment.no})}" method="post">
 							<input class="editComment" name="editComment" th:value="${comment.commentContent}">
-							<div class="update-edit">
+							<div class="update-edit ">
 								<button type="submit" class="space">수정</button>
 								<button type="button" class="edit-cancel">취소</button>
 							</div>
 						</form>
 					</th:block>
 				</div>
-			</td>
-			<td th:text="${comment.creator.email}">작성자</td>
-			<td>
+			</li>
+			<li th:text="${comment.creator.email}">작성자</li>
+			<li>
 				<span th:if="${comment.createdDate.toLocalDate() eq #temporals.createToday()}" th:text="${#temporals.format(comment.createdDate, 'HH : mm')}">오늘인경우 시간만</span>
 				<span th:unless="${comment.createdDate.toLocalDate() eq #temporals.createToday()}" th:text="${comment.createdDate.toLocalDate()}">오늘이 아니면 날짜만</span>
-			</td>
-		</tr>
-	</tbody>
-</table>
+			</li>
+		</ul>
+	</div>
+</section>
 </html>
