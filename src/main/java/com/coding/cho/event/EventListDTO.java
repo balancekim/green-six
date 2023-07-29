@@ -2,6 +2,8 @@ package com.coding.cho.event;
 
 
 
+import java.time.LocalDate;
+
 import lombok.Data;
 
 @Data
@@ -10,9 +12,12 @@ public class EventListDTO {
 	private String name;
 	private String url;
 	private String content;
+	private LocalDate date;
 	private long no;
 	
+	
 	public EventListDTO(EventEntity entity){
+		this.date=entity.getCreatedDate();
 		this.name=entity.getName();
 		this.content=entity.getContent();
 		this.url=entity.getGie().stream()

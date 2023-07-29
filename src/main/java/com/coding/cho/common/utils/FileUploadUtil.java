@@ -60,6 +60,14 @@ public class FileUploadUtil {
 		
 		return s3Client.getUrl(bucket, uploadKey).toString().substring(6);//src 폴더의 url
 	}
+	public static String s3TempToSrcNoDelete(AmazonS3Client s3Client, String bucket, String tempKey, String uploadKey) {
+		CopyObjectRequest cor=new CopyObjectRequest(bucket, tempKey, bucket, uploadKey);
+		s3Client.copyObject(cor.withCannedAccessControlList(CannedAccessControlList.PublicRead));
+		
+		
+		
+		return s3Client.getUrl(bucket, uploadKey).toString().substring(6);//src 폴더의 url
+	}
 	
 	public static void clearTemp(AmazonS3Client s3Client, String bucketName, String tempPath) {
 		// 템프 경로의 목록을 갖고와서 제거

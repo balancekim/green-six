@@ -87,6 +87,8 @@ public class GoodsServicePorcess implements GoodsService {
 		GoodsEntity entity = gr.findById(no).orElseThrow();
 		CategoryEntity category = cr.findById(dto.getCategory()).orElseThrow();
 		List<GoodsImageEntity> list=entity.getGie();
+		
+			
 		for(int i=0; i<list.size();i++) {
 			System.out.println("dddddddddd"+list.get(i).getBucketKey());
 			System.out.println("ffffffffff"+dto.getBucketKey()[i]);
@@ -97,6 +99,7 @@ public class GoodsServicePorcess implements GoodsService {
 		}
 		entity.update(dto, category);
 		FileUploadUtil.clearTemp(client, bucketName, path);
+		
 		
 	}
 

@@ -11,6 +11,7 @@ import javax.persistence.Table;
 
 import com.coding.cho.goods.GoodsEntity;
 import com.coding.cho.goods.GoodsImageEntity;
+import com.coding.cho.goods.dto.GoodsUpdateDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -39,6 +40,15 @@ public class EventImageEntity {
 	@JoinColumn(name = "event_no")
 	@ManyToOne
 	private EventEntity event;
+
+	public EventImageEntity update(EventUpdateDTO dto, int i, String newUrl, String path2) {
+		this.url=newUrl;
+		this.orgName=dto.getOrgName()[i];
+		this.newName=dto.getNewName()[i];
+		this.bucketKey=path2+dto.getNewName()[i];
+		this.isDef=dto.getDef()[i];
+		return this;
+	}
 	
 	
 }

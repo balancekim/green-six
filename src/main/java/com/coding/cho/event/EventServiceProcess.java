@@ -19,9 +19,11 @@ import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.CopyObjectRequest;
 import com.amazonaws.services.s3.model.ObjectListing;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
+import com.coding.cho.category.CategoryEntity;
 import com.coding.cho.common.domain.dto.S3UploadDTO;
 import com.coding.cho.common.utils.FileUploadUtil;
-
+import com.coding.cho.goods.GoodsEntity;
+import com.coding.cho.goods.GoodsImageEntity;
 
 import lombok.RequiredArgsConstructor;
 
@@ -112,4 +114,52 @@ public class EventServiceProcess implements EventService{
 		
 		return er.findAll(pageable);
 	}
+
+	@Transactional
+	@Override
+	public void deleteProcess(long no) {
+		EventEntity en = er.findById(no).orElseThrow();
+		String bucketKey=en.getGie().get(0).getBucketKey();
+		FileUploadUtil.delete(client, bucketName, bucketKey);
+		en.getGie().forEach(ei->ir.delete(ei));
+		er.deleteById(no);
+	}
+
+	@Transactional
+	@Override
+	public void detailProcess(long no, Model model) {
+		EventDetailDTO dto = er.findById(no).stream().map(ee -> new EventDetailDTO(ee)).findFirst().orElseThrow();
+		
+		model.addAttribute("detail", dto);
+		
+	}
+
+	@Transactional
+	@Override
+	public void updateProcess(long no, EventUpdateDTO dto) {
+		EventEntity entity = er.findById(no).orElseThrow();
+		entity.update(dto);
+			
+		  List<EventImageEntity> list=entity.getGie();
+		  for(String en:dto.getBucketKey()) {
+			  System.out.println("방금만든거임"+en);
+		  }
+		  //확인결과 하나 업로드 처리하면 다른거의 버킷 값은 없어지네?
+		  for(int i=0; i<list.size();i++){
+			  System.out.println("dddddddddd"+list.get(i).getBucketKey());
+			  System.out.println("ffffffffff"+dto.getBucketKey()[i]); 
+			  if(dto.getBucketKey()[i] == "")continue; 
+			  String newUrl=FileUploadUtil.s3TempToSrcNoDelete(client, bucketName,
+			  tempPath+dto.getNewName()[i], uploadPath+dto.getNewName()[i]);
+				/* FileUploadUtil.delete(client, bucketName, list.get(i).getBucketKey()); */
+			  ir.save(list.get(i).update(dto, i ,newUrl,uploadPath)); 
+		  }
+		  entity.update(dto);
+		  FileUploadUtil.clearTemp(client, bucketName, tempPath);
+		 
+		
+	}
+
+
+	
 }
