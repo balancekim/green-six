@@ -1,21 +1,39 @@
-.menu-area{
+.goods-main {
+	padding-top: 46px;
+}
+
+h2 {
+	font-size: 40px;
+	margin: 16px 0 20px 0;
+	border-bottom: 1px solid;
+    padding-bottom: 30px;
+}
+
+.goods-tit {
+	width: 1080px;
+	margin: 0 auto;
+}
+
+.menu-area {
 	padding-top: 40px;
 }
 
-.category-area{
-	width:1080px;
-}
-.goods-area{
-	width:1080px;
+.category-area {
+	width: 1080px;
 }
 
-.grid-container{
- display: grid;
-  grid-template-columns: auto auto auto auto;
-	
+.goods-area {
+	width: 1080px;
+}
+
+.grid-container {
+	display: grid;
+	grid-template-columns: auto auto auto auto;
 }
 
 .goods-list{
+	width:260px;
+	height : 330px;
 	text-align: center;
 	margin-top : 10px;
 	margin-right: 10px;

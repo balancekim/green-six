@@ -9,7 +9,9 @@
 		<div class="wrap flex">
 			<ul class="wrap" th:if="|${dto.hotItem eq true}|" th:each="dto:${list}">
 				<li >
-					<a><img alt="#" th:src="${dto.url}" height="100px"></a>
+					<a th:href="|/menu/${dto.cno}|">
+						<img alt="#" th:src="${dto.url}" height="100px">
+					</a>
 					<p th:text="${dto.name}"></p>
 				</li>
 			</ul>

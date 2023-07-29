@@ -85,6 +85,7 @@ public class AdminController {
 	public ModelAndView end() {
 		return new ModelAndView("franchisee/end");
 	}
+	//인덱스페이지에 상품목록 뿌리기
 	@ResponseBody
 	@GetMapping("/index/goods1")
 	public ModelAndView goods() {

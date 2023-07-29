@@ -1,5 +1,6 @@
 package com.coding.cho.goods.dto;
 
+import com.coding.cho.category.CategoryEntity;
 import com.coding.cho.goods.GoodsEntity;
 import com.coding.cho.goods.GoodsImageEntity;
 
@@ -13,6 +14,7 @@ public class GoodsListDTO {
 	private String url;
 	private long no;
 	private boolean hotItem;
+	private long cno;
 	
 	public GoodsListDTO(GoodsEntity entity){
 		this.name=entity.getName();
@@ -24,6 +26,7 @@ public class GoodsListDTO {
                 .orElseThrow();//예외처리
 		this.no=entity.getNo();
 		this.hotItem=entity.isHotItem();
+		this.cno=entity.getCategory().getNo();
 		
 	}
 }

@@ -78,6 +78,10 @@
 
 /*///// 비주얼 영역 끝 //////*/
 
+#product-view {
+ 	margin-top: 70px;
+ }
+
 #product-view > .wrap{
 	justify-content: space-around;
 }
