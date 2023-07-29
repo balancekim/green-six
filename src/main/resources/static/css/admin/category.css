@@ -29,3 +29,10 @@
     border: 1px solid #aeaeae;
     background-color: #80808040;
 }
+/* //////////////////category-list-page////////////////////// */
+.category-update{
+	display:none;
+}
+.open{
+	display: inline-block;
+}

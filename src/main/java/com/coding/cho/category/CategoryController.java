@@ -1,11 +1,15 @@
 package com.coding.cho.category;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.RequiredArgsConstructor;
 
@@ -47,11 +51,20 @@ public class CategoryController {
 		service.listCategory(model);
 		return "admin/category/admin-categorylist" ;
 	}
-	/*
-	@DeleteMapping("/admin/category-list")
-	public String delete() {
-		service.deleteCategory();
+	//카테고리 list 페이지에서 삭제
+	@Transactional
+	@DeleteMapping("/admin/category/{no}")
+	public String delete(@PathVariable long no) {
+		service.deleteCategory(no);
 		return "redirect:/admin/category/admin-categorylist";
 	}
-	*/
+	
+	@Transactional
+	@ResponseBody
+	@PutMapping("/admin/category/{no}")
+	public String update(@PathVariable long no,CategoryUpdateDTO dto) {
+		service.updateCategory(no,dto);
+		return "redirect:/admin/category/admin-categorylist";
+	}
+	
 }

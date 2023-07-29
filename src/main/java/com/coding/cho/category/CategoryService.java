@@ -10,4 +10,8 @@ public interface CategoryService {
 
 	void listCategory(Model model);
 
+	void deleteCategory(long no);
+
+	void updateCategory(long no, CategoryUpdateDTO dto);
+
 }

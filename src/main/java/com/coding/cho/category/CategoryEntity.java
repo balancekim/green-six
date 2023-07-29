@@ -24,6 +24,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Builder
@@ -45,6 +46,13 @@ public class CategoryEntity {
 	
 	@OneToMany(mappedBy = "parent",  cascade = CascadeType.REMOVE)
 	private List<CategoryEntity> children;//하위카테고리목록
+
+	public CategoryEntity update(CategoryUpdateDTO dto) {
+		name=dto.getName();
+		return this;
+	}
+
+
 	
 	
 	
