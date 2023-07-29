@@ -14,6 +14,9 @@ public interface CategoryEntityRepository extends JpaRepository<CategoryEntity, 
 	List<CategoryEntity> findByParent(CategoryEntity parent);
 
 	Optional<CategoryEntity> findByNameAndParent(String categornName, CategoryEntity parent);
+	
+	//카테고리 삭제
+	void deleteByNo(long no);
 
 	
 

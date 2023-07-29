@@ -3,6 +3,8 @@ package com.coding.cho.category;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
@@ -60,6 +62,22 @@ public class CategoryServiceProcess implements CategoryService {
 	public void listCategory(Model model) {
 		List<CategoryEntity> result= categoryRepository.findAll();
 		model.addAttribute("list",result);
+		
+	}
+
+
+	@Override
+	public void deleteCategory(long no) {
+		categoryRepository.deleteByNo(no);
+		
+	}
+
+	
+
+	@Transactional
+	@Override
+	public void updateCategory(long no, CategoryUpdateDTO dto) {
+		categoryRepository.findById(no).map(e->e.update(dto));
 		
 	}
 
