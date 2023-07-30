@@ -3,7 +3,11 @@ package com.coding.cho.category;
 import java.util.List;
 import java.util.Optional;
 
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 public interface CategoryEntityRepository extends JpaRepository<CategoryEntity, Long>{
 	
@@ -17,7 +21,12 @@ public interface CategoryEntityRepository extends JpaRepository<CategoryEntity, 
 	
 	//카테고리 삭제
 	void deleteByNo(long no);
-
+	
+	//카테고리 수정
+	@Modifying
+	@Query("UPDATE CategoryEntity c SET c.name = :name WHERE c.no = :no")
+	 void updateByNoAndName(@Param("no") long no, @Param("name") String name);
+	
 	
 
 	

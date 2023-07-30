@@ -12,6 +12,6 @@ public interface CategoryService {
 
 	void deleteCategory(long no);
 
-	void updateCategory(long no, CategoryUpdateDTO dto);
+	void updateByNoAndName(long no, String name);
 
 }

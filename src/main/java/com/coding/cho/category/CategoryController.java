@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.RequiredArgsConstructor;
@@ -51,7 +52,7 @@ public class CategoryController {
 		service.listCategory(model);
 		return "admin/category/admin-categorylist" ;
 	}
-	//카테고리 list 페이지에서 삭제
+	//카테고리 list 페이지에서 삭제 category.js 참고
 	@Transactional
 	@DeleteMapping("/admin/category/{no}")
 	public String delete(@PathVariable long no) {
@@ -59,11 +60,13 @@ public class CategoryController {
 		return "redirect:/admin/category/admin-categorylist";
 	}
 	
+	//카테고리 수정 category.js 참고
 	@Transactional
 	@ResponseBody
 	@PutMapping("/admin/category/{no}")
-	public String update(@PathVariable long no,CategoryUpdateDTO dto) {
-		service.updateCategory(no,dto);
+	public String update(@PathVariable long no, @RequestParam("name") String name) {
+		service.updateByNoAndName(no,name);
+		System.out.println(no+name);
 		return "redirect:/admin/category/admin-categorylist";
 	}
 	
