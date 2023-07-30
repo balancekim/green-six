@@ -57,7 +57,7 @@ public class CategoryServiceProcess implements CategoryService {
 		
 	}
 
-
+	//카테고리 불러오기
 	@Override
 	public void listCategory(Model model) {
 		List<CategoryEntity> result= categoryRepository.findAll();
@@ -65,21 +65,26 @@ public class CategoryServiceProcess implements CategoryService {
 		
 	}
 
-
+	//카테고리 삭제
 	@Override
 	public void deleteCategory(long no) {
 		categoryRepository.deleteByNo(no);
 		
 	}
 
-	
-
-	@Transactional
+	//카테고리 수정
 	@Override
-	public void updateCategory(long no, CategoryUpdateDTO dto) {
-		categoryRepository.findById(no).map(e->e.update(dto));
+	public void updateByNoAndName(long no, String name) {
+		categoryRepository.updateByNoAndName(no,name);
 		
 	}
+
+
+
+
+	
+
+
 
 
 	

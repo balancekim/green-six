@@ -19,6 +19,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.coding.cho.goods.GoodsEntity;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,6 +39,7 @@ public class CategoryEntity {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long no;
 	
+	
 	@Column(nullable = false)
 	private String name;
 	
@@ -47,13 +50,4 @@ public class CategoryEntity {
 	@OneToMany(mappedBy = "parent",  cascade = CascadeType.REMOVE)
 	private List<CategoryEntity> children;//하위카테고리목록
 
-	public CategoryEntity update(CategoryUpdateDTO dto) {
-		name=dto.getName();
-		return this;
-	}
-
-
-	
-	
-	
 }

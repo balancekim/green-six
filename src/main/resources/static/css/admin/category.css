@@ -36,3 +36,18 @@
 .open{
 	display: inline-block;
 }
+.hideInput{
+	display: none;
+}
+.hide{
+	display: none;
+}
+.cate-div{
+	padding:50px;
+}
+.cate-wrap{
+	width:700px;
+	height: 50px;
+
+}
+.vno{width:100px;}
