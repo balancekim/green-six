@@ -70,10 +70,17 @@ button:hover{
 }
 /* //////댓글 리스트//////// */
 
+
 #comment-list > section > div:nth-child(2) > ul:nth-child(1)
 #comment-write > div {
 	margin-top: 40px;
 }
+#comment-write > div {
+    width: 600px;
+    justify-content: space-between;
+    display: flex;
+}
+
 .form-update{display: none;}
 
 #comment-list li:first-child {
@@ -105,6 +112,12 @@ button:hover{
 	
 }
 
+#comment-list .update-edit{
+	width: 178px;
+    display: flex;
+    margin-left: 14px;	
+}
+
 #comment-list .reply-list .content{
 	width: 100%;
     display: inline-block;
@@ -119,4 +132,10 @@ button:hover{
 }
 #comment-list .reply-cont  ul{
 	border-bottom: 1px solid #e9e9e9;
+}
+
+/*///////////editComment/////////////*/
+.editComment{
+    width: 516px;
+    height: 30px;
 }

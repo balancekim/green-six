@@ -8,9 +8,9 @@ $(function(){
 
 function editClick(){
 	var udwrap=$(this).parents(".udwrap");
-	$(".content").hide();
+	$(this).parent().parent().siblings(".content").hide();
 	udwrap.find(".update").hide();
-	udwrap.find('.form-update').show();
+	udwrap.find('.form-update').css("display","flex");
 }
 
 function cancelClick(){
