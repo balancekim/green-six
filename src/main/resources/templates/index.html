@@ -14,7 +14,7 @@
        		<div class="in">
        			<div class="in-image-list">
 	       			<ul class="image-list flex">
-	       				<th:block th:each="i:${#numbers.sequence(1,3)}">
+	       				<th:block th:each="i:${#numbers.sequence(1,4)}">
 		       				<li class="image">
 		       					<a href="#" >
 		       						<img th:src="|/images/index/visual${i}.jpg|" height="530px">
@@ -23,11 +23,11 @@
 	       				</th:block>
 	       			</ul>
        			</div>
-       			<ul class="flex bullet-list between">
-       				<li class="bullet" th:each="i : ${#numbers.sequence(1,3)}" ><button th:text="${i}"></button></li>
-       			</ul>
        		</div>
        	</div>
+		<ul class="flex bullet-list between">
+			<li class="bullet" th:each="i : ${#numbers.sequence(1,4)}" ><button th:text="${i}"></button></li>
+		</ul>
         <div class="wrap view-size">
 
         	<p class="tit"></p>

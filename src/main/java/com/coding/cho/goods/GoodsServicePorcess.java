@@ -88,14 +88,16 @@ public class GoodsServicePorcess implements GoodsService {
 		CategoryEntity category = cr.findById(dto.getCategory()).orElseThrow();
 		List<GoodsImageEntity> list=entity.getGie();
 		
-			
-		for(int i=0; i<list.size();i++) {
-			System.out.println("dddddddddd"+list.get(i).getBucketKey());
-			System.out.println("ffffffffff"+dto.getBucketKey()[i]);
-			if (dto.getBucketKey()[i] == "")continue;
-			String newUrl=FileUploadUtil.s3TempToSrc(client, bucketName, path+dto.getNewName()[i], path2+dto.getNewName()[i]);
-			FileUploadUtil.delete(client, bucketName, list.get(i).getBucketKey());
-			ir.save(list.get(i).update(dto, i ,newUrl,path2));
+		//이미지 수정안했을때 이미지 작업 X 처리
+		//이미지 수정안했을때 - form 안에 BucketKey length 0
+		//이미지 수정하면 length 1
+		if(dto.getBucketKey().length>0) {
+			for(int i=0; i<list.size();i++) {
+				if (dto.getBucketKey()[i] == "")continue;
+				String newUrl=FileUploadUtil.s3TempToSrc(client, bucketName, path+dto.getNewName()[i], path2+dto.getNewName()[i]);
+				FileUploadUtil.delete(client, bucketName, list.get(i).getBucketKey());
+				ir.save(list.get(i).update(dto, i ,newUrl,path2));
+			}
 		}
 		entity.update(dto, category);
 		FileUploadUtil.clearTemp(client, bucketName, path);

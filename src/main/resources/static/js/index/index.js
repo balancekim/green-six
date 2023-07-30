@@ -8,13 +8,13 @@ var timmer;
 
 $(function(){
 	images=$(".visual-size .in .image");
-	bullets=$(".visual-size .in .bullet");
+	bullets=$(".bullet");
 	move(0);//초기화
 	
 	auto();//타이머를 이용한 자동실행
 	
 	
-	$(".visual-size .in .bullet").click(bulletClicked);
+	$(".bullet").click(bulletClicked);
 	
 	
 });
