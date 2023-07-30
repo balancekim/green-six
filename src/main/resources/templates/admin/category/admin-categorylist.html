@@ -8,14 +8,13 @@
 	<main class="admin-header">
 		<div class="admin-header-wrap"></div>
 		<div class="cate-div">
-			<div class="cate-wrap" th:each="allList:${list}">
-			
-			    <div class="cate-wrap2 flex" th:if="!${allList.parent}">
+			<th:block class="cate-wrap" th:each="allList:${list}">
+			    <div class="mainList flex" th:if="!${allList.parent}">
 			        <p class="vno" th:text="${allList.name}"></p>
 			        <input type="hidden" id="cateNo"  th:value="${allList.no}"> 
-			        <input class="hideInput" id="cateName" type="text" th:value="${allList.name}">
+			        <input class="cateDelHide" id="cateName" type="text" th:value="${allList.name}">
 			        <button type="button" class="category-btn open" id="cate-update" onclick="cateBtnClicked(this)">수정</button>
-			        <div class="category-update">
+			        <div class="cateDelHide">
 				        <button class="hideBtn" onclick="cateUpdateBtn(this)">완료</button>
 				        <input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}"	th:value="${_csrf.token}"/>
 						<input type="hidden" name="_method" value="DELETE">
@@ -23,20 +22,19 @@
 			        </div>
 			    </div>
 			
-			    <div class="sublist flex" th:each="sublist:${list}"
-			        th:if=${sublist.parent==allList}>
+			    <div class="sublist flex" th:each="sublist:${list}" th:if=${sublist.parent==allList}>
 			        <p class="vno" th:text="${sublist.name}"></p>
 			        <input type="hidden" id="cateNo" th:value="${sublist.no}"> 
-			        <input class="hideInput" id="cateName" type="text" th:value="${sublist.name}">
+			        <input class="cateDelHide" id="cateName" type="text" th:value="${sublist.name}">
 			     	<button type="button" class="category-btn open" id="cate-update" onclick="cateBtnClicked(this)">수정</button>
-			        <div class="category-update">
+			        <div class="cateDelHide">
 				        <button class="hideBtn" onclick="cateUpdateBtn(this)">완료</button>
 				        <input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}"	th:value="${_csrf.token}"/>
 						<input type="hidden" name="_method" value="DELETE">
 				        <button type="button"  th:value="${allList.no}" onclick="cateDel(this)">삭제</button>
 			        </div>
 			    </div>
+			    </th:block>
 			</div>
-		</div>
 	</main>
 </html>

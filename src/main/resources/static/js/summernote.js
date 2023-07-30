@@ -23,7 +23,7 @@ setting={
     height: 300,                 // set editor height
     minHeight: null,             // set minimum height of editor
     maxHeight: null,             // set maximum height of editor
-    focus: true ,
+    focus: false ,
     lang: 'ko-KR',
     toolbar: toolbar,
     callbacks:{

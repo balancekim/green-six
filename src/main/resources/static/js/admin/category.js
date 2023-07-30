@@ -2,22 +2,14 @@
  * 
  */
 /*//////////////////category button///////////////////////////*/
-function cateBtnClicked(updateBtn){
-	//수정버튼눌렀을 때 수정버튼 없애고 완료,삭제 버튼활성화
-	$(updateBtn).parents(".cate-wrap").siblings().children().children().siblings(".category-update").removeClass("open")
-	$(updateBtn).addClass("hide");
-	$(updateBtn).parents(".cate-wrap").siblings().children().children("#cate-update").removeClass("hide");
-	
-	//다른 수정버튼 눌렀을 때 input박스 hide
-	$(updateBtn).parents(".cate-wrap").siblings().children().children(".hideInput").hide();
-	//$(updateBtn).parents(".cate-wrap2").siblings().children(".category-update").hide();
-	//$(updateBtn).parents().siblings().children(".category-update").removeClass("open")
-	
-	
-	//수정버튼 눌렀을때 hide된 수정삭제버튼 활성화
-	$(updateBtn).siblings(".category-update").addClass("open");
-	
-	$(updateBtn).siblings(".hideInput").show();
+function cateBtnClicked(delBtn){
+	$(delBtn).siblings(".cateDelHide").addClass("open");
+	$(delBtn).removeClass("open");
+	$(delBtn).addClass("hide");
+	$(delBtn).parents(".mainList").siblings().children(".category-btn").removeClass("hide")
+	$(delBtn).parents(".sublist").siblings().children(".category-btn").removeClass("hide")
+	$(delBtn).parents(".mainList").siblings().children(".cateDelHide").removeClass("open")
+	$(delBtn).parents(".sublist").siblings().children(".cateDelHide").removeClass("open")
 	
  }
 
