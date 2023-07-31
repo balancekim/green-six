@@ -52,22 +52,23 @@ public class CategoryController {
 		service.listCategory(model);
 		return "admin/category/admin-categorylist" ;
 	}
+	
+	
 	//카테고리 list 페이지에서 삭제 category.js 참고
-	@Transactional
+	@ResponseBody
 	@DeleteMapping("/admin/category/{no}")
 	public String delete(@PathVariable long no) {
 		service.deleteCategory(no);
-		return "redirect:/admin/category/admin-categorylist";
+		return "/admin/category/admin-categorylist";
 	}
 	
 	//카테고리 수정 category.js 참고
-	@Transactional
 	@ResponseBody
 	@PutMapping("/admin/category/{no}")
 	public String update(@PathVariable long no, @RequestParam("name") String name) {
 		service.updateByNoAndName(no,name);
 		System.out.println(no+name);
-		return "redirect:/admin/category/admin-categorylist";
+		return "/admin/category/admin-categorylist";
 	}
 	
 }

@@ -20,6 +20,7 @@ import com.coding.cho.goods.GoodsEntity;
 import com.coding.cho.goods.GoodsService;
 import com.coding.cho.goods.dto.GoodsListDTO;
 import com.coding.cho.goods.dto.GoodsSaveDTO;
+import com.coding.cho.goods.dto.SaleSaveDTO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -48,8 +49,8 @@ public class AdminController {
 	
 	@ResponseBody
 	@PostMapping("/admin/goods")
-	public void save(GoodsSaveDTO dto) {
-		service.save(dto);
+	public void save(GoodsSaveDTO dto,SaleSaveDTO saledto) {
+		service.save(dto,saledto);
 	}
 	
 	//파일업로드

@@ -66,17 +66,20 @@ public class CategoryServiceProcess implements CategoryService {
 	}
 
 	//카테고리 삭제
+	@Transactional
 	@Override
 	public void deleteCategory(long no) {
-		categoryRepository.deleteByNo(no);
-		
+		categoryRepository.deleteById(no);;
 	}
 
 	//카테고리 수정
+	@Transactional
 	@Override
 	public void updateByNoAndName(long no, String name) {
-		categoryRepository.updateByNoAndName(no,name);
-		
+		categoryRepository.findById(no)
+					.map(cate->cate.updateName(name))
+					//JPA에서는 session유지된상황(@Transactional) 에서 Entity가 수정되면 update 실행
+					.orElseThrow();
 	}
 
 

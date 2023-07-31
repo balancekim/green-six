@@ -27,9 +27,8 @@ function cateDel(btn){
 	$.ajax({
 		url:`/admin/category/${no}`,
 		type:"DELETE",
-		success:function(){
-			location.href = "/admin/category/admin-categorylist"
-			
+		success:function(resultHref){
+			location.href = resultHref;
 		}
 	
 	})
@@ -63,9 +62,9 @@ function cateUpdateBtn(btn){
     url: `/admin/category/${no}`,
     type: "PUT",
    	data: dataToSend,
-    success: function () {
+    success: function (result) {
 		//update 성공후 redirect 
-     	location.href = "/admin/category/admin-categorylist"
+     	location.href = result;
     }
   });
 }

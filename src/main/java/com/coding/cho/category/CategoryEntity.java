@@ -49,5 +49,11 @@ public class CategoryEntity {
 	
 	@OneToMany(mappedBy = "parent",  cascade = CascadeType.REMOVE)
 	private List<CategoryEntity> children;//하위카테고리목록
+	
+	//update를 위한 편의메서드
+	public CategoryEntity updateName(String name) {
+		this.name=name;
+		return this;
+	}
 
 }
