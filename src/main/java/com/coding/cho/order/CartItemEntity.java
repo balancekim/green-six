@@ -44,4 +44,9 @@ public class CartItemEntity {
 	private int count;
 	
 	
+	public CartItemEntity addCount() {
+		count++;
+		return this;
+	}
+	
 }
