@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="//www.thymeleaf.org"
+<html xmlns:th="//www.thymeleaf.org" xmlns:sec="//www.thymeleaf.org/extras/spring-security"
 	th:replace="layout/common-layout :: commonLayout( ~{::head}, ~{::main} )">
 <head>
 <link rel="stylesheet" href="/css/menu/menu.css">
+<script src="/js/order/order.js"></script>
 </head>
 <main>
 <section class="goods-main">
@@ -24,11 +25,19 @@
 						<li>
 							<span th:text="${dto.price}"></span> 
 							<span>원</span></li>
-						<li><button>담기</button></li>
+						<li>
+							<button onclick="addCart(this)" >담기</button>
+							<input class="gno" type="hidden" th:value="${dto.no}">
+							<input class="name" type="hidden" th:value="${dto.name}">
+							<input class="price" type="hidden" th:value="${dto.price}">
+							<span style="display: none;" class="email" sec:authentication="name">회원정보-아이디</span>
+						</li>
+						
 					</ul>
 				</div>
 			</div>
-			<div>장바구니</div>
+			<div id="showCart">
+			</div>
 		</div>
 </section>
 </main>
