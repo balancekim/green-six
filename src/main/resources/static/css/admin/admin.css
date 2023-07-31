@@ -100,7 +100,14 @@ button:hover{
 .list{
 	   text-align: center;
 }
+.good-btn {
+	justify-content: center;
+	margin: 20px;
+}
 
+.good-btn a{
+	margin-right: 20px;
+}
 .list img:hover{
 	border : 3px solid #88af62;
 	border-radius: 3px;

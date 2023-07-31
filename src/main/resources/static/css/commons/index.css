@@ -97,7 +97,10 @@
 	font-weight: 700;
 	margin-bottom: 20px;
 }
-
+#product-view > div {
+	text-align: center;
+	
+}
 #product-view > .wrap  ul p {
 	text-align: center;
 	font-weight: 500;
