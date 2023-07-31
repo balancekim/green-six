@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.coding.cho.goods.dto.GoodsDetailDTO;
 import com.coding.cho.goods.dto.GoodsUpdateDTO;
+import com.coding.cho.goods.dto.SaleSaveDTO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -37,8 +38,8 @@ public class GoodsController {
 	}
 
 	@PutMapping("/admin/goods/{no}")
-	public String update(@PathVariable long no,GoodsUpdateDTO dto) {
-		service.updateProcess(no,dto);
+	public String update(@PathVariable long no,GoodsUpdateDTO dto,SaleSaveDTO savedto) {
+		service.updateProcess(no,dto,savedto);
 		return "redirect:/admin/goods";
 	}
 	@DeleteMapping("/admin/goods/{no}")
