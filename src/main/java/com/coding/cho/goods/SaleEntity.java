@@ -13,6 +13,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.coding.cho.goods.dto.GoodsSaveDTO;
+import com.coding.cho.goods.dto.SaleSaveDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -38,6 +39,23 @@ public class SaleEntity {
 	@ManyToOne	
 	@JoinColumn(name="gno_no")
 	private GoodsEntity gno;
+
+	public SaleEntity update(SaleSaveDTO savedto) {
+		this.discount=getDiscount();
+		this.startDate=getStartDate();
+		this.startDate=getEndDate();
+		return this;
+		
+	}
+
+	public SaleEntity updateSale(SaleSaveDTO savedto) {
+		this.discount=savedto.getDiscount();
+		this.startDate=savedto.getStartDate();
+		this.endDate=savedto.getEndDate();
+		return this;
+	}
+
+
 	
 	
 }

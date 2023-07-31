@@ -94,7 +94,7 @@ public class GoodsServicePorcess implements GoodsService {
 
 	@Transactional
 	@Override
-	public void updateProcess(long no, GoodsUpdateDTO dto) {
+	public void updateProcess(long no, GoodsUpdateDTO dto,SaleSaveDTO savedto) {
 
 		GoodsEntity entity = gr.findById(no).orElseThrow();
 		CategoryEntity category = cr.findById(dto.getCategory()).orElseThrow();
@@ -114,6 +114,8 @@ public class GoodsServicePorcess implements GoodsService {
 		entity.update(dto, category);
 		FileUploadUtil.clearTemp(client, bucketName, path);
 		
+		SaleEntity sale = salerepo.findByGnoNo(no).orElseThrow();
+		sale.updateSale(savedto);
 		
 	}
 

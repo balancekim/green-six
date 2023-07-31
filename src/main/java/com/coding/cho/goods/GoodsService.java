@@ -24,9 +24,11 @@ public interface GoodsService {
 
 	void detailProcess(long no, Model model);
 
-	void updateProcess(long no, GoodsUpdateDTO dto);
+	void updateProcess(long no, GoodsUpdateDTO dto, SaleSaveDTO savedto);
 
 	void deleteProcess(long no);
+
+	
 
 	
 
