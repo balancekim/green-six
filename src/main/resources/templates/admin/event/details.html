@@ -31,8 +31,8 @@
 						<label>이벤트 이미지</label>
 						<div class="def-img" >
 							<span>대표이미지</span>
-							<th:block th:each="list:${detail.gie}">
-								<div class="img-wrap" th:if="${list.isDef==true}" >
+							<th:block th:each="list:${detail.gie}" th:if="${list.isDef==true}">
+								<div class="img-wrap"  >
 									<label class="pre-img"  th:style="|background-image: url('${list.url}');|">
 										<input type="file" onchange="tempUpload(this)">
 									</label>
@@ -50,11 +50,11 @@
 							</pre>
 						</div>
 						<div>
-							<span>추가이미지(최대5장)</span>
+							<span>추가이미지 한장</span>
 							<div class="add-img flex">
-							<th:block th:each="list:${detail.gie}">
+							<th:block th:each="list:${detail.gie}" th:if="${list.isDef==false}">
 								<div class="img-wrap">
-									<label class="pre-img" th:if="${list.isDef==false}" th:style="|background-image: url('${list.url}');|">
+									<label class="pre-img"  th:style="|background-image: url('${list.url}');|">
 										<input type="file" onchange="tempUpload(this)">
 									</label>
 									<input type="hidden" class="bucketKey" name="bucketKey">

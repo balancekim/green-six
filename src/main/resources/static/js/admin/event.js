@@ -77,7 +77,7 @@ function eventSummited(){
 			 //추가하면 안되는경우 
 			 //1.태그가 5개가 완료된경우
 			 //2. 5개만들기전 이전이미지를 수정하면
-			 if(addLength >= 5 || targetIdx < addLength)return;
+			 if(addLength >= 1 || targetIdx < addLength)return;
 			 
 			 var appendTag=`
 			 <div class="img-wrap">
