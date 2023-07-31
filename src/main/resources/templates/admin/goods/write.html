@@ -12,6 +12,10 @@
 	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 	<script src="/js/summernote.js" ></script>
 	<script src="/js/admin/fileupload.js" ></script>
+	<!-- calendarBycho -->
+	<script defer src="/js/common/calendar.js" ></script>
+	<script defer src="/js/common/calendar-picker.js" ></script>
+	<link rel="stylesheet" href="/css/commons/calendar.css">
 </head>
 <main class="admin-header">
 	<h1>상품등록</h1>
@@ -51,11 +55,42 @@
 					<li>
 						<label>할인</label>
 						<dl>
-							<dt>
-								<input type="radio" name="onSale" value="true">할인설정
-								<input type="radio" name="onSale" value="false" checked="checked">설정없음
+							<dt class="flex">
+								<label>
+									<input type="radio" name="onSale" value="true" onclick="saleClicked()">할인설정
+								</label>
+								<label>
+									<input type="radio" name="onSale" value="false" checked="checked" onclick="saleCancle()">설정없음	
+								</label>
+								
 							</dt>
-							<dd></dd>
+							<dd>
+								<div class="sale-wrap">
+									<div class="flex">
+										<label>
+											<span>할인금액 : </span>
+										<input type="text" placeholder="할인금액" id="salePrice" name="discount"><span>원</span>
+										</label>
+										<label>
+											<input type="radio" name="onSaleDate" value="false" checked="checked" onclick="dateCancel()">설정없음
+										</label>
+										<label>
+											<input type="radio" name="onSaleDate" value="true" onclick="dateClicked()">할인기간 설정
+										</label>
+									</div>
+									<div id="saleDate-wrap">
+										<label>
+											<span>할인기간 : </span>
+											<span id="saleDate">
+												<input type="text" onclick="showCalendar()"  placeholder="시작일" id="sale-start-date" name="startDate">
+												<input type="text" onclick="showCalendar()"  placeholder="종료일" id="sale-end-date" name="endDate">
+											</span>
+										</label>
+										
+										<th:block th:insert="~{flagment/calendar::#calendar-form}" />
+									</div>
+								</div>
+							</dd>
 						</dl>
 					</li>
 					<li>

@@ -9,13 +9,14 @@ import org.springframework.web.multipart.MultipartFile;
 import com.coding.cho.goods.dto.GoodsListDTO;
 import com.coding.cho.goods.dto.GoodsSaveDTO;
 import com.coding.cho.goods.dto.GoodsUpdateDTO;
+import com.coding.cho.goods.dto.SaleSaveDTO;
 import com.coding.cho.goods.dto.GoodsDetailDTO;
 
 public interface GoodsService {
 
 	Map<String, String> uploadSummernoteImgProcess(MultipartFile file);
 
-	void save(GoodsSaveDTO dto);
+	void save(GoodsSaveDTO dto, SaleSaveDTO saledto);
 
 	Map<String, String> tempUpload(MultipartFile temp);
 

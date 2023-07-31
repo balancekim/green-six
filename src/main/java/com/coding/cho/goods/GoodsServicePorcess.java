@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -18,6 +19,7 @@ import com.coding.cho.common.utils.FileUploadUtil;
 import com.coding.cho.goods.dto.GoodsListDTO;
 import com.coding.cho.goods.dto.GoodsSaveDTO;
 import com.coding.cho.goods.dto.GoodsUpdateDTO;
+import com.coding.cho.goods.dto.SaleSaveDTO;
 import com.coding.cho.goods.dto.GoodsDetailDTO;
 
 import lombok.RequiredArgsConstructor;
@@ -30,7 +32,8 @@ public class GoodsServicePorcess implements GoodsService {
 	private final GoodsEntityRepository gr;
 	private final CategoryEntityRepository cr;
 	private final GoodsImageEntityRepository ir;
-
+	private final SaleEntityRepository salerepo;
+	
 	@Value("${cloud.aws.s3.bucket}")
 	private String bucketName;
 	@Value("${cloud.aws.s3.temp-path}")
@@ -44,7 +47,7 @@ public class GoodsServicePorcess implements GoodsService {
 	}
 
 	@Override
-	public void save(GoodsSaveDTO dto) {
+	public void save(GoodsSaveDTO dto,SaleSaveDTO saledto) {
 
 		// 1. 상품정보 저장
 		GoodsEntity ge = gr
@@ -59,6 +62,15 @@ public class GoodsServicePorcess implements GoodsService {
 					.url(newUrl).bucketKey(path2+dto.getNewName()[i]).isDef(dto.getDef()[i]).goods(ge).build());
 		}
 		FileUploadUtil.clearTemp(client, bucketName, path);
+		
+		
+		
+		salerepo.save(SaleEntity.builder()
+				.discount(saledto.getDiscount())
+				.startDate(saledto.getStartDate())
+				.endDate(saledto.getEndDate())
+				.gno(ge)
+				.build());
 	}
 
 	@Override
@@ -112,6 +124,8 @@ public class GoodsServicePorcess implements GoodsService {
 		String bucketKey=entity.getGie().get(0).getBucketKey();
 		FileUploadUtil.delete(client, bucketName, bucketKey);
 		entity.getGie().forEach(en->ir.delete(en));
+		SaleEntity saEntity= salerepo.findByGnoNo(no).orElseThrow();
+		salerepo.deleteByGnoNo(no);
 		gr.deleteById(no);
 	}
 	

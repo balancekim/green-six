@@ -22,6 +22,8 @@ public class GoodsController {
 	
 	private final GoodsService service;
 	
+	
+	
 	@GetMapping("/admin/goods/new")
 	public String write() {
 		return "admin/goods/write";

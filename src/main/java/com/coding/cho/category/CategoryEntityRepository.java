@@ -20,15 +20,14 @@ public interface CategoryEntityRepository extends JpaRepository<CategoryEntity, 
 	Optional<CategoryEntity> findByNameAndParent(String categornName, CategoryEntity parent);
 	
 	//카테고리 삭제
-	void deleteByNo(long no);
+	//void deleteByNo(long no);
+	
 	
 	//카테고리 수정
+	/*
 	@Modifying
 	@Query("UPDATE CategoryEntity c SET c.name = :name WHERE c.no = :no")
-	 void updateByNoAndName(@Param("no") long no, @Param("name") String name);
-	
-	
-
-	
+	void updateByNoAndName(@Param("no") long no, @Param("name") String name);
+	*/
 
 }

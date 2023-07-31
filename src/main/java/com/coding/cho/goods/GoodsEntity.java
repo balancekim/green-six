@@ -53,6 +53,8 @@ public class GoodsEntity {
 	
 	private boolean onSale;
 	
+	
+	
 	public GoodsEntity update(GoodsUpdateDTO dto, CategoryEntity category2) {
 		this.name=dto.getName();
 		this.price=dto.getPrice();
