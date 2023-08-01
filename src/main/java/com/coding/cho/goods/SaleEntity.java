@@ -40,14 +40,6 @@ public class SaleEntity {
 	@JoinColumn(name="gno_no")
 	private GoodsEntity gno;
 
-	public SaleEntity update(SaleSaveDTO savedto) {
-		this.discount=getDiscount();
-		this.startDate=getStartDate();
-		this.startDate=getEndDate();
-		return this;
-		
-	}
-
 	public SaleEntity updateSale(SaleSaveDTO savedto) {
 		this.discount=savedto.getDiscount();
 		this.startDate=savedto.getStartDate();
