@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="//www.thymeleaf.org">
-		<p class="goods-title">할인상품</p>
+		<p class="index-title">할인상품</p>
 		<div class="wrap">
 			<ul class="wrap grid-container"  >
 				<li th:each="dto:${list}" >
 					<a th:href="|/menu/${dto.goods.cno}|">
-						<img alt="#" th:src="${dto.goods.url}" height="100px">
+						<img class="index-img" alt="#" th:src="${dto.goods.url}" >
 					</a>
-					<p th:text="${dto.goods.name}"></p>
-					<div class="flex center" >
+					<p class="sale-name" th:text="${dto.goods.name}"></p>
+					<div class="sale-cont flex center" >
 						<span></span>
-						<span th:with="rate=${dto.discount *100 / dto.goods.price}">
+						<span class="sale-dis" th:with="rate=${dto.discount *100 / dto.goods.price}">
 							<span th:text="${#numbers.formatInteger(rate,1,'POINT')}">할인율</span><i>%</i>
 						</span>
 						<span th:with="dis=${dto.goods.price-dto.discount}">
-							<span th:text="${#numbers.formatInteger(dis,3,'COMMA')}">할인후</span><i>원</i>
+							<span class="sale-price" th:text="${#numbers.formatInteger(dis,3,'COMMA')}">할인후</span><i class="sale-won">원</i>
 						</span>
-						<span style="text-decoration: line-through;font-size: 12px;">
+						<span class="sale-or-price" style="text-decoration: line-through;">
 							<span th:text="${#numbers.formatInteger(dto.goods.price,3,'COMMA')}">할인전</span><i>원</i>
 						</span>
 						

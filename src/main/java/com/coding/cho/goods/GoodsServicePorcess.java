@@ -97,9 +97,8 @@ public class GoodsServicePorcess implements GoodsService {
 	@Transactional
 	@Override
 	public void hotItemList(Model model) {
-		
 		model.addAttribute("list", gr.findByHotItem(true).stream()
-										.limit(5)
+										.limit(4)
 										.map(GoodsListDTO::new)
 										.collect(Collectors.toList()));
 		
@@ -158,8 +157,10 @@ public class GoodsServicePorcess implements GoodsService {
 		LocalDate today= LocalDate.now();
 		DateTimeFormatter fomatter=DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		String formattedToday=today.format(fomatter);
-		//Sort sort=Sort.by(Direction.ASC, "startDate");
-		//Pageable pageable=PageRequest.of(0, 5, sort);
+		/*
+		 * Sort sort=Sort.by(Direction.ASC, "startDate"); Pageable
+		 * pageable=PageRequest.of(0, 4, sort);
+		 */
 		
 		//*
 		List<SaleEntity> result= salerepo.
@@ -167,7 +168,7 @@ public class GoodsServicePorcess implements GoodsService {
 		System.out.println("리스트 : "+result.size());
 		
 		model.addAttribute("list", result.stream()
-				.limit(5)
+				.limit(4)
 				.map(SaleListDTO::new)
 				.collect(Collectors.toList()));
 		//*/
