@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="//www.thymeleaf.org">
-		<p class="goods-title">인기상품</p>
+		<p class="index-title">인기상품</p>
 		<div class="wrap">
 			<ul class="wrap grid-container"  >
 				<li th:each="dto:${list}">
 					<a th:href="|/menu/${dto.cno}|">
-						<img alt="#" th:src="${dto.url}" height="100px">
+						<img class="index-img" alt="#" th:src="${dto.url}" >
 					</a>
-					<p th:text="${dto.name}"></p>
+					<p class="hot-name" th:text="${dto.name}"></p>
+					<span class="hot-price-all">
+						<p class="hot-price" th:text="${dto.price}"></p><i class="hot-won">원</i>
+					</span>
 				</li>
 			</ul>
 		</div>
