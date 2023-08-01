@@ -1,5 +1,8 @@
 package com.coding.cho.goods;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -8,6 +11,10 @@ import javax.transaction.Transactional;
 
 import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,6 +26,7 @@ import com.coding.cho.common.utils.FileUploadUtil;
 import com.coding.cho.goods.dto.GoodsListDTO;
 import com.coding.cho.goods.dto.GoodsSaveDTO;
 import com.coding.cho.goods.dto.GoodsUpdateDTO;
+import com.coding.cho.goods.dto.SaleListDTO;
 import com.coding.cho.goods.dto.SaleSaveDTO;
 import com.coding.cho.goods.dto.GoodsDetailDTO;
 
@@ -67,8 +75,8 @@ public class GoodsServicePorcess implements GoodsService {
 		
 		salerepo.save(SaleEntity.builder()
 				.discount(saledto.getDiscount())
-				.startDate(saledto.getStartDate())
-				.endDate(saledto.getEndDate())
+				.startDate(saledto.getStartDate().equals("")?null:saledto.getStartDate())
+				.endDate(saledto.getEndDate().equals("")?null:saledto.getStartDate())
 				.gno(ge)
 				.build());
 	}
@@ -83,6 +91,18 @@ public class GoodsServicePorcess implements GoodsService {
 	public List<GoodsListDTO> list() {
 		return gr.findAll().stream().map(GoodsListDTO::new)// 조회된 엔티티를 GoodsListDTO로 mapping //파일 용량이 큰경우 썸네일 기능을 사용하여
 				.collect(Collectors.toList());
+	}
+	
+	
+	@Transactional
+	@Override
+	public void hotItemList(Model model) {
+		
+		model.addAttribute("list", gr.findByHotItem(true).stream()
+										.limit(5)
+										.map(GoodsListDTO::new)
+										.collect(Collectors.toList()));
+		
 	}
 
 	@Override
@@ -126,10 +146,36 @@ public class GoodsServicePorcess implements GoodsService {
 		String bucketKey=entity.getGie().get(0).getBucketKey();
 		FileUploadUtil.delete(client, bucketName, bucketKey);
 		entity.getGie().forEach(en->ir.delete(en));
-		SaleEntity saEntity= salerepo.findByGnoNo(no).orElseThrow();
+		//SaleEntity saEntity= salerepo.findByGnoNo(no).orElseThrow();
 		salerepo.deleteByGnoNo(no);
 		gr.deleteById(no);
 	}
+
+	@Transactional
+	@Override
+	public void saleList(Model model) {
+		
+		LocalDate today= LocalDate.now();
+		DateTimeFormatter fomatter=DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		String formattedToday=today.format(fomatter);
+		//Sort sort=Sort.by(Direction.ASC, "startDate");
+		//Pageable pageable=PageRequest.of(0, 5, sort);
+		
+		//*
+		List<SaleEntity> result= salerepo.
+				findByStartDateLessThanEqualAndEndDateGreaterThanEqualOrStartDateIsNull(formattedToday,formattedToday);
+		System.out.println("리스트 : "+result.size());
+		
+		model.addAttribute("list", result.stream()
+				.limit(5)
+				.map(SaleListDTO::new)
+				.collect(Collectors.toList()));
+		//*/
+		
+		
+	}
+
+	
 	
 
 }

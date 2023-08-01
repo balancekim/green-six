@@ -184,3 +184,14 @@
 	border-top: 1px solid #e9e9e9;
 	margin-top: 10px;
 }
+.goods-title{
+	font-size: 24px;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+}

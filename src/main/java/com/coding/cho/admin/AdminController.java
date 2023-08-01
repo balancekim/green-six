@@ -86,14 +86,23 @@ public class AdminController {
 	public ModelAndView end() {
 		return new ModelAndView("franchisee/end");
 	}
+	
 	//인덱스페이지에 상품목록 뿌리기
-	@ResponseBody
-	@GetMapping("/index/goods1")
-	public ModelAndView goods() {
-		ModelAndView mv=new ModelAndView("index/goods/goods");
-		mv.addObject("list", service.list());
-		return mv;
+	//비동기-hot-item
+	@GetMapping("/index/goods")
+	public String goods(Model model) {
+		service.hotItemList(model);
+		return "index/goods/goods";
 	}
+	
+	//비동기-할인상품
+	@GetMapping("/index/sale")
+	public String sale(Model model) {
+		service.saleList(model);
+		
+		return "index/goods/sale-list";
+	}
+	
 	//관리자 페이지에서  이벤트 등록 메뉴 누르면 등록 페이지로 이동 
 	@GetMapping("/admin/event/new")
 	public String write() {
@@ -111,4 +120,6 @@ public class AdminController {
 	public void saveEvent(EventSaveDTO dto) {
 		es.save(dto);
 	}
+	
+	
 }
