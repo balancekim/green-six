@@ -1,7 +1,9 @@
 package com.coding.cho.goods;
 
+import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.coding.cho.category.CategoryEntity;
@@ -15,6 +17,10 @@ public interface SaleEntityRepository extends JpaRepository<SaleEntity, Long>{
 	Optional<SaleEntity> findByGnoNo(long no);
 
 	void deleteByGnoNo(long no);
+
+
+	List<SaleEntity> findByStartDateLessThanEqualAndEndDateGreaterThanEqualOrStartDateIsNull(String formattedToday,
+			String formattedToday2);
 	
 
 }

@@ -1,5 +1,7 @@
 package com.coding.cho.goods.dto;
 
+import java.util.stream.Collectors;
+
 import com.coding.cho.category.CategoryEntity;
 import com.coding.cho.goods.GoodsEntity;
 import com.coding.cho.goods.GoodsImageEntity;
@@ -15,6 +17,7 @@ public class GoodsListDTO {
 	private long no;
 	private boolean hotItem;
 	private long cno;
+	
 	
 	public GoodsListDTO(GoodsEntity entity){
 		this.name=entity.getName();

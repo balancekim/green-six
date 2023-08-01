@@ -1,14 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="//www.thymeleaf.org">
-    <head>
-   	 	<meta charset="UTF-8">
-    	<title>Insert title here</title>
-    </head>
-	<body>
-		<p>인기상품</p>
-		<div class="wrap flex">
-			<ul class="wrap" th:if="|${dto.hotItem eq true}|" th:each="dto:${list}">
-				<li >
+		<p class="goods-title">인기상품</p>
+		<div class="wrap">
+			<ul class="wrap grid-container"  >
+				<li th:each="dto:${list}">
 					<a th:href="|/menu/${dto.cno}|">
 						<img alt="#" th:src="${dto.url}" height="100px">
 					</a>
@@ -16,5 +11,4 @@
 				</li>
 			</ul>
 		</div>
-	</body>
 </html>
