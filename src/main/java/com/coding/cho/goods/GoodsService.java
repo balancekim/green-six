@@ -28,6 +28,10 @@ public interface GoodsService {
 
 	void deleteProcess(long no);
 
+	void saleList(Model model);
+
+	void hotItemList(Model model);
+
 	
 
 	

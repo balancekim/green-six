@@ -21,11 +21,20 @@ $(function(){
 $(function(){
 	
 	$.ajax({
-		url:"/index/goods1",
+		url:"/index/goods",
 		success:function(result){
 			$("#product-view").html(result);
 		}
 	})
+	
+	$.ajax({
+		url:"/index/sale",
+		success:function(result){
+			$("#product-sale").html(result);
+		}
+	})
+	
+	
 })
 
 

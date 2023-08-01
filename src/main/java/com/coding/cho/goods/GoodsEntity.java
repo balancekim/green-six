@@ -53,7 +53,8 @@ public class GoodsEntity {
 	
 	private boolean onSale;
 	
-	
+	@OneToMany(mappedBy = "gno")
+	private List<SaleEntity> saleList;
 	
 	public GoodsEntity update(GoodsUpdateDTO dto, CategoryEntity category2) {
 		this.name=dto.getName();
