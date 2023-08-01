@@ -1,7 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="//www.thymeleaf.org" xmlns:sec="//www.thymeleaf.org/extras/spring-security">
 	<section>
-	  <h2>여기에 뿌릴거는 gno 를 통해 카트에 저장하고 누르면 카운트 올라가게끔 하고 상품이름과 카트의 카운트를 가져오면됌</h2>
-	  <p>왜 안됌?</p>
+	  <h2>장바구니 리스트</h2>
+	  <ul  th:each="dto:${cartItems}">
+	  	<li >
+	  		<span >상품 명 - </span>
+	  		<span th:text="${dto.goods.name}">상품 명</span>
+	  	</li>
+	  	<li >
+	  		<span>수량</span>
+	  		<span th:text="${dto.count}">수량</span>
+	  	</li>
+	  </ul>
+	  <ul >
+	  	<li>
+	  		<span>총 주문가격 -</span>
+	  		<span th:text="${totalPrice}">총 주문가격</span>
+	  	</li>
+	  </ul>
 	</section>
 </html>

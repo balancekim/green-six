@@ -16,11 +16,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Setter
 @Table(name = "cart_item")
 @Entity
 public class CartItemEntity {
@@ -41,12 +43,20 @@ public class CartItemEntity {
 	
 	
 	@Column(nullable = false)
-	private int count;
+	private int count;             //상품 개수
 	
 	
-	public CartItemEntity addCount() {
-		count++;
-		return this;
+	public static CartItemEntity createCartItem(CartEntity cart, GoodsEntity goods, int amount) {
+	        CartItemEntity cartItem = new CartItemEntity();
+	        cartItem.setCartEntity(cart);
+	        cartItem.setGoods(goods);
+	        cartItem.setCount(amount);
+	        return cartItem;
+	    }
+	
+	public void addCount(int count) {
+		this.count+=count;
+		
 	}
 	
 }

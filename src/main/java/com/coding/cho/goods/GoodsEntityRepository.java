@@ -14,4 +14,5 @@ public interface GoodsEntityRepository extends JpaRepository<GoodsEntity, Long>{
 
 	List<GoodsEntity> findByCategory(CategoryEntity categoryEntity);
 
+
 }
