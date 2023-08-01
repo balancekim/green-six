@@ -17,10 +17,12 @@ public interface GoodsEntityRepository extends JpaRepository<GoodsEntity, Long>{
 
 	List<GoodsEntity> findByCategory(CategoryEntity categoryEntity);
 
+
 	List<GoodsEntity> findByOnSale(boolean onSale);
 
 	List<GoodsEntity> findByHotItem(boolean hotItem);
 	
 	
+
 
 }

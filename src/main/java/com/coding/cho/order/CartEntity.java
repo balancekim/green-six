@@ -13,9 +13,12 @@ import com.coding.cho.common.domain.entity.MemberEntity;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
+@ToString
 @Entity
-@Getter@Setter
+@Getter
+@Setter
 @Table(name = "cart")
 public class CartEntity {
 
@@ -23,8 +26,17 @@ public class CartEntity {
 	@GeneratedValue(strategy =GenerationType.AUTO)
 	private long no;
 	
+	private int count; //카트에 담긴 총 상품 개수
+	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="uno")
 	private MemberEntity memberEntity;
+	
+	  public static CartEntity createCart(MemberEntity mem) {
+	        CartEntity cart = new CartEntity();
+	        cart.setCount(0);
+	        cart.setMemberEntity(mem);
+	        return cart;
+	    }
 	
 }

@@ -24,7 +24,9 @@ public class orderController {
 		System.out.println("담기 누르면 gno 값이 오냐?"+dto);
 		ModelAndView mv=new ModelAndView("order/cartInfo");	
 		 os.addGoods(dto); 
-		mv.addObject("cart",dto); 
+		 
+		 os.showCart(dto,mv);
+			/* mv.addObject("cart",dto); */ 
 		return mv;
 	}
 	
