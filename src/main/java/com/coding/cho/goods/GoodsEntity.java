@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -45,7 +46,7 @@ public class GoodsEntity {
 	@Column(nullable = false)
 	private boolean hotItem;
 	
-	@OneToMany(mappedBy = "goods")
+	@OneToMany(mappedBy = "goods" ,fetch = FetchType.EAGER)
 	private List<GoodsImageEntity> gie;
 	
 	@ManyToOne

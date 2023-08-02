@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="//www.thymeleaf.org" xmlns:sec="//www.thymeleaf.org/extras/spring-security">
+
 	<section class="cart">
 	  <h1>장바구니 리스트</h1>
 	  <div class="cart-wrap">
@@ -9,9 +10,12 @@
 		  		<span th:text="${dto.goods.name}">상품 명</span>
 		  	</li>
 		  	<li >
-		  		<button class="cart-lBtn">-</button>
+				<img alt="#" th:src="${dto.goods.gie[0].url}" height="50px;">
+		  		<button class="cart-lBtn" onclick="deleteCount(this)">-</button>
 		  		<div th:text="${dto.count}" class="num">수량</div>
-		  		<button class="cart-RBtn">+</button>
+		  		<button class="cart-RBtn" onclick="addCart(this)">+</button>
+		  		<input class="gno" type="hidden" th:value="${dto.goods.no}">
+		  		<span style="display: none;" class="email" sec:authentication="name">회원정보-아이디</span>
 		  	</li>
 		  </ul>
 		  <ul >

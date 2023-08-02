@@ -16,6 +16,7 @@ import com.coding.cho.order.CartEntity;
 import com.coding.cho.order.CartEntityRepository;
 import com.coding.cho.order.CartItemEntity;
 import com.coding.cho.order.CartItemEntityREpository;
+import com.coding.cho.order.dto.DeleteCountDTO;
 import com.coding.cho.order.dto.SaveCateDTO;
 import com.coding.cho.order.service.OrderService;
 
@@ -87,6 +88,39 @@ public class OrderServiceProcess implements OrderService {
 
       
 		
+	}
+	@Transactional
+	@Override
+	public void deleteCount(SaveCateDTO dto) {
+		
+		 MemberEntity me = mr.findByEmail(dto.getEmail()).get();//세션의 이메일 정보로 유저 no값 가져오기
+		 Optional<CartEntity> cart2 = cr.findByMemberEntityNo(me.getNo());//유저 no값으로 연결된 카트엔티티가 있는지 없는지 확인하기
+		   CartEntity cart;
+		   if(cart2.isEmpty()) {//없으면 만들어서 저장
+			   cart = CartEntity.createCart(me);
+		        cr.save(cart);
+		   }else {
+			   cart=cart2.get();
+		   }
+		   
+		   long cno = cart.getNo();
+		   CartItemEntity cartItem = cir.findByCartEntityNoAndGoodsNo(cno,dto.getGno());
+		   if (cartItem.getCount() > 1) {//카운트가 1보다 크면 1줄인다. 
+			   CartItemEntity update = cartItem;
+				  update.setCartEntity(cartItem.getCartEntity());
+				  update.setGoods(cartItem.getGoods());
+				  update.deleteCount(1);
+				  update.setCount(update.getCount()); 
+				  cir.save(update); 
+			}else {
+				cir.delete(cartItem);
+			}
+				  
+				  
+			   cart.setCount(cart.getCount()-1);
+		   
+		   
+		 	
 	}
 
 	
