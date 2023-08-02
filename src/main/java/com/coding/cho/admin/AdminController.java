@@ -49,7 +49,9 @@ public class AdminController {
 	
 	@ResponseBody
 	@PostMapping("/admin/goods")
-	public void save(GoodsSaveDTO dto,SaleSaveDTO saledto) {
+	public void save(GoodsSaveDTO dto, SaleSaveDTO saledto) {
+		System.out.println(">>>>>>>>>");
+		System.out.println(saledto);
 		service.save(dto,saledto);
 	}
 	
@@ -99,8 +101,7 @@ public class AdminController {
 	@GetMapping("/index/sale")
 	public String sale(Model model) {
 		service.saleList(model);
-		
-		return "index/goods/sale-list";
+		return "index/goods/goods";
 	}
 	
 	//관리자 페이지에서  이벤트 등록 메뉴 누르면 등록 페이지로 이동 

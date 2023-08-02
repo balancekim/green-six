@@ -18,6 +18,9 @@ public class GoodsListDTO {
 	private boolean hotItem;
 	private long cno;
 	
+	private boolean onSale; 
+	private SaleListDTO sale;
+	
 	
 	public GoodsListDTO(GoodsEntity entity){
 		this.name=entity.getName();
@@ -30,6 +33,11 @@ public class GoodsListDTO {
 		this.no=entity.getNo();
 		this.hotItem=entity.isHotItem();
 		this.cno=entity.getCategory().getNo();
+		this.onSale=entity.isOnSale();
+		
+		if(onSale) {
+			this.sale=new SaleListDTO(entity.getSale());
+		}
 		
 	}
 }

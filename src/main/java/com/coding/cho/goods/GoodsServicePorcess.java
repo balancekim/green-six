@@ -72,13 +72,7 @@ public class GoodsServicePorcess implements GoodsService {
 		FileUploadUtil.clearTemp(client, bucketName, path);
 		
 		
-		
-		salerepo.save(SaleEntity.builder()
-				.discount(saledto.getDiscount())
-				.startDate(saledto.getStartDate().equals("")?null:saledto.getStartDate())
-				.endDate(saledto.getEndDate().equals("")?null:saledto.getStartDate())
-				.gno(ge)
-				.build());
+		salerepo.save(saledto.toEntity().goods(ge));
 	}
 
 	@Override
@@ -133,8 +127,14 @@ public class GoodsServicePorcess implements GoodsService {
 		entity.update(dto, category);
 		FileUploadUtil.clearTemp(client, bucketName, path);
 		
-		SaleEntity sale = salerepo.findByGnoNo(no).orElseThrow();
-		sale.updateSale(savedto);
+		//????????
+		if(entity.isOnSale()) {
+			// 이미 존재하는 경우, 새로 생성할경우
+			salerepo.findByNo(no).ifPresentOrElse(
+					ent->ent.updateSale(savedto),//존재하면 update
+					()->salerepo.save(savedto.toEntity().goods(entity)));//새로운 저장
+			
+		}
 		
 	}
 
@@ -146,7 +146,7 @@ public class GoodsServicePorcess implements GoodsService {
 		FileUploadUtil.delete(client, bucketName, bucketKey);
 		entity.getGie().forEach(en->ir.delete(en));
 		//SaleEntity saEntity= salerepo.findByGnoNo(no).orElseThrow();
-		salerepo.deleteByGnoNo(no);
+		salerepo.deleteByNo(no);
 		gr.deleteById(no);
 	}
 
@@ -154,22 +154,24 @@ public class GoodsServicePorcess implements GoodsService {
 	@Override
 	public void saleList(Model model) {
 		
-		LocalDate today= LocalDate.now();
-		DateTimeFormatter fomatter=DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		String formattedToday=today.format(fomatter);
+		LocalDateTime today= LocalDateTime.now();
+		//DateTimeFormatter fomatter=DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		//String formattedToday=today.format(fomatter);
 		/*
 		 * Sort sort=Sort.by(Direction.ASC, "startDate"); Pageable
 		 * pageable=PageRequest.of(0, 4, sort);
 		 */
-		
-		//*
-		List<SaleEntity> result= salerepo.
-				findByStartDateLessThanEqualAndEndDateGreaterThanEqualOrStartDateIsNull(formattedToday,formattedToday);
-		System.out.println("리스트 : "+result.size());
-		
+		System.out.println("========================");
+		//List<GoodsEntity> result=gr.findByOnSaleAndSale_startDateLessThanEqualAndSale_endDateGreaterThanEqualOrOnSaleAndSale_startDateIsNull(true,today,today,true);
+		List<GoodsEntity> result=gr.findByOnSaleAndSale_startDateIsNullOrSale_startDateLessThanEqualAndSale_endDateGreaterThanEqual(true,today,today);
+		//List<GoodsEntity> result=gr.findByOnSaleAndSale_startDateIsNull(true);
+				// 오늘 판매 중인 상품 조회
+		System.out.println("========================");
+		result.forEach(System.out::println);
 		model.addAttribute("list", result.stream()
+				//.filter(goods->goods.getSale().getStartDate().isBefore(today) &&goods.getSale().getEndDate().isAfter(today))
+				.map(GoodsListDTO::new)
 				.limit(4)
-				.map(SaleListDTO::new)
 				.collect(Collectors.toList()));
 		//*/
 		

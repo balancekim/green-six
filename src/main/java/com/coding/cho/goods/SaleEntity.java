@@ -1,6 +1,8 @@
 package com.coding.cho.goods;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,17 +35,22 @@ public class SaleEntity {
 	
 	private int discount;
 	
-	private String startDate;
-	private String endDate;
+	private LocalDateTime startDate;
+	private LocalDateTime endDate;
 	
-	@ManyToOne	
-	@JoinColumn(name="gno_no")
-	private GoodsEntity gno;
+	@OneToOne	
+	@JoinColumn(name="gno")
+	private GoodsEntity goods;
 
-	public SaleEntity updateSale(SaleSaveDTO savedto) {
-		this.discount=savedto.getDiscount();
-		this.startDate=savedto.getStartDate();
-		this.endDate=savedto.getEndDate();
+	//goods-gno 편의메서드
+	public SaleEntity goods(GoodsEntity goods) {
+		this.goods=goods;
+		return this;
+	}
+	public SaleEntity updateSale(SaleSaveDTO dto) {
+		this.discount=dto.getDiscount();
+		this.startDate=dto.getStartDate();
+		this.endDate=dto.getEndDate();
 		return this;
 	}
 
