@@ -58,5 +58,9 @@ public class CartItemEntity {
 		this.count+=count;
 		
 	}
+	public void deleteCount(int count) {
+		this.count-=count;
+		
+	}
 	
 }
