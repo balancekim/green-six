@@ -1,7 +1,22 @@
 @charset "UTF-8";
 
-
+.cart-wrap p{
+	text-align: center;
+}
 .cart{
+	width:300px;
 	position: absolute;
-	border:1px solid red;
+	border:1px solid green;
+}
+.cart .cart-wrap ul{
+	margin: 10px;
+}
+
+.cart-lBtn,.cart-RBtn {
+	width:30px;
+}
+.num{
+	width : 30px;
+	display: inline-block;
+	text-align: center;
 }
