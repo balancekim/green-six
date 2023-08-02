@@ -23,14 +23,14 @@ $(function(){
 	$.ajax({
 		url:"/index/goods",
 		success:function(result){
-			$("#product-view").html(result);
+			$("#product-view .view-area").html(result);
 		}
 	})
 	
 	$.ajax({
 		url:"/index/sale",
 		success:function(result){
-			$("#product-sale").html(result);
+			$("#product-sale .view-area").html(result);
 		}
 	})
 	

@@ -1,5 +1,7 @@
 package com.coding.cho.goods;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -21,8 +23,26 @@ public interface GoodsEntityRepository extends JpaRepository<GoodsEntity, Long>{
 	List<GoodsEntity> findByOnSale(boolean onSale);
 
 	List<GoodsEntity> findByHotItem(boolean hotItem);
+
+
+	List<GoodsEntity> findByOnSaleAndSale_startDateLessThanEqualAndSale_endDateGreaterThanEqual(boolean b,
+			LocalDateTime today, LocalDateTime today2);
+
+
+	List<GoodsEntity> findByOnSaleAndSale_startDateIsNull(boolean b);
+
+
+	List<GoodsEntity> findByOnSaleAndSale_startDateLessThanEqualAndSale_endDateGreaterThanEqualOrOnSaleAndSale_startDateIsNull(
+			boolean b, LocalDateTime today, LocalDateTime today2, boolean c);
+
+
+	List<GoodsEntity> findByOnSaleAndSale_startDateIsNullOrSale_startDateLessThanEqualAndSale_endDateGreaterThanEqual(
+			boolean b, LocalDateTime today, LocalDateTime today2);
+
+
 	
-	
+
+
 
 
 }

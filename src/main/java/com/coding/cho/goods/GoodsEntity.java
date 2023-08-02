@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnDefault;
@@ -53,8 +54,8 @@ public class GoodsEntity {
 	
 	private boolean onSale;
 	
-	@OneToMany(mappedBy = "gno")
-	private List<SaleEntity> saleList;
+	@OneToOne(mappedBy = "goods")
+	private SaleEntity sale;
 	
 	public GoodsEntity update(GoodsUpdateDTO dto, CategoryEntity category2) {
 		this.name=dto.getName();

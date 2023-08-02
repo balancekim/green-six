@@ -14,13 +14,17 @@ public interface SaleEntityRepository extends JpaRepository<SaleEntity, Long>{
 
 	void save(SaleSaveDTO saledto);
 
-	Optional<SaleEntity> findByGnoNo(long no);
+	//Optional<SaleEntity> findByGnoNo(long no);
 
-	void deleteByGnoNo(long no);
+	void deleteByNo(long no);
 
 
 	List<SaleEntity> findByStartDateLessThanEqualAndEndDateGreaterThanEqualOrStartDateIsNull(String formattedToday,
 			String formattedToday2);
+
+	Optional<SaleEntity> findByNo(long no);
+
+	
 	
 
 }
