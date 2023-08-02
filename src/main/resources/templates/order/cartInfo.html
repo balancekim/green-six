@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html xmlns:th="//www.thymeleaf.org" xmlns:sec="//www.thymeleaf.org/extras/spring-security">
-	<section>
-	  <h2>장바구니 리스트</h2>
-	  <ul  th:each="dto:${cartItems}">
-	  	<li >
-	  		<span >상품 명 - </span>
-	  		<span th:text="${dto.goods.name}">상품 명</span>
-	  	</li>
-	  	<li >
-	  		<span>수량</span>
-	  		<span th:text="${dto.count}">수량</span>
-	  	</li>
-	  </ul>
-	  <ul >
-	  	<li>
-	  		<span>총 주문가격 -</span>
-	  		<span th:text="${totalPrice}">총 주문가격</span>
-	  	</li>
-	  </ul>
+	<section class="cart">
+	  <h1>장바구니 리스트</h1>
+	  <div class="cart-wrap">
+		  <ul  th:each="dto:${cartItems}">
+		  	<li >
+		  		<span >상품명</span>
+		  		<span th:text="${dto.goods.name}">상품 명</span>
+		  	</li>
+		  	<li >
+		  		<span>수량</span>
+		  		<span th:text="${dto.count}">수량</span>
+		  	</li>
+		  </ul>
+		  <ul >
+		  	<li>
+		  		<span>총 주문가격 -</span>
+		  		<span th:text="${totalPrice}">총 주문가격</span>
+		  	</li>
+		  </ul>
+		  <ul>
+		  	<li>
+		  		<button>-</button><button>+</button>
+		  		<button>결제</button>
+		  	</li>
+		  </ul>
+	  </div>
 	</section>
 </html>
