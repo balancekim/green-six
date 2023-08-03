@@ -127,18 +127,18 @@ public class GoodsServicePorcess implements GoodsService {
 				ir.save(list.get(i).update(dto, i ,newUrl,path2));
 			}
 		
-		entity.update(dto, category);
-		FileUploadUtil.clearTemp(client, bucketName, path);
+			entity.update(dto, category);
 		
 		//????????
 		if(entity.isOnSale()) {
 			// 이미 존재하는 경우, 새로 생성할경우
-			salerepo.findByNo(no).ifPresentOrElse(
+			salerepo.findByGoods(entity).ifPresentOrElse(
 					ent->ent.updateSale(savedto),//존재하면 update
 					()->salerepo.save(savedto.toEntity().goods(entity)));//새로운 저장
 			
 		}
 		
+		FileUploadUtil.clearTemp(client, bucketName, path);
 	}
 
 	@Transactional

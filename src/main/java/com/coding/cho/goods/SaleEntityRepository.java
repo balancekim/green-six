@@ -24,6 +24,8 @@ public interface SaleEntityRepository extends JpaRepository<SaleEntity, Long>{
 
 	Optional<SaleEntity> findByNo(long no);
 
+	Optional<SaleEntity> findByGoods(GoodsEntity entity);
+
 	
 	
 
