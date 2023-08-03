@@ -1,7 +1,10 @@
 package com.coding.cho.menu;
 
+import java.time.LocalDate;
+
 import com.coding.cho.goods.GoodsEntity;
 import com.coding.cho.goods.GoodsImageEntity;
+import com.coding.cho.goods.dto.SaleListDTO;
 
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +18,10 @@ public class MenuListDTO {
 	private String content;
 	private long no;
 	
+	private boolean onSale;
+	private SaleListDTO sale;
+	
+	
 	public MenuListDTO(GoodsEntity entity){
 		this.name=entity.getName();
 		this.price=entity.getPrice();
@@ -25,7 +32,10 @@ public class MenuListDTO {
                 .map(GoodsImageEntity::getUrl) // 객체에서 url필드만 리턴
                 .orElseThrow();//예외처리
 		this.no=entity.getNo();
-		
+		this.onSale=entity.isOnSale();
+		if(onSale) {
+			this.sale=new SaleListDTO(entity.getSale());
+		}
 	}
 	
 }
