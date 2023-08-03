@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.coding.cho.category.CategoryEntity;
 import com.coding.cho.goods.GoodsEntity;
 import com.coding.cho.goods.GoodsImageEntity;
 
@@ -19,6 +20,9 @@ public class GoodsDetailDTO {
 	private boolean hotItem ;
 	private boolean onSale ;
 
+	private CategoryEntity category;
+	private CategoryEntity parent;
+	
 	private int discount;
 	private LocalDate startDate;
 	private LocalDate endDate;
@@ -36,6 +40,8 @@ public class GoodsDetailDTO {
 	private List<GoodsImageDTO> gie ;
 	
 	public GoodsDetailDTO(GoodsEntity entity){
+		this.category=entity.getCategory();
+		this.parent=entity.getCategory().getParent();
 		this.gno=entity.getNo(); 
 		this.name=entity.getName();
 		this.content=entity.getContent();

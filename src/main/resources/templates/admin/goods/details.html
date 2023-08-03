@@ -11,7 +11,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 	<script src="/js/summernote.js" ></script>
-	<script src="/js/admin/fileupload.js" ></script>
+	<script src="/js/admin/detail.js" ></script>
 	<!-- calendarBycho -->
 	<script defer src="/js/common/calendar.js" ></script>
 	<script defer src="/js/common/calendar-picker.js" ></script>
@@ -25,16 +25,17 @@
 		<div class="wrap">
 			<p>상품등록 페이지</p>
 			<hr>
-			<form id="form-goods" th:action="|/admin/goods/${detail.gno}|" method="post">
+			<form id="form-goods" th:action="|/admin/goods/${detail.gno}|" method="post" onsubmit="return submitCheck()">
 				<ul>
 					<li>
 						<label>카테고리</label>
+						<input class="cno" type="hidden" th:value="${detail.category.no}">
+						<input class="pno" type="hidden" th:value="${detail.parent.no}">
 						<div class="category" value="0">
-							
 						</div>
 						<div class="category2">
 							<select name="category">
-								<option th:value="${detail.cNo}" th:text="${detail.cName}"></option>
+								
 							</select>
 						</div>
 					</li>
