@@ -47,7 +47,7 @@ public class SaleSaveDTO {
 				.endDate(endDate)
 				.build();
 	}
-	
+
 	
 	
 }

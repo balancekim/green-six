@@ -146,55 +146,94 @@
 
 
 #product-view .hot-name{
-	font-size: 16px;
+font-size: 16px;
 }
 
 #product-view .hot-price{
-	font-size: 20px;
-	font-weight: 700;
+font-size: 20px;
+font-weight: 700;
 }
 #product-view .hot-price-all{
-	justify-content: center;
-	display: flex;
+justify-content: center;
+display: flex;
 }
 #product-view .hot-won{
-	font-size: 18px;
-	margin-right: 10px;
-	line-height: 34px;
+font-size: 18px;
+margin-right: 10px;
+line-height: 34px;
+}
+
+/*////////////////////////////////////*/
+#product-view .sale-name{
+text-align: center;
+font-size: 16px;
+}
+
+#product-view .sale-dis{
+font-size: 20px;
+font-weight: 600;
+color: #88af62;
+margin-right: 10px;
+}
+
+#product-view .sale-price{
+font-size: 20px;
+font-weight: 600;
+}
+#product-view .sale-won{
+font-size: 18px;
+margin-right: 10px;
+
+
+}
+#product-view .sale-or-price{
+color: #828282;
+font-size: 14px;
+font-weight: 400;
+line-height: 39px;
+}
+#product-view .sale-cont{
+line-height: 36px;
+
 }
 /* 세일상품 */
 
+#product-sale .hot-name{
+text-align: center;
+font-size: 16px;
+}
+
 #product-sale .sale-name{
-	text-align: center;
-	font-size: 16px;
+text-align: center;
+font-size: 16px;
 }
 
 #product-sale .sale-dis{
-	font-size: 20px;
-    font-weight: 600;
-    color: #88af62;
-    margin-right: 10px;
+font-size: 20px;
+font-weight: 600;
+color: #88af62;
+margin-right: 10px;
 }
 
 #product-sale .sale-price{
-	font-size: 20px;
-    font-weight: 600;
+font-size: 20px;
+font-weight: 600;
 }
 #product-sale .sale-won{
-	font-size: 18px;
-	margin-right: 10px;
-	
-    
+font-size: 18px;
+margin-right: 10px;
+
+
 }
 #product-sale .sale-or-price{
-	color: #828282;
-	font-size: 14px;
-    font-weight: 400;
-    line-height: 39px;
+color: #828282;
+font-size: 14px;
+font-weight: 400;
+line-height: 39px;
 }
 #product-sale .sale-cont{
-	line-height: 36px;
-	
+line-height: 36px;
+
 }
 /* ///////////인덱스 페이지 인기상품, 할인상품 end////////////*/
 
