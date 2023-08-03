@@ -1,5 +1,7 @@
 package com.coding.cho.order.service.impl;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -79,15 +81,26 @@ public class OrderServiceProcess implements OrderService {
 		List<CartItemEntity> cartItemList =	cir.findByCartEntityNo(userCart.getNo());//유저 장바구니 no로 장바구니 아이템 객체 전부 가져옴
 		int totalPrice = 0;
 		int totalSalePrice = 0;
+		List<Boolean> tf = new ArrayList<>();
 		for (CartItemEntity cartitem : cartItemList) {
 			if(cartitem.getGoods().isOnSale()==true) {
-				totalPrice += cartitem.getCount() * (cartitem.getGoods().getPrice() - cartitem.getGoods().getSale().getDiscount());
-				totalSalePrice += cartitem.getCount() *  cartitem.getGoods().getSale().getDiscount();
+				
+				boolean sd=cartitem.getGoods().getSale().getStartDate().isBefore(LocalDateTime.now());
+				boolean ed=cartitem.getGoods().getSale().getEndDate().isAfter(LocalDateTime.now());
+				if(sd==true&& ed==true) {
+					totalPrice += cartitem.getCount() * (cartitem.getGoods().getPrice() - cartitem.getGoods().getSale().getDiscount());
+					totalSalePrice += cartitem.getCount() *  cartitem.getGoods().getSale().getDiscount();
+					tf.add(true);
+				}else {
+					totalPrice += cartitem.getCount() * cartitem.getGoods().getPrice();
+					tf.add(false);
+				}
 			}else {
 				totalPrice += cartitem.getCount() * cartitem.getGoods().getPrice();
+				tf.add(false);
 			}
         }
-		
+		mv.addObject("tf", tf);
 		mv.addObject("totalSalePrice",totalSalePrice);  
 		mv.addObject("totalPrice",totalPrice);  
 		mv.addObject("totalCount",userCart.getCount());  
