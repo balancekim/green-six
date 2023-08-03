@@ -44,9 +44,5 @@ public class SignController {
 		
 		return service.emailCheckProcess(email);
 	}
-	//order 페이지 임시로 컨트롤러 만들어놓았습니다.
-	@GetMapping("/franchisee/order")
-	public String order() {
-		return "franchisee/order";
-	}
+
 }

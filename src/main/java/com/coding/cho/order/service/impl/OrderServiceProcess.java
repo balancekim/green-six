@@ -12,6 +12,7 @@ import com.coding.cho.common.domain.entity.MemberEntity;
 import com.coding.cho.common.domain.entity.MemberEntityRepository;
 import com.coding.cho.goods.GoodsEntity;
 import com.coding.cho.goods.GoodsEntityRepository;
+import com.coding.cho.goods.SaleEntityRepository;
 import com.coding.cho.order.CartEntity;
 import com.coding.cho.order.CartEntityRepository;
 import com.coding.cho.order.CartItemEntity;
@@ -29,6 +30,7 @@ public class OrderServiceProcess implements OrderService {
 	private final CartEntityRepository cr;
 	private final GoodsEntityRepository gr;
 	private final MemberEntityRepository mr;
+	private final SaleEntityRepository sr;
 	
 	
 	@Transactional
@@ -77,9 +79,14 @@ public class OrderServiceProcess implements OrderService {
 		List<CartItemEntity> cartItemList =	cir.findByCartEntityNo(userCart.getNo());//유저 장바구니 no로 장바구니 아이템 객체 전부 가져옴
 		int totalPrice = 0;
 		for (CartItemEntity cartitem : cartItemList) {
-			
-            totalPrice += cartitem.getCount() * cartitem.getGoods().getPrice();
+			if(cartitem.getGoods().isOnSale()==true) {
+				totalPrice += cartitem.getCount() * (cartitem.getGoods().getPrice() - cartitem.getGoods().getSale().getDiscount());
+			}else {
+				totalPrice += cartitem.getCount() * cartitem.getGoods().getPrice();
+			}
         }
+		
+		
 		mv.addObject("totalPrice",totalPrice);  
 		mv.addObject("totalCount",userCart.getCount());  
 		mv.addObject("cartItems",cartItemList);  
