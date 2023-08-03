@@ -1,5 +1,6 @@
 package com.coding.cho.goods.dto;
 
+import java.time.LocalDateTime;
 import java.util.stream.Collectors;
 
 import com.coding.cho.category.CategoryEntity;
@@ -33,11 +34,24 @@ public class GoodsListDTO {
 		this.no=entity.getNo();
 		this.hotItem=entity.isHotItem();
 		this.cno=entity.getCategory().getNo();
-		this.onSale=entity.isOnSale();
-		
-		if(onSale) {
-			this.sale=new SaleListDTO(entity.getSale());
+		if(entity.isOnSale()==true) {
+			if(entity.getSale().getEndDate()!=null) {
+				LocalDateTime expired= entity.getSale().getEndDate();
+				if(expired.isAfter(LocalDateTime.now())) {
+					this.onSale=entity.isOnSale();
+					this.sale=new SaleListDTO(entity.getSale());
+				}
+			}else if(entity.getSale().getEndDate()==null) {
+				this.onSale=entity.isOnSale();
+				this.sale=new SaleListDTO(entity.getSale());
+			}
+			
 		}
+		/*
+		 * this.onSale=entity.isOnSale();
+		 * 
+		 * if(onSale) { this.sale=new SaleListDTO(entity.getSale()); }
+		 */
 		
 	}
 }
