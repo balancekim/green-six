@@ -20,7 +20,7 @@
 						</span>
 					</div>
 					<div class="sale-cont flex center" th:unless="${dto.onSale}" >
-						<span class="sale-or-price" >
+						<span class="sale-price" >
 							<span th:text="${#numbers.formatInteger(dto.price,3,'COMMA')}">판매가</span><i>원</i>
 						</span>
 					</div>
