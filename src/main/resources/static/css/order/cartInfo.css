@@ -1,5 +1,7 @@
 @charset "UTF-8";
-
+.cart-wrap{
+	padding: 2em;
+}
 .cart-wrap p{
 	text-align: center;
 }
@@ -12,9 +14,19 @@
 	margin: 10px;
 }
 
+.cart .cart-wrap ul > li:nth-of-type(2){
+	display: flex;
+	align-items: center;
+}
+
 .cart-lBtn,.cart-RBtn {
 	width:30px;
 }
+.del-Btn{
+	margin-left:1em;
+	width: 30px;
+}
+
 .num{
 	width : 30px;
 	display: inline-block;
