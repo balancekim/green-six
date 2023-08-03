@@ -37,6 +37,7 @@ h2 {
 	text-align: center;
 	margin-top : 10px;
 	margin-right: 10px;
+	margin-bottom: 30px;
 }
 .goods-list  .goods-li{
 	    height: 60px;
@@ -59,4 +60,46 @@ button:hover{
 	background-color: #88af62;
 	color: white;
 	cursor: pointer;
+}
+
+
+
+/* 세일상품  */
+
+ .hot-name{
+text-align: center;
+font-size: 16px;
+}
+
+ .sale-name{
+text-align: center;
+font-size: 16px;
+}
+
+ .sale-dis{
+font-size: 20px;
+font-weight: 600;
+color: #88af62;
+margin-right: 10px;
+}
+
+.sale-price{
+font-size: 20px;
+font-weight: 600;
+}
+ .sale-won{
+font-size: 18px;
+margin-right: 10px;
+
+
+}
+.sale-or-price{
+color: #828282;
+font-size: 14px;
+font-weight: 400;
+line-height: 39px;
+}
+ .sale-cont{
+line-height: 36px;
+
 }

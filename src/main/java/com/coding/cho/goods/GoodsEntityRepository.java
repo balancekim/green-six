@@ -40,6 +40,7 @@ public interface GoodsEntityRepository extends JpaRepository<GoodsEntity, Long>{
 			boolean b, LocalDateTime today, LocalDateTime today2);
 
 
+
 	
 
 

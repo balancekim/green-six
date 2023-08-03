@@ -77,6 +77,7 @@ public class OrderServiceProcess implements OrderService {
 		List<CartItemEntity> cartItemList =	cir.findByCartEntityNo(userCart.getNo());//유저 장바구니 no로 장바구니 아이템 객체 전부 가져옴
 		int totalPrice = 0;
 		for (CartItemEntity cartitem : cartItemList) {
+			
             totalPrice += cartitem.getCount() * cartitem.getGoods().getPrice();
         }
 		mv.addObject("totalPrice",totalPrice);  
