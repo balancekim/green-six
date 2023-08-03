@@ -57,35 +57,35 @@
 					<li>
 						<label>할인</label>
 						<dl>
-							<dt class="flex">
+							<dt id="sale-info" class="flex">
 								<label>
-									<input type="radio" name="onSale" value="true" onclick="saleClicked()">할인설정
+									<input type="radio" name="onSale" value="true" onclick="saleClicked()" th:checked="${detail.onSale eq true}">할인설정
 								</label>
 								<label>
-									<input type="radio" name="onSale" value="false" checked="checked" onclick="saleCancle()">설정없음	
+									<input type="radio" name="onSale" value="false" onclick="saleCancle()" th:checked="${detail.onSale eq false}">설정없음	
 								</label>
 								
 							</dt>
 							<dd>
 								<div class="sale-wrap">
-									<div class="flex">
+									<div class="flex" id="sale-duration">
 										<label>
 											<span>할인금액 : </span>
-										<input type="text" placeholder="할인금액" id="salePrice" name="discount"><span>원</span>
+										<input type="text" placeholder="할인금액" id="salePrice" name="discount" th:value="${detail.discount}"><span>원</span>
 										</label>
 										<label>
-											<input type="radio" name="onSaleDate" value="false" checked="checked" onclick="dateCancel()">설정없음
+											<input type="radio" name="onSaleDate" value="false" th:checked="!${detail.startDate}" onclick="dateCancel()">설정없음
 										</label>
 										<label>
-											<input type="radio" name="onSaleDate" value="true" onclick="dateClicked()">할인기간 설정
+											<input type="radio" name="onSaleDate" value="true" th:checked="${detail.startDate}" onclick="dateClicked()">할인기간 설정
 										</label>
 									</div>
 									<div id="saleDate-wrap">
 										<label>
 											<span>할인기간 : </span>
 											<span id="saleDate">
-												<input type="text" onclick="showCalendar()"  placeholder="시작일" id="sale-start-date" name="startDate">
-												<input type="text" onclick="showCalendar()"  placeholder="종료일" id="sale-end-date" name="endDate">
+												<input type="text" onclick="showCalendar()"  placeholder="시작일" id="sale-start-date" name="startDate" th:value="${detail.startDate}">
+												<input type="text" onclick="showCalendar()"  placeholder="종료일" id="sale-end-date" name="endDate" th:value="${detail.endDate}">
 											</span>
 										</label>
 										
@@ -108,9 +108,9 @@
 						<label>상품이미지</label>
 						<div class="def-img">
 							<span>대표이미지</span>
-							<th:block th:each="list:${detail.gie}">
+							<th:block th:each="img:${detail.gie}">
 								<div class="img-wrap" >
-									<label class="pre-img" th:if="${list.isDef==true}" th:style="|background-image: url('${list.url}');|">
+									<label class="pre-img" th:if="${img.isDef==true}" th:style="|background-image: url('${img.url}');|">
 										<input type="file" onchange="tempUpload(this)">
 									</label>
 									<input type="hidden" class="bucketKey" name="bucketKey" >
@@ -127,7 +127,7 @@
 							</pre>
 							
 						</div>
-<!-- 						<div>
+<!--/* 						<div>
 							<span>추가이미지(최대5장)</span>
 							<div class="add-img flex">
 							<th:block th:each="list:${detail.gie}">
@@ -146,8 +146,8 @@
                        대표이미지 기준 1000x1000 이상 이미지를 등록하시면, 이미지 확대 기능이 제공됩니다.
                        쇼핑검색에 노출되지 않는 경우 가이드를 확인해주세요.
 							</pre>
-						</div>
-					</li> -->
+						</div> */-->
+					</li>
 					<li>
 						<label>상세설명</label>
 						<textarea id="summernote" name="content" th:field="${detail.content}"></textarea>

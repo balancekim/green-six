@@ -102,7 +102,9 @@ public class GoodsServicePorcess implements GoodsService {
 	@Override
 	@Transactional
 	public void detailProcess(long no, Model model) {
-		GoodsDetailDTO dto = gr.findById(no).stream().map(ee -> new GoodsDetailDTO(ee)).findFirst().orElseThrow();
+		GoodsDetailDTO dto = gr.findById(no)
+				.map(GoodsDetailDTO::new)
+				.orElseThrow();
 		model.addAttribute("detail", dto);
 	}
 

@@ -3,6 +3,7 @@ package com.coding.cho.goods;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,6 +38,13 @@ public class GoodsController {
 		return service.uploadSummernoteImgProcess(file);
 	}
 
+	//상품 상세 수정
+	@GetMapping("/admin/goods/{no}")
+	public String goodsUpdate(@PathVariable long no, Model model) {
+		service.detailProcess(no, model); 
+		return "admin/goods/details";
+	}
+	
 	@PutMapping("/admin/goods/{no}")
 	public String update(@PathVariable long no,GoodsUpdateDTO dto,SaleSaveDTO savedto) {
 		service.updateProcess(no,dto,savedto);

@@ -1,5 +1,7 @@
 package com.coding.cho.goods.dto;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,6 +17,12 @@ public class GoodsDetailDTO {
 	private String content;
 	private int price;
 	private boolean hotItem ;
+	private boolean onSale ;
+
+	private int discount;
+	private LocalDate startDate;
+	private LocalDate endDate;
+	
 	
 	private long cNo;
 	private String cName;
@@ -31,14 +39,21 @@ public class GoodsDetailDTO {
 		this.gno=entity.getNo(); 
 		this.name=entity.getName();
 		this.content=entity.getContent();
+		this.onSale=entity.isOnSale();
 		this.hotItem=entity.isHotItem();
 		this.cNo=entity.getCategory().getNo();
 		this.cName=entity.getCategory().getName();
 		this.price=entity.getPrice();
-		this.gie=entity.getGie()
-				.stream().map(en->new GoodsImageDTO(en))
+		this.gie=entity.getGie().stream()
+				.distinct()
+				.map(GoodsImageDTO::new)
 				.collect(Collectors.toList());
 		
+		if(onSale==true) {
+			this.discount=entity.getSale().getDiscount();
+			this.startDate=entity.getSale().getStartDate().toLocalDate();
+			this.endDate=entity.getSale().getEndDate().toLocalDate().minusDays(1);
+		}
 	}
 	
 }

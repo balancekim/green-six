@@ -62,12 +62,7 @@ public class AdminController {
 		return service.tempUpload(temp);
 	}
 	
-	//상품 상세 수정
-	@GetMapping("/admin/goods/{no}")
-	public String goodsUpdate(@PathVariable long no, Model model) {
-		service.detailProcess(no, model); 
-		return "admin/goods/details";
-	}
+
 	@ResponseBody
 	@GetMapping("/franchisee/orderwait")
 	public ModelAndView orderWait() {
