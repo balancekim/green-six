@@ -1,5 +1,5 @@
 function clickedCancel(){
-	location.href="/common/cscenter";
+	location.href="/common/faq/faqBoard";
 }
 
 function submitCheck(){
