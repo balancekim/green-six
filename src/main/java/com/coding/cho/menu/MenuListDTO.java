@@ -1,6 +1,7 @@
 package com.coding.cho.menu;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import com.coding.cho.goods.GoodsEntity;
 import com.coding.cho.goods.GoodsImageEntity;
@@ -32,10 +33,21 @@ public class MenuListDTO {
                 .map(GoodsImageEntity::getUrl) // 객체에서 url필드만 리턴
                 .orElseThrow();//예외처리
 		this.no=entity.getNo();
-		this.onSale=entity.isOnSale();
-		if(onSale) {
-			this.sale=new SaleListDTO(entity.getSale());
+		if(entity.isOnSale()==true) {
+			if(entity.getSale().getEndDate()!=null) {
+				LocalDateTime expired= entity.getSale().getEndDate();
+				if(expired.isAfter(LocalDateTime.now())) {
+					this.onSale=entity.isOnSale();
+					this.sale=new SaleListDTO(entity.getSale());
+				}
+			}else if(entity.getSale().getEndDate()==null) {
+				this.onSale=entity.isOnSale();
+				this.sale=new SaleListDTO(entity.getSale());
+			}
+			
 		}
+		
+		
 	}
 	
 }
