@@ -71,8 +71,9 @@ public class GoodsServicePorcess implements GoodsService {
 		}
 		FileUploadUtil.clearTemp(client, bucketName, path);
 		
-		
-		salerepo.save(saledto.toEntity().goods(ge));
+		if(dto.isOnSale()) {
+			salerepo.save(saledto.toEntity().goods(ge));
+		}
 	}
 
 	@Override

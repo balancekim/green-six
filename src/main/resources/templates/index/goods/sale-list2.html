@@ -9,7 +9,7 @@
 		<p>인기상품</p>
 		<div class="wrap flex">
 			<ul class="wrap"  th:each="dto:${list}">
-				<li >
+				<li>
 					<a th:href="|/menu/${dto.cno}|">
 						<img alt="#" th:src="${dto.url}" height="100px">
 					</a>
