@@ -41,7 +41,7 @@
 					</li>
 					<li>
 						<label>상품명</label>
-						<input type="text" name="name" th:value="${detail.name}">
+						<input id="name" type="text" name="name" th:value="${detail.name}">
 						<div>
 							<pre><!-- 
 							 -->판매 상품과 직접 관련이 없는 다른 상품명, 스팸성 키워드 입력 시 관리자에 의해 판매 금지될 수 있습니다.
@@ -53,7 +53,7 @@
 					</li>
 					<li>
 						<label>판매가</label>
-							<input type="text" name="price" placeholder="숫자만 입력" th:value="${detail.price}"><span>원</span>
+							<input id="price" type="text" name="price" placeholder="숫자만 입력" th:value="${detail.price}"><span>원</span>
 					</li>
 					<li>
 						<label>할인</label>
