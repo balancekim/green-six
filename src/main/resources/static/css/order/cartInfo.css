@@ -1,6 +1,6 @@
 @charset "UTF-8";
 .cart-wrap{
-	padding: 2em;
+	padding: 1.5em;
 }
 .cart-wrap p{
 	text-align: center;
@@ -10,6 +10,19 @@
 	position: absolute;
 	border:1px solid green;
 }
+.cart .cart-price{
+	margin: 10px;
+	width: 80px;
+	 justify-content: space-between
+}
+.cart .cart-price .sales-price{
+	margin-right: 5px;
+}
+
+.cart .cart-price .or-price{
+	color: darkgrey;
+	text-decoration: line-through;
+}
 .cart .cart-wrap ul{
 	margin: 10px;
 }
@@ -18,13 +31,19 @@
 	display: flex;
 	align-items: center;
 }
-
+.cart .total-sales-price{
+	font-weight: 700;
+	color: green;
+}
+.cart .total-price{
+	font-weight: 700;
+}
 .cart-lBtn,.cart-RBtn {
-	width:30px;
+	width:20px;
 }
 .del-Btn{
-	margin-left:1em;
 	width: 30px;
+	font-size: 11px;
 }
 
 .num{

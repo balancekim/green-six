@@ -78,15 +78,17 @@ public class OrderServiceProcess implements OrderService {
 		CartEntity userCart = cr.findByMemberEntityNo(me.getNo()).get();//유저 정보로 유저장바구니 가져옴
 		List<CartItemEntity> cartItemList =	cir.findByCartEntityNo(userCart.getNo());//유저 장바구니 no로 장바구니 아이템 객체 전부 가져옴
 		int totalPrice = 0;
+		int totalSalePrice = 0;
 		for (CartItemEntity cartitem : cartItemList) {
 			if(cartitem.getGoods().isOnSale()==true) {
 				totalPrice += cartitem.getCount() * (cartitem.getGoods().getPrice() - cartitem.getGoods().getSale().getDiscount());
+				totalSalePrice += cartitem.getCount() *  cartitem.getGoods().getSale().getDiscount();
 			}else {
 				totalPrice += cartitem.getCount() * cartitem.getGoods().getPrice();
 			}
         }
 		
-		
+		mv.addObject("totalSalePrice",totalSalePrice);  
 		mv.addObject("totalPrice",totalPrice);  
 		mv.addObject("totalCount",userCart.getCount());  
 		mv.addObject("cartItems",cartItemList);  

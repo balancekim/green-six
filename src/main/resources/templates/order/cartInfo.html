@@ -14,19 +14,23 @@
 		  		<button class="cart-lBtn" onclick="deleteCount(this)">-</button>
 		  		<div th:text="${dto.count}" class="num">수량</div>
 		  		<button class="cart-RBtn" onclick="addCart(this)">+</button>
-		  		<button class="del-Btn" onclick="deleteItem(this)">X</button>
-		  		<div style="width: 50px; height: 50px;">
-			  		<span th:text="${dto.goods.onSale}?${(dto.goods.price-dto.goods.sale.discount) * dto.count}:${dto.goods.price* dto.count}"></span>
-					<span th:text="${dto.goods.onSale}?${dto.goods.price* dto.count}:''"></span>
+		  		<div class="cart-price flex">
+			  		<span class="sales-price" th:text="${dto.goods.onSale}?${(dto.goods.price-dto.goods.sale.discount) * dto.count}:${dto.goods.price* dto.count}"></span>
+					<span class="or-price" th:text="${dto.goods.onSale}?${dto.goods.price* dto.count}:''"></span>
 		  		</div>
+		  		<button class="del-Btn" onclick="deleteItem(this)">삭제</button>
 		  		<input class="gno" type="hidden" th:value="${dto.goods.no}">
 		  		<span style="display: none;" class="email" sec:authentication="name">회원정보-아이디</span>
 		  	</li>
 		  </ul>
 		  <ul >
+			 <li>
+		  		<span>총 할인가격 : </span>
+		  		<span class="total-sales-price" th:text="${#numbers.formatInteger(totalSalePrice,3,'COMMA')}" >총 할인가격</span><span> 원</span>
+		  	</li>
 		  	<li>
 		  		<span>총 주문가격 : </span>
-		  		<span th:text="${totalPrice}">총 주문가격</span><span> 원</span>
+		  		<span class="total-price" th:text="${#numbers.formatInteger(totalPrice,3,'COMMA')}" >총 주문가격</span><span> 원</span>
 		  	</li>
 		  </ul>
 		  <ul>
