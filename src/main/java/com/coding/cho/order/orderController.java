@@ -37,5 +37,15 @@ public class orderController {
 		os.showCart(dto,mv);
 		return mv;
 	}
+	@ResponseBody
+	@PostMapping("/order/item-delete")
+	public ModelAndView itemDelete(SaveCateDTO dto) {
+		System.out.println("자 컨트롤러 연결되냐?"+dto.getEmail()+"<하하>"+dto.getGno());
+		
+		os.itemDelete(dto);
+		ModelAndView mv=new ModelAndView("order/cartInfo");
+		os.showCart(dto,mv);
+		return mv;
+	}
 	
 }
