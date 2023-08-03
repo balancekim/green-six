@@ -36,8 +36,9 @@ public class GoodsListDTO {
 		this.cno=entity.getCategory().getNo();
 		if(entity.isOnSale()==true) {
 			if(entity.getSale().getEndDate()!=null) {
-				LocalDateTime expired= entity.getSale().getEndDate();
-				if(expired.isAfter(LocalDateTime.now())) {
+				LocalDateTime endD= entity.getSale().getEndDate();
+				LocalDateTime startD= entity.getSale().getStartDate();
+				if(startD.isBefore(LocalDateTime.now())&&endD.isAfter(LocalDateTime.now())) {
 					this.onSale=entity.isOnSale();
 					this.sale=new SaleListDTO(entity.getSale());
 				}
