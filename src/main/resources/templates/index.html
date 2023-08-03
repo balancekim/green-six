@@ -17,7 +17,8 @@
 	       				<th:block th:each="i:${#numbers.sequence(1,4)}">
 		       				<li class="image">
 		       					<a href="#" >
-		       						<img th:src="|/images/index/visual${i}.jpg|" height="530px">
+		       						<!-- <img th:src="|/images/index/visual${i}.jpg|" height="530px"> -->
+		       						<img th:src="|http://gs-goods-bucket.s3.ap-northeast-2.amazonaws.com/rolling/visual0${i}.jpg|" height="530px">
 		       					</a>
 		       				</li>
 	       				</th:block>
