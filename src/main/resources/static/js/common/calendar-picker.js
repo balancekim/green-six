@@ -245,3 +245,14 @@ function dateCancel(){
 	$("#saleDate-wrap").hide();
 	clearPickInfo();
 }
+
+var saleInfo=$("#sale-info > label > input:checked").val()
+var dur=$("#sale-duration > label > input[type=radio]:checked").val()
+$(function(){
+	if(saleInfo ==="true"){
+		saleClicked()
+	}
+	if(dur==="true"){
+		dateClicked()
+	}
+})
