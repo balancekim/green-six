@@ -13,28 +13,34 @@
 	transform:translateY(-50%);
 }
 .cart{
-	width:300px;
+	width:320px;
 	border:1px solid green;
 	background-color: #fcfff9;
-	max-height: 680px;
+	max-height: 520px;
 	overflow-y: scroll;
 	
 }
 .cart .cart-price{
 	margin: 10px;
 	width: 80px;
-	 justify-content: space-between
+	text-align: center;
+	position: relative;
 }
 .cart .cart-price .sales-price{
-	margin-right: 5px;
+	/* margin-right: 5px; */
 }
 
 .cart .cart-price .or-price{
+	font-size:12px;
 	color: darkgrey;
 	text-decoration: line-through;
+	margin-left: 3px;
+	position: absolute;
+	TOP: -15PX;
+    RIGHT: 24PX;
 }
 .cart .cart-wrap ul{
-	margin: 10px;
+	margin:  10px 
 }
 
 .cart .cart-wrap ul > li:nth-of-type(2){
@@ -53,7 +59,7 @@
 }
 .del-Btn{
 	width: 30px;
-	font-size: 11px;
+	font-size: 12px;
 }
 
 .num{

@@ -1,9 +1,10 @@
 /**
  * 
  */
-
 $(function(){
+	
 })
+
 function barketList(button){
 	var email = $(button).siblings("input[type=hidden]").val();
 	
@@ -16,6 +17,7 @@ function barketList(button){
 		
 	});
 }
+
 
 function deleteAll(button){
 	
@@ -60,6 +62,10 @@ function deleteCount(button){
 		success:function(result){
 			
 			$("#showCart").html(result)
+			if($("#showCart .gno[value='"+gno+"']").length>0){
+				var offset=$("#showCart .gno[value='"+gno+"']").parent().position().top
+				$(".cart").scrollTop(offset-200)
+			}
 		}
 	
 	})

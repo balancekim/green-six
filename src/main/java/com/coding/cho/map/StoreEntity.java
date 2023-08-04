@@ -6,9 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
+import com.coding.cho.common.domain.entity.MemberEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -41,6 +43,14 @@ public class StoreEntity {
 	
 	@Column(nullable = false)
 	private String address;
+	
+	private boolean status;
+	
+	private String storeCode;
+	
+	@OneToOne
+	@JoinColumn(name="mno")
+	private MemberEntity member;
 	
 }
 
