@@ -1,14 +1,24 @@
 @charset "UTF-8";
 .cart-wrap{
 	padding: 1.5em;
+	
 }
 .cart-wrap p{
 	text-align: center;
 }
+#showCart{
+	position: fixed;
+	top:50%;
+	right: 50px;
+	transform:translateY(-50%);
+}
 .cart{
 	width:300px;
-	position: absolute;
 	border:1px solid green;
+	background-color: #fcfff9;
+	max-height: 680px;
+	overflow-y: scroll;
+	
 }
 .cart .cart-price{
 	margin: 10px;
