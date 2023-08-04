@@ -83,17 +83,20 @@ public class OrderServiceProcess implements OrderService {
 		int totalPrice = 0;
 		int totalSalePrice = 0;
 		List<Boolean> tf = new ArrayList<>();
+		//장바구니 할인금액 표시
 		for (CartItemEntity cartitem : cartItemList) {
 			if (cartitem.getGoods().isOnSale() == true) {
 
 				boolean sd = cartitem.getGoods().getSale().getStartDate().isBefore(LocalDateTime.now());
 				boolean ed = cartitem.getGoods().getSale().getEndDate().isAfter(LocalDateTime.now());
 				if (sd == true && ed == true) {
+					//할인시작일, 할인종료일이 있으면 tf 에 true 값 추가
+					//html 에서 tr값 true 이면 할인값 출력
 					totalPrice += cartitem.getCount()
 							* (cartitem.getGoods().getPrice() - cartitem.getGoods().getSale().getDiscount());
 					totalSalePrice += cartitem.getCount() * cartitem.getGoods().getSale().getDiscount();
 					tf.add(true);
-				} else {
+				} else { //할인시작일, 할인종료일이 없으면 tf 에 false 값 추가
 					totalPrice += cartitem.getCount() * cartitem.getGoods().getPrice();
 					tf.add(false);
 				}
