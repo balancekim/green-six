@@ -6,11 +6,17 @@ var delay=3000;
 var target_idx=0;
 var timmer;
 $(function(){
+	//async를 통한 순차 진행
 	visualLodding();
+	goodsList();
+	saleList();
+	noticeList();
+	eventList();
 });
 ///////////////////////////////////////
 function visualLodding(){
 	$.ajax({
+		async : false,
 		url:"/index/visual",
 		timeout: 5000,
 		success: function(result){
@@ -25,7 +31,7 @@ function visualLodding(){
 			
 			$(".bullet").click(bulletClicked);
 			
-			goodsList();
+			
 		}
 		
 		
@@ -65,11 +71,12 @@ function move(dir){
 //////////////////////////////
 function goodsList(){
 	$.ajax({
+		async: false,
 		url:"/index/goods",
 		timeout: 5000,
 		success:function(result){
 			$("#product-view .view-area").html(result);
-			saleList();
+			
 		}
 	});
 }
@@ -78,11 +85,12 @@ function goodsList(){
 /////////////////////////////////
 function saleList(){
 	$.ajax({
+		async: false,
 		url:"/index/sale",
 		timeout: 5000,
 		success:function(result){
 			$("#product-sale .view-area").html(result);
-			noticeList();
+			
 		}
 	});
 }
@@ -91,11 +99,12 @@ function saleList(){
 /////////////////////////////////
 function noticeList(){
 	$.ajax({
+		async: false,
 		url:"/index/notice",
 		timeout: 5000,
 		success:function(result){
 			$(".index-notice").html(result);
-			eventList();
+			
 		}
 	});
 }
@@ -104,6 +113,7 @@ function noticeList(){
 /////////////////////////////////
 function eventList(){
 	$.ajax({
+		async: false,
 		url:"/index/event",
 		timeout: 5000,
 		success:function(result){
