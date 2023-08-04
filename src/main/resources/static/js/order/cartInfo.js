@@ -50,3 +50,9 @@ function deleteItem(button){
 	})
 }
 
+window.addEventListener('scroll',() =>{
+	console.log(window.scrollX,window.scrollY);
+})
+
+
+
