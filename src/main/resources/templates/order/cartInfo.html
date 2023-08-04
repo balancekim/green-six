@@ -35,7 +35,7 @@
 		  </ul>
 		  <ul>
 		  	<li style="display: flex;justify-content: space-around;">
-		  		<button id="btn-payment">결제</button>
+		  		<button><a th:href="|/order/barket/${#authentication.principal.username}|">결제</a></button>
 		  		<input type="hidden" th:value="${#authentication.principal.username}">
 		  		<button onclick="deleteAll(this)">비우기</button>
 		  	</li>

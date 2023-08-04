@@ -4,6 +4,19 @@
 
 $(function(){
 })
+function barketList(button){
+	var email = $(button).siblings("input[type=hidden]").val();
+	
+	$.ajax({
+		url:"/order/barket",
+		data:{
+			email:email},
+		type:"get",
+		
+		
+	});
+}
+
 function deleteAll(button){
 	
 	
