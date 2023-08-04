@@ -20,13 +20,12 @@ function addCart(button){
 	$.ajax({
 		url:"/order/addCart",
 		data:{gno : gno,
-		
-		
 		email:email},
 		type:"post",
 		success:function(result){
-			
 			$("#showCart").html(result)
+			var offset=$("#showCart .gno[value='"+gno+"']").parent().position().top
+			$(".cart").scrollTop(offset-200)
 		}
 	
 	})

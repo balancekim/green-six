@@ -2,10 +2,9 @@
  * 
  */
 $(function(){
-	$("#payment").focus();
+	
 })
-$(function(){
-})
+
 function deleteAll(button){
 	
 	
@@ -49,6 +48,10 @@ function deleteCount(button){
 		success:function(result){
 			
 			$("#showCart").html(result)
+			if($("#showCart .gno[value='"+gno+"']").length>0){
+				var offset=$("#showCart .gno[value='"+gno+"']").parent().position().top
+				$(".cart").scrollTop(offset-200)
+			}
 		}
 	
 	})
