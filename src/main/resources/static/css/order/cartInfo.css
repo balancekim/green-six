@@ -13,10 +13,10 @@
 	transform:translateY(-50%);
 }
 .cart{
-	width:300px;
+	width:320px;
 	border:1px solid green;
 	background-color: #fcfff9;
-	max-height: 680px;
+	max-height: 520px;
 	overflow-y: scroll;
 	
 }
