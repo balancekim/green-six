@@ -32,12 +32,23 @@ public interface GoodsEntityRepository extends JpaRepository<GoodsEntity, Long>{
 	List<GoodsEntity> findByOnSaleAndSale_startDateIsNull(boolean b);
 
 
-	List<GoodsEntity> findByOnSaleAndSale_startDateLessThanEqualAndSale_endDateGreaterThanEqualOrOnSaleAndSale_startDateIsNull(
-			boolean b, LocalDateTime today, LocalDateTime today2, boolean c);
+	List<GoodsEntity> findByOnSaleIsTrueAndSale_startDateLessThanEqualAndSale_endDateGreaterThanEqualOrOnSaleIsTrueAndSale_startDateIsNull(
+			LocalDateTime today,LocalDateTime today2);
 
 
-	List<GoodsEntity> findByOnSaleAndSale_startDateIsNullOrSale_startDateLessThanEqualAndSale_endDateGreaterThanEqual(
-			boolean b, LocalDateTime today, LocalDateTime today2);
+	List<GoodsEntity> findByOnSaleIsTrueAndSale_startDateIsNullOrOnSaleIsTrueAndSale_startDateLessThanEqualAndSale_endDateGreaterThanEqual(
+			LocalDateTime today, LocalDateTime today2);
+	
+
+    
+	
+	//jpql 엔티티를 기준으로 처리
+	@Query("SELECT g FROM GoodsEntity g "
+			+ "JOIN g.sale s "
+			+ "WHERE g.onSale = true "
+			+ "AND ((s.startDate <= :today AND s.endDate >= :today) "
+			+ "       OR (s.startDate IS NULL AND s.endDate IS NULL))")
+	List<GoodsEntity> findByOnsaleToday(@Param("today") LocalDateTime today);
 
 
 
