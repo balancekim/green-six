@@ -165,9 +165,10 @@ public class GoodsServicePorcess implements GoodsService {
 		 * pageable=PageRequest.of(0, 4, sort);
 		 */
 		System.out.println("========================");
-		//List<GoodsEntity> result=gr.findByOnSaleAndSale_startDateLessThanEqualAndSale_endDateGreaterThanEqualOrOnSaleAndSale_startDateIsNull(true,today,today,true);
-		List<GoodsEntity> result=gr.findByOnSaleAndSale_startDateIsNullOrSale_startDateLessThanEqualAndSale_endDateGreaterThanEqual(true,today,today);
-		//List<GoodsEntity> result=gr.findByOnSaleAndSale_startDateIsNull(true);
+		//List<GoodsEntity> result=gr.findByOnSaleIsTrueAndSale_startDateLessThanEqualAndSale_endDateGreaterThanEqualOrOnSaleIsTrueAndSale_startDateIsNull(today,today);
+		//List<GoodsEntity> result=gr.findByOnSaleIsTrueAndSale_startDateIsNullOrOnSaleIsTrueAndSale_startDateLessThanEqualAndSale_endDateGreaterThanEqual(today,today);
+		List<GoodsEntity> result=gr.findByOnsaleToday(today);
+
 				// 오늘 판매 중인 상품 조회
 		System.out.println("========================");
 		result.forEach(System.out::println);
