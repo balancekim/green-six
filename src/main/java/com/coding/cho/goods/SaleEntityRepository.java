@@ -16,8 +16,6 @@ public interface SaleEntityRepository extends JpaRepository<SaleEntity, Long>{
 
 	//Optional<SaleEntity> findByGnoNo(long no);
 
-	void deleteByNo(long no);
-
 
 	List<SaleEntity> findByStartDateLessThanEqualAndEndDateGreaterThanEqualOrStartDateIsNull(String formattedToday,
 			String formattedToday2);
@@ -25,6 +23,8 @@ public interface SaleEntityRepository extends JpaRepository<SaleEntity, Long>{
 	Optional<SaleEntity> findByNo(long no);
 
 	Optional<SaleEntity> findByGoods(GoodsEntity entity);
+
+	void deleteByGoodsNo(long no);
 
 	
 	
