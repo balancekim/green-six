@@ -2,13 +2,10 @@ package com.coding.cho;
 
 import java.util.stream.IntStream;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.coding.cho.common.domain.dto.FaqBoardSaveDTO;
-import com.coding.cho.common.domain.entity.FaqBoardEntity;
 import com.coding.cho.common.domain.entity.FaqBoardEntityRepository;
 import com.coding.cho.common.domain.entity.FaqDivision;
 import com.coding.cho.common.domain.entity.FaqEntity;
@@ -17,8 +14,6 @@ import com.coding.cho.common.domain.entity.MemberEntity;
 import com.coding.cho.common.domain.entity.MemberEntityRepository;
 import com.coding.cho.common.domain.entity.MyRole;
 import com.coding.cho.common.utils.HtmlEscapeUtils;
-import com.coding.cho.franchisee.FranchiseeEntity;
-import com.coding.cho.franchisee.FranchiseeRepository;
 import com.coding.cho.map.StoreEntity;
 import com.coding.cho.map.storeRepository;
 
@@ -31,8 +26,7 @@ class GreenSixApplicationTests {
 	@Autowired
 	MemberEntityRepository mrp;
 	
-	@Autowired
-	FranchiseeRepository frp;
+	
 	
 	@Autowired
 	storeRepository sr;
@@ -82,13 +76,6 @@ class GreenSixApplicationTests {
 	//@Test
 	void 가맹점() {
 		
-		frp.save(FranchiseeEntity.builder()
-						.name("의정부")
-						.status(true)
-						.member(mrp.findById(11L).orElseThrow())
-						
-				
-				.build());
 		
 		
 	}
@@ -97,7 +84,15 @@ class GreenSixApplicationTests {
 	
 	//@Test
 	void 어드민계정() {
-		mrp.save(MemberEntity.builder().email("user").pass(encoder.encode("1234")).name("유저").build().addRole(MyRole.USER));
+		mrp.save(MemberEntity.builder().email("대구").pass(encoder.encode("1234")).name("대구점").build().addRole(MyRole.STORE));
+		mrp.save(MemberEntity.builder().email("울산").pass(encoder.encode("1234")).name("울산점").build().addRole(MyRole.STORE));
+		mrp.save(MemberEntity.builder().email("부산").pass(encoder.encode("1234")).name("부산점").build().addRole(MyRole.STORE));
+		mrp.save(MemberEntity.builder().email("부산경성대").pass(encoder.encode("1234")).name("부산경성대점").build().addRole(MyRole.STORE));
+		mrp.save(MemberEntity.builder().email("광주첨단").pass(encoder.encode("1234")).name("광주첨단점").build().addRole(MyRole.STORE));
+		mrp.save(MemberEntity.builder().email("그린아이티").pass(encoder.encode("1234")).name("그린아이티점").build().addRole(MyRole.STORE));
+		
+		
+		
 	}
 
 }
