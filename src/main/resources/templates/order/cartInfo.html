@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="//www.thymeleaf.org" xmlns:sec="//www.thymeleaf.org/extras/spring-security">
-
 	<section class="cart">
 	  <h1>장바구니 리스트</h1>
 	  <div class="cart-wrap">
 	  	<p class="tit">장바구니</p>
 			<ul th:each="dto, i : ${cartItems}" th:with="tf=${tf}">
 		  	<li >
-		  		<span th:text="${dto.goods.name}">상품 명</span>
+		  		<span class="order-item" th:text="${dto.goods.name}">상품 명</span>
 		  	</li>
 		  	<li >
 				<img alt="#" th:src="${dto.goods.gie[0].url}" height="40px;">
