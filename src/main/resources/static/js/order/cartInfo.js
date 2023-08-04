@@ -1,7 +1,9 @@
 /**
  * 
  */
-
+$(function(){
+	$("#payment").focus();
+})
 $(function(){
 })
 function deleteAll(button){
