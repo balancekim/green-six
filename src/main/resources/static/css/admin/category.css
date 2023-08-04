@@ -40,7 +40,12 @@
 	display: none;
 }
 .cate-div{
+	margin: 1em;
 	padding:20px 0 20px 0;
+}
+.cate-div> *{
+	line-height:30px;
+	margin: 20px;
 }
 .cate-wrap{
 	width:700px;
@@ -48,5 +53,7 @@
 }
 .vno{
 	width:100px;
-	
+}
+.sublist{
+	margin-left: 50px;
 }
