@@ -4,6 +4,29 @@
 
 $(function(){
 })
+function deleteAll(button){
+	
+	
+	var email = $(button).siblings("input[type=hidden]").val();
+	console.log(email)
+	
+	$.ajax({
+		url:"/order/delete-All",
+		data:{
+		email : email},
+		type:"post",
+		beforeSend: function (jqXHR, settings) {
+           var header = $("meta[name='_csrf_header']").attr("content");
+           var token = $("meta[name='_csrf']").attr("content");
+           jqXHR.setRequestHeader(header, token);
+		},
+		success:function(result){
+			
+			$("#showCart").html(result)
+		}
+	
+	})
+}
 function deleteCount(button){
 	
 	

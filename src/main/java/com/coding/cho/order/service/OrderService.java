@@ -16,4 +16,6 @@ public interface OrderService {
 
 	void itemDelete(SaveCateDTO dto);
 
+	void deleteAll(SaveCateDTO dto);
+
 }
