@@ -34,11 +34,3 @@ function submitCheckNotice(){
 		$(".basic").show();
 		$(".update-form").hide();
 	}
-$(function(){
-	$.ajax({
-		url:"/index/notice",
-		success:function(result){
-			$(".index-notice").html(result);
-		}
-	})
-})
