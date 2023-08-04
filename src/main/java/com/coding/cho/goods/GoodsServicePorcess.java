@@ -149,7 +149,7 @@ public class GoodsServicePorcess implements GoodsService {
 		FileUploadUtil.delete(client, bucketName, bucketKey);
 		entity.getGie().forEach(en->ir.delete(en));
 		//SaleEntity saEntity= salerepo.findByGnoNo(no).orElseThrow();
-		salerepo.deleteByNo(no);
+		salerepo.deleteByGoodsNo(no);
 		gr.deleteById(no);
 	}
 
