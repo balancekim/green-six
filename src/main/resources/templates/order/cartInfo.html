@@ -4,17 +4,17 @@
 	<section class="cart">
 	  <h1>장바구니 리스트</h1>
 	  <div class="cart-wrap">
-	  	<p>장바구니</p>
+	  	<p class="tit">장바구니</p>
 			<ul th:each="dto, i : ${cartItems}" th:with="tf=${tf}">
 		  	<li >
 		  		<span th:text="${dto.goods.name}">상품 명</span>
 		  	</li>
 		  	<li >
-				<img alt="#" th:src="${dto.goods.gie[0].url}" height="50px;">
+				<img alt="#" th:src="${dto.goods.gie[0].url}" height="40px;">
 		  		<button class="cart-lBtn" onclick="deleteCount(this)">-</button>
 		  		<div th:text="${dto.count}" class="num">수량</div>
 		  		<button class="cart-RBtn" onclick="addCart(this)">+</button>
-		  		<div class="cart-price flex">
+		  		<div class="cart-price ">
 			  		<span class="sales-price" th:text="${tf[i.index]}==true?${#numbers.formatInteger((dto.goods.price-dto.goods.sale.discount) * dto.count,0,'COMMA')}:${#numbers.formatInteger(dto.goods.price* dto.count,0,'COMMA')}"></span>
 					<span>원</span>
 					<span class="or-price" th:text="${tf[i.index]}==true?${#numbers.formatInteger(dto.goods.price* dto.count,0,'COMMA')}:''"></span>
