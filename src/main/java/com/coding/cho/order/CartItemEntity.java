@@ -33,12 +33,12 @@ public class CartItemEntity {
 	@GeneratedValue(strategy =GenerationType.AUTO)
 	private long id;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="cno")
 	private CartEntity cartEntity;
 	
 	@JoinColumn(name = "gno", nullable = true)
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	private GoodsEntity goods;
 	
 	

@@ -17,14 +17,24 @@
 						<th>상품명</th>
 						<th>수량</th>
 						<th>가격</th>
+						<th>상품별 총가격</th>
 					</tr>
 				</thead>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
+				<tbody>
+					<tr th:if="${#lists.isEmpty(list)}">
+						<th colspan="4">장바구니가 비어있습니다.</th>
+					</tr>
+					<tr th:each="dto:${list}">
+						
+						<td>
+							<img th:src="${dto.gie[0].url}" height="40px;">
+						</td>
+						<td th:text="${dto.name}">상품명</td>
+						<td th:text="${dto.count}">구매수량</td>
+						<td th:text="${dto.eaPrice}">개당 가격</td>
+						<td th:text="${dto.count*dto.eaPrice}">상품별 총가격</td>
+					</tr>
+				</tbody>
 			</table>
 		</div>
 	</div>
