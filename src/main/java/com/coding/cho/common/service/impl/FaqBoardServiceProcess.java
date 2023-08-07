@@ -79,20 +79,9 @@ public class FaqBoardServiceProcess implements FaqBoardService{
 
 	@Override
 	public Page<FaqEntity> boardSearchList(String search, Pageable pageable) {
-		return fer.findByQuestionContaining(search, pageable);
+		return fer.findByQuestionContainingOrAnswerContaining(search, search, pageable);
 	}
 
-
-	/*
-	@Override
-	public void searchFaq(String search, Model model) {
-		List<FaqEntity> result =fer.findByQuestionContaining(search);
-		model.addAttribute("list", result);
-	}
-	*/
-
-	
-	
 	
 
 }
