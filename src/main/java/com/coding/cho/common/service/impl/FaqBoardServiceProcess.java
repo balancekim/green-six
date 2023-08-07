@@ -1,7 +1,11 @@
 package com.coding.cho.common.service.impl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
@@ -9,6 +13,8 @@ import com.coding.cho.common.domain.dto.FaqBoardSaveDTO;
 import com.coding.cho.common.domain.dto.cscenter.FaqBoardUpdateDTO;
 import com.coding.cho.common.domain.entity.FaqBoardEntity;
 import com.coding.cho.common.domain.entity.FaqBoardEntityRepository;
+import com.coding.cho.common.domain.entity.FaqEntity;
+import com.coding.cho.common.domain.entity.FaqEntityRepository;
 import com.coding.cho.common.domain.entity.MemberEntityRepository;
 import com.coding.cho.common.service.FaqBoardService;
 import com.coding.cho.faq.FaqCommentEntityRepository;
@@ -24,6 +30,9 @@ public class FaqBoardServiceProcess implements FaqBoardService{
 	private final MemberEntityRepository mRepo;
 	
 	private final FaqCommentEntityRepository fCrepo;
+	
+	private final FaqEntityRepository fer;
+	
 
 	@Override
 	public void save(String userId, FaqBoardSaveDTO dto) {
@@ -61,6 +70,28 @@ public class FaqBoardServiceProcess implements FaqBoardService{
 		repo.findById(no).map(e->e.updateTitleOrContent(dto));
 		
 	}
+
+
+	@Override
+	public Page<FaqEntity> boardList(Pageable pageable) {
+		return fer.findAll(pageable);
+	}
+
+	@Override
+	public Page<FaqEntity> boardSearchList(String search, Pageable pageable) {
+		return fer.findByQuestionContaining(search, pageable);
+	}
+
+
+	/*
+	@Override
+	public void searchFaq(String search, Model model) {
+		List<FaqEntity> result =fer.findByQuestionContaining(search);
+		model.addAttribute("list", result);
+	}
+	*/
+
+	
 	
 	
 
