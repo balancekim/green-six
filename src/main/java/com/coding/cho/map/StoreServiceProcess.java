@@ -7,7 +7,11 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+
+import com.coding.cho.common.domain.entity.MemberEntityRepository;
 
 
 
@@ -17,7 +21,10 @@ import org.springframework.stereotype.Service;
 public class StoreServiceProcess implements StoreService {
 	
 	@Autowired
-	private storeRepository repo;
+	private StoreRepository repo;
+	
+	@Autowired
+	private MemberEntityRepository mr;
 	
 	//업체 페이지별 리스트(10개씩)
 	@Override
@@ -43,6 +50,9 @@ public class StoreServiceProcess implements StoreService {
 		return repo.findById(no).get();
 				
 	}
+	
+	
+	
 	
 	
 }

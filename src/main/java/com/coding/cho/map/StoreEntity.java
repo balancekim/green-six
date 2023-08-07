@@ -52,6 +52,10 @@ public class StoreEntity {
 	@JoinColumn(name="mno")
 	private MemberEntity member;
 	
+	public StoreEntity status(boolean tf) {
+		this.status=tf;
+		return this;
+	}
 }
 
 

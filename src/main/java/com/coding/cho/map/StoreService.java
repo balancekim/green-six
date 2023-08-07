@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
+import org.springframework.ui.Model;
 
 public interface StoreService {
 
@@ -14,6 +16,10 @@ public interface StoreService {
 	List<StoreEntity> storeAllList();
 
 	StoreEntity storeDetail(Long no);
+
+	
+
+	
 
 	
 

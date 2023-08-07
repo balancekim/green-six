@@ -3,6 +3,7 @@ package com.coding.cho.admin;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,7 @@ import com.coding.cho.goods.GoodsService;
 import com.coding.cho.goods.dto.GoodsListDTO;
 import com.coding.cho.goods.dto.GoodsSaveDTO;
 import com.coding.cho.goods.dto.SaleSaveDTO;
+import com.coding.cho.store.FranchiseeService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -28,6 +30,7 @@ import lombok.RequiredArgsConstructor;
 @Controller
 public class AdminController {
 
+	private final FranchiseeService fs;
 	private final GoodsService service;
 	private final EventService es;
 	
@@ -64,7 +67,10 @@ public class AdminController {
 	
 	//order 페이지 임시로 컨트롤러 만들어놓았습니다.
 	@GetMapping("/franchisee/order")
-	public String order() {
+	public String order(Model model,Authentication authentication) {
+		String id= authentication.getName();
+		fs.waiting(id,model);
+		
 		return "franchisee/order";
 	}
 

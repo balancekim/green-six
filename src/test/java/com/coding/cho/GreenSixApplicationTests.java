@@ -15,7 +15,7 @@ import com.coding.cho.common.domain.entity.MemberEntityRepository;
 import com.coding.cho.common.domain.entity.MyRole;
 import com.coding.cho.common.utils.HtmlEscapeUtils;
 import com.coding.cho.map.StoreEntity;
-import com.coding.cho.map.storeRepository;
+import com.coding.cho.map.StoreRepository;
 
 @SpringBootTest
 class GreenSixApplicationTests {
@@ -29,7 +29,7 @@ class GreenSixApplicationTests {
 	
 	
 	@Autowired
-	storeRepository sr;
+	StoreRepository sr;
 	
 	@Autowired
 	FaqBoardEntityRepository faqBoard;

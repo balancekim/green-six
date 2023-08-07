@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Controller 
-public class orderController {
+public class OrderController {
 
 	private final OrderService os;
 	//저장 후 뿌리기
