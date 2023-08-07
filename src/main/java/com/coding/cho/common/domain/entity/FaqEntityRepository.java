@@ -13,7 +13,14 @@ public interface FaqEntityRepository extends JpaRepository<FaqEntity, Long>{
 	
 	Page<FaqEntity> findByDivision(FaqDivision divsion, Pageable pageable);
 
-	Page<FaqEntity> findByQuestionContaining(String search, Pageable pageable);
+	//Page<FaqEntity> findByQuestionContaining(String search, Pageable pageable);
+
+
+
+
+	Page<FaqEntity> findByQuestionOrAnswerContaining(String search, String search2, Pageable pageable);
+
+	Page<FaqEntity> findByQuestionContainingOrAnswerContaining(String search, String search2, Pageable pageable);
 
 	//List<FaqEntity> findByQuestionContaining(String search);
 
