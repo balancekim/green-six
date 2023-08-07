@@ -23,9 +23,15 @@ function addCart(button){
 		email:email},
 		type:"post",
 		success:function(result){
-			$("#showCart").html(result)
-			var offset=$("#showCart .gno[value='"+gno+"']").parent().position().top
-			$(".cart").scrollTop(offset-200)
+			var scrollValue = $(".cart").scrollTop()
+			if(!$(button).hasClass("cart-RBtn")){
+				$("#showCart").html(result)
+				var offset=$("#showCart .gno[value='"+gno+"']").parent().position().top
+				$(".cart").scrollTop(offset-200)
+			}else if($(button).hasClass("cart-RBtn")){
+				$("#showCart").html(result)
+				$(".cart").scrollTop(scrollValue)
+			}
 		}
 	
 	})
