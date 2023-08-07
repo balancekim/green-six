@@ -20,8 +20,8 @@
 					<li sec:authorize="isAnonymous()">
 						<a href="/signup">회원가입</a>
 					</li>
-					<li sec:authorize="isAuthenticated()" class="flex col-center">
-						<span sec:authentication="name">회원정보-아이디</span>
+					<li sec:authorize="isAuthenticated()" class="flex col-center info">
+						<span class="user-id" sec:authentication="name">회원정보-아이디</span>
 						<form action="/signout" method="post">
 							<input type="hidden" th:if="${_csrf}"
 								th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
