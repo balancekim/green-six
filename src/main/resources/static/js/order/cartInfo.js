@@ -60,12 +60,9 @@ function deleteCount(button){
            jqXHR.setRequestHeader(header, token);
 		},
 		success:function(result){
-			
+			var scrollValue = $(".cart").scrollTop()
 			$("#showCart").html(result)
-			if($("#showCart .gno[value='"+gno+"']").length>0){
-				var offset=$("#showCart .gno[value='"+gno+"']").parent().position().top
-				$(".cart").scrollTop(offset-200)
-			}
+			$(".cart").scrollTop(scrollValue)
 		}
 	
 	})
@@ -85,8 +82,9 @@ function deleteItem(button){
            jqXHR.setRequestHeader(header, token);
 		},
 		success:function(result){
-			
+			var scrollValue = $(".cart").scrollTop()
 			$("#showCart").html(result)
+			$(".cart").scrollTop(scrollValue)
 		}
 	
 	})
