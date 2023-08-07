@@ -11,6 +11,9 @@
 					<li sec:authorize="hasRole('ROLE_ADMIN')">
 						<a href="/admin">관리자페이지</a>
 					</li>
+					<li sec:authorize="hasRole('ROLE_STORE')">
+						<a href="/franchisee/order">가맹점페이지</a>
+					</li>
 					<li sec:authorize="isAnonymous()">
 						<a href="/signin">로그인</a>
 					</li>
