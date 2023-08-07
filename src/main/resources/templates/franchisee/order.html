@@ -6,10 +6,27 @@
     	<script src="/webjars/jquery/jquery.min.js"></script>
     	<script src="/js/franchisee/order.js"></script>
    	 	<meta charset="UTF-8">
+   	 	<meta th:if="${_csrf}" name="_csrf" th:content="${_csrf.token}"/>
+		<meta th:if="${_csrf}" name="_csrf_header" th:content="${_csrf.headerName}"/>
     	<title>Insert title here</title>
     </head>
 	<body class="order">
-		<p>주문접수</p>
+		<div class="flex between">
+			<p>주문접수</p>
+			<div class="flex">
+				<label>
+					<li class="storeName" th:text="${store.member.name}">						
+					</li>
+				</label>
+				<label>
+					<input class="storeNo" type="hidden" th:value="${store.no}">
+					<input type="radio" name="order" value="true" onchange="changeStatus(this)" th:checked="${store.status eq true}"> 주문가능
+				</label>
+				<label>
+					<input type="radio" name="order" value="false" onchange="changeStatus(this)" th:checked="${store.status eq false}" > 불가능
+				</label>
+			</div>
+		</div>
 		<div class="wrap">
 			<div class="flex order-menu center between">
 					<p>운영중인가게</p>

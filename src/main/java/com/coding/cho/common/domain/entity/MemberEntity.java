@@ -14,9 +14,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
+
+import com.coding.cho.map.StoreEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -56,5 +59,8 @@ public class MemberEntity extends BaseDateEntity{
 		roleSet.add(role);
 		return this;
 	}
+	
+	@OneToOne(mappedBy = "member")
+	private StoreEntity store;
 
 }
