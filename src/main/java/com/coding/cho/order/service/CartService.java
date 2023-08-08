@@ -8,4 +8,6 @@ public interface CartService {
 
 	void saveProcess(String name, long gno);
 
+	void countDownProcess(String name, long gno);
+
 }

@@ -4,6 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -31,6 +32,12 @@ public class CartController {
 	@PostMapping("/cart")
 	public ResponseEntity<Boolean> save(Authentication auth, long gno) {
 		service.saveProcess(auth.getName(), gno);
+		return ResponseEntity.ok().body(true);
+	}
+	@ResponseBody
+	@PostMapping("/cart/countDown")
+	public ResponseEntity<Boolean> countDown(Authentication auth, long gno) {
+		service.countDownProcess(auth.getName(), gno);
 		return ResponseEntity.ok().body(true);
 	}
 }
