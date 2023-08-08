@@ -3,7 +3,6 @@ package com.coding.cho.order.dto;
 import lombok.Data;
 import lombok.ToString;
 
-@ToString
 @Data
 public class SaveCateDTO {
 	

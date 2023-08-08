@@ -22,6 +22,7 @@ public class SecurityConfig {
 			.authorizeHttpRequests(authorize -> authorize
 					.antMatchers("/webjars/**", "/js/**", "/css/**", "/images/**","/favicon/**").permitAll()
 					.antMatchers("/","/signup","/common/**","/admin/**","/category/**","/index/**","/product/**","/faq/**").permitAll()
+					.antMatchers("/cart/**").hasRole("USER")
 					.anyRequest().authenticated()
 			)
 			.formLogin(form->form
