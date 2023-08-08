@@ -4,6 +4,7 @@ package com.coding.cho.common.service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.coding.cho.common.domain.dto.FaqBoardSaveDTO;
 import com.coding.cho.common.domain.dto.cscenter.FaqBoardUpdateDTO;
@@ -34,6 +35,9 @@ public interface FaqBoardService {
 
 
 	Page<FaqEntity> boardSearchList(String search, Pageable pageable);
+
+
+	ModelAndView chatbotSearch();
 
 
 	//void searchFaq(String search, Model model);

@@ -7,7 +7,7 @@
     </head>
     <body>
     	<p>검색페이지</p>
-	    <div>
+	    <div th:if ="${list}">
 	    	<ul th:each="dto:${list}">
 	    		<li th:text="${dto.question}">
 	    			
@@ -18,7 +18,7 @@
 	    	</ul>
 	    </div>
 	<div id="main-footer" style="text-align: center;">
-		<div id="page" style="margin: 15px 0 50px 0;">
+		<div  th:if ="${list}" id="page" style="margin: 15px 0 50px 0;">
 			<th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
 
 				<a th:if="${page != nowPage}"
@@ -30,10 +30,10 @@
 		</div>
 
 	</div>
-	<form action="/chatbot" method="get">
-		<input type="text" name="search">
+	
+		<input type="text" class="search">
 		<!-- <input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" /> -->
-		<button type="submit">검색</button>
-	</form>
+		<button onclick="chatbotSearch()" type="button">검색</button>
+	
 </body>
 </html>

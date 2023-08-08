@@ -122,3 +122,37 @@ function eventList(){
 	});
 }
 /////////////////////////////////
+
+/////////////////////////////////
+function chatbot(){
+	$.ajax({
+		async: false,
+		url:"/chatbot/main",
+		timeout: 5000,
+		success:function(result){
+			$(".chatbot-content").html(result);
+		}
+	});
+}
+
+function chatbotSearch(){
+	var search = $(".search").val();
+	
+	var token = $("meta[name='_csrf']").attr('content');
+    var header = $("meta[name='_csrf_header']").attr('content');
+    if(token && header) {
+        $(document).ajaxSend(function(event, xhr, options) {
+            xhr.setRequestHeader(header, token);
+        });
+    }
+	
+	$.ajax({
+		async: false,
+		url:`/chatbot/${search}`,
+		timeout: 5000,
+		success:function(result){
+			$(".chatbot-content").html(result);
+		}
+	});
+}
+/////////////////////////////////
