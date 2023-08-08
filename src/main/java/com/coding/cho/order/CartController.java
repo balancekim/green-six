@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -54,4 +55,12 @@ public class CartController {
 		service.countDownProcess(auth.getName(), gno);
 		return ResponseEntity.ok().body(true);
 	}
+	//장바구니 상품 삭제
+	@ResponseBody
+	@DeleteMapping("/cart/delete/{gno}")
+	public ResponseEntity<Boolean> deleteItem(Authentication auth, @PathVariable long gno) {
+		service.itemDeleteProcess(auth.getName(), gno);
+		return ResponseEntity.ok().body(true);
+	}
+	
 }

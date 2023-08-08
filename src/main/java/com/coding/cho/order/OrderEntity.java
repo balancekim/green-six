@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -16,6 +17,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import com.coding.cho.common.domain.entity.MemberEntity;
 
@@ -41,6 +45,8 @@ public class OrderEntity {
 	@JoinColumn(name = "uno")
 	private MemberEntity member; 
 	
+	@CreationTimestamp
+	@Column(columnDefinition = "timestamp(6) null")
 	private LocalDateTime orderDate;
 	
 	@Enumerated(EnumType.STRING)
@@ -50,7 +56,7 @@ public class OrderEntity {
 			, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<OrderItemEntity> orderItems;
 	
-	private LocalDateTime regTime;
-	
+	@UpdateTimestamp
+	@Column(columnDefinition = "timestamp(6) null")
 	private LocalDateTime updateTime;
 }

@@ -8,6 +8,8 @@ public interface CartEntityRepository extends JpaRepository<CartEntity, Long> {
 
 	Optional<CartEntity> findByMember_email(String email);
 
+	CartEntity findAllByMember_email(String email);
+
 	
 
 }
