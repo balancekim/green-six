@@ -35,7 +35,15 @@ body{
 	font-weight: 700;
 	letter-spacing: 1px;
 	cursor: pointer;
+} 
+
+	
+button:hover{
+	background-color: #88af62;
+	color: white;
+	cursor: pointer;
 }
+
 .logo-style{
 	font-size: 48px;
 	font-weight: 700;
