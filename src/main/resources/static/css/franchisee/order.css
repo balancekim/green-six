@@ -5,6 +5,17 @@
 .order{
 	width:1100px;
 	padding-top: 50px;
+	background-color: #fdffff;
+}
+.order .order-p{
+	padding-left: 50px;
+	font-size: 30px;
+}
+.order .wrap .wrap-label div {
+	height: 50px;
+	line-height: 45px;
+	
+	
 }
 .storeName{
 	margin-right: 20px;
@@ -12,7 +23,7 @@
 
 .order .wrap{
 	width: 1150px; 
-	padding: 50px;
+	padding: 20px;
 }
 
 .order .wrap .order-menu{
@@ -44,7 +55,7 @@
 	font-size: 17px;
 }
 .target{
-	background-color: white;
+	background-color:white;
 }
 .wait {
 	border-bottom:1px solid #00000036;
@@ -66,4 +77,10 @@
 	color: white;
 	border-radius: 8px;
 	margin: 25px 0;
+}
+.wrap-label .order-poss[type="radio"]  {
+	accent-color:green;
+}
+.wrap-label .order-impo[type="radio"]  {
+	accent-color:red;
 }

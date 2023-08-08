@@ -11,20 +11,21 @@
     	<title>Insert title here</title>
     </head>
 	<body class="order">
-		<div class="flex between">
-			<p>주문접수</p>
-			<div class="flex">
-				<label>
+		<div>
+		<div class="flex between wrap">
+			<p class="order-p">주문접수</p>
+			<div class="flex wrap-label">
+				<div>
 					<li class="storeName" th:text="${store.member.name}">						
 					</li>
-				</label>
-				<label>
+				</div>
+				<div>
 					<input class="storeNo" type="hidden" th:value="${store.no}">
-					<input type="radio" name="order" value="true" onchange="changeStatus(this)" th:checked="${store.status eq true}"> 주문가능
-				</label>
-				<label>
-					<input type="radio" name="order" value="false" onchange="changeStatus(this)" th:checked="${store.status eq false}" > 불가능
-				</label>
+					<input type="radio" name="order" value="true" onchange="changeStatus(this)" th:checked="${store.status eq true}" class="order-poss"> 주문가능
+				</div>
+				<div>
+					<input type="radio" name="order" value="false" onchange="changeStatus(this)" th:checked="${store.status eq false}" class="order-impo"> 불가능
+				</div>
 			</div>
 		</div>
 		<div class="wrap">
@@ -48,6 +49,7 @@
 					<li id="wait">여기에 주문정보 들어와야함</li>
 				</ul>
 			</div>
+		</div>
 		</div>
 	</body>
 </html>
