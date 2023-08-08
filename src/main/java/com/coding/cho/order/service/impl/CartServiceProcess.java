@@ -1,5 +1,7 @@
 package com.coding.cho.order.service.impl;
 
+import java.util.stream.Collectors;
+
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
@@ -9,6 +11,7 @@ import com.coding.cho.common.domain.entity.MemberEntity;
 import com.coding.cho.common.domain.entity.MemberEntityRepository;
 import com.coding.cho.goods.GoodsEntity;
 import com.coding.cho.goods.GoodsEntityRepository;
+import com.coding.cho.map.StoreDTO;
 import com.coding.cho.map.StoreEntityRepository;
 import com.coding.cho.order.CartEntity;
 import com.coding.cho.order.CartEntityRepository;
@@ -92,7 +95,7 @@ public class CartServiceProcess implements CartService {
 	@Override
 	public void storeList(Model model,String url) {
 		model.addAttribute("url", url);
-		model.addAttribute("list", storeRepo.findAll());
+		model.addAttribute("list", storeRepo.findAll().stream().map(StoreDTO::new).collect(Collectors.toList()));
 	}
 
 	@Transactional

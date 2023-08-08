@@ -55,7 +55,7 @@ public class StoreEntity {
 	
 	
 	
-	public StoreEntity status(boolean tf) {
+	public StoreEntity changeStatus(boolean tf) {
 		this.status=tf;
 		return this;
 	}
