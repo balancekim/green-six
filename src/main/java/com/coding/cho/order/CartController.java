@@ -1,5 +1,7 @@
 package com.coding.cho.order;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -25,12 +27,24 @@ public class CartController {
 		service.cartList(auth.getName(), model);
 		return "cart/list";
 	}
+	@GetMapping("/cart/store")
+	public String store(Model model,HttpServletRequest request) {
+		String url=request.getHeader("Referer");
+		service.storeList(model,url);
+		return "cart/store";
+	}
+	@PostMapping("/cart/store")
+	public String store(Authentication auth, String store,String url) {
+		service.storeSelect(auth.getName(),store);
+		System.out.println(url);
+		return "redirect:"+url;
+	}
 	
 	//비동기 카드담기
 	@ResponseBody
 	@PostMapping("/cart")
 	public ResponseEntity<Boolean> save(Authentication auth, long gno) {
-		service.saveProcess(auth.getName(), gno);
-		return ResponseEntity.ok().body(true);
+		
+		return ResponseEntity.ok().body(service.saveProcess(auth.getName(), gno));
 	}
 }

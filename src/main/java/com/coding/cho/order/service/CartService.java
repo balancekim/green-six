@@ -6,6 +6,10 @@ public interface CartService {
 
 	void cartList(String email, Model model);
 
-	void saveProcess(String name, long gno);
+	boolean saveProcess(String name, long gno);
+
+	void storeList(Model model, String url);
+
+	void storeSelect(String name, String store);
 
 }
