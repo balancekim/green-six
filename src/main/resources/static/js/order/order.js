@@ -55,7 +55,7 @@ function addCount(button){
 	})
 	
 }
-//수량 감소 버튼
+//수량 감소 버튼ㅇ
 function deleteCount(button){
 	
 	
