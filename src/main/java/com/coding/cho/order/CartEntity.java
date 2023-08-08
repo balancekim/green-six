@@ -9,11 +9,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.coding.cho.common.domain.entity.MemberEntity;
+import com.coding.cho.map.StoreEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,12 +34,16 @@ public class CartEntity {
 
 	@Id 
 	@GeneratedValue(strategy =GenerationType.AUTO)
-	private long no;
+	private long no;//ㅇ
 	
 	
 	@OneToOne
 	@JoinColumn(name="uno")
 	private MemberEntity member;
+	
+	@ManyToOne
+	@JoinColumn(name="sno")
+	private StoreEntity store;
 	
 	@Builder.Default
 	@OneToMany(mappedBy = "cart")
