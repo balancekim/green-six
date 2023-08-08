@@ -11,6 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.coding.cho.common.domain.entity.MemberEntity;
+import com.coding.cho.order.CartEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -51,6 +52,8 @@ public class StoreEntity {
 	@OneToOne
 	@JoinColumn(name="mno")
 	private MemberEntity member;
+	
+	
 	
 	public StoreEntity status(boolean tf) {
 		this.status=tf;
