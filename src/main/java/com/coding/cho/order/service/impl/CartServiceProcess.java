@@ -1,5 +1,6 @@
 package com.coding.cho.order.service.impl;
 
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
@@ -46,6 +47,10 @@ public class CartServiceProcess implements CartService {
 	public void cartList(String email, Model model) {
 		
 		model.addAttribute("cart", new CartDTO(createCart(email)));
+		//성민 추가
+		MemberEntity user=memRepo.findAllByEmail(email);
+		model.addAttribute("user", user);
+		//
 	}
 
 	//카드에담기
@@ -104,6 +109,15 @@ public class CartServiceProcess implements CartService {
 		CartEntity cart=cartRepo.findByMember_email(email).orElseThrow();
 		cart.updateStore(storeRepo.findByName(store).orElseThrow());
 		
+	}
+
+	@Transactional
+	@Override
+	public void itemDeleteProcess(String email, long gno) {
+		CartEntity cart=cartRepo.findByMember_email(email).orElseThrow();
+		GoodsEntity goods=goodsRepo.findById(gno).orElseThrow();
+		
+		ciRepo.deleteByCartAndGoods(cart, goods);
 	}
 
 }

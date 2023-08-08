@@ -1,9 +1,75 @@
-/**
- * 
- */
 $(function(){
-	
+	totalPrice();
+	$("#btn-payment").click(paymentClicked);
 })
+
+function paymentClicked(){
+	paymentReady();
+}
+
+function paymentReady(){
+	var cartItems=$(".cart-item");
+	var totalItemPrice=$("#totalPrice").text();
+	alert(totalItemPrice);
+
+	
+	var goodsName=$(cartItems[0]).find(".itemName").text()
+	
+	if(cartItems.length>1){
+		goodsName+= "외 "+(cartItems.length-1)+"건"
+	}
+	var email=$("#userEmail").val();
+	var userName=$("#userName").val();
+	payment(goodsName, totalItemPrice, email, userName)
+}
+
+function payment(goodsName, totalItemPrice, email, userName){
+	alert(totalItemPrice);
+	var r=confirm(totalItemPrice+"원 결제 하시겠습니까?");
+	if(!r){
+		return;
+	}
+	var IMP = window.IMP;
+	IMP.init("imp74400321")
+	
+	IMP.request_pay({
+		pg: "kakaopay.TC0ONETIME",
+        pay_method: "card",
+        merchant_uid: "ORD"+new Date().getTime(),
+        name: goodsName,
+        amount: totalItemPrice,
+        buyer_email: email,
+        buyer_name: userName
+        },function(rsp){
+			msg="";
+			if(rsp.success){
+				console.log(rsp);
+				msg="결제가 완료 되었습니다.";
+			}else { 
+				msg="결제가 실패하였습니다."
+			}
+			alert(msg);
+        
+	});
+	/*장바구니 비우고 index로*/
+}
+
+
+//총금액 계산 후 html id="totalPrice"에 넣기///
+function totalPrice(){
+	var itemPrices = document.querySelectorAll(".itemPrice");
+	var totalPriceElement = document.getElementById("totalPrice");
+	var totalItemsPrice=0;
+	
+	for(var i=0; i<itemPrices.length; i++){
+		var itemPrice=parseInt(itemPrices[i].textContent.replace(/,/, ""));
+		totalItemsPrice+=itemPrice;
+	}
+	
+	totalPriceElement.textContent =totalItemsPrice.toLocaleString();
+	
+}
+//////////////
 
 function addCart(button){
 	
@@ -82,7 +148,43 @@ function deleteCount(button){
 	
 	})
 }
+///장바구니에서 상품 제거
+function deleteItem(button){
+	
+	var gno = $(button).siblings('.gno').val();
+	
+	$.ajax({
+		url:"/cart/delete/"+gno,
+		type:"DELETE",
+		beforeSend: function (jqXHR, settings) {
+           var header = $("meta[name='_csrf_header']").attr("content");
+           var token = $("meta[name='_csrf']").attr("content");
+           jqXHR.setRequestHeader(header, token);
+		},
+		success:function(result){
+			location.href="/cart";
+		}
+		
+	})
+}
+//SM 결제 완료 후 order, order item에 작성//
+function orderSave(){
+	$.ajax({
+		url:"/cart/orderSave",
+		type:"POST",
+		beforeSend: function (jqXHR, settings) {
+           var header = $("meta[name='_csrf_header']").attr("content");
+           var token = $("meta[name='_csrf']").attr("content");
+           jqXHR.setRequestHeader(header, token);
+		},
+		success:function(result){
+			//cartItem 다 지우기//
+			location.href="/cart";
+		}
+	})
+}
 
+///
 function scrollCart(gno){
 	var scrollValue = $(".cart").scrollTop()
 	if(!$(button).hasClass("cart-RBtn")){
@@ -94,3 +196,5 @@ function scrollCart(gno){
 		$(".cart").scrollTop(scrollValue)
 	}
 }
+
+

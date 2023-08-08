@@ -14,4 +14,6 @@ public interface CartService {
 
 	void countDownProcess(String name, long gno);
 
+	void itemDeleteProcess(String email, long gno);
+
 }

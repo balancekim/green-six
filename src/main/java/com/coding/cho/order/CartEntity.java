@@ -34,7 +34,7 @@ public class CartEntity {
 
 	@Id 
 	@GeneratedValue(strategy =GenerationType.AUTO)
-	private long no;//ㅇ
+	private long no;//
 	
 	
 	@OneToOne
