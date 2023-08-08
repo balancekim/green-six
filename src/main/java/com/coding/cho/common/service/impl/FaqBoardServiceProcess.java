@@ -1,13 +1,12 @@
 package com.coding.cho.common.service.impl;
 
-import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.coding.cho.common.domain.dto.FaqBoardSaveDTO;
 import com.coding.cho.common.domain.dto.cscenter.FaqBoardUpdateDTO;
@@ -80,6 +79,13 @@ public class FaqBoardServiceProcess implements FaqBoardService{
 	@Override
 	public Page<FaqEntity> boardSearchList(String search, Pageable pageable) {
 		return fer.findByQuestionContainingOrAnswerContaining(search, search, pageable);
+	}
+
+	@Override
+	public ModelAndView chatbotSearch() {
+		ModelAndView mv = new ModelAndView("index/event/event");
+		mv.addObject("chatbot", fer.findAll());
+		return mv;
 	}
 
 	

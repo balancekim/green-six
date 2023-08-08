@@ -7,6 +7,11 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.coding.cho.common.domain.entity.FaqBoardEntity;
 import com.coding.cho.common.domain.entity.FaqEntity;
@@ -21,12 +26,11 @@ public class ChatController {
 	private final FaqBoardService fs;
 	
 	
-	
-	
-	@GetMapping("/chatbot")
+	@GetMapping("/chatbot/{search}")
 	public String search(Model model, 
 			@PageableDefault(page=0, size=4, sort="no", direction = Sort.Direction.DESC) Pageable pageable,//페이징
-			String search){
+			@PathVariable String search){
+		System.out.println("adfasdfasdfasdf" +search);
 		Page<FaqEntity> searchList = null;
 
 		
@@ -49,6 +53,13 @@ public class ChatController {
 		return "chatbot/main";
 	}
 	
+	
+	@GetMapping("/chatbot/main")
+	public String chatbot() {
+		
+		return "chatbot/main";
+		
+	}
 	
 	/*
 	@PostMapping("/chatbot")
