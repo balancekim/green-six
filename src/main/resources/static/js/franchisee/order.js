@@ -47,7 +47,7 @@ function changeStatus(btn){
  }
  
  function orderProcessing(){
-	 $("#order-processing").click(function(){
+	
 		 
 		$.ajax({
 			url:"/franchisee/processing",
@@ -56,10 +56,10 @@ function changeStatus(btn){
 			}
 			
 		})
-	 });
+	 ;
  }
   function orderCancel(){
-	 $("#order-cancel").click(function(){
+	 
 		 
 		$.ajax({
 			url:"/franchisee/cancel",
@@ -68,10 +68,10 @@ function changeStatus(btn){
 			}
 			
 		})
-	 });
+	 ;
  }
     function orderEnd(){
-	 $("#order-end").click(function(){
+	
 		 
 		$.ajax({
 			url:"/franchisee/end",
@@ -80,7 +80,7 @@ function changeStatus(btn){
 			}
 			
 		})
-	 });
+	 ;
  }
  
  
