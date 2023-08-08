@@ -3,6 +3,11 @@
 	padding-top: 46px;
 }
 
+.cart-wrap{
+	width: 1080px;
+	margin: 0 auto;
+}
+
 h2 {
 	font-size: 40px;
 	margin: 16px 0 20px 0;
