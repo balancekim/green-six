@@ -2,6 +2,7 @@ package com.coding.cho;
 
 import java.util.stream.IntStream;
 
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,8 +15,12 @@ import com.coding.cho.common.domain.entity.MemberEntity;
 import com.coding.cho.common.domain.entity.MemberEntityRepository;
 import com.coding.cho.common.domain.entity.MyRole;
 import com.coding.cho.common.utils.HtmlEscapeUtils;
+import com.coding.cho.goods.GoodsEntity;
 import com.coding.cho.map.StoreEntity;
 import com.coding.cho.map.StoreRepository;
+import com.coding.cho.order.CartEntity;
+import com.coding.cho.order.CartItemEntity;
+import com.coding.cho.order.CartItemEntityRepository;
 
 @SpringBootTest
 class GreenSixApplicationTests {
@@ -26,13 +31,23 @@ class GreenSixApplicationTests {
 	@Autowired
 	MemberEntityRepository mrp;
 	
-	
+	@Autowired
+	CartItemEntityRepository ciRepo;
 	
 	@Autowired
 	StoreRepository sr;
 	
 	@Autowired
 	FaqBoardEntityRepository faqBoard;
+	
+	//@Test
+	void 카드담기(){
+		ciRepo.save(CartItemEntity.builder()
+				.cart(CartEntity.builder().no(476).build())
+				.goods(GoodsEntity.builder().no(12).build())
+				.count(2)
+				.build());
+	}
 	
 	//@Test
 	void 가맹점넣기() {

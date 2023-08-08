@@ -1,24 +1,32 @@
 package com.coding.cho.order;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.coding.cho.common.domain.entity.MemberEntity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@ToString
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Getter
-@Setter
 @Table(name = "cart")
 public class CartEntity {
 
@@ -26,17 +34,17 @@ public class CartEntity {
 	@GeneratedValue(strategy =GenerationType.AUTO)
 	private long no;
 	
-	private int count; //카트에 담긴 총 상품 개수
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name="uno")
-	private MemberEntity memberEntity;
+	private MemberEntity member;
 	
-	  public static CartEntity createCart(MemberEntity mem) {
-	        CartEntity cart = new CartEntity();
-	        cart.setCount(0);
-	        cart.setMemberEntity(mem);
-	        return cart;
-	    }
+	@Builder.Default
+	@OneToMany(mappedBy = "cart")
+	private List<CartItemEntity> cartItems=new ArrayList<>();
+	
+	
+	
+	  
 	
 }

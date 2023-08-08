@@ -22,23 +22,21 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Setter
 @Table(name = "cart_item")
 @Entity
 public class CartItemEntity {
 
 	
 	@Id 
-	@Column(name="cart_item_id")
 	@GeneratedValue(strategy =GenerationType.AUTO)
-	private long id;
+	private long no;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name="cno")
-	private CartEntity cartEntity;
+	private CartEntity cart;
 	
 	@JoinColumn(name = "gno", nullable = true)
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	private GoodsEntity goods;
 	
 	
@@ -46,20 +44,16 @@ public class CartItemEntity {
 	private int count;             //상품 개수
 	
 	
-	public static CartItemEntity createCartItem(CartEntity cart, GoodsEntity goods, int amount) {
-	        CartItemEntity cartItem = new CartItemEntity();
-	        cartItem.setCartEntity(cart);
-	        cartItem.setGoods(goods);
-	        cartItem.setCount(amount);
-	        return cartItem;
-	    }
 	
-	public void addCount(int count) {
+	
+	public CartItemEntity addCount(int count) {
 		this.count+=count;
+		return this;
 		
 	}
-	public void deleteCount(int count) {
+	public CartItemEntity deleteCount(int count) {
 		this.count-=count;
+		return this;
 		
 	}
 	

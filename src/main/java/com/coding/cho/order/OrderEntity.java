@@ -19,19 +19,25 @@ import javax.persistence.Table;
 
 import com.coding.cho.common.domain.entity.MemberEntity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name="orders")
-@Getter@Setter
+@Getter
 public class OrderEntity {
 
 	@Id
 	@GeneratedValue(strategy =GenerationType.IDENTITY)
 	private long no;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "uno")
 	private MemberEntity member; 
 	
@@ -40,9 +46,9 @@ public class OrderEntity {
 	@Enumerated(EnumType.STRING)
 	private OrderStatus orderStatus; //주문 상태
 	
-	@OneToMany(mappedBy = "orderEntity", cascade = CascadeType.ALL
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL
 			, orphanRemoval = true, fetch = FetchType.LAZY)
-	private List<OrderItemEntity> orderItems = new ArrayList<>();
+	private List<OrderItemEntity> orderItems;
 	
 	private LocalDateTime regTime;
 	

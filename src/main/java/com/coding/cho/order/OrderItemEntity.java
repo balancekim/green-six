@@ -13,15 +13,18 @@ import javax.persistence.Table;
 
 import com.coding.cho.goods.GoodsEntity;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Table(name="order_item")
-@Getter
-@Setter
-@Entity
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Entity
 public class OrderItemEntity {
 	
 	@Id
@@ -30,11 +33,11 @@ public class OrderItemEntity {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="gno")
-	private GoodsEntity goodsEntity;
+	private GoodsEntity goods;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="ono")
-	private OrderEntity orderEntity;
+	private OrderEntity order;
 	
 	private int orderPrice;
 	
