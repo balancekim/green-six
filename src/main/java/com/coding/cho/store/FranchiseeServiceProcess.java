@@ -35,7 +35,7 @@ public class FranchiseeServiceProcess implements FranchiseeService{
 	@Override
 	public void updateStatus(long storeNo, boolean status) {
 		
-		sr.findById(storeNo).map(store->store.status(status)).orElseThrow();
+		sr.findById(storeNo).map(store->store.changeStatus(status)).orElseThrow();
 		
 	}
 
