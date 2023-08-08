@@ -11,19 +11,24 @@
 	<h1>장바구니</h1>
 	<div>
 		<section id="cart-main">
+			<div class="cart-wrap">
 			<h2 class="cart-tit">장바구니</h2>
 			<div class="cart-area center">
 				<ul class="flex">
-					<li>구분</li>
+					<li>사진</li>
 					<li>상품명</li>
 					<li>가격</li>
 					<li>할인가</li>
 					<li>판매가</li>
 					<li>개수</li>
-					<li>소계</li>					
+					<li>소계</li>				
+					<li>삭제</li>	
 				</ul>
 				<ol class="flex" th:each="ci:${cart.cartItems}">
-					<li ><input type="checkbox" class="target-item"> </li>
+					<li>
+						<img th:src="${ci.goods.gie[0].url}" height="40px;">
+					</li>
+					<!-- <li ><input type="checkbox" class="target-item"> </li> -->
 					<li th:text="${ci.goods.name}">상품명</li>
 					<li th:text="${ci.goods.price}">가격</li>
 					<li>
@@ -37,15 +42,17 @@
 						<button class="cart-RBtn" onclick="addCount(this)">+</button>
 						<input class="gno" type="hidden" th:value="${ci.goods.gno}">
 					</li>
-					<li></li>					
+					<li th:text="${(ci.goods.price-ci.goods.discount)*ci.count}">소계</li>					
 				</ol>
 				<ol class="flex" th:if="${#lists.isEmpty(cart.cartItems)}">
 					
 					<li>장바구니가 비어있습니다.</li>					
 				</ol>
 			</div>
-			<div>
-				
+			<div class="cart-footer flex">
+				<button type="button" id="btn-payment" >결제하기</button>
+				<button type="button" id="btn-payment" >취소하기</button>
+			</div>
 			</div>
 		</section>
 		
