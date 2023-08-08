@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import com.coding.cho.common.domain.entity.MemberEntity;
 import com.coding.cho.common.domain.entity.MemberEntityRepository;
 import com.coding.cho.map.StoreEntity;
-import com.coding.cho.map.StoreRepository;
+import com.coding.cho.map.StoreEntityRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -19,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 public class FranchiseeServiceProcess implements FranchiseeService{
 	
 	private final MemberEntityRepository mr;
-	private final StoreRepository sr;
+	private final StoreEntityRepository sr;
 	
 	
 	@Override

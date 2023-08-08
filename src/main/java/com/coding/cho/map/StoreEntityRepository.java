@@ -8,10 +8,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.coding.cho.common.domain.entity.MemberEntity;
 
-public interface StoreRepository extends JpaRepository<StoreEntity, Long>{
+public interface StoreEntityRepository extends JpaRepository<StoreEntity, Long>{
 
 	Page<StoreEntity> findByNameContaining(String searchKeyword, Pageable pageable);
 
 	Optional<StoreEntity> findByMember(MemberEntity entity);
+
+	Optional<StoreEntity> findByName(String store);
 
 }

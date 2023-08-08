@@ -21,7 +21,7 @@ import com.coding.cho.common.domain.entity.MemberEntityRepository;
 public class StoreServiceProcess implements StoreService {
 	
 	@Autowired
-	private StoreRepository repo;
+	private StoreEntityRepository repo;
 	
 	@Autowired
 	private MemberEntityRepository mr;

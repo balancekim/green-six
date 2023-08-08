@@ -21,10 +21,15 @@ function addCart(button){
 		data:{gno : gno},
 		type:"post",
 		success:function(result){
-			var check=confirm("카드에 담았습니다.<br>카드로 이동?");
-			if(check){
+			if(result==false){
+				location.href="/cart/store";
+			}else{
+				var check=confirm("카드에 담았습니다.<br>카드로 이동?");
+				if(check){
 				location.href="/cart";
 			}
+			}
+			
 		}
 	
 	})

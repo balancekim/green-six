@@ -17,7 +17,7 @@ import com.coding.cho.common.domain.entity.MyRole;
 import com.coding.cho.common.utils.HtmlEscapeUtils;
 import com.coding.cho.goods.GoodsEntity;
 import com.coding.cho.map.StoreEntity;
-import com.coding.cho.map.StoreRepository;
+import com.coding.cho.map.StoreEntityRepository;
 import com.coding.cho.order.CartEntity;
 import com.coding.cho.order.CartItemEntity;
 import com.coding.cho.order.CartItemEntityRepository;
@@ -35,7 +35,7 @@ class GreenSixApplicationTests {
 	CartItemEntityRepository ciRepo;
 	
 	@Autowired
-	StoreRepository sr;
+	StoreEntityRepository sr;
 	
 	@Autowired
 	FaqBoardEntityRepository faqBoard;

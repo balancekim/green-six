@@ -50,7 +50,10 @@ public class CartEntity {
 	private List<CartItemEntity> cartItems=new ArrayList<>();
 	
 	
-	
+	public CartEntity updateStore(StoreEntity store) {
+		this.store=store;
+		return this;
+	}
 	  
 	
 }
