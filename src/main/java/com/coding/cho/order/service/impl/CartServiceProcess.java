@@ -65,5 +65,20 @@ public class CartServiceProcess implements CartService {
 		
 		
 	}
+	@Transactional
+	@Override
+	public void countDownProcess(String name, long gno) {
+		
+		CartEntity cart=createCart( name);
+		GoodsEntity goods=goodsRepo.findById(gno).orElseThrow();
+		
+		CartItemEntity cie = ciRepo.findByCartAndGoods(cart, goods).get();
+		if(cie.getCount()>1) {
+			cie.deleteCount(1);
+		}else {
+			ciRepo.delete(cie);
+		}
+	
+	}
 
 }
