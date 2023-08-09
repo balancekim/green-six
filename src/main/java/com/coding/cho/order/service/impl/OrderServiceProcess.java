@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.coding.cho.common.domain.entity.MemberEntity;
 import com.coding.cho.common.domain.entity.MemberEntityRepository;
+import com.coding.cho.map.StoreEntity;
 import com.coding.cho.order.CartEntity;
 import com.coding.cho.order.CartEntityRepository;
 import com.coding.cho.order.CartItemEntity;
@@ -16,6 +17,7 @@ import com.coding.cho.order.OrderEntity;
 import com.coding.cho.order.OrderEntityRepository;
 import com.coding.cho.order.OrderItemEntity;
 import com.coding.cho.order.OrderItemEntityRepository;
+import com.coding.cho.order.OrderStatus;
 import com.coding.cho.order.service.OrderService;
 
 import lombok.RequiredArgsConstructor;
@@ -36,11 +38,12 @@ public class OrderServiceProcess implements OrderService {
 	public void orderSaveProcess(String email, String uid) {
 		
 		MemberEntity member=memRepo.findAllByEmail(email);
-		OrderEntity order=OrderEntity.builder().member(member).uid(uid).build();
+		CartEntity cart=cartRepo.findByMember(member);
+		StoreEntity store=cart.getStore();
+		
+		OrderEntity order=OrderEntity.builder().member(member).uid(uid).store(store).build().setStatus(OrderStatus.WAIT);
 		
 		orderRepo.save(order);
-		
-		CartEntity cart=cartRepo.findByMember(member);
 		
 		List<CartItemEntity> cartItems=ciRepo.findByCart(cart);
 		

@@ -25,6 +25,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.coding.cho.common.domain.entity.MemberEntity;
+import com.coding.cho.map.StoreEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -50,20 +51,21 @@ public class OrderEntity {
 	@Column(nullable = false)
 	private String uid;
 	
+	@ManyToOne
+	@JoinColumn(name="sno")
+	private StoreEntity store;
 	
 	@CreationTimestamp
 	@Column(columnDefinition = "timestamp(6) null")
 	private LocalDateTime orderDate;
 	
-	@CollectionTable(name = "OrderStatus", joinColumns =@JoinColumn(name = "ono") )
+	@JoinColumn(name = "ono")
 	@Enumerated(EnumType.STRING)
-	@ElementCollection(fetch = FetchType.EAGER)//1:N
-	@Builder.Default
 	@Column(name = "orderStatus",nullable = true)
-	private Set<OrderStatus> orderStatus=new HashSet<>(); //주문 상태
+	private OrderStatus orderStatus; //주문 상태
 	
-	public OrderEntity addStatus(OrderStatus status) {
-		orderStatus.add(status);
+	public OrderEntity setStatus(OrderStatus status) {
+		this.orderStatus=status;
 		return this;
 	}
 	

@@ -2,5 +2,8 @@ package com.coding.cho.order;
 
 public enum OrderStatus {
 
-	ORDER, CANCEL;
+	WAIT,
+	READY,
+	END,
+	CANCEL
 }
