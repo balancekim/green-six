@@ -59,6 +59,8 @@ public class OrderEntity {
 	@Column(columnDefinition = "timestamp(6) null")
 	private LocalDateTime orderDate;
 	
+	
+	
 	@JoinColumn(name = "ono")
 	@Enumerated(EnumType.STRING)
 	@Column(name = "orderStatus",nullable = true)

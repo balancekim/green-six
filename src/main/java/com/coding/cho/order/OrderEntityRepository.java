@@ -12,7 +12,11 @@ public interface OrderEntityRepository extends JpaRepository<OrderEntity, Long>{
 	OrderEntity findByMember(MemberEntity member);
 
 
+	List<OrderEntity> findAllByMember(MemberEntity member);
+
+
 
 	List<OrderEntity> findByStoreAndOrderStatus(StoreEntity store, OrderStatus wait);
+
 
 }
