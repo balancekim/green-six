@@ -301,38 +301,64 @@ line-height: 36px;
 
 /* 챗봇 */
 
+.chatbot {
+	z-index : 100;
+	position: fixed;
+    right: 20px;
+    bottom: 60px;
+}
 
 
 .chatbot-content {
 	
 	display : none;
 	border: 1px solid #a9a9a9;
+	background-color: rgba(255,255,255,0.8);
     border-radius: 17px;
     height: 300px;
     width: 270px;
 }
 
-.chatbot-section {
+.chatbot-content .chat-list{
+	padding: 10px;
+}
+.chatbot-content .chatbot-section {
 	overflow : auto;
 	height: 260px;
 }
 
-.search-sec{
+.chatbot-content .search-sec{
 	text-align: center;
 }
 
-.search-sec .search-input{
+.chatbot-content .search-sec .search-input{
 	position: relative;
 }
-.search-sec .search-input span{
+.chatbot-content .search-sec .search-input span{
+	cursor : pointer;
 	position: absolute;
+	right: 20px;
+    top: 4px;
 }
 
-.search-sec .search-input .search{
+.chatbot-content .search-sec .search-input .search{
 	width: 240px;
 	height: 30px;
     border: 1px solid #a9a9a9;
     border-radius: 26px;
     padding: 15px;
     vertical-align: bottom;
+}
+
+.chatbot-content .main-footer{
+	text-align: center;
+}
+
+#page{
+	justify-content:center;
+}
+
+#page > p{
+	cursor: pointer;
+	margin-right: 5px;
 }
