@@ -299,4 +299,40 @@ line-height: 36px;
 	margin-top: 10px;
 }
 
+/* 챗봇 */
 
+
+
+.chatbot-content {
+	
+	display : none;
+	border: 1px solid #a9a9a9;
+    border-radius: 17px;
+    height: 300px;
+    width: 270px;
+}
+
+.chatbot-section {
+	overflow : auto;
+	height: 260px;
+}
+
+.search-sec{
+	text-align: center;
+}
+
+.search-sec .search-input{
+	position: relative;
+}
+.search-sec .search-input span{
+	position: absolute;
+}
+
+.search-sec .search-input .search{
+	width: 240px;
+	height: 30px;
+    border: 1px solid #a9a9a9;
+    border-radius: 26px;
+    padding: 15px;
+    vertical-align: bottom;
+}
