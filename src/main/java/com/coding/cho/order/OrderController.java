@@ -3,7 +3,9 @@ package com.coding.cho.order;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.coding.cho.order.service.OrderService;
@@ -18,8 +20,15 @@ public class OrderController {
 	
 	@ResponseBody
 	@PostMapping("/cart/orderSave")
-	public ResponseEntity<Boolean> orderSave(Authentication auth){
-		service.orderSaveProcess(auth.getName());
+	public ResponseEntity<Boolean> orderSave(Authentication auth,@RequestParam String uid){
+		service.orderSaveProcess(auth.getName(), uid);
+		return ResponseEntity.ok().body(true);
+	}
+	
+	@ResponseBody
+	@DeleteMapping("/cart/del")
+	public ResponseEntity<Boolean> cartDelete(Authentication auth){
+		service.cartDeleteProcess(auth.getName());
 		return ResponseEntity.ok().body(true);
 	}
 }
