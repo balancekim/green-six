@@ -73,12 +73,25 @@ public class AdminController {
 		
 		return "franchisee/order";
 	}
-
+	/*
 	@ResponseBody
 	@GetMapping("/franchisee/orderwait")
-	public ModelAndView orderWait() {
-		return new ModelAndView("franchisee/wait");
+	public ModelAndView orderWait(Authentication authentication) {
+		String id= authentication.getName();
+		ModelAndView mv= new ModelAndView();
+		
+		return new ModelAndView("franchisee/wait").addObject("order", fs.waiting(id));
 	}
+	*/
+	@ResponseBody
+	@GetMapping("/franchisee/orderwait")
+	public ModelAndView orderWait(Authentication authentication) {
+		String id= authentication.getName();
+		ModelAndView mv= new ModelAndView("franchisee/wait");
+		mv.addObject("order", fs.waiting(id));
+		return mv; 
+	}
+	
 	@ResponseBody
 	@GetMapping("/franchisee/processing")
 	public ModelAndView processing() {
