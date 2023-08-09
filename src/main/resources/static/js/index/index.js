@@ -12,6 +12,7 @@ $(function(){
 	saleList();
 	noticeList();
 	eventList();
+	
 });
 ///////////////////////////////////////
 function visualLodding(){
@@ -118,20 +119,18 @@ function eventList(){
 		timeout: 5000,
 		success:function(result){
 			$(".index-event").html(result);
+			
+			$("#chat-img").attr("src","/images/index/quick-chatbot.gif");
 		}
 	});
 }
 
 function chatbot(){
-	$.ajax({
-		async: false,
-		url:"/index/chatbot/main",
-		timeout: 5000,
-		success:function(result){
-			$(".chatbot-content").html(result);
-			$(".chatbot-content").show();
-		}
-	});
+	$(".chatbot-content").show();
+}
+
+function chatbotClose(){
+	$(".chatbot-content").hide();
 }
 
 var search2;
