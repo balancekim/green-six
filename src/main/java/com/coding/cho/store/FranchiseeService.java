@@ -13,4 +13,6 @@ public interface FranchiseeService {
 	void updateStatus(long storeNo, boolean status);
 
 	List<OrderDTO> waiting(String id);
+
+
 }
