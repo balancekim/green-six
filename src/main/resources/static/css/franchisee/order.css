@@ -16,7 +16,9 @@
 }
 
 .section-size{
-	width:928px;
+	width:1030px;
+	background-color: #e4eddc;
+	
 }
 .order{
 	width:1100px;
@@ -36,7 +38,16 @@
 	font-size: 30px;
 	margin-left: 10px;
 	font-family: 'Jua', sans-serif;
-	line-height: 80px;
+
+
+	
+}
+.order .wrap .fc-logo div{
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center; 
+	text-align: center; 
 }
 
 .order .wrap{
@@ -63,7 +74,7 @@
 	height: 160px;
 	text-align: center;
 	line-height: 160px;
-	background-color:		#C29F6D;
+	background-color:		#95bb92;
 	font-family: 'Jua', sans-serif;
 	letter-spacing: 0.2em;
 	
@@ -76,7 +87,7 @@
 	font-size: 20px;
 }
 .target{
-	background-color:	#FDF5E6;
+	background-color:	#c9ddb8
 }
 .wait {
 	border-bottom:1px solid #00000036;
@@ -92,7 +103,7 @@
 .order-btn button{
 	width: 100px;
 	height: 100px;
-	background-color: #0069ffc2;
+	background-color: #88AF62;
 	font-weight: 700;
 	font-size: 18px;
 	color: white;
@@ -108,8 +119,8 @@
 	width:25px;height:25px;
 }
 .wrap-label .order-poss[type="radio"]:checked  {
-	border: 0.5em solid red;
-	background-color: red;
+	border: 0.5em solid #40df40;
+	background-color: #40df40;
 }
 .wrap-label .order-impo[type="radio"]:checked  {
 	background-color: grey;
@@ -119,4 +130,20 @@
 }
 .wrap-label div label{
 	margin-left: 10px;
+}
+/* ////////////////////franchisee/wait//////////////////// */
+
+.wait .time-info{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center; 
+	text-align: center; 
+	font-size: 28px;
+	font-weight: 500;
+}
+.wait .adress-info{
+	font-size: 18px;
+	font-weight: 500;
+	
 }

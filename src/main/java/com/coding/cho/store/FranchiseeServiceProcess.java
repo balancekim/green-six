@@ -7,7 +7,6 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.coding.cho.common.domain.entity.MemberEntity;
 import com.coding.cho.common.domain.entity.MemberEntityRepository;
@@ -53,4 +52,6 @@ public class FranchiseeServiceProcess implements FranchiseeService{
 		List<OrderDTO> list=orderEntity.stream().map(ff->new OrderDTO().order(ff)).collect(Collectors.toList());
 		return list;
 	}
+
+
 }

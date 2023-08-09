@@ -82,5 +82,12 @@ function changeStatus(btn){
 		})
 	 ;
  }
- 
+ function orderBtnClicked(){
+	 $.ajax({
+		 url:"/franchisee/processing",
+		 success:function(result){
+			 $("#wait").html(result);
+		 }
+	 })
+ }
  
