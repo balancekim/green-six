@@ -44,8 +44,6 @@ public class CartItemEntity {
 	private int count;             //상품 개수
 	
 	
-	
-	
 	public CartItemEntity addCount(int count) {
 		this.count+=count;
 		return this;

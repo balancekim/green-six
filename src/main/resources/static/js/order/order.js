@@ -10,7 +10,6 @@ function paymentClicked(){
 function paymentReady(){
 	var cartItems=$(".cart-item");
 	var totalItemPrice=$("#totalPrice").text();
-	alert(totalItemPrice);
 
 	
 	var goodsName=$(cartItems[0]).find(".itemName").text()
@@ -24,8 +23,8 @@ function paymentReady(){
 }
 
 function payment(goodsName, totalItemPrice, email, userName){
-	alert(totalItemPrice);
 	var r=confirm(totalItemPrice+"원 결제 하시겠습니까?");
+	var uid= "ORD"+new Date().getTime()
 	if(!r){
 		return;
 	}
@@ -35,7 +34,7 @@ function payment(goodsName, totalItemPrice, email, userName){
 	IMP.request_pay({
 		pg: "kakaopay.TC0ONETIME",
         pay_method: "card",
-        merchant_uid: "ORD"+new Date().getTime(),
+        merchant_uid: uid,
         name: goodsName,
         amount: totalItemPrice,
         buyer_email: email,
@@ -49,11 +48,42 @@ function payment(goodsName, totalItemPrice, email, userName){
 				msg="결제가 실패하였습니다."
 			}
 			alert(msg);
-        
+        orderSave(uid);
 	});
 	/*장바구니 비우고 index로*/
 }
 
+//SM 결제 완료 후 order, order item에 작성//
+function orderSave(uid){
+	$.ajax({
+		url:"/cart/orderSave",
+		type:"POST",
+		data:{uid:uid},
+		beforeSend: function (jqXHR, settings) {
+           var header = $("meta[name='_csrf_header']").attr("content");
+           var token = $("meta[name='_csrf']").attr("content");
+           jqXHR.setRequestHeader(header, token);
+		},
+		success:function(result){
+			cartAllDelete();
+		}
+	})
+}
+//Order에 저장 후 cart 비우기
+function cartAllDelete(){
+	$.ajax({
+		url:"/cart/del",
+		type:"DELETE",
+		beforeSend: function (jqXHR, settings) {
+           var header = $("meta[name='_csrf_header']").attr("content");
+           var token = $("meta[name='_csrf']").attr("content");
+           jqXHR.setRequestHeader(header, token);
+		},
+		success:function(result){
+			location.href="/cart";
+		}
+	})
+}
 
 //총금액 계산 후 html id="totalPrice"에 넣기///
 function totalPrice(){
@@ -167,22 +197,7 @@ function deleteItem(button){
 		
 	})
 }
-//SM 결제 완료 후 order, order item에 작성//
-function orderSave(){
-	$.ajax({
-		url:"/cart/orderSave",
-		type:"POST",
-		beforeSend: function (jqXHR, settings) {
-           var header = $("meta[name='_csrf_header']").attr("content");
-           var token = $("meta[name='_csrf']").attr("content");
-           jqXHR.setRequestHeader(header, token);
-		},
-		success:function(result){
-			//cartItem 다 지우기//
-			location.href="/cart";
-		}
-	})
-}
+
 
 ///
 function scrollCart(gno){
