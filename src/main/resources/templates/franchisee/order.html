@@ -13,15 +13,21 @@
 	<body class="order">
 		<div>
 		<div class="flex between wrap">
-			<p class="order-p">주문접수</p>
+			<h1>로고영역</h1>
+			<div class="wrap fc-logo flex">
+				<a href="/" class="flex"> <span class="logo-style"> GREEN <img alt=""
+						src="/images/icon/greenSix-logo3.svg" width="56px;" height="64px;" >
+				</span>
+				<span  class="logo-style" style="color: #cc3399">IX</span>
+				</a>
+				<div>
+					<p class="storeName" th:text="${store.member.name}"></p>
+				</div>
+			</div>
 			<div class="flex wrap-label">
 				<div>
-					<li class="storeName" th:text="${store.member.name}">1				
-					</li>
-				</div>
-				<div>
 					<input class="storeNo" type="hidden" th:value="${store.no}">
-					<input type="radio" id="poss" name="order" value="true" onchange="changeStatus(this)" th:checked="${store.status eq true}" class="order-poss"><label for="poss">영업중</label>
+					<input type="radio" id="poss" name="order" value="true" onchange="changeStatus(this)" th:checked="${store.status eq true}" class="order-poss" ><label for="poss">영업중</label>
 				</div>
 				<div>
 					<input type="radio" id="imposs" name="order" value="false" onchange="changeStatus(this)" th:checked="${store.status eq false}" class="order-impo"><label for="imposs">영업종료</label>
@@ -43,7 +49,7 @@
 					</li>
 					<li class="order-processing"><a id="order-processing" href="#" onclick="changeForm1(this)">처리중</a></li>
 					<li class="order-cancel"><a id="order-cancel" href="#" onclick="changeForm1(this)">주문취소</a></li>
-					<li class="order-end"><a id="order-end" href="#" onclick="changeForm1(this)">배달완료</a></li>
+					<li class="order-end"><a id="order-end" href="#" onclick="changeForm1(this)">픽업</a></li>
 				</ul>
 				<ul>
 					<li id="wait">여기에 주문정보 들어와야함</li>
