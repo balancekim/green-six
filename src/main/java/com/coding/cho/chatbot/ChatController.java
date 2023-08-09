@@ -26,7 +26,7 @@ public class ChatController {
 	private final FaqBoardService fs;
 	
 	
-	@GetMapping("/chatbot/{search}")
+	@GetMapping("/index/chatbot/{search}")
 	public String search(Model model, 
 			@PageableDefault(page=0, size=4, sort="no", direction = Sort.Direction.DESC) Pageable pageable,//페이징
 			@PathVariable String search){
@@ -50,11 +50,11 @@ public class ChatController {
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
 		
-		return "chatbot/main";
+		return "chatbot/list";
 	}
 	
 	
-	@GetMapping("/chatbot/main")
+	@GetMapping("/index/chatbot/main")
 	public String chatbot() {
 		
 		return "chatbot/main";

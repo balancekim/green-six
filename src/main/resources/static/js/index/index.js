@@ -121,4 +121,61 @@ function eventList(){
 		}
 	});
 }
-/////////////////////////////////
+
+function chatbot(){
+	$.ajax({
+		async: false,
+		url:"/index/chatbot/main",
+		timeout: 5000,
+		success:function(result){
+			$(".chatbot-content").html(result);
+			$(".chatbot-content").show();
+		}
+	});
+}
+
+var search2;
+function chatbotSearch(){
+	var search = $(".search").val();
+	search2=search;
+	var token = $("meta[name='_csrf']").attr('content');
+    var header = $("meta[name='_csrf_header']").attr('content');
+    if(token && header) {
+        $(document).ajaxSend(function(event, xhr, options) {
+            xhr.setRequestHeader(header, token);
+        });
+    }
+	
+	$.ajax({
+		async: false,
+		url:`/index/chatbot/${search}`,
+		timeout: 5000,
+		success:function(result){
+			$(".chatbot-section").append(result);
+		}
+	});
+}
+
+
+function pageBtn(button){
+	search = search2;
+	var page = $(button).text();
+	var token = $("meta[name='_csrf']").attr('content');
+    var header = $("meta[name='_csrf_header']").attr('content');
+    if(token && header) {
+        $(document).ajaxSend(function(event, xhr, options) {
+            xhr.setRequestHeader(header, token);
+        });
+    }
+	
+	$.ajax({
+		async: false,
+		url:`/index/chatbot/${search}`,
+		data : {page:page-1},
+		timeout: 5000,
+		success:function(result){
+			$(".chatbot-section").append(result);
+		}
+	});
+	
+}

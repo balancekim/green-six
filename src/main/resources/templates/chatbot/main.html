@@ -4,36 +4,19 @@
     <head>
         <meta charset="UTF-8">
         <title>Insert title here</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     </head>
     <body>
-    	<p>검색페이지</p>
-	    <div th:if ="${list}">
-	    	<ul th:each="dto:${list}">
-	    		<li th:text="${dto.question}">
-	    			
-	    		</li>
-	    		<li th:text="${dto.answer}">
-	    			
-	    		</li>
-	    	</ul>
-	    </div>
-	<div id="main-footer" style="text-align: center;">
-		<div  th:if ="${list}" id="page" style="margin: 15px 0 50px 0;">
-			<th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
-
-				<a th:if="${page != nowPage}"
-					th:href="@{/chatbot(page=${page - 1}, search=${param.search})}"
-					th:text="${page}"></a>
-				<strong th:if="${page == nowPage}" th:text="${page}"
-					style="color: green"></strong>
-			</th:block>
+    <section class="chatbot-section">
+		
+	</section>
+	<div class="search-sec">
+		<div class="search-input">
+			<input type="text" class="search">
+			<span onclick="chatbotSearch()" class="material-symbols-outlined">search</span>
 		</div>
-
+		
+		<!-- <button onclick="chatbotSearch()" type="button">검색</button> -->
 	</div>
-	
-		<input type="text" class="search">
-		<!-- <input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" /> -->
-		<button onclick="chatbotSearch()" type="button">검색</button>
-	
 </body>
 </html>
