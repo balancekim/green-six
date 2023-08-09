@@ -1,5 +1,5 @@
 $(function(){
-	totalPrice();
+	/*totalPrice();*/
 	$("#btn-payment").click(paymentClicked);
 })
 
