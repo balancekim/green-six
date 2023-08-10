@@ -10,4 +10,6 @@ public interface OrderService {
 
 	void orderHistory(String name, Model model);
 
+	void orderHistory(String name, Model model, String uid);
+
 }

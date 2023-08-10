@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+#cart-main {
+    padding-top: 46px;
+}
+
+.cart-wrap {
+    width: 1080px;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 40px;
+    margin: 16px 0 20px 0;
+    border-bottom: 1px solid;
+    padding-bottom: 30px;
+}
+
+.cart-tit {
+    width: 1080px;
+    margin: 0 auto;
+}
+.order-row{width: 1080px;}
+.order-row li{width:270px;}
+.order-content{width: 1080px;}
+.order-content li{
+	width:270px;
+	line-height: 6;
+}
+
+
+.cart-area {
+  margin-top: 30px;
+ 
+}
+
