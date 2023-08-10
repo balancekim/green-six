@@ -1,25 +1,19 @@
 package com.coding.cho.admin;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.coding.cho.common.utils.FileUploadUtil;
 import com.coding.cho.event.EventSaveDTO;
 import com.coding.cho.event.EventService;
-import com.coding.cho.goods.GoodsEntity;
 import com.coding.cho.goods.GoodsService;
-import com.coding.cho.goods.dto.GoodsListDTO;
 import com.coding.cho.goods.dto.GoodsSaveDTO;
 import com.coding.cho.goods.dto.SaleSaveDTO;
 import com.coding.cho.store.FranchiseeService;
@@ -65,7 +59,7 @@ public class AdminController {
 		return service.tempUpload(temp);
 	}
 	
-	//order 페이지 임시로 컨트롤러 만들어놓았습니다.
+	//order 페이지
 	@GetMapping("/franchisee/order")
 	public String order(Model model,Authentication authentication) {
 		String id= authentication.getName();
@@ -73,15 +67,29 @@ public class AdminController {
 		
 		return "franchisee/order";
 	}
-
+	/*
 	@ResponseBody
 	@GetMapping("/franchisee/orderwait")
-	public ModelAndView orderWait() {
-		return new ModelAndView("franchisee/wait");
+	public ModelAndView orderWait(Authentication authentication) {
+		String id= authentication.getName();
+		ModelAndView mv= new ModelAndView();
+		
+		return new ModelAndView("franchisee/wait").addObject("order", fs.waiting(id));
 	}
+	*/
+	@ResponseBody
+	@GetMapping("/franchisee/orderwait")
+	public ModelAndView orderWait(Authentication authentication) {
+		String id= authentication.getName();
+		ModelAndView mv= new ModelAndView("franchisee/wait");
+		mv.addObject("order", fs.waiting(id));
+		return mv; 
+	}
+	
 	@ResponseBody
 	@GetMapping("/franchisee/processing")
 	public ModelAndView processing() {
+		
 		return new ModelAndView("franchisee/processing");
 	}
 	@ResponseBody

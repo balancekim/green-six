@@ -54,19 +54,6 @@ public class ChatController {
 	}
 	
 	
-	@GetMapping("/index/chatbot/main")
-	public String chatbot() {
-		
-		return "chatbot/main";
-		
-	}
 	
-	/*
-	@PostMapping("/chatbot")
-	public String search(String search , Model model){
-		fs.searchFaq(search,model);
-		return "chatbot/main";
-	}
-	*/
 	
 }

@@ -1,24 +1,17 @@
 <!DOCTYPE html>
 <html>
-    
-     <div th:if ="${list}">
-	    	<ul th:each="dto:${list}">
-	    		<li th:text="${dto.question}">
-	    			
-	    		</li>
-	    		<li th:text="${dto.answer}">
-	    			
-	    		</li>
-	    	</ul>
-	    </div>
-    
-    <div id="main-footer" style="text-align: center;">
-			<div  class="flex" th:if ="${list}" id="page" style="margin: 15px 0;">
-				<th:block   th:each="page : ${#numbers.sequence(startPage, endPage)}">
-					<p  onclick="pageBtn(this)" th:text="${page}"></p>
-				</th:block>
-			</div>
-	
-		</div>
-   
+
+<div class="chat-list" th:if="${list}">
+	<ul th:each="dto:${list}">
+		<li th:text="${dto.question}"></li>
+		<li th:text="${dto.answer}"></li>
+	</ul>
+</div>
+<div id="main-footer"  th:unless="${#lists.isEmpty(list)} " >
+	<div class="flex" id="page" style="margin-top: 10px;">
+		<th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
+			<p onclick="pageBtn(this)" th:text="${page}"></p>
+		</th:block>
+	</div>
+</div>
 </html>

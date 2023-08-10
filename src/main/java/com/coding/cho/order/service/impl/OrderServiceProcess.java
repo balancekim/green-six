@@ -1,13 +1,19 @@
 package com.coding.cho.order.service.impl;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.coding.cho.common.domain.entity.MemberEntity;
 import com.coding.cho.common.domain.entity.MemberEntityRepository;
+import com.coding.cho.goods.GoodsEntity;
+import com.coding.cho.goods.GoodsEntityRepository;
 import com.coding.cho.map.StoreEntity;
 import com.coding.cho.order.CartEntity;
 import com.coding.cho.order.CartEntityRepository;
@@ -18,6 +24,8 @@ import com.coding.cho.order.OrderEntityRepository;
 import com.coding.cho.order.OrderItemEntity;
 import com.coding.cho.order.OrderItemEntityRepository;
 import com.coding.cho.order.OrderStatus;
+import com.coding.cho.order.dto.OrderDTO;
+import com.coding.cho.order.dto.OrderItemDTO;
 import com.coding.cho.order.service.OrderService;
 
 import lombok.RequiredArgsConstructor;
@@ -32,6 +40,7 @@ public class OrderServiceProcess implements OrderService {
 	private final MemberEntityRepository memRepo;
 	private final OrderEntityRepository orderRepo;
 	private final OrderItemEntityRepository oiRepo;
+	private final GoodsEntityRepository gRepo;
 	
 	@Transactional
 	@Override
@@ -71,6 +80,23 @@ public class OrderServiceProcess implements OrderService {
 		
 		ciRepo.deleteByCart(cart);
 		cartRepo.deleteByMember(member);
+	}
+	//주문 내역
+	@Transactional
+	@Override
+	public void orderHistory(String name, Model model) {
+		MemberEntity member=memRepo.findAllByEmail(name);
+		List<OrderEntity> oe = orderRepo.findAllByMember(member);
+		
+		List<OrderDTO> list=oe.stream().map(ff->new OrderDTO().order(ff)).collect(Collectors.toList());
+		
+		Collections.reverse(list);
+		
+		
+		
+		model.addAttribute("list",list);
+		
+		
 	}
 
 	
