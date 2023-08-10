@@ -19,4 +19,5 @@ public interface OrderEntityRepository extends JpaRepository<OrderEntity, Long>{
 	List<OrderEntity> findByStoreAndOrderStatus(StoreEntity store, OrderStatus wait);
 
 
+
 }

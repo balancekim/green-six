@@ -5,18 +5,22 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.coding.cho.order.OrderEntity;
+import com.coding.cho.order.OrderStatus;
 
 import lombok.Data;
 
 @Data
 public class OrderDTO {
+	private long no;
 	private String name;
 	private String uid;
 	private LocalDateTime orderDate;
+
 	//형균추가
 	private int totalPrice;
 	private int totalCount;
 	//
+
 	List<OrderItemDTO> orderItem;
 	
 	
