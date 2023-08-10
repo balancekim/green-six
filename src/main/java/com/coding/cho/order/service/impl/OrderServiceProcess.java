@@ -1,7 +1,9 @@
 package com.coding.cho.order.service.impl;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
@@ -22,7 +24,8 @@ import com.coding.cho.order.OrderEntityRepository;
 import com.coding.cho.order.OrderItemEntity;
 import com.coding.cho.order.OrderItemEntityRepository;
 import com.coding.cho.order.OrderStatus;
-import com.coding.cho.order.dto.OrderListDTO;
+import com.coding.cho.order.dto.OrderDTO;
+import com.coding.cho.order.dto.OrderItemDTO;
 import com.coding.cho.order.service.OrderService;
 
 import lombok.RequiredArgsConstructor;
@@ -84,14 +87,15 @@ public class OrderServiceProcess implements OrderService {
 		MemberEntity member=memRepo.findAllByEmail(name);
 		List<OrderEntity> oe = orderRepo.findAllByMember(member);
 		
-		OrderListDTO orders =  new OrderListDTO();
-		List<OrderListDTO> order =orders.toDto(oe, member);
+		List<OrderDTO> list=oe.stream().map(ff->new OrderDTO().order(ff)).collect(Collectors.toList());
 		
-		System.out.println(order);
-		
+		Collections.reverse(list);
 		
 		
-		model.addAttribute("list",order);
+		
+		model.addAttribute("list",list);
+		
+		
 	}
 
 	
