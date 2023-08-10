@@ -6,12 +6,15 @@ var delay=3000;
 var target_idx=0;
 var timmer;
 $(function(){
+	
 	//async를 통한 순차 진행
 	visualLodding();
 	goodsList();
 	saleList();
 	noticeList();
 	eventList();
+
+	
 	
 });
 ///////////////////////////////////////
@@ -125,18 +128,23 @@ function eventList(){
 	});
 }
 
+/*///////////// 챗봇 //////////////*/
+//챗봇얼굴누르면 검색창표시
 function chatbot(){
 	$(".chatbot-content").show();
 }
-
+//챗봇상단 x 버튼 누르면 검색창숨기기
 function chatbotClose(){
 	$(".chatbot-content").hide();
 }
 
 var search2;
+//챗봇 검색버튼
 function chatbotSearch(){
 	var search = $(".search").val();
 	search2=search;
+	
+	
 	var token = $("meta[name='_csrf']").attr('content');
     var header = $("meta[name='_csrf_header']").attr('content');
     if(token && header) {
@@ -150,12 +158,38 @@ function chatbotSearch(){
 		url:`/index/chatbot/${search}`,
 		timeout: 5000,
 		success:function(result){
+			var searchWithDiv = 
+			`
+			<div class="ques-section">
+				<span class="question">${search}</span>
+			</div>
+			<div class="wrap">
+				<img id="chat-img" alt="#" width="30px"
+				src="/images/index/quick-chatbot.gif">
+				<span class="chat-tit">'${search}'로 검색한 결과입니다!</span>
+			</div>
+			`;
+            $(".chatbot-section").append(searchWithDiv);
 			$(".chatbot-section").append(result);
 		}
 	});
 }
 
+//질문 누르면 답변 나오기
+function showAnswer(qusetion){
+	var open = $(qusetion).hasClass("open");
+	
+	if(open!=true){
+		$(qusetion).addClass("open").siblings().children().show();
+	}
+	if(open==true){
+		$(qusetion).removeClass("open").siblings().children().hide();
+	}
+	
+}
 
+
+//검색결과 페이징 처리
 function pageBtn(button){
 	search = search2;
 	var page = $(button).text();
