@@ -25,6 +25,7 @@ public class OrderDTO {
 	
 	
 	public OrderDTO order(OrderEntity orderEntity){
+		this.no=orderEntity.getNo();
 		this.name=orderEntity.getMember().getName();
 		this.uid=orderEntity.getUid();
 		this.orderDate=orderEntity.getOrderDate();

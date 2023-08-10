@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html>
-    <head>
-   	 	<meta charset="UTF-8">
-    	<title>Insert title here</title>
-    </head>
 	<body>
-		<section class="flex wait section-size">
-			<div class="time-info">
-				<p>주문취소</p>
+		<section class="wait section-size">
+			<th:block th:each="dto:${order}">
+			<div class="flex wait-border">
+				<div  class="time-info">
+					<p th:text="${#temporals.format(dto.orderDate, 'MM/dd')}"></p>
+					<p th:text="${#temporals.format(dto.orderDate, 'HH:mm')}"></p>
+					
+				</div>
+				<div  class="adress-info">
+					<p th:text="${dto.name}">고객 이름</p>
+					<input type="hidden" id="cno" th:value="${dto.no}">
+					<div th:each="item:${dto.orderItem}" class="flex">
+						<p th:text="${item.name}"></p>
+						<p th:text="${item.count}"></p>
+					</div>
+				</div>
 			</div>
-			<div>
-				<p>취소 정보</p>
-			</div>
-		
+			</th:block>
 		</section>
 	</body>
 </html>

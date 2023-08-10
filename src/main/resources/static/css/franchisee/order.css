@@ -5,7 +5,9 @@
 	font-family: 'Jua', sans-serif;
  */
  
-
+#wait{
+	font-family: 'Jua', sans-serif;
+}
 [type="radio"] {
   vertical-align: middle;
   appearance: none;
@@ -17,8 +19,14 @@
 
 .section-size{
 	width:1030px;
-	background-color: #e4eddc;
+	background-color: #e4eddc;	
+}
+.adress-info{
 	
+	overflow: auto;
+}
+.wait-border{
+	border-bottom: 1px dotted grey;
 }
 .order{
 	width:1100px;
@@ -38,9 +46,6 @@
 	font-size: 30px;
 	margin-left: 10px;
 	font-family: 'Jua', sans-serif;
-
-
-	
 }
 .order .wrap .fc-logo div{
 	display:flex;
@@ -100,6 +105,9 @@
 	width: 600px;
 	height: 160px;
 }
+.order-count{
+	font-size: 50px;
+}
 .order-btn button{
 	width: 100px;
 	height: 100px;
@@ -109,6 +117,9 @@
 	color: white;
 	border-radius: 8px;
 	margin: 25px 0;
+}
+.adress-info div{
+	align-items: flex-end;
 }
 .wrap-label{
 	font-family: 'Jua', sans-serif;
@@ -139,7 +150,7 @@
 	align-items: center;
 	justify-content: center; 
 	text-align: center; 
-	font-size: 28px;
+	font-size: 20px;
 	font-weight: 500;
 }
 .wait .adress-info{
