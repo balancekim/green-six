@@ -27,8 +27,8 @@
 		<a th:onclick="|faqList(${diviNo}, ${pd.from-1})|">&lt;</a>
 	</div>
 	<div>
-		<span th:each="page : ${#numbers.sequence(pd.from,pd.to)}"> <a
-			th:text="${page}" th:onclick="|faqList(${diviNo}, ${page})|">페이지번호</a>
+		<span  th:each="page : ${#numbers.sequence(pd.from,pd.to)}"> <a
+			th:text="${page}"  th:onclick="|faqList(${diviNo}, ${page})|">페이지번호</a>
 		</span>
 	</div>
 	<div th:if="${pd.to lt pd.tot}">
