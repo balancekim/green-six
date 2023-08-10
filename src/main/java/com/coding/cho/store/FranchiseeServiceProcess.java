@@ -52,6 +52,47 @@ public class FranchiseeServiceProcess implements FranchiseeService{
 		List<OrderDTO> list=orderEntity.stream().map(ff->new OrderDTO().order(ff)).collect(Collectors.toList());
 		return list;
 	}
-
-
+	@Transactional
+	@Override
+	public List<OrderDTO> processing(String id) {
+		MemberEntity entity=mr.findByEmail(id).orElseThrow();
+		List<OrderEntity>  orderEntity= or.findByStoreAndOrderStatus(entity.getStore(),OrderStatus.READY);
+		List<OrderDTO> list=orderEntity.stream().map(ff->new OrderDTO().order(ff)).collect(Collectors.toList());
+		return list;
+	}
+	
+	@Transactional
+	@Override
+	public void update(long cno) {
+		or.findById(cno).map(ent->ent.setStatus(OrderStatus.READY)).orElseThrow();
+		//System.out.println(cno);
+	}
+	@Transactional
+	@Override
+	public void updateCancel(long cno) {
+		or.findById(cno).map(ent->ent.setStatus(OrderStatus.CANCEL)).orElseThrow();
+		
+	}
+	@Transactional
+	@Override
+	public List<OrderDTO> cancel(String id) {
+		MemberEntity entity=mr.findByEmail(id).orElseThrow();
+		List<OrderEntity>  orderEntity= or.findByStoreAndOrderStatus(entity.getStore(),OrderStatus.CANCEL);
+		List<OrderDTO> list=orderEntity.stream().map(ff->new OrderDTO().order(ff)).collect(Collectors.toList());
+		return list;
+	}
+	@Transactional
+	@Override
+	public void updateEnd(long cno) {
+		or.findById(cno).map(ent->ent.setStatus(OrderStatus.END)).orElseThrow();
+		
+	}
+	@Transactional
+	@Override
+	public List<OrderDTO> end(String id) {
+		MemberEntity entity=mr.findByEmail(id).orElseThrow();
+		List<OrderEntity>  orderEntity= or.findByStoreAndOrderStatus(entity.getStore(),OrderStatus.END);
+		List<OrderDTO> list=orderEntity.stream().map(ff->new OrderDTO().order(ff)).collect(Collectors.toList());
+		return list;
+	}
 }

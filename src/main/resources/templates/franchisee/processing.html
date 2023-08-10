@@ -1,17 +1,28 @@
 <!DOCTYPE html>
-<html>
-    <head>
-   	 	<meta charset="UTF-8">
-    	<title>Insert title here</title>
-    </head>
+<html xmlns:th="//www.thymeleaf.org">
 	<body>
-		<section class="flex wait section-size">
-			<div class="time-info">
-				<p>처리중</p>
-			</div>
-			<div class="order-btn">
-				<button>조리 완료</button>
-			</div>
+		<section class="wait section-size">
+			<th:block th:each="dto:${order}">
+				<div class="flex wait-border">
+					<div  class="time-info">
+						<p th:text="${#temporals.format(dto.orderDate, 'MM/dd')}"></p>
+						<p th:text="${#temporals.format(dto.orderDate, 'HH:mm')}"></p>
+						
+					</div>
+					<div  class="adress-info">
+						<p th:text="${dto.name}">고객 이름</p>
+						<input type="hidden" id="cno" th:value="${dto.no}">
+						<div th:each="item:${dto.orderItem}" class="flex">
+							<p th:text="${item.name}"></p>
+							<p th:text="${item.count}"></p>
+						</div>
+						
+					</div>
+					<div class="order-btn">
+						<button type="button" onclick="endBtnClicked()" >조리완료</button>
+					</div>
+				</div>
+			</th:block>
 		</section>
 	</body>
 </html>
