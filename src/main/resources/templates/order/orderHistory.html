@@ -5,7 +5,7 @@
 	<!-- iamport.payment.js -->
 	<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 	<script src="/js/order/order.js"></script>
-	<link rel="stylesheet" href="/css/order/orderHistory.css">
+	<link rel="stylesheet" href="/css/order/orderHistoryList.css">
 </head>
 <main>
 	<h1>장바구니</h1>
@@ -14,19 +14,19 @@
 			<div class="cart-wrap">
 			<h2 class="cart-tit">주문 내역</h2>
 			<div class="cart-area center">
-				<ul class="cart-row flex ">
+				<ul class="order-row flex ">
 					<li>주문번호</li>
 					<li>상품명</li>
-					<li>판매가</li>
+					<li>결제금액</li>
 					<li>결제 날짜</li>				
 				</ul>
-				<ul class="cart-row flex " th:each="dto:${list}">
+				<ul class="order-content flex " th:each="dto:${list}">
 					<li  th:text="${dto.uid}">주문번호</li>	
 					<li  >
-						<a th:href="@{/cart/history/{uid} (uid=${dto.uid})}" th:text="|${dto.orderItem[0].name+' 외'+(dto.totalCount-1)+'개'}|">상품 명</a>
+						<a th:href="@{/cart/history/{uid} (uid=${dto.uid})}" th:text="|${dto.mainGood+' 외'+(dto.totalCount-1)+'개'}|">상품 명</a>
 					</li>	
-					<li th:text="${dto.totalPrice}">할인가</li>
-					<li th:text="${dto.orderDate}">결제 날짜</li>				
+					<li th:text="|${#numbers.formatInteger(dto.totalPrice, 3, 'COMMA')+' 원'}|">결제금액</li>
+					<li th:text="${#temporals.format(dto.orderDate, 'yyyy.MM.dd HH:mm')}">결제 날짜</li>				
 				</ul>
 				
 			</div>

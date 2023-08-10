@@ -4,21 +4,61 @@
 <head>
 	<!-- iamport.payment.js -->
 	<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
-	
+	<script src="/js/order/order.js"></script>
+	<link rel="stylesheet" href="/css/order/orderHistory.css">
 </head>
 <main>
 	<h1>장바구니</h1>
 	<div>
 		<section id="cart-main">
 			<div class="cart-wrap">
-			<h2 class="cart-tit">주문 상세 내역</h2>
+			<h2 class="cart-tit">장바구니</h2>
+			
 			<div class="cart-area center">
-						
+				<ol class="order-row flex ">
+					<li>사진</li>
+					<li>상품명</li>
+					<li>개수</li>
+					<li>단품 가격</li>
+					<!-- <li>할인금액</li> -->
+					<li>소계</li>
+					
+				</ol>
+				<ul th:each="dto:${list}" class="order-content flex">
+					<li >
+						<img th:src="${dto.url}" height="100px;">
+					</li>
+					<li th:text="${dto.name}">상품명</li>
+					<li th:text="${dto.count}">개수</li>
+					<li th:text="|${#numbers.formatInteger((dto.price+dto.disCount)/dto.count, 3, 'COMMA')+' 원'}|">가격</li>
+					
+					<!-- <li th:text="${dto.disCount}">할인가</li> -->
+					<li th:text="|${#numbers.formatInteger(dto.price, 3, 'COMMA')+' 원'}|">판매가</li>
+					
+				</ul>
 			</div>
+			<div style="text-align: right; padding-right: 20px">
+				<span>총 결제 금액: </span>
+				<span th:text="${totalPrice}" ></span>
+				<span> 원</span>
+			</div>
+			<!-- <div class="center flex">
+				<div class="cart-footer flex center">
+					<input id="userName" type="hidden" th:value="${user.name}">
+					<input id="userEmail" type="hidden" th:value="${user.email}">
+					<button type="button" id="btn-payment" >결제하기</button>
+					<a href="/menu/0"><button type="button" id="btn-cancel" >취소하기</button></a>
+				</div>
+			</div> -->
 			</div>
 		</section>
 		
 	</div>
-
+<!-- <script type="text/javascript">
+	$(function(){
+		
+	totalPrice();
+	})
+</script> -->
 </main>
 </html>
