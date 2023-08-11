@@ -5,8 +5,17 @@
 	font-family: 'Jua', sans-serif;
  */
  
+
+/* ////////////////////order index/////////////// */
+.order-wrap-scroll{
+	overflow-x: auto;
+}
+/* ////////////////////wait,processing,cancel/////////////// */
 #wait{
 	font-family: 'Jua', sans-serif;
+}
+.wait-border{
+	background-color: #e4eddc;
 }
 [type="radio"] {
   vertical-align: middle;
@@ -16,18 +25,18 @@
   width: 1.25em;
   height: 1.25em;
 }
-
 .section-size{
 	width:1030px;
+	height:640px;
 	background-color: #e4eddc;	
 }
+.section-size .bc-color{
+	background-color: #fdffff;
+}
 .adress-info{
-	
 	overflow: auto;
 }
-.wait-border{
-	border-bottom: 1px dotted grey;
-}
+
 .order{
 	width:1100px;
 	padding-top: 50px;
@@ -94,9 +103,7 @@
 .target{
 	background-color:	#c9ddb8
 }
-.wait {
-	border-bottom:1px solid #00000036;
-}
+
 .wait .time-info {
 	width: 120px;
 	height: 160px;

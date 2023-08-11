@@ -63,7 +63,7 @@ function changeStatus(btn){
 			}
 		});
  }
- function orderBtnClicked(){
+ function orderBtnClicked(orderBtnClicked){
 	var token = $("meta[name='_csrf']").attr('content');
     var header = $("meta[name='_csrf_header']").attr('content');
     if(token && header) {
@@ -71,7 +71,8 @@ function changeStatus(btn){
             xhr.setRequestHeader(header, token);
         });
     }
-	 var cno=$("#cno").val();
+    var cno= $(orderBtnClicked).val();
+	//=$("#cno").val();
 	
 	 $.ajax({
 		 url:"/franchisee/processing",
@@ -82,7 +83,7 @@ function changeStatus(btn){
 		 }
 	 })
  }
-  function cancelBtnClicked(){
+  function cancelBtnClicked(cBtn){
 	var token = $("meta[name='_csrf']").attr('content');
     var header = $("meta[name='_csrf_header']").attr('content');
     if(token && header) {
@@ -90,7 +91,7 @@ function changeStatus(btn){
             xhr.setRequestHeader(header, token);
         });
     }
-	 var cno=$("#cno").val();
+	var cno= $(cBtn).val();
 	 $.ajax({
 		 url:"/franchisee/cancel",
 		 type:"PUT",
@@ -100,7 +101,7 @@ function changeStatus(btn){
 		 }
 	 })
  }
- function endBtnClicked(){
+ function endBtnClicked(eBtn){
 	var token = $("meta[name='_csrf']").attr('content');
     var header = $("meta[name='_csrf_header']").attr('content');
     if(token && header) {
@@ -108,7 +109,7 @@ function changeStatus(btn){
             xhr.setRequestHeader(header, token);
         });
     }
-	 var cno=$("#cno").val();
+	 var cno= $(eBtn).val();
 	 $.ajax({
 		 url:"/franchisee/end",
 		 type:"PUT",
