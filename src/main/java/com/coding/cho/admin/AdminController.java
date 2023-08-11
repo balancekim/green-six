@@ -5,8 +5,12 @@ import java.util.Map;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -64,7 +68,6 @@ public class AdminController {
 	public String order(Model model,Authentication authentication) {
 		String id= authentication.getName();
 		fs.waiting(id,model);
-		
 		return "franchisee/order";
 	}
 	/*
@@ -87,20 +90,45 @@ public class AdminController {
 	}
 	
 	@ResponseBody
+	@PutMapping("/franchisee/processing")
+	public void processing(@RequestParam("cno") long cno) {
+		fs.update(cno);
+	}
+	
+	@ResponseBody
 	@GetMapping("/franchisee/processing")
-	public ModelAndView processing() {
-		
-		return new ModelAndView("franchisee/processing");
+	public ModelAndView processing(Authentication authentication) {
+		String id= authentication.getName();
+		ModelAndView mv= new ModelAndView("franchisee/processing");
+		mv.addObject("order", fs.processing(id));
+		return mv; 
+	}
+	
+	@ResponseBody
+	@PutMapping("/franchisee/cancel")
+	public void orderCancel(@RequestParam("cno") long cno) {
+		fs.updateCancel(cno);
 	}
 	@ResponseBody
 	@GetMapping("/franchisee/cancel")
-	public ModelAndView cancel() {
-		return new ModelAndView("franchisee/cancel");
+	public ModelAndView orderCancel(Authentication authentication) {
+		String id= authentication.getName();
+		ModelAndView mv= new ModelAndView("franchisee/cancel");
+		mv.addObject("order", fs.cancel(id));
+		return mv; 
+	}
+	@ResponseBody
+	@PutMapping("/franchisee/end")
+	public void orderEnd(@RequestParam("cno") long cno) {
+		fs.updateEnd(cno);
 	}
 	@ResponseBody
 	@GetMapping("/franchisee/end")
-	public ModelAndView end() {
-		return new ModelAndView("franchisee/end");
+	public ModelAndView end(Authentication authentication) {
+		String id= authentication.getName();
+		ModelAndView mv= new ModelAndView("franchisee/cancel");
+		mv.addObject("order", fs.end(id));
+		return mv; 
 	}
 	
 	//인덱스페이지에 상품목록 뿌리기

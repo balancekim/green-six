@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="">
+<html xmlns:th="//www.thymeleaf.org">
     <head>
     	<link rel="stylesheet" href="/css/commons/common.css">
     	<link rel="stylesheet" href="/css/franchisee/order.css">
@@ -21,12 +21,12 @@
 				<span  class="logo-style" style="color: #cc3399">IX</span>
 				</a>
 				<div >
+					<input type="hidden" th:value="${store.no}">
 					<p class="storeName" th:text="${store.member.name}"></p>
 				</div>
 			</div>
 			<div class="flex wrap-label">
 				<div>
-					<input class="storeNo" type="hidden" th:value="${store.no}">
 					<input type="radio" id="poss" name="order" value="true" onchange="changeStatus(this)" th:checked="${store.status eq true}" class="order-poss" ><label for="poss">영업중</label>
 				</div>
 				<div>
@@ -49,11 +49,11 @@
 					</li>
 					<li class="order-processing"><a id="order-processing" href="#" onclick="changeForm1(this)">처리중</a></li>
 					<li class="order-cancel"><a id="order-cancel" href="#" onclick="changeForm1(this)">주문취소</a></li>
-					<li class="order-end"><a id="order-end" href="#" onclick="changeForm1(this)">픽업</a></li>
+					<li class="order-end"><a id="order-end" href="#" onclick="changeForm1(this)">주문완료</a></li>
 				</ul>
-				<ul>
-					<li id="wait"></li>
-				</ul>
+				<div>
+					<span id="wait"></span>
+				</div>
 			</div>
 		</div>
 		</div>

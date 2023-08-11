@@ -1,6 +1,5 @@
 package com.coding.cho.order.service.impl;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,7 +11,6 @@ import org.springframework.ui.Model;
 
 import com.coding.cho.common.domain.entity.MemberEntity;
 import com.coding.cho.common.domain.entity.MemberEntityRepository;
-import com.coding.cho.goods.GoodsEntity;
 import com.coding.cho.goods.GoodsEntityRepository;
 import com.coding.cho.map.StoreEntity;
 import com.coding.cho.order.CartEntity;
@@ -24,8 +22,8 @@ import com.coding.cho.order.OrderEntityRepository;
 import com.coding.cho.order.OrderItemEntity;
 import com.coding.cho.order.OrderItemEntityRepository;
 import com.coding.cho.order.OrderStatus;
-import com.coding.cho.order.dto.OrderDTO;
-import com.coding.cho.order.dto.OrderItemDTO;
+import com.coding.cho.order.dto.OrderItemListDTO;
+import com.coding.cho.order.dto.OrderListDTO;
 import com.coding.cho.order.service.OrderService;
 
 import lombok.RequiredArgsConstructor;
@@ -88,7 +86,9 @@ public class OrderServiceProcess implements OrderService {
 		MemberEntity member=memRepo.findAllByEmail(name);
 		List<OrderEntity> oe = orderRepo.findAllByMember(member);
 		
-		List<OrderDTO> list=oe.stream().map(ff->new OrderDTO().order(ff)).collect(Collectors.toList());
+		List<OrderListDTO> list=oe.stream()
+				.map(OrderListDTO::new)
+				.collect(Collectors.toList());
 		
 		Collections.reverse(list);
 		
@@ -97,6 +97,27 @@ public class OrderServiceProcess implements OrderService {
 		model.addAttribute("list",list);
 		
 		
+		
+	}
+
+	@Override
+	@Transactional
+	public void orderHistory(String name, Model model, String uid) {
+		MemberEntity member=memRepo.findAllByEmail(name);
+		OrderEntity oe = orderRepo.findByMemberAndUid(member,uid);//uid와 멤버번호로 오더 객체 찾음
+		List<OrderItemEntity> oieList=oe.getOrderItems();
+		System.out.println(oieList);
+		
+		  List<OrderItemListDTO> list=oieList.stream() .map(OrderItemListDTO::new)
+		  .collect(Collectors.toList());
+		 int totalPrice=0;
+		for(OrderItemListDTO dto:list) {
+			totalPrice+=dto.getPrice();
+		}
+		  
+		  model.addAttribute("totalPrice", totalPrice);
+		  model.addAttribute("list", list);
+		 
 	}
 
 	

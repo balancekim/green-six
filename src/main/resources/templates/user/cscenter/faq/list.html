@@ -11,6 +11,7 @@
     			$(targetTag).addClass("target");
     		}
     		function faqList(divNo, page){
+    						
     			$.ajax({
     				url: `/common/faq/${divNo}`,
     				data:{page: page},
@@ -18,7 +19,10 @@
     					$("#faq-list >.wrap .list-area").html(result);
     				}
     			});
+    			
+    			
     		}
+    	
     		
     	</script>
     	<style type="text/css">
@@ -109,8 +113,22 @@
     			color: #88af62;
     			font-weight: 700;
     		}
+    		.pageNumber{
+    			font-size: 15px;
+    		}
     		
-    	
+    		.page-left,
+			.page-right{
+				margin: 0 10px;
+				font-size: 18px;
+				line-height: 18px;
+				
+			}
+			.page-left:hover,
+			.page-right:hover{
+				cursor: pointer;
+			}
+			
     	</style>
     </head>
     <main>

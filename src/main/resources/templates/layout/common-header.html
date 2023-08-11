@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="//www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	
 <header id="header">
 	<h1>헤더섹션</h1>
 	<div class="wrap">
@@ -120,6 +121,28 @@
 						</nav>
 					</div>
 				</section>
+			</div>
+			<div class="chatbot">
+				<div class="chatbot-content">
+					<div class="flex right" >
+							<span onclick="chatbotClose()" class="material-symbols-outlined "
+								style="font-size: 17px; color: gray; padding: 10px; cursor: pointer;">close</span>
+						</div>
+					<section class="chatbot-section">
+						
+						
+					</section>
+					<div class="search-sec">
+						<div class="search-input">
+							<input type="text" class="search" placeholder="검색어를 입력하세요.">
+							<span onclick="chatbotSearch()" class="material-symbols-outlined">search</span>
+						</div>
+					</div>
+				</div>
+				<div class="flex right">
+					<img id="chat-img" onclick="chatbot()" alt="#" width="50px"
+						src="/images/index/quick-chatbot.gif">
+				</div>
 			</div>
 <!-- 		<section id="search-top">
 				<h1>검색</h1>

@@ -6,12 +6,15 @@ var delay=3000;
 var target_idx=0;
 var timmer;
 $(function(){
+	
 	//async를 통한 순차 진행
 	visualLodding();
 	goodsList();
 	saleList();
 	noticeList();
 	eventList();
+
+	
 	
 });
 ///////////////////////////////////////
@@ -125,56 +128,4 @@ function eventList(){
 	});
 }
 
-function chatbot(){
-	$(".chatbot-content").show();
-}
 
-function chatbotClose(){
-	$(".chatbot-content").hide();
-}
-
-var search2;
-function chatbotSearch(){
-	var search = $(".search").val();
-	search2=search;
-	var token = $("meta[name='_csrf']").attr('content');
-    var header = $("meta[name='_csrf_header']").attr('content');
-    if(token && header) {
-        $(document).ajaxSend(function(event, xhr, options) {
-            xhr.setRequestHeader(header, token);
-        });
-    }
-	
-	$.ajax({
-		async: false,
-		url:`/index/chatbot/${search}`,
-		timeout: 5000,
-		success:function(result){
-			$(".chatbot-section").append(result);
-		}
-	});
-}
-
-
-function pageBtn(button){
-	search = search2;
-	var page = $(button).text();
-	var token = $("meta[name='_csrf']").attr('content');
-    var header = $("meta[name='_csrf_header']").attr('content');
-    if(token && header) {
-        $(document).ajaxSend(function(event, xhr, options) {
-            xhr.setRequestHeader(header, token);
-        });
-    }
-	
-	$.ajax({
-		async: false,
-		url:`/index/chatbot/${search}`,
-		data : {page:page-1},
-		timeout: 5000,
-		success:function(result){
-			$(".chatbot-section").append(result);
-		}
-	});
-	
-}

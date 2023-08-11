@@ -14,5 +14,19 @@ public interface FranchiseeService {
 
 	List<OrderDTO> waiting(String id);
 
+	void update(long cno);
+
+	List<OrderDTO> processing(String id);
+
+	void updateCancel(long cno);
+
+	List<OrderDTO> cancel(String id);
+
+	void updateEnd(long cno);
+
+	List<OrderDTO> end(String id);
+
+
+
 
 }

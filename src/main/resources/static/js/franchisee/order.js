@@ -23,71 +23,98 @@ function changeStatus(btn){
            var header = $("meta[name='_csrf_header']").attr("content");
            var token = $("meta[name='_csrf']").attr("content");
            jqXHR.setRequestHeader(header, token);
-		}
-		
+		}	
 	})
 }
-
  function changeForm1(btn){
 	$(btn).parents().siblings().children("a").removeClass("target");
 	$(btn).addClass("target");
-	
  }
-
- 
  function orderWait(){
 	 $.ajax({
 			url:"/franchisee/orderwait",
 			success:function(result){
 				$("#wait").html(result);
 			}
-			
 		})
-
  }
- 
- function orderProcessing(){
-	
-		 
+ function orderProcessing(){ 
 		$.ajax({
 			url:"/franchisee/processing",
 			success:function(result){
 				$("#wait").html(result);
-			}
-			
-		})
-	 ;
+			}	
+		});
  }
   function orderCancel(){
-	 
-		 
+
 		$.ajax({
 			url:"/franchisee/cancel",
 			success:function(result){
 				$("#wait").html(result);
 			}
-			
-		})
-	 ;
+		});
  }
     function orderEnd(){
-	
-		 
 		$.ajax({
 			url:"/franchisee/end",
 			success:function(result){
 				$("#wait").html(result);
 			}
-			
-		})
-	 ;
+		});
  }
  function orderBtnClicked(){
+	var token = $("meta[name='_csrf']").attr('content');
+    var header = $("meta[name='_csrf_header']").attr('content');
+    if(token && header) {
+        $(document).ajaxSend(function(event, xhr, options) {
+            xhr.setRequestHeader(header, token);
+        });
+    }
+	 var cno=$("#cno").val();
+	
 	 $.ajax({
 		 url:"/franchisee/processing",
-		 success:function(result){
-			 $("#wait").html(result);
+		 type:"PUT",
+		 data:{cno:cno},
+		 success:function(){
+			 orderWait();
 		 }
 	 })
  }
- 
+  function cancelBtnClicked(){
+	var token = $("meta[name='_csrf']").attr('content');
+    var header = $("meta[name='_csrf_header']").attr('content');
+    if(token && header) {
+        $(document).ajaxSend(function(event, xhr, options) {
+            xhr.setRequestHeader(header, token);
+        });
+    }
+	 var cno=$("#cno").val();
+	 $.ajax({
+		 url:"/franchisee/cancel",
+		 type:"PUT",
+		 data:{cno:cno},
+		 success:function(){
+			 orderWait();
+		 }
+	 })
+ }
+ function endBtnClicked(){
+	var token = $("meta[name='_csrf']").attr('content');
+    var header = $("meta[name='_csrf_header']").attr('content');
+    if(token && header) {
+        $(document).ajaxSend(function(event, xhr, options) {
+            xhr.setRequestHeader(header, token);
+        });
+    }
+	 var cno=$("#cno").val();
+	 $.ajax({
+		 url:"/franchisee/end",
+		 type:"PUT",
+		 data:{cno:cno},
+		 success:function(){
+			 orderProcessing();
+		 }
+	 })
+ }

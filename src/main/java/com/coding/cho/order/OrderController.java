@@ -44,7 +44,7 @@ public class OrderController {
 	@GetMapping("/cart/history/{uid}")
 	public String orderDetail(Authentication auth,Model model,@PathVariable String uid) {
 		System.out.println("uiddddddddddd"+uid);
-		service.orderHistory(auth.getName(),model);
+		service.orderHistory(auth.getName(),model,uid);
 		return "order/orderDetail";
 	}
 }
