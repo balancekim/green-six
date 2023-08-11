@@ -5,8 +5,8 @@
 			<th:block th:each="dto:${order}">
 				<div class="flex wait-border">
 					<div  class="time-info">
-						<p th:text="${#temporals.format(dto.orderDate, 'MM/dd')}"></p>
-						<p th:text="${#temporals.format(dto.orderDate, 'HH:mm')}"></p>
+						<p th:text="${#temporals.format(dto.updateTime, 'MM/dd')}"></p>
+						<p th:text="${#temporals.format(dto.updateTime, 'HH:mm')}"></p>
 						
 					</div>
 					<div  class="adress-info">
