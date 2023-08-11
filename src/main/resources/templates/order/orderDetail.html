@@ -12,10 +12,10 @@
 	<div>
 		<section id="cart-main">
 			<div class="cart-wrap">
-			<h2 class="cart-tit">장바구니</h2>
+			<h2 class="cart-tit">주문 상세	</h2>
 			
 			<div class="cart-area center">
-				<ol class="order-row flex ">
+				<ul class="order-row flex ">
 					<li>사진</li>
 					<li>상품명</li>
 					<li>개수</li>
@@ -23,7 +23,7 @@
 					<!-- <li>할인금액</li> -->
 					<li>소계</li>
 					
-				</ol>
+				</ul>
 				<ul th:each="dto:${list}" class="order-content flex">
 					<li >
 						<img th:src="${dto.url}" height="100px;">
@@ -37,7 +37,7 @@
 					
 				</ul>
 			</div>
-			<div style="text-align: right; padding-right: 20px">
+			<div style="text-align: center; padding-right: 20px" class="totalPrice">
 				<span>총 결제 금액: </span>
 				<span th:text="${totalPrice}" ></span>
 				<span> 원</span>
