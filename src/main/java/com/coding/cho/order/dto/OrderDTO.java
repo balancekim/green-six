@@ -15,7 +15,8 @@ public class OrderDTO {
 	private String name;
 	private String uid;
 	private LocalDateTime orderDate;
-
+	private LocalDateTime updateTime;
+	
 	//형균추가
 	private int totalPrice;
 	private int totalCount;
@@ -29,7 +30,7 @@ public class OrderDTO {
 		this.name=orderEntity.getMember().getName();
 		this.uid=orderEntity.getUid();
 		this.orderDate=orderEntity.getOrderDate();
-		
+		this.updateTime=orderEntity.getUpdateTime();
 		this.orderItem=orderEntity.getOrderItems().stream()
 				.map(entity->new OrderItemDTO(entity))
 				.collect(Collectors.toList());

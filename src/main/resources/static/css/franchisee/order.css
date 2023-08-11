@@ -3,19 +3,39 @@
 /* 
 	font-family: 'Gloock', serif;
 	font-family: 'Jua', sans-serif;
- */
- 
-
-/* ////////////////////order index/////////////// */
-.order-wrap-scroll{
-	overflow-x: auto;
+ */	
+/* //////////스크롤바 디자인/////// */
+.adress-info::-webkit-scrollbar {
+  width: 10px;   /* 스크롤바의 너비  */
 }
-/* ////////////////////wait,processing,cancel/////////////// */
+.adress-info::-webkit-scrollbar-thumb {
+  background: #a7cba7; /*  스크롤바의 색상 */ 
+  border-radius: 10px;
+
+}
+.adress-info::-webkit-scrollbar-track {
+  background: #84848447; /* 스크롤바 뒷 배경 색상 */
+}
+.section-size::-webkit-scrollbar {
+  width: 10px;   /* 스크롤바의 너비  */
+}
+.section-size::-webkit-scrollbar-thumb {
+  background: #a7cba7; /*  스크롤바의 색상 */ 
+  border-radius: 10px;
+
+}
+.section-size::-webkit-scrollbar-track {
+  background: #84848447; /* 스크롤바 뒷 배경 색상 */
+}
+
+
+/* //////////wait,processing,cancel/////// */
 #wait{
 	font-family: 'Jua', sans-serif;
 }
 .wait-border{
 	background-color: #e4eddc;
+	border-bottom: 1px dotted #a7cba7;
 }
 [type="radio"] {
   vertical-align: middle;
@@ -29,6 +49,7 @@
 	width:1030px;
 	height:640px;
 	background-color: #e4eddc;	
+	overflow-x: auto;
 }
 .section-size .bc-color{
 	background-color: #fdffff;
@@ -109,11 +130,14 @@
 	height: 160px;
 }
 .wait .adress-info{
-	width: 600px;
+	width: 650px;
 	height: 160px;
 }
 .order-count{
 	font-size: 50px;
+}
+.order-btn {
+	margin-left: 20px;
 }
 .order-btn button{
 	width: 100px;
@@ -163,5 +187,7 @@
 .wait .adress-info{
 	font-size: 18px;
 	font-weight: 500;
-	
+}
+.wait .adress-info>P{
+	color:rgba(110,50,0,1);
 }
