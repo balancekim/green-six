@@ -44,11 +44,12 @@ function payment(goodsName, totalItemPrice, email, userName){
 			if(rsp.success){
 				console.log(rsp);
 				msg="결제가 완료 되었습니다.";
+				orderSave(uid);
 			}else { 
 				msg="결제가 실패하였습니다."
 			}
 			alert(msg);
-        orderSave(uid);
+        
 	});
 	/*장바구니 비우고 index로*/
 }

@@ -2,6 +2,7 @@ package com.coding.cho.order;
 
 import java.util.List;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.coding.cho.common.domain.entity.MemberEntity;
@@ -13,13 +14,16 @@ public interface OrderEntityRepository extends JpaRepository<OrderEntity, Long>{
 
 
 	List<OrderEntity> findAllByMember(MemberEntity member);
-
+	List<OrderEntity> findAllByMember(MemberEntity member, Sort sort);
 
 
 	List<OrderEntity> findByStoreAndOrderStatus(StoreEntity store, OrderStatus wait);
 
 
 	OrderEntity findByMemberAndUid(MemberEntity member, String uid);
+
+
+	
 
 
 
