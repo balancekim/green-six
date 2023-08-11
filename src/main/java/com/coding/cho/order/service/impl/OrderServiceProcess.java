@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
@@ -83,13 +85,14 @@ public class OrderServiceProcess implements OrderService {
 	@Override
 	public void orderHistory(String name, Model model) {
 		MemberEntity member=memRepo.findAllByEmail(name);
-		List<OrderEntity> oe = orderRepo.findAllByMember(member);
+		Sort sort=Sort.by(Direction.DESC, "orderDate");
+		List<OrderEntity> oe = orderRepo.findAllByMember(member, sort);
 		
 		List<OrderListDTO> list=oe.stream()
 				.map(OrderListDTO::new)
 				.collect(Collectors.toList());
 		
-		Collections.reverse(list);
+		//Collections.reverse(list);
 		
 		
 		

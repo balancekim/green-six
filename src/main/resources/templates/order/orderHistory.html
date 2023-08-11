@@ -11,8 +11,13 @@
 	<h1>장바구니</h1>
 	<div>
 		<section id="cart-main">
-			<div class="cart-wrap">
+			<div class="cart-wrap" style="position: relative;">
 			<h2 class="cart-tit">주문 내역</h2>
+			<div class="flex" style="font-weight: 200;font-size: 17px;position: absolute;
+                top: 60px;left: 5px;">
+				<a href="/cart" style="cursor: pointer;" >장바구니</a>
+            	<span>  > 주문 내역 확인</span>
+            </div>
 			<div class="cart-area center">
 				<ul class="order-row flex ">
 					<li>주문번호</li>
@@ -23,7 +28,8 @@
 				<ul class="order-content flex " th:each="dto:${list}">
 					<li  th:text="${dto.uid}">주문번호</li>	
 					<li  >
-						<a th:href="@{/cart/history/{uid} (uid=${dto.uid})}" th:text="|${dto.mainGood+' 외'+(dto.totalCount-1)+'개'}|">상품 명</a>
+						<a th:href="@{/cart/history/{uid} (uid=${dto.uid})}" th:text="${dto.mainGood}">상품 명</a>
+						<span th:if="${dto.totalCount>1}" th:text="${' 외 '+(dto.totalCount-1)+'개'}"></span>
 					</li>	
 					<li th:text="|${#numbers.formatInteger(dto.totalPrice, 3, 'COMMA')+' 원'}|">결제금액</li>
 					<li th:text="${#temporals.format(dto.orderDate, 'yyyy.MM.dd HH:mm')}">결제 날짜</li>				
