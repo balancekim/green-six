@@ -71,7 +71,8 @@ public class OrderServiceProcess implements OrderService {
 		
 		
 	}
-
+	
+	@Transactional
 	@Override
 	public void cartDeleteProcess(String email) {
 		MemberEntity member=memRepo.findAllByEmail(email);
