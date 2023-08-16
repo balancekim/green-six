@@ -53,14 +53,17 @@ function hideSubMenu() {
 }
 
 /*///////////// 챗봇 //////////////*/
+
 //챗봇얼굴누르면 검색창표시
 function chatbot(){
 	$(".chatbot-content").show();
 }
+
 //챗봇상단 x 버튼 누르면 검색창숨기기
 function chatbotClose(){
 	$(".chatbot-content").hide();
 }
+
 
 var search2;
 //챗봇 검색버튼
@@ -84,14 +87,16 @@ function chatbotSearch(){
 		success:function(result){
 			var searchWithDiv = 
 			`
-			<div class="ques-section">
-				<span class="question">${search}</span>
-			</div>
-			<div class="wrap">
-				<img id="chat-img" alt="#" width="30px"
-				src="/images/index/quick-chatbot.gif">
-				<span class="chat-tit">'${search}'로 검색한 결과입니다!</span>
-			</div>
+			<section class="chat-con1">
+				<div class="ques-section">
+					<span class="question">${search}</span>
+				</div>
+				<div class="wrap">
+					<img id="chat-img" alt="#" width="30px"
+					src="/images/index/quick-chatbot.gif">
+					<span class="chat-tit">'${search}'로 검색한 결과입니다!</span>
+				</div>
+			</section>
 			`;
             $(".chatbot-section").append(searchWithDiv);
 			$(".chatbot-section").append(result);
