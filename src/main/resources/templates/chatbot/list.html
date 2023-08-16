@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 
-<div class="chat-list" th:if="${list}">
-	<ul th:each="dto:${list}">
-		<li onclick="showAnswer(this)" class="ques-answer" th:text="${dto.question}"></li>
-		<div class="wrap">	
-			<li style="display: none" class="answer" th:text="${dto.answer}"></li>
-		</div>
-	</ul>
-</div>
+	<div class="chat-list" th:if="${list}">
+		<ul th:each="dto:${list}">
+			<li onclick="showAnswer(this)" class="ques-answer" th:text="${dto.question}"></li>
+			<div class="wrap">	
+				<li style="display: none" class="answer" th:text="${dto.answer}"></li>
+			</div>
+		</ul>
+	</div>
+
 <div id="main-footer"  th:unless="${#lists.isEmpty(list)} " >
 	<div class="flex" id="page" style="margin: 10px;">
 		<th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
@@ -16,4 +17,5 @@
 		</th:block>
 	</div>
 </div>
+
 </html>
