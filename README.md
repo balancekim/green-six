@@ -6,7 +6,7 @@
 
 #주문과정
 원하는 상품을 담았을때 가맹점이 선택되지 않았다면 가맹점 선택 페이지로 이동합니다.
-<img src = "https://user-images.githubusercontent.com/122292998/261250614-de42415f-dec3-44a4-bf24-7a7b80f05c76.PNG" width="300px" height="300px">
+<img src = "https://user-images.githubusercontent.com/122292998/261250614-de42415f-dec3-44a4-bf24-7a7b80f05c76.PNG" width="300px">
 <img src = "https://user-images.githubusercontent.com/122292998/261250593-2ea99a57-9152-41b3-9e05-d6f39dde505e.png" width="600px">
 
 원하는 상품들을 넣고 장바구니를 확인하면 상품들이 들어있는 것을 볼 수 있습니다.
