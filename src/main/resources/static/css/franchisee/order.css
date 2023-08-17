@@ -8,12 +8,31 @@
 .adress-info::-webkit-scrollbar {
   width: 10px;   /* 스크롤바의 너비  */
 }
+.adress-info2::-webkit-scrollbar {
+  width: 10px;   /* 스크롤바의 너비  */
+}
+.adress-info3::-webkit-scrollbar {
+  width: 10px;   /* 스크롤바의 너비  */
+}
 .adress-info::-webkit-scrollbar-thumb {
   background: #a7cba7; /*  스크롤바의 색상 */ 
   border-radius: 10px;
-
+}
+.adress-info2::-webkit-scrollbar-thumb {
+  background: #a7cba7; /*  스크롤바의 색상 */ 
+  border-radius: 10px;
+}
+.adress-info3::-webkit-scrollbar-thumb {
+  background: #a7cba7; /*  스크롤바의 색상 */ 
+  border-radius: 10px;
 }
 .adress-info::-webkit-scrollbar-track {
+  background: #84848447; /* 스크롤바 뒷 배경 색상 */
+}
+.adress-info2::-webkit-scrollbar-track {
+  background: #84848447; /* 스크롤바 뒷 배경 색상 */
+}
+.adress-info3::-webkit-scrollbar-track {
   background: #84848447; /* 스크롤바 뒷 배경 색상 */
 }
 .section-size::-webkit-scrollbar {
@@ -56,6 +75,22 @@
 }
 .adress-info{
 	overflow: auto;
+}
+.adress-info2{
+	width: 715px;
+	height: 160px;
+	font-size: 18px;
+	font-weight: 500;
+	overflow: auto;
+	
+}
+.adress-info3{
+	width: 910px;
+	height: 160px;
+	font-size: 18px;
+	font-weight: 500;
+	overflow: auto;
+	
 }
 
 .order{
@@ -139,6 +174,7 @@
 .order-btn {
 	margin-left: 20px;
 }
+
 .order-btn button{
 	width: 100px;
 	height: 100px;
@@ -150,6 +186,12 @@
 	margin: 25px 0;
 }
 .adress-info div{
+	align-items: flex-end;
+}
+.adress-info2 div{
+	align-items: flex-end;
+}
+.adress-info3 div{
 	align-items: flex-end;
 }
 .wrap-label{
@@ -190,4 +232,20 @@
 }
 .wait .adress-info>P{
 	color:rgba(110,50,0,1);
+	
+}
+.wait .adress-info2>P{
+	color:rgba(110,50,0,1);
+}
+.wait .adress-info3>P{
+	color:rgba(110,50,0,1);
+}
+.wait .adress-info>div>p{
+	margin-right: 10px;
+}
+.wait .adress-info2>div>p{
+	margin-right: 10px;
+}
+.wait .adress-info3>div>p{
+	margin-right: 10px;
 }
