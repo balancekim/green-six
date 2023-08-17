@@ -5,6 +5,7 @@
 <img src = "https://user-images.githubusercontent.com/122292998/261250589-68a58d43-b78f-4f87-95c8-f08efe6a9e6f.PNG" width="600px">
 
 #주문과정
+
 원하는 상품을 담았을때 가맹점이 선택되지 않았다면 가맹점 선택 페이지로 이동합니다.
 <img src = "https://user-images.githubusercontent.com/122292998/261250614-de42415f-dec3-44a4-bf24-7a7b80f05c76.PNG" width="300px">
 <img src = "https://user-images.githubusercontent.com/122292998/261250593-2ea99a57-9152-41b3-9e05-d6f39dde505e.png" width="600px">
