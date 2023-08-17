@@ -9,7 +9,7 @@
 						<p th:text="${#temporals.format(dto.updateTime, 'HH:mm')}"></p>
 						
 					</div>
-					<div  class="adress-info">
+					<div  class="adress-info2">
 						<p th:text="${dto.name}">고객 이름</p>
 						<input type="hidden" id="cno" th:value="${dto.no}">
 						<div th:each="item:${dto.orderItem}" class="flex">

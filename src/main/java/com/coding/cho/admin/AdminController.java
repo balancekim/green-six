@@ -126,7 +126,7 @@ public class AdminController {
 	@GetMapping("/franchisee/end")
 	public ModelAndView end(Authentication authentication) {
 		String id= authentication.getName();
-		ModelAndView mv= new ModelAndView("franchisee/cancel");
+		ModelAndView mv= new ModelAndView("franchisee/end");
 		mv.addObject("order", fs.end(id));
 		return mv; 
 	}
