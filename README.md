@@ -17,6 +17,7 @@
 <img src = "https://user-images.githubusercontent.com/122292998/261250624-c4454d17-d3b1-4224-bedc-c73fe6037c59.png" width="600px">
 
 ## 상품이 담긴것을 확인하고 결제를 진행합니다.
+### 결제 완료시 DB에 결제 정보가 저장되고 웹소켓을 통해 가맹점페이지에 전달 합니다.
 
 <img src = "https://user-images.githubusercontent.com/122292998/261250609-e29eb514-45a4-4b38-a1b8-41b71435a0f7.png" width="600px">
 <img src = "https://user-images.githubusercontent.com/122292998/261250613-09ded716-548f-4318-9794-26b510a8abf1.png" width="600px">
@@ -29,6 +30,7 @@
 
 
 ## 주문을 받은 가맹점 페이지에서는 접수받은 주문을 처리할 수 있습니다.
+### 결제 후 전달받은 결제 정보를 실시간으로 확인 할 수 있습니다.
 
 <img src = "https://user-images.githubusercontent.com/122292998/261250597-3d688354-a845-41ee-a38d-e987272eb165.png" width="600px">
 <img src = "https://user-images.githubusercontent.com/122292998/261250606-2040e8ac-9fa4-40f1-97ba-5a6b2bf1bd4b.png" width="600px">
